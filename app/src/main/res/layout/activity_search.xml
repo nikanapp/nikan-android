@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_search_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/activity_search_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="13dp"
+        android:paddingLeft="29dp"
+        android:hint="@string/activity_search_hint"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:singleLine="true"
+        android:imeOptions="actionSearch"
+        android:textCursorDrawable="@drawable/search_edit_cursor_color"
+        android:layout_toLeftOf="@+id/activity_search_cancel"
+        android:background="@drawable/background_search_input"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/activity_search_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_search"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="12dp"
+        android:layout_alignLeft="@+id/activity_search_input"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/activity_search_cancel"
+        android:layout_width="51dp"
+        android:layout_height="41dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="3dp"
+        android:gravity="center"
+        android:text="@string/activity_search_btn_cancel"
+        android:textColor="@color/activity_invite_red"
+        android:visibility="invisible"/>
+
+    <com.bloomlife.videoapp.view.MyPullToRefreshListView
+        android:id="@+id/activity_search_list"
+        android:layout_below="@+id/activity_search_input"
+        android:layout_marginTop="13dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </com.bloomlife.videoapp.view.MyPullToRefreshListView>
+
+    <com.bloomlife.videoapp.view.FooterTipsView
+        android:id="@+id/activity_search_list_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+
+    <com.bloomlife.videoapp.view.GlobalProgressBar
+        android:id="@+id/activity_search_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>

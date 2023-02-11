@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/activity_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/activity_main_bottombar_height">
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_main_topbar_height"
+        android:layout_gravity="top">
+
+        <ImageView
+            android:id="@+id/activity_main_btn_search"
+            android:layout_width="@dimen/activity_main_topbar_height"
+            android:layout_height="@dimen/activity_main_topbar_height"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:scaleType="center"
+            android:src="@drawable/btn_search_selector"/>
+
+
+        <ImageView
+            android:id="@+id/activity_main_btn_massage"
+            android:layout_width="@dimen/activity_main_topbar_height"
+            android:layout_height="@dimen/activity_main_topbar_height"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/activity_main_btn_menu"
+            android:layout_marginRight="-1dp"
+            android:scaleType="center"
+            android:src="@drawable/btn_main_message_selector" />
+
+        <ImageView
+            android:id="@+id/activity_main_btn_menu"
+            android:layout_width="@dimen/activity_main_topbar_height"
+            android:layout_height="@dimen/activity_main_topbar_height"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="-2dp"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:src="@drawable/animation_main_menu00" />
+
+        <TextView
+            android:id="@+id/new_msg_dot"
+            style="@style/message_dot"
+            android:layout_alignTop="@+id/activity_main_btn_massage"
+            android:layout_marginLeft="-16dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/activity_main_btn_massage"
+            android:text="29"
+            android:textSize="12sp"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_main_bottombar_height"
+        android:layout_gravity="bottom"
+        android:background="@color/activity_main_bar">
+
+        <ImageView
+            android:id="@+id/activity_main_btn_story"
+            android:layout_width="36.5dp"
+            android:layout_height="36.5dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="51dp"
+            android:layout_above="@+id/activity_main_btn_map_line"
+            android:scaleType="center"
+            android:src="@drawable/btn_main_story_selector" />
+
+        <ImageView
+            android:id="@+id/activity_main_btn_map"
+            android:layout_width="36.5dp"
+            android:layout_height="36.5dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="51dp"
+            android:layout_alignParentRight="true"
+            android:layout_above="@+id/activity_main_btn_map_line"
+            android:scaleType="center"
+            android:src="@drawable/btn_main_map_selector"/>
+
+        <View
+            android:id="@+id/activity_main_btn_map_line"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="51dp"
+            android:layout_width="34dp"
+            android:layout_height="2dp"
+            android:background="@color/glimpse_purple"/>
+
+        <View
+            android:id="@+id/activity_main_btn_story_line"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="51dp"
+            android:layout_width="34dp"
+            android:layout_height="2dp"
+            android:background="@color/story_red"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/activity_main_btn_camera_purple"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="8dp"
+        android:alpha="1"
+        android:scaleType="center"
+        android:background="@drawable/btn_main_story_camera_purple" />
+
+    <ImageView
+        android:id="@+id/activity_main_btn_camera_red"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="8dp"
+        android:alpha="1"
+        android:scaleType="center"
+        android:background="@drawable/btn_main_story_camera_red" />
+
+    <ViewStub
+        android:id="@+id/layout_story_camera_tips_stub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="67dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout="@layout/layout_story_camera_tips"/>
+
+    <ViewStub
+        android:id="@+id/layout_glimpse_camera_tips_stub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="67dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout="@layout/layout_glimpse_camera_tips"/>
+
+    <com.bloomlife.videoapp.view.MainMenuWindow
+        android:id="@+id/activity_main_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="50dp"
+        android:visibility="gone">
+
+    </com.bloomlife.videoapp.view.MainMenuWindow>
+
+    <ImageView
+        android:id="@+id/activity_main_blur_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+</merge>

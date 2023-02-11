@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="comment_view">
+        <attr name="comment_text" format="reference|string"></attr>
+        <attr name="comment_num" format="reference|integer"></attr>
+    </declare-styleable>
+    <declare-styleable name="setting_view">
+        <attr name="setting_text" format="reference|string"></attr>
+    </declare-styleable>
+
+</resources>

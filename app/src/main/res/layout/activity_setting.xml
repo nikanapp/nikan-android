@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:title="http://schemas.android.com/apk/res-auto"
+    xmlns:setting="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_setting_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/whitesmoke" >
+
+        <LinearLayout
+            android:id="@+id/setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/whitesmoke"
+            android:orientation="vertical" >
+
+            <com.bloomlife.android.view.TitleBar
+                android:id="@+id/setting_titlebar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                title:titleText="@string/activity_setting_title"
+                title:titleTextColor="@color/black"
+                title:titleTextSize="@dimen/p_lager_size"
+                title:leftText="@string/activity_setting_back"
+                title:leftTextColor="@color/black"
+                title:leftTextSize="@dimen/p_middle_size"
+                title:darkStyle="false">
+            </com.bloomlife.android.view.TitleBar>
+
+            <com.bloomlife.videoapp.view.SettingView
+                android:id="@+id/setting_btn_user_info"
+                style="@style/setting_layout_head"
+                setting:setting_text="@string/activity_setting_user_info" />
+
+            <!-- 推送通知 -->
+
+            <RelativeLayout
+                android:id="@+id/setting_btn_push"
+                style="@style/setting_layout" >
+
+                <!-- 文字 -->
+
+                <TextView
+                    style="@style/setting_text"
+                    android:text="@string/activity_setting_push" />
+
+                <com.bloomlife.android.view.SlipButton
+                    android:id="@+id/seeting_push_slip"
+                    android:layout_marginRight="10dp"
+                    style="@style/setting_slidbutton" >
+                </com.bloomlife.android.view.SlipButton>
+
+                <!-- 线 -->
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/whitesmoke"
+                    android:contentDescription="@string/img_desc" />
+            </RelativeLayout>
+
+            <com.bloomlife.videoapp.view.SettingView
+                android:id="@+id/clearcache"
+                style="@style/setting_layout"
+                setting:setting_text="@string/activity_setting_clear" />
+
+            <!-- 意见反馈 -->
+
+            <com.bloomlife.videoapp.view.SettingView
+                android:id="@+id/setting_btn_feedback"
+                style="@style/setting_layout_group_head"
+                setting:setting_text="@string/activity_setting_feedback" />
+
+            <!-- 在看一篇视频 -->
+
+            <com.bloomlife.videoapp.view.SettingView
+                android:id="@+id/setting_btn_replay"
+                style="@style/setting_layout"
+                setting:setting_text="@string/activity_setting_welcome" />
+            <!-- 关于 -->
+            <!-- 在看一篇视频 -->
+
+            <com.bloomlife.videoapp.view.SettingView
+                android:id="@+id/setting_btn_about"
+                style="@style/setting_layout"
+                setting:setting_text="@string/activity_setting_about" />
+
+            <TextView
+                android:id="@+id/setting_btn_logout"
+                style="@style/setting_layout_group_head"
+                android:gravity="center"
+                android:textColor="@color/view_sexscale_red"
+                android:paddingRight="20dp"
+                android:text="@string/activity_setting_logout"
+                android:textSize="15sp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

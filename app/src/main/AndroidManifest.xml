@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bloomlife.videoapp"
+
+    android:versionCode="170"
+    android:versionName="1.7.0" >
+
+
+    <!-- 自定义权限 -->
+    <permission
+        android:name="getui.permission.GetuiService.com.bloomlife.videoapp"
+        android:protectionLevel="normal" >
+    </permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="getui.permission.GetuiService.com.bloomlife.videoapp" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true"/>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:name="com.bloomlife.videoapp.app.AppContext"
+        android:allowBackup="true"
+        android:largeHeap="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.bloomlife.videoapp.activity.SpalshActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/StartActivityTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.CameraActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CameraPlayStye" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.LoginActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.MyVideoActivity"
+            android:theme="@style/translucentTheme"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.VideoViewPagerActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.VideoPlayActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.MyVideoViewPagerActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.CheckActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.RealNameChatActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name=".activity.VideoEditActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.SettingActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.AboutActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.MessageListActivity"
+           	android:theme="@style/translucentTheme"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.HtmlActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.VideoCommentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/translucentTheme"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.UserAgreementActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.PictureActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.TestActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bloomlife.videoapp.activity.InviteActivity"
+            android:theme="@style/translucentTheme"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.SearchActivity"
+            android:theme="@style/translucentTheme"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.UserStoryPlayActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".activity.MainStoryPlayActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".activity.AnonymousChatActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
+            android:name=".activity.StoryVideoEditActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".activity.NotificationStoryPlayActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <!-- share sdk -->
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.mob.tools.MobUIShell"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="tencent100371282" />
+        </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.bloomlife.videoapp.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenLayout"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- share  sdk  配置结束 -->
+
+
+        <!-- 百度地图key -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="@string/baidu_key" />
+        <!-- 百度定位 -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+        <service
+            android:name=".app.UploadBackgroundService"
+            android:exported="false" />
+
+        <!-- 设置环信应用的appkey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="bloomlife#videoapptest" />
+        <!-- 声明sdk所需的service -->
+        <service android:name="com.easemob.chat.EMChatService" />
+
+        <!-- ===============================================  配置个推 核心服务   =============================================== -->
+        <!-- 配置的第三方参数属性 -->
+        <meta-data
+            android:name="PUSH_APPID"
+            android:value="sVP1hiM8JF95Qef1LYBgs2" />
+        <meta-data
+            android:name="PUSH_APPSECRET"
+            android:value="cuFlOQK2rA8UxqELWD8VJ9" />
+        <meta-data
+            android:name="PUSH_APPKEY"
+            android:value="hrQDbQ6W1U8UsoIFwX7VQ1" />
+        <meta-data
+            android:name="PUSH_GROUPID"
+            android:value="" />
+
+        <!-- 配置SDK核心服务 -->
+        <service
+            android:name="com.igexin.sdk.PushService"
+            android:exported="true"
+            android:label="NotificationCenter"
+            android:process=":pushservice" >
+        </service>
+
+        <receiver android:name="com.igexin.sdk.PushReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="com.igexin.sdk.action.refreshls" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.igexin.sdk.PushManagerReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.pushmanager" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.igexin.sdk.PushActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <!-- 配置弹框activity -->
+        <activity
+            android:name="com.igexin.getuiext.activity.GetuiExtActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="android.task.myServicetask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <receiver
+            android:name="com.igexin.getuiext.service.PayloadReceiver"
+            android:exported="false" >
+            <intent-filter>
+
+                <!-- 这个com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4固定，不能修改 -->
+                <action android:name="com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4" />
+                <!-- android:name="com.igexin.sdk.action.第三方的appId" -->
+                <action android:name="com.igexin.sdk.action.sVP1hiM8JF95Qef1LYBgs2" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.igexin.getuiext.service.GetuiExtService"
+            android:process=":pushservice" />
+
+        <receiver
+            android:name="com.bloomlife.videoapp.app.PushService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.sVP1hiM8JF95Qef1LYBgs2" />
+                <!-- com.igexin.sdk.action.第三方的appId -->
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.bloomlife.videoapp.app.NotificationService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.bloomlife.videoapp.app.NotificationService"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- ====================================================== 配置个推 核心服务 结束   =============================================== -->
+
+
+        <!-- =============================================== 友盟配置  =============================================== -->
+        <!-- 友盟统计数据 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="@string/umeng_appkey" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="12004" />
+
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <!-- =============================================== 友盟配置 结束 =============================================== -->
+        
+        
+       	<!-- ==========================================      test in  配置 结束                =============================================== -->
+	        <!--   设置AppKey -->
+	        <meta-data android:name="TESTIN_APPKEY" android:value="8c07c401336d4e648c156fcf15995d14"/>
+	        <!-- 设置渠道信息 -->
+	        <meta-data android:name="TESTIN_CHANNEL" android:value="12004"/>
+        <!-- ==========================================      test in  配置 结束                =============================================== -->
+        
+         <!-- ==========================================      camera360  配置开始                =============================================== -->
+         
+        <activity
+			android:name="us.pinguo.edit.sdk.PGEditActivity"
+			android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
+		<service
+			android:name="us.pinguo.bigdata.BDUpService"
+			android:process=":bdupload">
+		</service>
+
+		<receiver android:name="us.pinguo.bigdata.BDAlarmReceiver">
+			<intent-filter>
+				<action android:name="bd_alarm"/>
+			</intent-filter>
+		</receiver>
+         
+        <meta-data
+			android:name="EDIT_SDK_KEY"
+			android:value="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"/>
+        <meta-data
+			android:name="BD_APP_ID"
+			android:value="ea8d04692735bc1f"/>
+
+		<meta-data
+			android:name="BD_APP_SECRET"
+			android:value="vCGG9QZ94tcGxTjangCc_b_VuXwmfGd2"/>
+		 <!-- ==========================================      camera360  配置 结束                =============================================== -->
+		 
+		 
+		 
+		<!--  ==========================================      CYSDK统计配置开始                ===============================================  -->
+        <meta-data
+            android:name="CY_APP_ID"
+            android:value="@string/umeng_appkey" />
+        <meta-data
+            android:name="CY_CHANNEL_ID"
+            android:value="12004" />
+        <meta-data
+            android:name="CY_COLLECT_TYPE"
+            android:value="0" />
+        <meta-data
+            android:name="CY_COLLECT_CYCLE"
+            android:value="5" />
+		 <!--  ==========================================      CYSDK统计配置结束                ===============================================  -->
+		 
+		 
+    </application>
+
+</manifest>

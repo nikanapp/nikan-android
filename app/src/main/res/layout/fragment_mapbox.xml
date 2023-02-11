@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.mapbox.mapboxsdk.views.MapView
+        android:id="@+id/fragment_mapbox_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        mapbox:accessToken="pk.eyJ1IjoiZXZlcnh1IiwiYSI6Imd0Y0taUU0ifQ.TkPQy0GvEXzkqaGBwFF0mg"
+        mapbox:mapid="everxu.mhbg54c0" />
+
+    <include
+        android:id="@+id/fragment_mapbox_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/layout_main_control" />
+
+    <ImageView
+        android:id="@+id/fragment_mapbox_main_location_animview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <View
+        android:id="@+id/fragment_mapbox_touch_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</FrameLayout>

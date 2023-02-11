@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:locale="en">
+
+      	<string name="App_Web_Home">http://dev.nikanapp.me</string>
+      
+      	<!-- 分享app给小伙伴们的地址 -->
+      	<string name="App_Share_Url">http://dev.nikanapp.me/d/smart.html</string>
+      	<string name="App_Share_Content_Url">http://dev.nikanapp.me/share/index.html?videoid=</string>
+      	<string name="App_Share_En_Content_Url">http://dev.nikanapp.me/share/index.html?lang=1&amp;videoid=</string>
+
+		<string name="App_Share_Story_Content_Url">http://dev.nikanapp.me/share/storyindex.html?videoid=</string>
+		<string name="App_Share_En_Story_Content_Url">http://dev.nikanapp.me/share/storyindex.html?lang=1&amp;videoid=</string>
+      
+       	<string name="channelID">12102</string>
+       	<string name="umeng_appkey">54ab4020fd98c59a0a001382</string>
+       	<string name="baidu_key">gGT7dCxYXR20LEdSqQje0D55</string>
+		<string name="bugtags_key">9ea76c21a3748c53c84bf5a3ad25b541</string>
+       	
+       	<!-- 是否用首发的闪屏图， 1是 。 0否 -->
+       	<string name="shoufa">1</string>
+
+		<string name="custom_name">custom_service</string>
+		<string name="custom_video_id">-1</string>
+</resources>

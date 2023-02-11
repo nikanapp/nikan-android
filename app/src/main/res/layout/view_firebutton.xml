@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.bloomlife.videoapp.view.FireView
+        android:id="@+id/view_firebutton_fireview"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_gravity="center" />
+
+    <CheckBox
+        android:id="@+id/view_firebutton_fireimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="4.5dp"
+        android:layout_gravity="center"
+        android:button="@null"
+        android:background="@drawable/btn_video_play_fire_selector" />
+
+</merge>

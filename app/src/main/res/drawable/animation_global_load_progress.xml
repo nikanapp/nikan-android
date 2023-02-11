@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">
+    <item android:drawable="@drawable/load_progress01" android:duration="533" />
+    <item android:drawable="@drawable/load_progress02" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress03" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress04" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress05" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress06" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress07" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress08" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress09" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress10" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress11" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress12" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress13" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress14" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress15" android:duration="@integer/animation_global_load_progress_druation" />
+    <item android:drawable="@drawable/load_progress16" android:duration="@integer/animation_global_load_progress_druation" />
+
+</animation-list>

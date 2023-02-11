@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="251dp"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp"
+    android:layout_marginBottom="58dp"
+    android:background="@drawable/dialog_black_background">
+
+    <ImageView
+        android:id="@+id/like_list_btn_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/btn_page_close_selector"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/like_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/like_list_btn_close"
+        android:gravity="center"
+        android:text="@string/dialog_like_list_title"
+        android:textSize="16sp"
+        android:textColor="@color/gray"/>
+
+    <com.bloomlife.videoapp.view.FooterTipsView
+        android:id="@+id/like_list_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"/>
+
+    <com.bloomlife.videoapp.view.MyPullToRefreshListView
+        android:id="@+id/like_list_user_list"
+        android:layout_below="@+id/like_list_btn_close"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:listSelector="@color/transparent">
+
+    </com.bloomlife.videoapp.view.MyPullToRefreshListView>
+
+    <com.bloomlife.videoapp.view.GlobalProgressBar
+        android:id="@+id/like_list_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_centerInParent="true">
+
+    </com.bloomlife.videoapp.view.GlobalProgressBar>
+
+</RelativeLayout>

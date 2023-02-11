@@ -1,0 +1,99 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/camera_main_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <SurfaceView
+        android:id="@+id/camera_textureview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/camera_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+		
+        <ImageView
+            android:id="@+id/camera_flash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_flash_auto_selector"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/camera_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_switch_selector"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/camera_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|top"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="14dp"
+        android:text="0.0"
+        android:textColor="@color/white"
+        android:textSize="26sp" />
+
+    <LinearLayout
+        android:id="@+id/camera_progress_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="132dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/camera_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="59dp"
+            android:background="@drawable/btn_camera_cancel_selector" />
+        
+        <com.bloomlife.videoapp.view.CircularProgressBar
+            android:id="@+id/camera_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/camera_comfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="59dp"
+            android:background="@drawable/btn_camera_comfirm" />
+
+        
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/first_camera_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="108dp"
+        android:background="@drawable/first_camera_tip"
+        android:text="@string/activity_camera_first"
+        android:paddingTop="10dp"
+        android:gravity="center_horizontal"
+        android:textSize="11dp"
+        android:textColor="@color/white"
+        android:visibility="invisible" />
+
+    <com.bloomlife.videoapp.view.GlobalProgressBar
+        android:id="@+id/camera_merge_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+</FrameLayout>

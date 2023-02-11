@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <solid android:color="@color/activity_camera_progressbar_yellow"></solid>
+	<corners android:topLeftRadius="39dp" android:bottomLeftRadius="39dp"/>
+</shape>

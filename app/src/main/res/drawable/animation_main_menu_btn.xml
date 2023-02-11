@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="true">
+    <item android:drawable="@drawable/animation_main_menu00" android:duration="@integer/animation_main_menu_druation" />
+    <item android:drawable="@drawable/animation_main_menu01" android:duration="@integer/animation_main_menu_druation" />
+    <item android:drawable="@drawable/animation_main_menu02" android:duration="@integer/animation_main_menu_druation" />
+    <item android:drawable="@drawable/animation_main_menu03" android:duration="@integer/animation_main_menu_druation" />
+    <item android:drawable="@drawable/animation_main_menu04" android:duration="@integer/animation_main_menu_druation" />
+    <item android:drawable="@drawable/animation_main_menu05" android:duration="@integer/animation_main_menu_druation" />
+    <item android:drawable="@drawable/animation_main_menu06" android:duration="@integer/animation_main_menu_druation" />
+    <item android:drawable="@drawable/animation_main_menu07" android:duration="@integer/animation_main_menu_druation" />
+    <item android:drawable="@drawable/animation_main_menu08" android:duration="@integer/animation_main_menu_druation" />
+    <item android:drawable="@drawable/animation_main_menu09" android:duration="@integer/animation_main_menu_druation" />
+    <item android:drawable="@drawable/animation_main_menu10" android:duration="@integer/animation_main_menu_druation" />
+    <item android:drawable="@drawable/animation_main_menu11" android:duration="@integer/animation_main_menu_druation" />
+
+</animation-list>

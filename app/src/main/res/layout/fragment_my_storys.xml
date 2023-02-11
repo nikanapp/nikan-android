@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/fragment_scroll_end_load_list"/>
+
+    <Button
+        android:id="@+id/fragment_my_story_delete"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/btn_myvideo_button_selector"
+        android:text="@string/activity_button_delete"
+        android:textColor="@drawable/btn_myvideo_button_text_selector"
+        android:visibility="invisible"/>
+</FrameLayout>

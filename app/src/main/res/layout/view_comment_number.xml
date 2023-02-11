@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <CheckedTextView
+        android:id="@+id/view_comment_number_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:gravity="center"
+        android:text="评论选项"
+        android:textColor="@color/white"
+        android:textSize="12sp" >
+    </CheckedTextView>
+
+    <TextView
+        android:id="@+id/view_comment_number_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/background_comment_number"
+        android:gravity="center"
+        android:minHeight="12dp"
+        android:minWidth="21dp"
+        android:text="16"
+        android:textColor="@color/commit_number_color" />
+
+</merge>

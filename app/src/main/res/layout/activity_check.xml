@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:id="@+id/textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="	这阶段来测试的都是真爱，跪舔了！\n
+	此为未上线版本，请勿传播。\n
+	请输入验证码，或联系创始人索取验证码。\n
+	该版本与正式版的差异：\n
+	1.隐去了闪屏、封面页等带有产品名称和logo的页面\n
+	2.不能分享\n
+	3.无设置页\n
+	4.部分细节动效还有待打磨\n
+	5.有未处理的bug若干\n
+        				"	
+        
+        />
+    
+    <EditText 
+        android:id="@+id/edittext"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:maxLength="6"
+        android:numeric="integer"
+        android:layout_below="@+id/textview"
+        android:layout_centerHorizontal="true"
+        />
+    <ProgressBar 
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.Holo.Light.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/edittext"
+        android:layout_marginLeft="10dp"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/edittext"
+        />
+    
+    <Button 
+        android:id="@+id/check"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="验证"
+           android:layout_below="@+id/edittext"
+           android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>

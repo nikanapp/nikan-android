@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="256dp"
+    android:layout_height="333dp"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@drawable/dialog_black_background">
+
+    <ImageView
+        android:id="@+id/recommend_list_btn_close"
+        android:layout_width="@dimen/btn_close_width"
+        android:layout_height="@dimen/btn_close_height"
+        android:src="@drawable/btn_page_close_selector"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/recommend_list_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/recommend_list_btn_close"
+        android:layout_marginLeft="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/recommend_list_btn_close"
+        android:gravity="center"
+        android:text="Recommended"
+        android:textSize="16sp"
+        android:textColor="@color/gray"/>
+
+    <com.bloomlife.videoapp.view.FooterTipsView
+        android:id="@+id/recommend_list_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"/>
+
+    <ListView
+        android:id="@+id/recommend_list_user_list"
+        android:layout_below="@+id/recommend_list_btn_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:layout_above="@+id/recommend_list_btn_accept"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:listSelector="@color/transparent">
+
+    </ListView>
+
+
+    <include
+        android:id="@+id/recommend_list_btn_accept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/view_btn_accept"/>
+
+</RelativeLayout>

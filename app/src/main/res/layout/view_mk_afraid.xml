@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/mk_afraid_desc"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:text="One peaceful Afternoon with Sunshine and Beauties"
+        android:gravity="top|left"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="58dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <RelativeLayout
+        android:id="@+id/mk_afraid_top_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/mk_afraid_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/tiny_dot_inversion"
+            android:text="guangdong"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/mk_afraid_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="Sep. 21st, 2015"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:paddingLeft="4dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/mk_afraid_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/mk_afraid_date"
+            android:layout_centerVertical="true"
+            android:text="12:30"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

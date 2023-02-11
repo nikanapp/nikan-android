@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/mk_none_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/mk_none_divider"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="13dp"
+        android:layout_toLeftOf="@+id/mk_none_divider"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:text="description"/>
+
+    <TextView
+        android:id="@+id/mk_none_local"
+        android:layout_width="167dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mk_none_desc"
+        android:layout_below="@+id/mk_none_desc"
+        android:drawableLeft="@drawable/tiny_dot_inversion"
+        android:gravity="left|center"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:text="china"/>
+
+    <ImageView
+        android:id="@+id/mk_none_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="23dp"
+        android:layout_toLeftOf="@+id/mk_none_hour"
+        android:background="@drawable/video_play_top_line" />
+
+    <TextView
+        android:id="@+id/mk_none_hour"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:text="12:20"/>
+
+    <TextView
+        android:id="@+id/mk_none_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mk_none_hour"
+        android:layout_below="@+id/mk_none_hour"
+        android:textColor="@color/white"
+        android:layout_marginLeft="2dp"
+        android:paddingLeft="4dp"
+        android:textSize="14sp"
+        android:text="Sep.21st,2015"/>
+
+</RelativeLayout>

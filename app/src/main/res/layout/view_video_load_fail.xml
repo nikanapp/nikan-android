@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical" >
+        
+    <com.bloomlife.videoapp.view.NetworkConnentErrorView
+        android:id="@+id/reloadView_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:visibility="invisible"/>
+            
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="@color/transparent"
+	    >
+        <ImageView 
+        android:id="@+id/backgroundView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:background="@color/default_background"
+        android:scaleType="centerCrop"
+        />
+        
+    <com.bloomlife.videoapp.view.GlobalProgressBar
+        android:id="@+id/activity_video_play_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+    </RelativeLayout>
+
+</merge>

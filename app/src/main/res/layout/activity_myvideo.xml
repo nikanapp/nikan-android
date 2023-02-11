@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/activity_myvideo_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <ImageView
+            android:id="@+id/activity_myvideo_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/btn_page_close_selector" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="12dp">
+
+            <com.joooonho.SelectableRoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/activity_myvideo_btn_avatar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/circle_avatar"
+                android:layout_alignBottom="@+id/activity_myvideo_btn_storys_line"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="68dp"
+                app:sriv_left_top_corner_radius="13dp"
+                app:sriv_right_top_corner_radius="13dp"
+                app:sriv_left_bottom_corner_radius="13dp"
+                app:sriv_right_bottom_corner_radius="13dp"/>
+
+            <ImageView
+                android:id="@+id/activity_myvideo_btn_storys"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/activity_myvideo_title_cutting"
+                android:src="@drawable/btn_my_storys_selector"/>
+
+            <View
+                android:id="@+id/activity_myvideo_btn_storys_line"
+                android:layout_width="28dp"
+                android:layout_height="2dp"
+                android:layout_alignLeft="@+id/activity_myvideo_btn_storys"
+                android:layout_marginTop="11dp"
+                android:layout_marginLeft="-6dp"
+                android:layout_below="@+id/activity_myvideo_btn_storys"
+                android:background="@color/story_red"/>
+
+            <ImageView
+                android:id="@+id/activity_myvideo_title_cutting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/myvideo_titile_cutting"/>
+
+            <ImageView
+                android:id="@+id/activity_myvideo_btn_videos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/activity_myvideo_title_cutting"
+                android:src="@drawable/btn_my_videos_selector"/>
+
+            <View
+                android:id="@+id/activity_myvideo_btn_videos_line"
+                android:layout_width="28dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginLeft="-3.5dp"
+                android:layout_alignLeft="@+id/activity_myvideo_btn_videos"
+                android:layout_below="@+id/activity_myvideo_btn_videos"
+                android:background="@color/glimpse_purple"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/activity_myvideo_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/btn_setting_selector" />
+
+        <ImageView
+            android:id="@+id/activity_myvideo_edit"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/activity_myvideo_setting"
+            android:scaleType="center"
+            android:src="@drawable/btn_my_videos_edit"/>
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/activity_myvideo_layout"
+        android:layout_below="@+id/activity_myvideo_title_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>

@@ -1,0 +1,100 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/picture_main_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <SurfaceView
+        android:id="@+id/picture_textureview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/picture_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="right|top" >
+
+        <ImageView
+            android:id="@+id/picture_flash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/btn_flash_auto_selector"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/picture_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_switch_selector"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/picture_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:visibility="invisible" />
+
+    <RelativeLayout
+        android:id="@+id/picture_progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:layout_gravity="bottom" >
+
+        <ImageView
+            android:id="@+id/picture_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="48dp"
+            android:background="@drawable/btn_camera_cancel_selector" />
+
+        <ImageView
+            android:id="@+id/picture_take"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/btn_camera_selector"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/picture_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="13dp"
+            android:src="@drawable/btn_camera_delete_selector"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/picture_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:src="@drawable/btn_camera_upload_selector"
+            android:visibility="invisible" />
+        
+        
+        <ImageView 
+            android:id="@+id/picture_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:src="@drawable/btn_camera_filter_off_selector"
+            android:visibility="invisible"/>
+    </LinearLayout>
+
+</FrameLayout>

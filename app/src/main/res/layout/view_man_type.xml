@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_type_man"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/fragment_type_select_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="visible" >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_type_select"
+            android:textColor="#8F8A87"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/man_type_male_layout"
+            android:layout_marginBottom="34dp"/>
+
+        <LinearLayout
+            android:id="@+id/man_type_male_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/man_type_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="11dp"
+                android:background="@drawable/btn_male_selector" />
+
+            <ImageView
+                android:id="@+id/man_type_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:background="@drawable/btn_female_selector" />
+        </LinearLayout>
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/fragment_type_sex_scale_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible" >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_type_now"
+            android:textColor="#8F8A87"
+            android:layout_marginBottom="27dp"/>
+        
+        <com.bloomlife.videoapp.view.GenderScaleView
+            android:id="@+id/fragment_type_sex_scale_animview"
+            android:layout_width="224dp"
+            android:layout_height="224dp"/>
+        
+        <ImageView 
+            android:id="@+id/fragment_type_sex_scale_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="104dp"
+            android:background="@drawable/btn_sucai_selector"/>
+        
+    </LinearLayout>
+
+</RelativeLayout>

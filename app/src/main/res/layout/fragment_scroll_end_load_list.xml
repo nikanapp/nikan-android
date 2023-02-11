@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.bloomlife.videoapp.view.MyPullToRefreshListView
+        android:id="@+id/list_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+    </com.bloomlife.videoapp.view.MyPullToRefreshListView>
+
+
+    <com.bloomlife.videoapp.view.FooterTipsView
+        android:id="@+id/list_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
+
+    <com.bloomlife.videoapp.view.GlobalProgressBar
+        android:id="@+id/list_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_gravity="center">
+
+    </com.bloomlife.videoapp.view.GlobalProgressBar>
+
+</FrameLayout>

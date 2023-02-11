@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true" >
+
+    <com.bloomlife.videoapp.view.comment.CommentNumberView
+        android:id="@+id/commentnumber_view1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="65dp"
+        android:layout_marginLeft="35dp"
+        app:comment_text=""
+        app:comment_num="20"
+        android:visibility="invisible" />
+
+
+    <com.bloomlife.videoapp.view.comment.CommentNumberView
+        android:id="@+id/commentnumber_view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="65dp"
+        android:layout_alignTop="@+id/commentnumber_view1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/commentnumber_view1"
+        app:comment_text=""
+        app:comment_num="12"
+        android:visibility="invisible" />
+
+    <com.bloomlife.videoapp.view.comment.CommentNumberView
+        android:id="@+id/commentnumber_view3"
+        android:layout_width="74dp"
+        android:layout_height="63dp"
+        android:minWidth="65dp"
+        android:layout_marginTop="95dp"
+        app:comment_text=""
+        app:comment_num="2"
+        android:visibility="invisible" />
+
+    <com.bloomlife.videoapp.view.comment.CommentNumberView
+        android:id="@+id/commentnumber_view4"
+        android:layout_width="79dp"
+        android:layout_height="65dp"
+        android:layout_below="@+id/commentnumber_view2"
+        android:layout_toRightOf="@+id/commentnumber_view3"
+        app:comment_text=""
+        app:comment_num="200"
+        android:visibility="invisible" />
+
+    <com.bloomlife.videoapp.view.comment.CommentNumberView
+        android:id="@+id/commentnumber_view5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="65dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/commentnumber_view2"
+        android:layout_toRightOf="@+id/commentnumber_view4"
+        app:comment_text=""
+        app:comment_num="2000"
+        android:visibility="invisible"/>
+
+</merge>

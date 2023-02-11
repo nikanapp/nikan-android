@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<item name="position" type="id"></item>
+	<item name="item" type="id"></item>
+	<item name="id_msg" type="id"></item>
+	<item name="id_conversation" type="id"></item>
+	<item name="gif_user_id" type="id"></item>
+	<item name="item_voice" type="id"></item>
+	<item name="item_voice_anim" type="id"></item>
+</resources>

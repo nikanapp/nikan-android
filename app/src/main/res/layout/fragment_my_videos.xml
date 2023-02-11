@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.bloomlife.videoapp.view.HeaderFooterGridView
+        android:id="@+id/fragment_myvideo_videolist"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:numColumns="@integer/gridview_myvideo_numcolumns"
+        android:verticalSpacing="8dp" />
+
+    <LinearLayout
+        android:id="@+id/fragment_myvideo_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/background_myvideo_bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/fragment_myvideo_delete"
+            android:layout_width="153dp"
+            android:layout_height="36dp"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/btn_myvideo_button_selector"
+            android:text="@string/activity_button_delete"
+            android:textColor="@drawable/btn_myvideo_button_text_selector" />
+
+        <Button
+            android:id="@+id/fragment_myvideo_lost"
+            android:layout_width="153dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="4dp"
+            android:background="@drawable/btn_myvideo_button_selector"
+            android:text="@string/activity_button_disconnect"
+            android:textColor="@drawable/btn_myvideo_button_text_selector" />
+    </LinearLayout>
+
+    <com.bloomlife.videoapp.view.FooterTipsView
+        android:id="@+id/fragment_myvideo_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

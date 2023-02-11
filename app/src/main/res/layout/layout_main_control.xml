@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.bloomlife.videoapp.view.WaveView
+        android:id="@+id/activity_main_waveview"
+        android:layout_width="290dp"
+        android:layout_height="290dp"
+        android:layout_centerInParent="true" />
+    
+    <!-- 随机显示描述的两个textview -->
+
+    <com.bloomlife.videoapp.view.DescriptionLayoutView
+        android:id="@+id/desc1"
+        style="@style/main_activity_des" />
+
+    <com.bloomlife.videoapp.view.DescriptionLayoutView
+        android:id="@+id/desc2"
+        style="@style/main_activity_des" />
+    
+    <com.bloomlife.videoapp.view.DescriptionLayoutView
+        android:id="@+id/desc3"
+        style="@style/main_activity_des" />
+
+    <ImageView
+        android:id="@+id/playactive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/play_dot_female_active"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/senddot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/play_dot_female_active"
+        android:visibility="invisible" />
+    
+    <View 
+	    android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_map_bottom"/>
+
+    <ImageView
+        android:id="@+id/local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/random"
+        android:layout_marginBottom="-2dp"
+        android:layout_marginRight="7dp"
+        android:src="@drawable/btn_local" />
+
+    <com.bloomlife.videoapp.view.RandomVideoButton
+        android:id="@+id/random"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true" />
+
+	<com.bloomlife.videoapp.view.MaploadStatusView
+        android:id="@+id/btn_load_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true" />
+	
+</RelativeLayout>

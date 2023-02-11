@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/activity_invite_btn_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/btn_page_close_selector" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/activity_invite_btn_close"
+        android:layout_alignTop="@+id/activity_invite_btn_close"
+        android:gravity="center"
+        android:text="@string/activity_invite_title"
+        android:textColor="@color/gray" />
+
+    <LinearLayout
+        android:id="@+id/activity_invite_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_below="@+id/activity_invite_btn_close"
+        android:layout_marginLeft="@dimen/activity_invite_padding"
+        android:layout_marginRight="@dimen/activity_invite_padding"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/activity_invite_wechat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:visibility="visible"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_invite_wechat"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:textColor="@color/dialog_edit_line_yellow"
+                android:text="@string/activity_invite_wechat"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/activity_invite_wechat_divier"
+            android:layout_width="1px"
+            android:layout_height="52dp"
+            android:visibility="visible"
+            android:background="@color/white_border"/>
+
+
+        <LinearLayout
+            android:id="@+id/activity_invite_weibo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_invite_weibo"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:textColor="@color/dialog_edit_line_yellow"
+                android:text="@string/activity_invite_weibo"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_invite_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_invite_facebook"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:textColor="@color/dialog_edit_line_yellow"
+                android:text="@string/activity_invite_facebook"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="52dp"
+            android:background="@color/white_border"/>
+
+        <LinearLayout
+            android:id="@+id/activity_invite_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_invite_qq"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:textColor="@color/dialog_edit_line_yellow"
+                android:text="@string/activity_invite_qq"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_invite_twitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_invite_twitter"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:textColor="@color/dialog_edit_line_yellow"
+                android:text="@string/activity_invite_twitter"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="52dp"
+            android:background="@color/white_border"/>
+
+        <LinearLayout
+            android:id="@+id/activity_invite_contacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_invite_contact"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:textColor="@color/dialog_edit_line_yellow"
+                android:text="@string/activity_invite_contacts"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_below="@+id/activity_invite_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:background="@color/dialog_edit_line_yellow"/>
+
+    <FrameLayout
+        android:id="@+id/activity_invite_list_layout"
+        android:layout_below="@+id/activity_invite_tabs"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="28dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+    </FrameLayout>
+
+</RelativeLayout>

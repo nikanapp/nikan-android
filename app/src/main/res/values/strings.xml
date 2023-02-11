@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+	tools:ignore="MissingTranslation">
+
+    <string name="app_name">你看</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="activity_setting_title">设置</string>
+    <string name="activity_setting_push">推送消息提示</string>
+    <string name="activity_setting_feedback">吐槽产品狗</string>
+    <string name="activity_setting_about">关于</string>
+    <string name="activity_setting_sex">性别选择</string>
+    <string name="activity_setting_user_info">编辑个人信息</string>
+    <string name="activity_setting_clear">清除缓存</string>
+    <string name="activity_setting_welcome">欢迎页</string>
+    <string name="activity_setting_feedback_email_title">你看安卓版意见反馈</string>
+    <string name="activity_setting_feedback_email_content">你看安卓版意见反馈</string>
+    <string name="activity_setting_feedback_phone_mode">手机型号：</string>
+    <string name="activity_setting_feedback_system">系统：</string>
+    <string name="activity_setting_clear_tips">清除成功</string>
+    <string name="activity_about_title">关于</string>
+    <string name="activity_about_version">你看Android版本</string>
+    <string name="activity_about_copy_tips">已复制到剪贴板</string>
+    <string name="activity_my_video_delete_tips">是否删除视频?</string>
+    <string name="activity_my_video_lost_tips">断开视频与你的联系，但视频仍会在地图上显示。</string>
+    <string name="item_my_video_load">正在上传</string>
+    <string name="item_my_video_reupload">重新上传</string>
+    <string name="item_my_video_upload_completed">上传完成</string>
+    
+    <string name="activity_chat_title">跟TA聊聊</string>
+    <string name="activity_chat_network_fail">网络不大给力哦</string>
+    <string name="activity_chat_wait_other_picture">对方回复后才可以发照片哦</string>
+    <string name="activity_chat_wait_other_audio">对方回复后才可以发语音哦</string>
+    <string name="activity_chat_app_version_under_picture">对方APP版本过低，无法发送照片</string>
+    <string name="activity_chat_app_version_under_audio">对方APP版本过低，无法发送语音</string>
+    <string name="activity_chat_remove_shield">解除屏蔽</string>
+    <string name="activity_chat_shield_user">屏蔽该用户</string>
+    <string name="activity_chat_send_input_tips">输入信息</string>
+    <string name="activity_chat_audio_record_tips">按住说话</string>
+    <string name="activity_chat_audio_send_tips">松开结束</string>
+    <string name="activity_chat_me">我</string>
+    <string name="activity_chat_send">发送</string>
+    
+    <string name="activity_my_video_empty">暂无视频</string>
+	<string name="fragment_notification_delete">删除通知</string>
+    
+    <string name="activity_message_title">消息</string>
+    <string name="activity_message_tab_messages">消息</string>
+    <string name="activity_message_tab_notifications">通知</string>
+    <string name="activity_message_clear_messages">是否清空所有私信</string>
+    <string name="activity_message_clear_notifications">是否清空所有通知</string>
+    
+    <string name="activity_comment_add_feel">添加印象</string>
+    <string name="activity_comment_empty">暂无评论</string>
+    
+    <string name="activity_camera_video_description">描述</string>
+    <string name="activity_camera_choose_topic">选择话题</string>
+    
+    <string name="activity_picture_fail">保存图片失败，请重新拍摄</string>
+    
+    <string name="view_dot_load_first_text">在该区域发现</string>
+    <string name="view_dot_load_last_text">个视频</string>
+    
+    <string name="view_topic_window_title">附近话题</string>
+    <string name="view_topic_window_empty">暂未发现的话题</string>
+    <string name="view_scanning_text">扫视中...</string>
+    
+    <string name="fragment_send_dynamic_tips1">按住表情，准备发射！</string>
+    <string name="fragment_send_dynamic_tips2">拖到你喜欢的位置，松手发射！</string>
+    <string name="fragment_report_succ">举报成功</string>
+    
+    <string name="fragment_welcome_init_forwarding">跳转中...</string>
+    <string name="fragment_welcome_init_rerun">重播</string>
+    <string name="fragment_welcome_init_under_way">初始化中...</string>
+    <string name="fragment_welcome_skip">跳过</string>
+    
+    <string name="fragment_type_select">选择你的性别</string>
+    <string name="fragment_type_now">当前性别比</string>
+    
+    <string name="fragment_video_play_views">观看次数</string>
+    <string name="fragment_video_play_heat">热度</string>
+    <string name="fragment_video_play_comments">评论</string>
+    
+    <string name="notification_new_message">你有新的消息</string>
+    <string name="notification_emoj">[表情]</string>
+    <string name="notification_npicture">[图片]</string>
+    
+    <string name="dialog_video_more_share">分享</string>
+    <string name="dialog_video_more_report">举报用户</string>
+    <string name="dialog_video_more_shield">屏蔽用户</string>
+    <string name="dialog_video_more_clear_my_dynamic">清除我发的弹幕</string>
+    <string name="dialog_video_more_off_dynamic">屏蔽表情弹幕</string>
+    <string name="dialog_video_more_on_dynamic">开启表情弹幕</string>
+    
+    <string name="dialog_delete_message">删除会话</string>
+    <string name="dialog_share_title">分享</string>
+    
+    <string name="title_activity_test">TestActivity</string>
+    <string name="tips_no_location">无法获取到视频位置,请重试</string>
+    <string name="dotload_null">这个区域没有视频</string>
+	<string name="dotload_number_left">已发现</string>
+    <string name="dotload_number_right">个视频</string>
+    <string name="dotload_loading">正在扫视这个区域</string>
+    <string name="shipped_ffmpeg_version">n2.4.2</string>
+    <string name="item_video_comment_text_time">6小时前</string>
+    <string name="item_video_comment_text">前段时间前段时间前段时间，前段时间前段时间。</string>
+    <string name="video_comment_text_title">视频附近评论</string>
+    <string name="video_comment_tag_title">视频收到印象</string>
+    <string name="video_comment_tag_empty">暂无印象</string>
+    <string name="comment_input_hint">添加评论</string>
+    <string name="video_comment_input_first">"请填写评论内容"</string>
+    <string name="video_comment_complete">完成</string>
+    <string name="comment_text_list_empty">暂无评论</string>
+    <string name="welcome_user_text">了解用户协议</string>
+    
+	<string name="activity_agreement_title">用户协议</string>
+	<string name="welcome_user_agreement_content_title">你看软件许可及服务协议</string>
+	<string name="first_video_tip">左右滑动，\n查看更多附近的匿名视频</string>
+	<string name="video_upload_fail_tip">有未成功发布的视频，已保存到个人中心</string>
+	<string name="video_file_list_bottom_hint">支持小于5分钟时长的视频</string>
+	<string name="video_file_list_number">9个视频</string>
+	<string name="wait_my_message_tips">回复后，对方才能给你发照片和语音</string>
+	<string name="wait_other_message_tips">对方回复可激活发照和语音功能</string>
+	<string name="send_picture_and_audio_activeted">发照和语音功能已被激活！</string>
+	<string name="view_load_video_network_fail">网络连接失败</string>
+	
+    <string name="welcome_user_agreement_1">
+    \u0008\u0008\u0008\u0008欢迎您使用你看软件及服务！
+    \n\u0008\u0008\u0008\u0008为使用你看软件（以下简称“本软件”）及服务，您应当阅读并遵守《你看软件许可及服务协议》（以下简称“本协议”）。请您务必审慎阅读、充分理解各条款内容，特别是免除或者限制责任的条款。
+	\n\u0008\u0008\u0008\u0008本协议是您与你看之间关于您下载、安装、使用、复制本软件，以及使用你看相关服务所订立的协议。除非您已阅读并接受本协议所有条款，否则您无权下载、安装或使用本软件及相关服务。您的下载、安装、使用、获取你看帐号、登录等行为即视为您已阅读并同意上述协议的约束。
+	\n\u0008\u0008\u0008\u0008如果您未满18周岁，请在法定监护人的陪同下阅读本协议及其他上述协议，并特别注意未成年人使用条款。
+	\u0008\u0008\u0008\u0008一、服务承诺
+	\n\u0008\u0008\u0008\u00081．凡是注册用户和浏览用户均为你看用户。
+	\n\u0008\u0008\u0008\u00082．用户的个人信息受到保护，不接受任何个人或单位的查询。国家机关依法和用户的个人设置公开查询的除外。
+	\n\u0008\u0008\u0008\u00083．用户在法律允许的范围内享有言论自由的权利。
+	\n\u0008\u0008\u0008\u00084．你看有义务在现有技术水平条件下，努力使整个你看软件正常运行，尽力避免你看软件服务中断或将中断时间限制在最短时间内，以保证您正常使用服务。为保证资料准确性并确保对所持信息的正确使用，我们已采取合理的安全措施防止非法访问我们的软件。
+	\u0008\u0008\u0008\u0008二、帐号安全与管理
+	\n\u0008\u0008\u0008\u00081．您使用你看软件服务必须拥有经你看认可登陆你看软件的一个合法获得并持有的服务帐号；您对前述帐号的申请、使用等行为应符合本协议及注册该账号时与相应的第三方账号服务提供者所签订的注册协议、服务协议以及其他有关规则。您应自行确保上述帐号及其密码的安全，并对利用上述帐号及其密码所进行的一切行为（包括但不限于信息披露、发布信息、提交订单、网上点击同意或提交各类规则协议等）负完全责任。
+	\n\u0008\u0008\u0008\u00082．在注册或激活流程时，您应当依照法律法规要求，按相应页面的提示准确提供您的资料。
+	\n\u0008\u0008\u0008\u00083．您可以在你看发布您的视频或文字，您的言行不得违反本协议有关的规定，不得侵犯或涉嫌侵犯他人合法权益。如您被举报或被判定为言行不当，你看有权终止向您提供你看软件服务。
+	\n\u0008\u0008\u0008\u00084．若您因你看软件帐户被盗或因其他非您原因造成损失的，您应立即通知你看并向公安机关报案。您理解你看对您的请求采取行动需要合理时间，我们对在采取行动前已经产生的后果（包括但不限于您的任何损失）不承担任何责任。 
+	\n\u0008\u0008\u0008\u00085．您的你看帐号和密码不得以任何方式买卖、转让、赠与或继承，除非有法律明确规定或司法裁定，并经你看同意，且转让、赠与或继承需提供合格的文件材料并根据你看制定的操作流程办理。
+	\u0008\u0008\u0008\u0008三、用户行为规范
+	\n\u0008\u0008\u0008\u00081．用户的言行不得违反《计算机信息网络国际联网安全保护管理办法》、《互联网信息服务管理办法》、《互联网电子公告服务管理规定》、《维护互联网安全的决 定》、《互联网新闻信息服务管理规定》等相关法律规定，不得在你看发布、传播或以其它方式传送含有下列内容之一的信息： 
+	\n1)反对宪法所确定的基本原则的； 
+	\n2)危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的； 
+	\n3)损害国家荣誉和利益的； 
+	\n4)煽动民族仇恨、民族歧视、破坏民族团结的； 
+	\n5)破坏国家宗教政策，宣扬邪教和封建迷信的； 
+	\n6)散布谣言，扰乱社会秩序，破坏社会稳定的； 
+	\n7)散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的； 
+	\n8)侮辱或者诽谤他人，侵害他人合法权利的； 
+	\n9)煽动非法集会、结社、游行、示威、聚众扰乱社会秩序的；
+	\n10)以非法民间组织名义活动的；
+	\n11)含有虚假、有害、胁迫、侵害他人隐私、骚扰、侵害、中伤、 粗俗、猥亵、或其它道德上令人反感的内容； 
+	\n12)含有中国法律、法规、规章、条例以及任何具有法律效力之规范所限制或禁止的其它内容的。 
+	\n\u0008\u0008\u0008\u00082．用户不得在你看内发布任何形式的广告。 
+	\n\u0008\u0008\u0008\u00083．用户应承担一切因其个人的行为而直接或间接导致的民事或刑事法律责任，因用户行为给你看造成损失的，用户应负责赔偿。 
+	\n\u0008\u0008\u0008\u00084．特别授权
+	\n1)您在注册帐号或使用本服务的过程中，需要提供一些必要的信息，例如：为向您提供帐号注册服务或进行用户身份识别，需要您填写手机号码或邮箱地址等；视频发布功能需要您同意使用您所在的地理位置信息；手机通讯录匹配功能需要您授权访问手机通讯录等。若国家法律法规或政策有特殊规定的，您需要提供真实的身份信息。若您提供的信息不完整，则无法使用本服务或在使用过程中受到限制。
+	\n2)您完全理解并不可撤销地授权你看，根据本协议及你看规则的规定，处理您在你看软件上发生的所有纠纷。您同意接受你看的判断和调处决定。该决定将对您具有法律约束力。
+	\n3)你看有权以任何方式针对用户违反本协议或平台规则的行为，对用户的权益采取限制措施或给予相应违规处理，直至禁止其在你看内发布信息。
+	\n4)为方便您使用你看服务，您同意并授权你看将您在账户注册/激活、使用你看服务过程中提供、形成的信息传递给向您提供其他服务网站或其他软件，或从提供其他服务的网站或其他软件获取您在注册/激活、使用其他服务期间提供、形成的信息。
+	\n5)任何用户发现你看内容涉嫌侮辱或者诽谤他人、侵害他人合法权益的或违反你看协议的，有权进行投诉。 
+	\n6)为了能够给广大用户提供一个优质的交流平台，同时使各你看能够良性、健康的发展，将对涉及反动、色情的头像、签名档和发布不良内容的用户，进行严厉处理。一经发现此类行为，将给予永久封禁ID并清空所有发言的处罚。 
+	\n\u0008\u0008\u0008\u00085．你看由用户拍摄视频上传、介绍、评论的平台。你看内容仅代表作者观点，与你看无关。对于用户言论的真实性引发的全部责任，由用户自行承担，你看不承担任何责任。 
+	\n\u0008\u0008\u0008\u00086．用户之间因使用你看而产生或可能产生的任何纠纷和/或损失，由用户自行解决并承担相应的责任，与你看无关。 
+	\n\u0008\u0008\u0008\u00087．用户在你看发表的作品，你看有权转载或引用。 
+	\n\u0008\u0008\u0008\u00088．用户在任何时间段在你看发表的任何内容的著作财产权，用户许可你看在全世界范围内免费地、永久性地、不可撤销地、可分许可地和非独家地使用的权利，包括但不限于：复制权、发行权、出租权、展览权、表演权、放映权、广播权、信息网络传播权、摄制权、改编权、翻译权、汇编权以及《著作权法》规定的由著作权人享有的其他著作财产权利。并且，用户许可你看有权利就任何主体侵权而单独提起诉讼，并获得全部赔偿。 
+	\n\u0008\u0008\u0008\u00089．你看将为不同的终端设备开发不同的软件版本，您应当根据实际需要选择下载合适的版本进行安装。
+	\n1)如果您从未经合法授权的第三方获取本软件或与本软件名称相同的安装程序，你看将无法保证该软件能否正常使用，并对因此给您造成的任何损失不予负责。
+	\n2)为了增进您体验、完善服务内容，你看将不时提供软件更新服务（该更新可能会采取软件替换、修改、功能强化、版本升级等形式）。为了改善您体验，保证服务的安全性和功能的一致性，你看有权对软件进行更新或者对软件的部分功能效果进行改变或限制。
+	\n3)软件新版本发布后，旧版软件可能无法使用。你看不保证旧版软件继续可用及相应的客户服务，请您随时核对并下载最新版本。
+	\n4)除非法律允许或你看书面许可，您不得从事下列行为：
+	\n\u0008\u0008\u0008\u0008①　删除软件及其副本上关于著作权的信息；
+	\n\u0008\u0008\u0008\u0008②　对软件进行反向工程、反向汇编、反向编译或者以其他方式尝试发现软件的源代码；
+	\n\u0008\u0008\u0008\u0008③　对你看拥有知识产权的内容进行使用、出租、出借、复制、修改、链接、转载、汇编、发表、出版、建立镜像站点等；
+	\n\u0008\u0008\u0008\u0008④　对软件或者软件运行过程中释放到任何终端内存中的数据、软件运行过程中客户端与服务器端的交互数据，以及软件运行所必需的系统数据，进行复制、修改、增加、删除、挂接运行或创作任何衍生作品，形式包括但不限于使用插件、外挂或非经合法授权的第三方工具/服务接入软件和相关系统；
+	\n\u0008\u0008\u0008\u0008⑤　修改或伪造软件运行中的指令、数据，增加、删减、变动软件的功能或运行效果，或者将用于上述用途的软件、方法进行运营或向公众传播，无论上述行为是否为商业目的
+	\n\u0008\u0008\u0008\u0008⑥　通过非你看开发、授权的第三方软件、插件、外挂、系统，使用你看平台服务，或制作、发布、传播非你看开发、授权的第三方软件、插件、外挂、系统；
+	\n\u0008\u0008\u0008\u0008⑦　其他未经你看明示授权的行为。
+	\u0008\u0008\u0008\u0008四、知识产权声明
+	\n\u0008\u0008\u0008\u00081．你看在提供你看平台服务中提供的信息内容，包括但不限于网页、文字、图片、音频、视频、图表等的知识产权均归你看所有。
+	\n\u0008\u0008\u0008\u00082．除另有特别声明外，你看提供你看平台服务时所依托软件的著作权、专利权及其他知识产权均归你看或其关联公司所有。
+	\n\u0008\u0008\u0008\u00083．你看在提供你看软件服务中所使用的全部商业标识，其著作权或商标权归你看所有。
+	\n\u0008\u0008\u0008\u00084．您在通过你看推出的客户端软件使用你看软件服务时，我们给予您一项个人的、不可转让、非独占及非排他性的许可，您只能为正当使用你看软件服务之目的使用该权利，不得将其用作任何目的，也不得随意复制、修改、编译或以任何其他方式处置这些权利。
+	\n\u0008\u0008\u0008\u00085．您同意，您在你看软件发表的视频及评论，除署名权、发表权、修改权外的其他知识产权权利（包括但不限于：复制权、发行权、出租权、展览权、表演权、放映权、广播权、信息网络传播权、摄制权、改编权、翻译权、汇编权以及应当由著作权人享有的其他可转让权利），均独家排他无偿许可给你看，并同意你看以自己名义就所述权利的保护采取任何形式的法律行为，并获得全部赔偿。本协议已经构成《著作权法》第二十五条所规定的书面协议，其效力及于您在你看发布的任何受著作权法保护的作品内容，无论该内容形成于本协议签订前还是本协议签订后。
+	\u0008\u0008\u0008\u0008五、用户注意事项
+	\n\u0008\u0008\u0008\u00081．您理解并同意：为了向您提供有效的服务，本软件会利用您移动通讯终端的处理器和带宽等资源。本软件使用过程中可能产生数据流量的费用，用户需自行向运营商了解相关资费信息，并自行承担相关费用。
+	\n\u0008\u0008\u0008\u00082．您理解并同意：本软件的某些功能可能会让第三方知晓用户的信息，例如：用户的好友可以查询用户头像、名字等可公开的个人资料。
+	\n\u0008\u0008\u0008\u00083．您在使用本软件某一特定服务时，该服务可能会另有单独的协议、相关业务规则等，您在使用该项服务前请阅读并同意相关的单独协议。
+	\n\u0008\u0008\u0008\u00084．您理解并同意你看将会尽其商业上的合理努力保障您在本软件及服务中的数据存储安全，但是，你看并不能就此提供完全保证，包括但不限于以下情形：
+	\n1)你看不对您在本软件及服务中相关数据的删除或储存失败负责；
+	\n2)你看有权根据实际情况自行决定单个用户在本软件及服务中数据的最长储存期限，并在服务器上为其分配数据最大存储空间等。您可根据自己的需要自行备份本软件及服务中的相关数据；
+	\n3)如果您停止使用本软件及服务或服务被终止或取消，你看可以从服务器上永久地删除您的数据。服务停止、终止或取消后，你看没有义务向您返还任何数据。
+	\n4)用户在使用本软件及服务时，须自行承担如下来自你看不可掌控的风险内容，包括但不限于：
+	\n5)由于不可抗拒因素可能引起的个人信息丢失、泄漏等风险；
+	\n6)用户必须选择与所安装手机相匹配的软件版本，否则，由于软件与手机型号不相匹配所导致的任何问题或损害，均由用户自行承担；
+	\n7)用户在使用本软件访问第三方网站时，因第三方网站及相关内容所可能导致的风险，由用户自行承担；
+	\n8)用户发布的内容被他人转发、分享，因此等传播可能带来的风险和责任；
+	\n9)由于无线网络信号不稳定、无线网络带宽小等原因，所引起的你看登录失败、资料同步不完整、页面打开速度慢等风险。
+	\n5．您在使用本软件第三方提供的产品或服务时，除遵守本协议约定外，还应遵守第三方的用户协议。你看和第三方对可能出现的纠纷在法律规定和约定的范围内各自承担责任。
+	\n6．因用户使用本软件或要求你看提供特定服务时，本软件可能会调用第三方系统或者通过第三方支持用户的使用或访问，使用或访问的结果由该第三方提供（包括但不限于第三方通过微信公众帐号提供的服务，或通过开放平台接入的内容等），你看不保证通过第三方提供服务及内容的安全性、准确性、有效性及其他不确定的风险，由此若引发的任何争议及损害，与你看无关，你看不承担任何责任。
+	\n7．你看可能会对服务内容进行变更，也可能会中断、中止或终止服务。
+	\n8．您理解并同意，你看有权自主决定经营策略。在你看发生合并、分立、收购、资产转让时，你看可向第三方转让本服务下相关资产；你看也可在单方通知您后，将本协议下部分或全部服务转交由第三方运营或履行。具体受让主体以你看通知的为准。
+	\n9．如发生下列任何一种情形，你看有权不经通知而中断或终止向您提供的服务：
+	\n1)根据法律规定您应提交真实信息，而您提供的个人资料不真实、或与注册时信息不一致又未能提供合理证明；
+	\n2)您违反相关法律法规或本协议的约定；
+	\n3)按照法律规定或主管部门的要求；
+	\n4)出于安全的原因或其他必要的情形。
+	\u0008\u0008\u0008\u0008六、附则
+	\n\u0008\u0008\u0008\u00081.用户知悉且同意，你看对本服务有自主经营权，为了更好地为用户提供本服务，你看有权对本协议进行不时地修订，并将修订后的协议进行公告，修订后的条款内容自公告时起生效，并成为本协议的一部分。用户若在本协议修改之后，仍继续使用本服务，则视为用户接受和自愿遵守修订后的协议。
+	\n\u0008\u0008\u0008\u00082.本协议的成立、生效、履行、解释及纠纷解决等一切事宜，均适用于中华人民共和国大陆地区法律（不包括冲突法）。
+	\n\u0008\u0008\u0008\u00083.本协议签订地为中华人民共和国广东省深圳市福田区。若用户和你看之间因本协议产生任何纠纷或争议，首先应友好协商解决；协商不成的，用户同意将纠纷或争议提交本协议签订地有管辖权的人民法院管辖。
+	\n\u0008\u0008\u0008\u00084.本协议所有条款的标题仅为阅读方便，本身并无实际涵义，不能作为本协议涵义解释的依据。
+	\n\u0008\u0008\u0008\u00085.本协议条款无论因何种原因部分无效、完全无效或不可执行，其余条款仍有效，对双方具有约束力。
+	\n\u0008\u0008\u0008\u00086.如果用户对本协议或本服务有意见或建议，可与你看客户服务部门联系，我们会给予用户必要的帮助。
+	</string>
+	<string name="share_title">你看 - 首款匿名短视频社交应用</string>
+	<string name="share_app_content">
+		你看 - 首款匿名短视频社交应用。我的小伙伴们都在上面玩疯了。还不赶紧来体验一把，以上帝的视野，看见这一刻的世界！
+	</string>
+	<string name="share_app_wechat_content">以上帝的视野，看见这一刻的世界</string>
+	<string name="share_video_content_first">你看这条来自</string>
+	<string name="share_video_content_last">的匿名视频！</string>
+	
+	<string name="activity_button_delete">删除</string>
+	<string name="activity_button_disconnect">断开联系</string>
+	<string name="exit_toast">再按一次退出程序</string>
+	<string name="activity_about_company">深圳市不亦乐乎科技有限公司</string>
+	<string name="activity_about_app_version_name_suffix">版</string>
+	<string name="activity_main_random_video">随机找到一段匿名视频</string>
+	<string name="activity_camera_start_fail">拍摄时间太短啦~</string>
+	
+	<string name="activity_video_list_empty">请移动地图刷新重试</string>
+	<string name="fragment_msg_tips">去跟ta聊聊\u000a又不会怀孕</string>
+	<string name="fragment_dym_tips">表情弹幕\u0008\u000a发射!Biu~</string>
+	
+	<string name="activity_camera_first">开始录制，请长按</string>
+	<string name="activity_comment_first_tag">不是视频附近的人只能\n添加印象，不能评论哦</string>
+	<string name="view_sound_text">[语音]</string>
+	<string name="view_picture_text">[图片]</string>
+	<string name="activity_video_comment_delete">删除评论</string>
+	<string name="open_camera_fail">请尝试关闭其他相机软件再打开</string>
+	<string name="share_fail">分享失败</string>
+	<string name="share_succ">分享成功</string>
+	<string name="report_title">举报内容分类</string>
+	<string name="report_text1">政治</string>
+	<string name="report_text2">色情</string>
+	<string name="report_text3">谣言/诈骗</string>
+	<string name="report_text4">广告</string>
+
+	<string name="dialog_picture_choose_title">图片</string>
+	<string name="intent_picture_fail">无法获取内置SD卡使用权限，不能使用图片</string>
+	<string name="dialog_name_already_used">昵称已经被使用</string>
+	<string name="dialog_nickname_input_error">昵称有错误符号</string>
+	<string name="dialog_description_input_error">签名有错误符号</string>
+	<string name="dialog_nickname_tip">请填写昵称</string>
+	<string name="dialog_description_tip">请填写签名</string>
+	<string name="dialog_nickname_edit_tip">昵称</string>
+	<string name="dialog_description_edit_tip">个性签名</string>
+	<string name="dialog_edit_fail">编辑失败</string>
+	<string name="dialog_login_fail">登陆失败</string>
+	<string name="item_user_followers">粉丝</string>
+	<string name="dialog_btn_accept">确定</string>
+	<string name="activity_setting_back">返回</string>
+	<string name="activity_setting_login">登录</string>
+	<string name="activity_setting_logout">退出登录</string>
+	<string name="activity_setting_logout_success">退出成功</string>
+	<string name="activity_setting_logout_failure">退出失败</string>
+
+	<string name="activity_invite_weibo">微博</string>
+	<string name="activity_invite_wechat">微信</string>
+	<string name="activity_invite_qq">QQ</string>
+	<string name="activity_invite_facebook">Facebook</string>
+	<string name="activity_invite_twitter">Twitter</string>
+
+
+	<string name="view_menu_my">我的主页</string>
+	<string name="view_menu_invite">邀请好友</string>
+	<string name="activity_invite_title">邀请好友</string>
+	<string name="fragment_invite_title_joined">已加入</string>
+	<string name="fragment_invite_title_not_joined">未加入</string>
+	<string name="activity_invite_tabs_recommend">推荐</string>
+	<string name="activity_invite_tabs_social">微博</string>
+	<string name="activity_invite_tabs_contact">联系人</string>
+	<string name="list_empty">没有内容</string>
+	<string name="more_empty">没有更多内容</string>
+	<string name="activity_search_empty_tips">搜索内容不能为空</string>
+	<string name="activity_search_hint">输入名字</string>
+
+	<string name="activity_story_video_edit_emotion_none">无</string>
+	<string name="activity_story_video_edit_description">这里会显示视频描述</string>
+	<string name="activity_setting_logout_dialog_text">确认退出登录</string>
+	<string name="network_error_tips">网络不大给力哦</string>
+
+	<string name="fragment_main_story_upload_fail">上传失败，重试一次</string>
+	<string name="fragment_main_story_uploading">上传中...</string>
+	<string name="activity_invite_contacts">通讯录</string>
+	<string name="fragment_main_story_camera_start_tips">记录一段心情视频</string>
+	<string name="fragment_main_glimpse_camera_start_tips">把匿名视频扔到地图上</string>
+	<string name="network_error_click_reload">轻触屏幕，重新加载</string>
+
+	<string name="dialog_edit_user_info_male">男生</string>
+	<string name="dialog_edit_user_info_female">女生</string>
+	<string name="dialog_like_list_title">点赞</string>
+
+	<string name="dialog_user_info_following">关注</string>
+	<string name="dialog_user_info_stories">故事</string>
+	<string name="dialog_user_info_followers">粉丝</string>
+	<string name="dialog_call_camera">拍照</string>
+	<string name="dialog_call_album">相册选取</string>
+	<string name="activity_search_btn_cancel">取消</string>
+	<string name="fragment_account_text">请登录该账户</string>
+</resources>

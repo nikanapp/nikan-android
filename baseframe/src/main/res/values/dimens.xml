@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_padding">8dp</dimen>
+    <dimen name="header_footer_bottom_padding">0dp</dimen>
+    <dimen name="slidingmenu_offset">60dp</dimen>
+    <dimen name="list_padding">10dp</dimen>
+    <dimen name="shadow_width">8dp</dimen>
+    
+    <dimen name="wp_5">16dp</dimen>
+    <dimen name="f_64pt">19sp</dimen>
+
+    <integer name="num_cols">1</integer>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    
+    <!-- 字体大小设置 -->
+    <dimen name="small_size">12sp</dimen>
+    <dimen name="middle_size">14sp</dimen>
+    <dimen name="big_size">18sp</dimen>
+    <dimen name="large_size">22sp</dimen>
+    
+</resources>

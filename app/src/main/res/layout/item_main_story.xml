@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="203dp">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/layout_story_preview"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            layout="@layout/layout_story_info"/>
+
+        <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/item_main_story_usericon"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/circle_avatar"
+            app:sriv_left_bottom_corner_radius="17dp"
+            app:sriv_left_top_corner_radius="17dp"
+            app:sriv_right_bottom_corner_radius="17dp"
+            app:sriv_right_top_corner_radius="17dp"
+            app:sriv_border_width="1dp"
+            app:sriv_border_color="#40FFFFFF"
+            app:sriv_oval="true"/>
+
+        <TextView
+            android:id="@+id/item_main_story_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_info_icon"
+            android:layout_toLeftOf="@+id/item_main_story_usericon"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dp"
+            android:drawablePadding="4dp"
+            android:drawableRight="@drawable/icon_user_info_female"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

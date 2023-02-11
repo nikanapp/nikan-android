@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+     android:layout_width="wrap_content">
+     
+
+       <!-- 文字 -->
+       <TextView
+           android:id="@+id/settingText"
+           style="@style/setting_text"
+           android:text="@string/activity_setting_feedback" />
+
+       <!-- 箭头 -->
+       <ImageView
+           style="@style/setting_arrow"
+           android:contentDescription="@string/img_desc" />
+       <!-- 线 -->
+       <ImageView
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:layout_alignParentBottom="true"
+           android:background="@color/whitesmoke"
+           android:contentDescription="@string/img_desc" />
+</RelativeLayout>
