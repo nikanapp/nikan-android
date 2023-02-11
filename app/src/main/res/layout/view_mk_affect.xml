@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/mk_affect_desc"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:text="One peaceful Afternoon with Sunshine and Beauties"
+        android:gravity="center|left"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="58dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/mk_affect_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mk_affect_desc"
+        android:layout_alignLeft="@+id/mk_affect_desc"
+        android:drawableLeft="@drawable/tiny_dot_inversion"
+        android:text="guangdong"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:visibility="visible" />
+
+
+    <TextView
+        android:id="@+id/mk_affect_hour"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:text="12:30"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/mk_affect_date"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mk_affect_hour"
+        android:layout_alignLeft="@+id/mk_affect_hour"
+        android:text="Sep. 21st, 2015"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:paddingLeft="4dp"
+        android:textSize="14sp" />
+
+</RelativeLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1c1f29">
+
+    <com.bloomlife.videoapp.view.FooterTipsView
+        android:id="@+id/fragment_main_story_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:id="@+id/fragment_main_story_title"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/activity_main_bar" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="center"
+        android:src="@drawable/icon_app_logo" />
+
+    <LinearLayout
+        android:id="@+id/fragment_main_story_reload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="17dp"
+            android:scaleType="center"
+            android:visibility="visible"
+            android:src="@drawable/icon_network_error"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/network_error_click_reload"/>
+    </LinearLayout>
+
+    <com.bloomlife.videoapp.view.MyPullToRefreshListView
+        android:id="@+id/fragment_main_story_listview"
+        android:layout_below="@+id/fragment_main_story_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </com.bloomlife.videoapp.view.MyPullToRefreshListView>
+
+    <TextView
+        android:id="@+id/fragment_main_story_upload_fail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_main_story_title"
+        android:background="@drawable/main_storys_upload_fail"
+        android:text="@string/fragment_main_story_upload_fail"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/fragment_main_story_uploading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_main_story_title"
+        android:background="@drawable/main_storys_upload_fail"
+        android:text="@string/fragment_main_story_uploading"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/fragment_main_story_upload_succ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_main_story_title"
+        android:background="@drawable/main_storys_upload_succ"
+        android:gravity="center"
+        android:scaleType="center"
+        android:src="@drawable/icon_upload_story_complete"
+        android:visibility="gone"/>
+
+    <View
+        android:id="@+id/fragment_main_story_touch_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

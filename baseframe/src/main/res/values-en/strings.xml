@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="date_uitils_moment">Just Now</string>
+    <string name="date_uitils_mins">mins</string>
+    <string name="date_uitils_hours">h</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_confirm">OK</string>
+</resources>

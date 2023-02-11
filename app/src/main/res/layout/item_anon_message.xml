@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="85dp"
+    android:paddingLeft="25dp"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="75dp"
+        android:layout_height="75dp" >
+
+        <ImageView
+            android:id="@+id/anon_message_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/anon_message_msgplay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:scaleType="center"
+            android:src="@drawable/btn_msg_play" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <emojicon.EmojiconTextView
+            android:id="@+id/anon_message_msgcontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:maxLines="2"
+            android:textColor="#CCCCCC"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/anon_message_newdot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/anon_message_msgcontent"
+            android:layout_alignLeft="@+id/anon_message_msgcontent"
+            android:layout_marginLeft="-5dp"
+            android:src="@drawable/red_dot" />
+        
+        <TextView 
+            android:id="@+id/anon_message_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/anon_message_msgcontent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="6dp"
+            android:textColor="@color/activity_message_grey"
+            android:textSize="11sp"/>
+    </RelativeLayout>
+
+</LinearLayout>

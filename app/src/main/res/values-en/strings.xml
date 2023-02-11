@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+
+    <string name="app_name">NeeCam</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="activity_setting_title">Settings</string>
+    <string name="activity_setting_push">Notifications</string>
+    <string name="activity_setting_feedback">Feedback</string>
+    <string name="activity_setting_about">About</string>
+    <string name="activity_setting_sex">Choose Your Gender</string>
+    <string name="activity_setting_user_info">Profile</string>
+    <string name="activity_setting_clear">Clean Local Storage</string>
+    <string name="activity_setting_welcome">Intro Video</string>
+    <string name="activity_setting_feedback_email_title">NeeCam Feedback Android</string>
+    <string name="activity_setting_feedback_email_content">NeeCam Feedback Android</string>
+    <string name="activity_setting_feedback_phone_mode">Device:</string>
+    <string name="activity_setting_feedback_system">System:</string>
+    <string name="activity_setting_clear_tips">Succeeded</string>
+    <string name="activity_about_title">About</string>
+    <string name="activity_about_version">NeeCam for Android</string>
+    <string name="activity_about_copy_tips">Copied</string>
+    <string name="activity_my_video_delete_tips">No one will see the videos again</string>
+    <string name="activity_my_video_lost_tips">The videos will still be found on the map, but removed from this page</string>
+    <string name="item_my_video_load">Uploading...</string>
+    <string name="item_my_video_reupload">Tap to\nre-upload</string>
+    <string name="item_my_video_upload_completed">Completed</string>
+    
+    <string name="activity_chat_title">Say Hello!</string>
+    <string name="activity_chat_network_fail">Bad Network</string>
+    <string name="activity_chat_wait_other_picture">You\'ll have to wait for reply before sending photoes</string>
+    <string name="activity_chat_app_version_under_picture">The other person has a too old version too support audio messages</string>
+    <string name="activity_chat_remove_shield">Unblock</string>
+    <string name="activity_chat_shield_user">Block</string>
+    <string name="activity_chat_send_input_tips">Type here...</string>
+    <string name="activity_chat_audio_record_tips">HOLD TO TALK</string>
+    <string name="activity_chat_audio_send_tips">RELEASE TO SEND</string>
+    <string name="activity_chat_me">Me</string>
+     <string name="activity_chat_send">Send</string>
+    
+    <string name="activity_message_title">MESSAGES</string>
+    <string name="activity_message_tab_messages"><b>MESSAGES</b></string>
+    <string name="activity_message_tab_notifications"><b>NOTIFICATIONS</b></string>
+    <string name="fragment_notification_delete">Delete Notifications</string>
+    <string name="activity_comment_add_feel">Tag it!</string>
+    <string name="activity_comment_empty">no comment</string>
+    
+    <string name="activity_camera_video_description">Description</string>
+    <string name="activity_camera_choose_topic">TOPICS</string>
+    
+    <string name="activity_my_video_empty">Empty</string>
+    <string name="view_dot_load_first_text"></string>
+    <string name="view_dot_load_last_text">VIDEOS IN THIS AREA</string>
+    
+    <string name="view_topic_window_title">TOPICS</string>
+    <string name="view_topic_window_empty">No Topic here</string>
+    
+    <string name="view_scanning_text">SCANNING...</string>
+    
+    <string name="fragment_send_dynamic_tips1">Tap and Hold</string>
+    <string name="fragment_send_dynamic_tips2">Drag and Release!</string>
+    <string name="fragment_report_succ">Reported</string>
+    
+    <string name="fragment_welcome_init_forwarding">...</string>
+    <string name="fragment_welcome_init_rerun">Replay</string>
+    <string name="fragment_welcome_init_under_way">Initilization...</string>
+    <string name="fragment_welcome_skip">Skip</string>
+    
+    <string name="fragment_type_select">Your Gender</string>
+    <string name="fragment_type_now">Now We Have</string>
+
+    <string name="fragment_video_play_views">Views</string>
+    <string name="fragment_video_play_heat">Heat</string>
+    <string name="fragment_video_play_comments">Comments</string>
+    
+    <string name="notification_new_message">You have received a new message</string>
+    <string name="notification_emoj">[emoji]</string>
+    <string name="notification_npicture">[Photo]</string>
+    
+    <string name="dialog_video_more_share">Share</string>
+    <string name="dialog_video_more_report">Report</string>
+    <string name="dialog_video_more_shield">Block</string>
+    <string name="dialog_video_more_clear_my_dynamic">Clear Stickers I posted</string>
+    <string name="dialog_video_more_off_dynamic">Hide Stickers</string>
+    <string name="dialog_video_more_on_dynamic">Show Stickers</string>
+    
+    <string name="dialog_delete_message">Delete Message</string>
+    <string name="dialog_share_title">Share</string>
+    
+    <string name="title_activity_test">TestActivity</string>
+    <string name="tips_no_location">Uable to aquire location, please retry</string>
+    <string name="dotload_null">NO VIDEO IN THIS AREA</string>
+    <string name="dotload_number_left"></string>
+    <string name="dotload_number_right">VIDEOS IN THIS AREA</string>
+    <string name="dotload_loading">SCANNING...</string>
+    <string name="shipped_ffmpeg_version">n2.4.2</string>
+    <string name="item_video_comment_text_time">6 hours ago</string>
+    <string name="item_video_comment_text">asdfasdf sdsdfasd </string>
+    <string name="video_comment_text_title">Comments Nearby</string>
+    <string name="video_comment_tag_title">Tags</string>
+    <string name="video_comment_tag_empty">No Tag</string>
+    <string name="comment_input_hint">Add Comments</string>
+    <string name="video_comment_complete">OK</string>
+     <string name="video_comment_input_first">Comment</string>
+    <string name="comment_text_list_empty">Empty</string>
+    <string name="welcome_user_text">Terms of Use</string>
+    
+	<string name="activity_agreement_title">Terms of Use</string>
+	<string name="welcome_user_agreement_content_title">Terms of Use of NeeCam</string>
+	<string name="first_video_tip">Slide leftwards or rightwards \nto check nearby videos</string>
+	<string name="video_upload_fail_tip">Uploading failed. Tap here to retry</string>
+	<string name="video_file_list_number">9 videos</string>
+	<string name="wait_my_message_tips">Your reply will activate photoes and audio messages for both</string>
+	<string name="wait_other_message_tips">Photo and audio message will be activated after reply received</string>
+	<string name="send_picture_and_audio_activeted">Photoes and audio messages are activated</string>
+	<string name="view_load_video_network_fail">Bad Network. Tap here to retry</string>
+	
+    <string name="welcome_user_agreement_1">
+        \U0008\u0008\u0008\u0008 are welcome to use the software and services you see!
+        \n\u0008\u0008\u0008\u0008 to use you look at software ("Software"), and service, you should read and follow the "You see the software license and services agreement" (hereinafter referred to as the "Agreement"). Please be sure to carefully read and fully understand the contents of the articles, particularly the exclusion or limitation of liability.
+        \n\u0008\u0008\u0008\u0008 This agreement is between you and you look about you to download, install, use, copy of the software, and you see the use of protocol-related services entered into. Unless you have read and accept the terms of this Agreement, or you have no right to download, install or use the software and related services. Your download, install, use, access to the account you see, sign-on behavior is deemed to have read and agreed to the above binding agreement.
+        \n\u0008\u0008\u0008\u0008 If you are under 18, please read this Agreement and the other above-mentioned agreement, accompanied by legal guardian, and special attention to minors Terms of Use.
+        \U0008\u0008\u0008\u0008 A service commitment
+        \n\u0008\u0008\u0008\u00081. All registered users and browsing users are users you see.
+        \n\u0008\u0008\u0008\u00082. User\'s personal information is protected, we do not accept queries of any person or entity. State organs according to law and the user\'s personal settings except public inquiry.
+        \n\u0008\u0008\u0008\u00083. Users have the right to freedom of expression within the law allows.
+        \n\u0008\u0008\u0008\u00084. You see an obligation under the existing technical level conditions, trying to make you look at the entire software running, try to avoid you look at software service disruption or interruption of the time limit in the shortest possible time to ensure that you normally use the service. To ensure data accuracy and ensure the proper use of the information held, and we have taken reasonable security measures to prevent unauthorized access to our software.
+        \U0008\u0008\u0008\u0008 Second, account security and management
+        \n\u0008\u0008\u0008\u00081. You see the software and services you use must have been approved landing you look you see the software to obtain and hold a valid service account; you can apply the foregoing account, use and other behaviors should be consistent with the corresponding section of this Agreement and the registration of the account Register account tripartite agreement signed between the service provider, service agreements and other relevant rules. You should ensure the safety of their own account and password above, and make use of all these actions carried out by the account and password (including but not limited to information disclosure, release information, submit orders online you agree to submit all kinds of rules or protocols, etc.) bear full responsibility.
+        \n\u0008\u0008\u0008\u00082. At the time of registration or activation process, you should be in accordance with legal requirements, follow the prompts to the corresponding page provide your correct information.
+        \n\u0008\u0008\u0008\u00083. You can look at you publish your video or text, your words and deeds can not violate provisions relating to this Agreement shall not infringe or allegedly infringe on the legal rights of others. If you are determined to be improper or reported behavior, you see the right to terminate you see the software to provide you with service.
+        \n\u0008\u0008\u0008\u00084. If you have an account because you see software theft or for other reasons non of your losses, you should immediately notify you look to the public security organs. You understand that you see to your request for action needs a reasonable time, we do not assume any responsibility for the consequences before taking action that has been generated (including, but not limited to, any of your losses).
+        \n\u0008\u0008\u0008\u00085. You see your account number and password in any way the sale, transfer, gift or inheritance, unless specified by law or judicial ruling, and agreed to look after you, and the transfer, gift or inheritance documents and materials required Eligible and depending on your look operating procedures developed to handle.
+        \U0008\u0008\u0008\u0008 Third, the user code of conduct
+        \n\u0008\u0008\u0008\u00081. User\'s words and deeds must not violate "Computer Information Network and Internet Security Protection and Management", "Internet Information Services", "Internet electronic bulletin service management requirements," "safeguarding Internet security decisions," "Internet News Information Services Provisions" and other relevant laws and regulations, can not you see post, transmit or otherwise transmit information contain one of the following elements:
+        \n1) basic principles of the Constitution of the determined opposition;
+        \n2) endangering national security, leaking state secrets, subverting state power, undermining national unity;
+        \n3) harm national honor and interests;
+        \n4) incitement to ethnic hatred, ethnic discrimination, undermining national unity;
+        \n5) violate the state religion policies or propagate cult and feudal superstition;
+        \n6) spread rumors, disturbs social order or undermines social stability;
+        \n7) spreading obscenity, pornography, gambling, violence, homicide, terror or instigate crimes;
+        \n8) insult or slander others, infringe upon the legitimate rights of others;
+        \n9) incite illegal assembly, of association, of procession and of demonstration, a mob to disturb social order;
+        \n10) of illegal activities in the name of civil society organizations;
+        \n11) containing false, harmful, threatening, infringement of privacy, harassment, abuse, defamatory, vulgar, obscene, or other morally objectionable content;
+        \n12) containing Chinese laws, regulations, rules, regulations and legally binding norms of any restricted or prohibited by other content.
+        \n\u0008\u0008\u0008\u00082. Users may not publish any form of advertising you see within.
+        \n\u0008\u0008\u0008\u00083. Users should bear all the civil or criminal liability for their individual acts, directly or indirectly caused due to user behavior you see losses, users should be responsible for compensation.
+        \n\u0008\u0008\u0008\u00084. Special Authorization
+        \n1) you registered account or use the service of process, the need to provide the necessary information, such as: In order to provide you with account registration service or user identification, requires your phone number or email address; video publishing You agree to use the required information for your location; the phone contacts matching feature requires you to authorize access your phone address book. If the national laws, regulations or policies have special requirements, you need to provide real identity information. If you provide incomplete information, you can not use the Service or restricted in use.
+        \n2) you fully understand and irrevocably authorize you look, you see under this Agreement and the Rules, the processing occurs on your software, you see all the disputes. You agree you see judgments and mediation decisions. The decision will be that you have a legally binding.
+        \n3) you have the right to see any way for the user violates this Agreement or the rules of behavior of the platform, restrictive measures against the interests of users, or to give appropriate treatment violations, until you look inside banned distribution of information.
+        \n4) For your convenience you see the service, you agree and authorize you look at your account registration / activation, you see the use of the service provided during the information passed to the formation of other services provided to you website or other software, or from Additional service\'s website or other software to obtain your registration / activation of other services provided during the use of the information formation.
+        \n5) any users find the content you see on suspicion of insulting or slandering others, infringes upon the lawful rights and interests or violate you see the agreement, the right to make a complaint.
+        \n6) to be able to provide customers with a quality platform, while all you see can be benign and healthy development, will involve reactionary, pornographic picture, signature and publish user undesirable content, be severely treated. Upon discovery of such acts, will be given a permanent ban ID and clear penalties for all speakers.
+        \n\u0008\u0008\u0008\u00085. You see by the user to shoot video uploads, map platform. You see only on behalf of content point of view, and you see nothing to do. For the full responsibility for the authenticity of a user in a speech, borne by the user, you do not see any liability.
+        \n\u0008\u0008\u0008\u00086. Any dispute arising from the use of you see or may arise between a user and / or loss, self-addressed and bear the responsibility of the user, and you see nothing to do.
+        \n\u0008\u0008\u0008\u00087. Users you see published work, you see the right to quote.
+        \n\u0008\u0008\u0008\u00088. The user at any time you look at the economic rights to any content published user license you look around the world free of charge, permanent, irrevocable, divisible and non-exclusive license to the rights to use, including but are not limited to: the right of reproduction, distribution, rental, exhibition rights, performance rights, theatrical rights, broadcasting rights, the right to network dissemination of information, the right crew, the right of adaptation, translation, compilation rights and the "Copyright Law" provisions of the copyright owner property rights enjoyed by other works. Also, the user license you have the right to see any subject of infringement proceedings alone and get full compensation.
+        \n\u0008\u0008\u0008\u00089. You see the development of different devices for different software versions, you should choose according to actual needs to download the appropriate version for installation.
+        \n1) if you obtained the software from a third party without lawful authority or with the same name of the software installer, you will see that the software can not be guaranteed work, and so any loss caused to you shall be liable .
+        \n2) In order to improve your experience and improve services, you see from time to time will provide software update service (the update may take software alternatives, modifications, enhanced features, an upgraded version of the form). To improve your experience and ensure consistency of service security and functionality, you see the right to update the software or the effect of some of the features of software changes or restrictions.
+        After\n3) new software release, older software may be unusable. You do not see the older software continues to be available and to ensure that the appropriate customer service, please feel free to check and download the latest version.
+        \n4) unless permitted by law or you see written permission, you may not engage in the following activities:
+        \n\u0008\u0008\u0008\u0008① delete the software and copy of the information regarding the copyright;
+        \n\u0008\u0008\u0008\u0008② to reverse engineer, reverse assemble, reverse compile, or otherwise attempt to discover the source code;
+        \n\u0008\u0008\u0008\u0008③ you look at the content of the intellectual property rights of use, rent, lend, copy, modify, link, reproduce, compile, publish, publishing, create mirror sites and the like;
+        \n\u0008\u0008\u0008\u0008④ process software, or software running in the release to any system data terminal memory, the software running the interactive data on the client and server, and software necessary to run, copy, modify, add, delete, mount operation or create any derivative works, forms include, but are not limited to the use of plug-in, plug-in or third-party tools through legally authorized / service access software and related systems;
+        \n\u0008\u0008\u0008\u0008⑤ modify or counterfeit software operation instructions, data, additions, deletions, function, or operating results change the software, or software, the method used for these purposes will be the operator or to the public , regardless of whether such acts for commercial purposes
+        \n\u0008\u0008\u0008\u0008⑥ you see the development through non-authorized third-party software, plug-ins, plug-in, the system, you see the use of platform services, or create, publish, distribute you see the development of non-authorized third-party software , plug-in, plug-in, the system;
+        \n\u0008\u0008\u0008\u0008⑦ other without the express authorization of the behavior you see.
+        \U0008\u0008\u0008\u0008 IV IP Claims
+        \n\u0008\u0008\u0008\u00081. You look at the offer you see information content platform services provided, including but not limited to intellectual property rights website, text, images, audio, video, graphics, etc. are all yours to see.
+        \n\u0008\u0008\u0008\u00082. Unless otherwise stated, provided you see when you look at the platform and services by relying on software copyrights, patents and other intellectual property are owned by or affiliated companies all you see.
+        \n\u0008\u0008\u0008\u00083. You look at the offer you see all commercial software and services used in the identification of the copyright or trademark watch all yours.
+        \n\u0008\u0008\u0008\u00084. You look through your launch client software when you see the software services, we give you a personal, non-transferable, non-exclusive and non-exclusive license, you can only use you look for a legitimate purpose of use of the software and services rights, shall not be used for any purpose, nor free to copy, modify, compile, or otherwise dispose of any of these rights.
+        \n\u0008\u0008\u0008\u00085. You agree that you see in your video and software published comments, except the right of authorship, publication rights, other intellectual property rights outside the right to modify (including, but not limited to: the right of reproduction, distribution, rental, exhibition rights, performance rights, theatrical rights, broadcasting rights, the right to network dissemination of information, the right crew, the right of adaptation, translation, compilation rights and other transferable rights should be enjoyed by copyright owners) are the sole and exclusive free license to you, and you agree to look to yourself take the name of the protection of the rights of legal behavior in any form, and to obtain full compensation. This agreement has been written agreement constitutes "Copyright Law" Article 25 of the regulations, their effectiveness and to you to protect the copyright law in any of the works you see published content, regardless of whether the content is formed before entering into this Agreement or the Agreement After signing.
+        \U0008\u0008\u0008\u0008 V. User Notice
+        \n\u0008\u0008\u0008\u00081. You understand and agree that: In order to provide effective services, the software will use your mobile communication terminal processor and bandwidth resources. The software uses the costs that may arise during data traffic, users should make their own charges related to the operator for information, and to bear the associated costs.
+        \n\u0008\u0008\u0008\u00082. You understand and agree that: Some features of this software may make a third-party identifying user information, such as: the user\'s friends can query the user\'s profile picture, name, etc. can be disclosed.
+        \n\u0008\u0008\u0008\u00083. When you use this software for a particular service that might otherwise separate agreement, the relevant business rules, please read before you use the service and agree to a separate protocol related.
+        \n\u0008\u0008\u0008\u00084. You understand and agree that you see will make reasonable efforts to protect the security of your data is stored in the software and services in its commercial, but, you see, does not provide this guarantee, including but not limited to the following scenario:
+        \n1) you look right to delete your data in the software and services responsible for the failure or storage;
+        \n2) you look at the sole discretion of the maximum storage space allocation data in a single user up to the shelf life of the software and data services, and for the server, etc. according to the actual situation. You can back up the software and services related to data on their own according to their needs;
+        \n3) If you stop using the software and service or service is terminated or canceled, you think you can delete your data from the server permanently. Service is stopped, after termination or cancellation, you see no obligation to return any of your data.
+        \n4) users in the use of the software and services, shall bear the following from you see the risk of not control, including but not limited to:
+        \n5) force majeure due to personal information may be lost due to leaks and other risks;
+        \n6) The user must select a mobile phone that matches the installed software version, otherwise, any problems because the software does not match with the phone model or damage caused, remains with the user;
+        \n7) users use this software to access third-party sites, due to the risk of third-party websites and related content that could cause its own by the user;
+        \n8) User published content is forwarded to others, sharing, and other communication and therefore the potential risks and responsibilities;
+        \n9) As the wireless network signal instability, small wireless network bandwidth and other reasons, caused you see the login fails, data synchronization is not complete, the page opens slow and other risks.
+        \n5. When you use the software provided by third parties of products or services, in addition to compliance with this agreement, it must also abide by the User Agreement. You see and third parties to the dispute that may arise within the scope of the law and agreed to assume their responsibilities.
+        \n6. Result from the use of the software or ask you to look at the provision of a particular service, the software might call a third-party system or support users to use or access by third parties to use or access the results provided by the third party (including but not limited to third party Services provided by the micro-channel public accounts, or through open content platform access, etc.), you do not see the risk of guaranteed security, accuracy, validity and other uncertain third-party services and content, which if triggered Any dispute and damage, and you see has nothing to do, and you do not see any liability.
+        \n7. You see services might be changed, it may be interrupted, suspend or terminate service.
+        \n8. You understand and agree that you look at the right to decide business strategy. You see happen in the merger, acquisition, transfer of assets, you can see the transfer of assets under this service related to a third party; you can also look at unilateral notice to you, some or all of the services under this Agreement to transmit operated by third parties or fulfilled. You see specific transferee subject to notification.
+        \n9. If any of the following circumstances, you see, you have the right without notice to suspend or terminate service you provide:
+        \n1) in accordance with the law, you should provide true information, personal information you provide is untrue, or registration information is inconsistent and failed to provide reasonable proof;
+        \n2) your violation of provisions of the relevant laws, regulations or this Agreement;
+        \n3) in accordance with the law or the requirements of the competent authorities;
+        \n4) for security reasons or other necessary circumstances.
+        \U0008\u0008\u0008\u0008 VI.Supplementary
+        \n\u0008\u0008\u0008\u00081. Users know and agree that you look for this service have independent management rights, in order to better provide users of the Service, you see the right to amend this Agreement from time to time and amended The agreement announcement, the terms of the content of the revised with effect from the notice and become part of this Agreement. If the user after this agreement is altered continued use of this service, as a user acceptance and voluntary compliance with the revised agreement.
+        \n\u0008\u0008\u0008\u00082. This agreement was established, effective, implementation, interpretation and dispute resolution of all matters, regional laws are applicable to the mainland People\'s Republic of China (excluding conflict of laws).
+        \n\u0008\u0008\u0008\u00083. The agreement was signed for the People\'s Republic of China, Futian District, Shenzhen, Guangdong Province. If you look between the user and any dispute arising from this agreement or controversy, should first settled through friendly consultations; negotiation fails, the user agrees to submit the dispute or controversy to this Agreement have competent court of jurisdiction.
+        \n\u0008\u0008\u0008\u00084. Title terms of this Agreement for convenience only itself has no actual meaning, the meaning of this agreement can not serve as the basis for interpretation.
+        \n\u0008\u0008\u0008\u00085. The terms of this Agreement for any reason partially invalid, null and void or unenforceable, the remaining provisions shall remain valid, binding on both parties.
+        \n\u0008\u0008\u0008\u00086. If the user of this Agreement or the Services have comments or suggestions, you can see the customer service department to contact you, we will give the user the necessary help.
+	</string>
+	<string name="share_video_content_first">Check this out: anmonymous vedio from</string>
+	<string name="share_video_content_last"></string>
+	
+	<string name="activity_button_delete">Delete</string>
+	<string name="activity_button_disconnect">Disconnect</string>
+	
+	<string name="share_title">你看 - 首款匿名短视频社交应用</string>
+	<string name="share_app_content">
+		你看 - 首款匿名短视频社交应用。我的小伙伴们都在上面玩疯了。还不赶紧来体验一把，以上帝的视野，看见这一刻的世界！
+	</string>
+	<string name="activity_about_company">Shenzhen Bloominglife Technology Limited</string>
+	<string name="activity_about_app_version_name_suffix">Version</string>
+	<string name="activity_message_clear_messages">Clear all messages?</string>
+    <string name="activity_message_clear_notifications">Clear all notifications?</string>
+    <string name="activity_main_random_video">Check out random video</string>
+    <string name="activity_chat_wait_other_audio">You\'ll have to wait for reply before sending messages</string>
+    <string name="activity_camera_start_fail">Too short. Try to hold the button.</string>
+    
+    <string name="fragment_msg_tips">Say Hello\n here!</string>
+	<string name="fragment_dym_tips">Stickers</string>
+	
+	<string name="activity_camera_first">Hold to start</string>
+	<string name="activity_comment_first_tag">Text comment is \nonly for people nearby</string>
+	<string name="view_sound_text">[audio]</string>
+	<string name="view_picture_text">[photo]</string>
+    <string name="activity_video_comment_delete">Delete Comment</string>
+	<string name="open_camera_fail">Please shunt down other cemara application and try again</string>
+	<string name="share_fail">Failed</string>
+	<string name="share_succ">Done!</string>
+	<string name="report_title">Report</string>
+	<string name="report_text1">Political</string>
+	<string name="report_text2">Sensitive Image</string>
+	<string name="report_text3">Abusive</string>
+	<string name="report_text4">Spam</string>
+
+    <string name="dialog_call_camera">Take a picture</string>
+    <string name="dialog_call_album">Select from album</string>
+    <string name="dialog_picture_choose_title">Photo</string>
+    <string name="intent_picture_fail">Unable to acquire photo</string>
+    <string name="dialog_name_already_used">Name has been taken</string>
+    <string name="dialog_nickname_input_error">Invalid Name</string>
+    <string name="dialog_description_input_error">Invalid Input</string>
+    <string name="dialog_nickname_tip">Your Nickname</string>
+    <string name="dialog_description_tip">What’s up</string>
+    <string name="dialog_nickname_edit_tip">Name</string>
+    <string name="dialog_description_edit_tip">About Yourself</string>
+    <string name="dialog_edit_fail">Edit Failed</string>
+    <string name="dialog_login_fail">Login Failed</string>
+    <string name="item_user_followers">Followers</string>
+    <string name="dialog_btn_accept">OK</string>
+    <string name="activity_setting_back">Back</string>
+    <string name="activity_setting_login">Login</string>
+    <string name="activity_setting_logout">Quit</string>
+    <string name="activity_setting_logout_success">Quit</string>
+    <string name="activity_setting_logout_failure">Failed</string>
+
+
+    <string name="view_menu_my">Me</string>
+    <string name="view_menu_invite">Invite</string>
+    <string name="activity_invite_title">Invite</string>
+    <string name="fragment_invite_title_joined">Joined</string>
+    <string name="fragment_invite_title_not_joined">Not Joined</string>
+    <string name="activity_invite_tabs_recommend">Recommended</string>
+    <string name="activity_invite_tabs_social">Weibo</string>
+    <string name="activity_invite_tabs_contact">Contacts</string>
+    <string name="list_empty">empty</string>
+    <string name="more_empty">no more msg</string>
+    <string name="activity_search_empty_tips">Input keywords</string>
+    <string name="activity_search_hint">Name</string>
+
+
+    <string name="activity_story_video_edit_emotion_none">None</string>
+    <string name="activity_story_video_edit_description">Description shows up here.</string>
+    <string name="activity_setting_logout_dialog_text">Do you want to quit?</string>
+    <string name="network_error_tips">Bat Network</string>
+
+    <string name="fragment_main_story_upload_fail">Tap to retry</string>
+    <string name="fragment_main_story_uploading">Uploading</string>
+    <string name="fragment_main_story_camera_start_tips">Create video clips by your mood</string>
+    <string name="fragment_main_glimpse_camera_start_tips">Pin your video clips onto the map, anonymously!</string>
+    <string name="network_error_click_reload">Tap to retry</string>
+
+    <string name="dialog_edit_user_info_male">Male</string>
+    <string name="dialog_edit_user_info_female">Female</string>
+    <string name="dialog_like_list_title">Liked</string>
+    <string name="dialog_user_info_following">Following</string>
+    <string name="dialog_user_info_stories">Stories</string>
+    <string name="dialog_user_info_followers">Followers</string>
+    <string name="activity_search_btn_cancel">Cancel</string>
+    <string name="fragment_account_text">Please Sign in with the account</string>
+
+</resources>

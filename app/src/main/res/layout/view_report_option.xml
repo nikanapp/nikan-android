@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:background="@drawable/border_white_round"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/report_style"
+        android:text="@string/report_title"
+        android:textColor="@color/blue" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#dedede" />
+
+    <TextView
+        android:id="@+id/zhengzhi"
+        style="@style/report_style"
+        android:text="@string/report_text1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#dedede" />
+
+    <TextView
+        android:id="@+id/seqing"
+        style="@style/report_style"
+        android:text="@string/report_text2" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#dedede" />
+
+    <TextView
+        android:id="@+id/zhepian"
+        style="@style/report_style"
+        android:text="@string/report_text3" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#dedede" />
+
+    <TextView
+        android:id="@+id/guanggao"
+        style="@style/report_style"
+        android:text="@string/report_text4" />
+
+</LinearLayout>

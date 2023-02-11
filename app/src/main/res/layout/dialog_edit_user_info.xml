@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_user_info_main_layout"
+    android:layout_width="273dp" android:layout_height="353dp"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_black_background">
+
+    <com.joooonho.SelectableRoundedImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/edit_user_info_avatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="26dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/circle_avatar"
+        app:sriv_left_top_corner_radius="50dp"
+        app:sriv_right_top_corner_radius="50dp"
+        app:sriv_left_bottom_corner_radius="50dp"
+        app:sriv_right_bottom_corner_radius="50dp"/>
+
+    <RelativeLayout
+        android:id="@+id/user_info_gender_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/edit_user_info_avatar">
+
+        <ImageView
+            android:id="@+id/edit_user_info_btn_male"
+            android:layout_width="52dp"
+            android:layout_height="34dp"
+            android:src="@drawable/btn_user_info_male_enable_selector"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="13dp"
+            android:layout_alignRight="@+id/edit_user_info_btn_male"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/dialog_edit_user_info_male"
+            android:textSize="9dp"/>
+
+        <ImageView
+            android:id="@+id/edit_user_info_btn_female"
+            android:layout_width="52dp"
+            android:layout_height="34dp"
+            android:layout_toRightOf="@+id/edit_user_info_btn_male"
+            android:src="@drawable/btn_user_info_female_enable_selector"/>
+
+        <TextView
+            android:layout_width="46dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_alignLeft="@+id/edit_user_info_btn_female"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/dialog_edit_user_info_female"
+            android:textSize="9dp"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/edit_user_info_name"
+        android:layout_above="@+id/user_info_edit_name_bottom_line"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="30dp"
+        android:hint="@string/dialog_nickname_edit_tip"
+        android:textSize="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/gray"
+        android:textCursorDrawable="@null"
+        android:maxLength="25"
+        android:background="@color/transparent"
+        android:layout_marginBottom="-48dp"
+        android:layout_centerHorizontal="true"/>
+
+    <View
+        android:id="@+id/user_info_edit_name_bottom_line"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/user_info_gender_layout"
+        android:background="@color/dialog_edit_line_yellow"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/edit_user_info_description"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="30dp"
+        android:layout_above="@+id/user_info_edit_description_bottom_line"
+        android:hint="@string/dialog_description_edit_tip"
+        android:textSize="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/gray"
+        android:textCursorDrawable="@null"
+        android:maxLength="100"
+        android:background="@color/transparent"
+        android:layout_marginBottom="-47dp"
+        android:layout_centerHorizontal="true"/>
+
+    <View
+        android:id="@+id/user_info_edit_description_bottom_line"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/user_info_edit_name_bottom_line"
+        android:layout_marginTop="47dp"
+        android:background="@color/white"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/edit_user_info_accept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/dialog_btn_accept"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:background="@drawable/btn_dialog_accept_selector"/>
+
+    <com.bloomlife.videoapp.view.GlobalProgressBar
+        android:id="@+id/edit_user_info_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

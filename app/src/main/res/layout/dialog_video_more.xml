@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:background="@drawable/border_white_round"
+    android:orientation="vertical" >
+    
+    <TextView 
+	    android:id="@+id/dialog_video_more_share"
+	    android:text="@string/dialog_video_more_share"
+	    style="@style/report_style"
+	    />
+	<View 
+	    android:layout_width="match_parent"
+	    android:layout_height="1px"
+	       android:background="#dedede"
+	    />
+	<TextView 
+	    android:id="@+id/dialog_video_more_report"
+	    android:text="@string/dialog_video_more_report"
+	    style="@style/report_style"
+	    />
+	
+	<View 
+	    android:layout_width="match_parent"
+	    android:layout_height="1px"
+	    android:background="#dedede"
+	    />
+	
+	<TextView 
+	    android:id="@+id/dialog_video_more_clear"
+	    android:text="@string/dialog_video_more_clear_my_dynamic"
+	    style="@style/report_style"
+	    />
+	<View 
+	    android:layout_width="match_parent"
+	    android:layout_height="1px"
+	       android:background="#dedede"
+	    />
+	<TextView 
+	    android:id="@+id/dialog_video_more_shiel"
+	    android:text="@string/dialog_video_more_off_dynamic"
+	    style="@style/report_style"
+	    />
+
+</LinearLayout>

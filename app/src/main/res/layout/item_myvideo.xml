@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_myself_video_layout"
+    android:layout_width="@dimen/item_myvideo_width"
+    android:layout_height="@dimen/item_myvideo_height" >
+
+    <ImageView
+        android:id="@+id/item_myself_video_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/holo_blue"
+        android:scaleType="centerCrop" />
+
+    <View
+        android:id="@+id/item_myself_video_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/item_myvideo_cover"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/item_myself_video_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:gravity="center"
+        android:textColor="@color/white" />
+
+    <RelativeLayout
+        android:id="@+id/item_myself_video_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true" >
+
+        <TextView
+            android:id="@+id/item_myself_video_ignites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_ignites"
+            android:gravity="center|start"
+            android:layout_marginLeft="14dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="9sp" />
+
+        <TextView
+            android:id="@+id/item_myself_video_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_see"
+            android:gravity="center|start"
+            android:layout_marginLeft="57dp"
+            android:layout_alignBottom="@+id/item_myself_video_createtime"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="9sp" />
+
+        <TextView
+            android:id="@+id/item_myself_video_createtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_clock"
+            android:gravity="center|start"
+            android:layout_marginLeft="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="9sp" />
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/item_myself_video_click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/btn_video_check_selector"
+        android:button="@null"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="center"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/item_myself_video_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/icon_new"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/progressLayout"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        layout="@layout/layout_upload_progress" />
+
+</RelativeLayout>

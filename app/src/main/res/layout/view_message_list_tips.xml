@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <View 
+        android:layout_width="27dp"
+        android:layout_height="1dp"
+        android:layout_marginRight="9dp"
+        android:background="#1AFFFFFF"/>
+
+    <TextView 
+        android:id="@+id/message_list_tips_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="no messages"
+        android:textSize="15sp"
+        android:textColor="#1AFFFFFF"/>
+    
+    <View 
+        android:layout_width="27dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="9dp"
+        android:background="#1AFFFFFF"/>
+</merge>

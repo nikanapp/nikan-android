@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="69dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/item_emotion_img"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_cricle_emotion_icon_selector"/>
+
+    <TextView
+        android:id="@+id/item_emotion_none"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/activity_story_video_edit_emotion_none"
+        android:background="@drawable/btn_cricle_emotion_icon_selector"
+        android:textColor="@drawable/btn_emotion_text_color_selector"/>
+
+    <TextView
+        android:id="@+id/item_emotion_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/item_emotion_img"
+        android:gravity="center"
+        android:text="name"
+        android:textColor="@drawable/btn_emotion_text_color_selector" />
+
+</RelativeLayout>

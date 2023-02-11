@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/splash_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash" >
+    
+
+
+    <RelativeLayout
+        android:id="@+id/activity_welcome_btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/activity_welcome_btn_reverse"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="@string/fragment_welcome_init_rerun"
+            android:textColor="@color/default_gray"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/activity_welcome_btn_tick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="420dp"
+            android:background="@drawable/btn_welcome_tick_selector" />
+
+        <TextView
+            android:id="@+id/activity_welcome_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_welcome_btn_tick"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="@string/welcome_user_text"
+            android:textColor="@color/default_gray" />
+
+        <LinearLayout
+            android:id="@+id/progressLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@+id/activity_welcome_btn_tick"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp"
+            android:orientation="horizontal"
+            android:visibility="invisible" >
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                style="@android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/inittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:text="@string/fragment_welcome_init_under_way" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.bloomlife.videoapp.view.GenderSelectView 
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/genderSelect"
+        android:visibility="invisible"
+        />
+    
+    <ImageView
+        android:id="@+id/activity_welcome_splash_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/splash_logo" />
+</RelativeLayout>

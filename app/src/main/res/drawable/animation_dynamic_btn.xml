@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">
+    <item android:drawable="@drawable/btn_dynamic1" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic2" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic3" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic4" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic5" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic6" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic7" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic8" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic9" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic10" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic11" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic12" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic13" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic14" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic15" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic16" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic17" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic18" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic19" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic20" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic21" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic22" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic23" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic24" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic25" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic26" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic27" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic28" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic29" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic30" android:duration="@integer/animation_dynamic_druation" />
+    <item android:drawable="@drawable/btn_dynamic1" android:duration="1000" />
+</animation-list>

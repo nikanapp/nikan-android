@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#C3C3C3"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/other"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="22dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/circle_avatar"
+            app:sriv_left_bottom_corner_radius="52dp"
+            app:sriv_left_top_corner_radius="52dp"
+            app:sriv_right_bottom_corner_radius="52dp"
+            app:sriv_right_top_corner_radius="52dp"/>
+
+        <TextView
+            android:id="@+id/other_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/other"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="4dp"
+            android:text="name"
+            android:textColor="@color/white"
+            android:drawablePadding="4dp"
+            android:drawableRight="@drawable/icon_user_info_female"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/other"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@+id/other_name">
+
+            <FrameLayout
+                android:id="@+id/other_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="35dp"
+                android:background="@drawable/cha_other_image" >
+
+                <emojicon.EmojiconTextView
+                    android:id="@+id/othercontent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="left|center_vertical"
+                    android:paddingTop="-2dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/otherimage"
+                    android:layout_width="68dp"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:paddingTop="-20dp"
+                    android:visibility="gone" />
+
+                <com.bloomlife.videoapp.view.AudioPlayAnimView
+                    android:id="@+id/otherspeak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:src="@drawable/other_speak3"/>
+            </FrameLayout>
+
+            <ProgressBar
+                android:id="@+id/other_progress"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="-28dp"
+                android:layout_toRightOf="@+id/other_layout" />
+
+            <TextView
+                android:id="@+id/other_voice_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="-28dp"
+                android:layout_toRightOf="@+id/other_layout"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+
+        <!-- 我发送的内容的菊花 -->
+
+        <ProgressBar
+            android:id="@+id/my_progress"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="-28dp"
+            android:layout_toLeftOf="@+id/my_layout" />
+
+        <TextView
+            android:id="@+id/my_voice_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="-28dp"
+            android:layout_toLeftOf="@+id/my_layout"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:id="@+id/sendfailure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="-28dp"
+            android:layout_toLeftOf="@+id/my_layout"
+            android:src="@drawable/btn_msg_send_failure"
+            android:visibility="invisible" />
+
+        <!-- 我的会话框 -->
+
+        <FrameLayout
+            android:id="@+id/my_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/me"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="35dp"
+            android:background="@drawable/cha_myself_image"
+            android:visibility="visible" >
+
+            <emojicon.EmojiconTextView
+                android:id="@+id/mycontent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical|left"
+                android:paddingTop="-2dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/myimage"
+                android:layout_width="68dp"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+
+            <com.bloomlife.videoapp.view.AudioPlayAnimView
+                android:id="@+id/myspeak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/my_speak3"
+                android:visibility="gone"/>
+        </FrameLayout>
+
+        <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/me"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="17dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/circle_avatar"
+            app:sriv_left_bottom_corner_radius="14dp"
+            app:sriv_left_top_corner_radius="14dp"
+            app:sriv_right_bottom_corner_radius="14dp"
+            app:sriv_right_top_corner_radius="14dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

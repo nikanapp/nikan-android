@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <TextureView
+        android:id="@+id/video_edit_textureview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/video_edit_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="17dp"
+        android:text="0.0"
+        android:textColor="@color/white"
+        android:textSize="26sp" />
+
+    <com.bloomlife.videoapp.view.GlobalProgressBar
+        android:id="@+id/video_edit_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
+
+    <com.bloomlife.android.view.SoftKeyboardLayout
+        android:id="@+id/video_edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/video_edit_edit_description_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/video_edit_bottom_send_layout"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/background_topic_edit"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="19dp"
+            android:paddingRight="8dp"
+            android:paddingTop="5dp"
+            android:visibility="invisible" >
+
+            <ImageView
+                android:id="@+id/editIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:src="@drawable/icon_edit" />
+
+            <EditText
+                android:id="@+id/video_edit_edit_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:maxLength="60"
+                android:imeOptions="actionSend"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/video_edit_bottom_send_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="18dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <ImageView
+                android:id="@+id/video_edit_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="13dp"
+                android:background="@drawable/btn_camera_delete_selector"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/video_edit_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:background="@drawable/btn_camera_upload_selector"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </com.bloomlife.android.view.SoftKeyboardLayout>
+
+</FrameLayout>

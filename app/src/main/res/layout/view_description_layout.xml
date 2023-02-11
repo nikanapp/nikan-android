@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/descript_mainLayout"
+    android:layout_width="92dp"
+    android:layout_height="155dp" >
+
+    <ImageView
+        android:id="@+id/preview"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/half_corner"
+        android:scaleType="centerCrop" />
+    
+    <ImageView 
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+        android:background="@drawable/display_background"/>
+
+    <TextView
+        android:id="@+id/looknum"
+        style="@style/desci_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignBottom="@+id/preview"
+        android:layout_marginLeft="22dp"
+        android:text="111"
+        android:textColor="@color/white"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:id="@+id/likenum"
+        style="@style/desci_text"
+        android:layout_alignBottom="@+id/preview"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="59dp"
+        android:text="111"
+        android:textColor="@color/white"
+        android:gravity="center_vertical" />
+    
+    <com.bloomlife.videoapp.view.DescriptionTextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/preview"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center|left"
+        android:visibility="visible" />
+
+</RelativeLayout>

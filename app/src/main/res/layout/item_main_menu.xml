@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="106dp"
+    android:layout_height="43dp">
+
+    <ImageView
+        android:id="@+id/item_main_menu_network_icon"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/item_main_menu_native_icon"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/item_main_menu_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/item_main_menu_network_icon"
+        android:text="邀请好友"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="13sp"/>
+
+    <View
+        android:id="@+id/item_main_menu_red_dot"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginRight="-5dp"
+        android:layout_above="@+id/item_main_menu_name"
+        android:layout_alignRight="@+id/item_main_menu_name"
+        android:background="@drawable/background_myself_video_dot"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="11dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white_border"/>
+
+</RelativeLayout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/activity_message_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_activity_cover"/>
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:src="@drawable/btn_page_close_selector" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/activity_message_title" />
+
+        <ImageView
+            android:id="@+id/activity_messagelist_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="22dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/btn_activity_message_more_selector" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/tab_buttom"
+        android:layout_below="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="1" >
+
+            <View
+                android:id="@+id/activity_message_tab_message_left_dot"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/activity_message_tab_message"
+                android:background="@drawable/purple_small_dot"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/activity_message_tab_message"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/activity_message_tab_messages"
+                android:textColor="@color/activity_message_grey"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/message_dot"
+                style="@style/message_dot"
+                android:layout_alignTop="@+id/activity_message_tab_message"
+                android:layout_toRightOf="@+id/activity_message_tab_message"
+                android:text="12"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1" >
+
+            <View
+                android:id="@+id/activity_message_tab_notification_left_dot"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/activity_message_tab_notification"
+                android:background="@drawable/purple_small_dot"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/activity_message_tab_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/activity_message_tab_notifications"
+                android:textColor="@color/activity_message_grey"
+                android:textStyle="bold"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/notification_dot"
+                style="@style/message_dot"
+                android:layout_alignTop="@+id/activity_message_tab_notification"
+                android:layout_toRightOf="@+id/activity_message_tab_notification"
+                android:text="12"
+                android:visibility="visible" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/activity_message_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tab_buttom" >
+    </android.support.v4.view.ViewPager>
+    
+</RelativeLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="252dp" android:layout_height="195dp"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_black_background">
+
+    <ImageView
+        android:id="@+id/account_btn_close"
+        android:layout_width="@dimen/btn_close_width"
+        android:layout_height="@dimen/btn_close_height"
+        android:src="@drawable/btn_page_close_selector"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/account_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:textColor="@color/gray"
+        android:text="@string/fragment_account_text"
+        android:textSize="12sp"/>
+
+    <View
+        android:id="@+id/account_center_view"
+        android:layout_width="34dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:id="@+id/account_btn_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/account_text"
+        android:layout_toLeftOf="@+id/account_center_view"
+        android:src="@drawable/btn_account_facebook_selector"/>
+
+    <ImageView
+        android:id="@+id/account_btn_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/account_text"
+        android:layout_toRightOf="@+id/account_center_view"
+        android:src="@drawable/btn_account_twitter_selector"/>
+
+    <com.bloomlife.videoapp.view.GlobalProgressBar
+        android:id="@+id/account_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

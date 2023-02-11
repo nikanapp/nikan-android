@@ -1,0 +1,102 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        release {
+        }
+        debug {
+        }
+    }
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+    defaultConfig {
+        applicationId "com.bloomlife.videoapp"
+        minSdkVersion 14
+        targetSdkVersion 19
+        multiDexEnabled true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+
+    buildTypes {
+
+        def BOOLEAN = "boolean"
+        def STRING = "String"
+        def TRUE = "true"
+        def FALSE = "false"
+
+        def RELEASE_DOMAIN = "\"http://dev.nikanapp.me/videoserver/app\"";
+        def DEVELOP_DOMAIN = "\"http://dev.nikanapp.me/videoserver/app\"";
+
+        def BUG_TAGS = "BUG_TAGS"
+        def SSO_LOGIN = "SSO_LOGIN"
+        def LOGGER_DEBUG = "LOGGER_DEBUG"
+        def HTTP_APP_API_DOMAIN = "HTTP_APP_API_DOMAIN"
+
+        // 正式版的配置
+        release {
+            multiDexEnabled true
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            buildConfigField(BOOLEAN, SSO_LOGIN, FALSE)
+            buildConfigField(BOOLEAN, LOGGER_DEBUG, FALSE)
+            buildConfigField(BOOLEAN, BUG_TAGS, FALSE)
+            buildConfigField(STRING, HTTP_APP_API_DOMAIN, RELEASE_DOMAIN)
+        }
+
+        // 开发时的配置
+        debug {
+            multiDexEnabled true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            buildConfigField(BOOLEAN, SSO_LOGIN, TRUE)
+            buildConfigField(BOOLEAN, LOGGER_DEBUG, TRUE)
+            buildConfigField(BOOLEAN, BUG_TAGS, TRUE)
+            buildConfigField(STRING, HTTP_APP_API_DOMAIN, DEVELOP_DOMAIN)
+        }
+
+        // 使用正式版key进行开发
+        releaseKeyDebug{
+            multiDexEnabled true
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            buildConfigField(BOOLEAN, SSO_LOGIN, FALSE)
+            buildConfigField(BOOLEAN, LOGGER_DEBUG, TRUE)
+            buildConfigField(BOOLEAN, BUG_TAGS, TRUE)
+            buildConfigField(STRING, HTTP_APP_API_DOMAIN, DEVELOP_DOMAIN)
+            debuggable true
+        }
+    }
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':baseframe')
+    compile project(':mapbox')
+    compile project(':camera360')
+    compile (name: 'selectableroundedimageview-1.0.1', ext: 'aar')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile('com.android.support:support-v4:21.+')
+}

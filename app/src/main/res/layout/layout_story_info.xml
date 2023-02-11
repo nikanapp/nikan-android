@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_story_info_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/item_story_likes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="2dp"
+        android:drawableLeft="@drawable/icon_ignites"
+        android:gravity="center|start"
+        android:text="104"
+        android:textColor="@color/white"
+        android:textSize="9sp" />
+
+    <TextView
+        android:id="@+id/item_story_watch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/item_story_likes"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="46dp"
+        android:layout_marginBottom="1dp"
+        android:drawableLeft="@drawable/icon_see"
+        android:gravity="center|start"
+        android:text="205"
+        android:textColor="@color/white"
+        android:textSize="9sp" />
+
+
+    <ImageView
+        android:layout_width="17dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="88dp"
+        android:layout_alignBottom="@+id/item_story_likes"
+        android:layout_marginBottom="2dp"
+        android:src="@drawable/icon_comment"/>
+
+    <TextView
+        android:id="@+id/item_story_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignBottom="@+id/item_story_likes"
+        android:layout_marginLeft="105dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center|start"
+        android:text="111"
+        android:textColor="@color/white"
+        android:textSize="9sp" />
+
+    <View
+        android:id="@+id/item_story_info_divide"
+        android:layout_width="113dp"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/item_story_likes"
+        android:layout_below="@+id/item_story_likes"
+        android:layout_marginLeft="3dp"
+        android:background="@color/white_border" />
+
+    <TextView
+        android:id="@+id/item_story_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/item_story_likes"
+        android:layout_below="@+id/item_story_info_divide"
+        android:drawableLeft="@drawable/tiny_dot_inversion"
+        android:gravity="left|center"
+        android:singleLine="true"
+        android:text="shengz"
+        android:textColor="@color/white"
+        android:textSize="9sp" />
+
+    <TextView
+        android:id="@+id/item_story_createtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="26dp"
+        android:layout_alignBottom="@+id/item_story_location"
+        android:layout_alignRight="@+id/item_story_info_divide"
+        android:layout_below="@+id/item_story_info_divide"
+        android:gravity="left|center"
+        android:text="8h ago"
+        android:textColor="@color/white"
+        android:textSize="9sp" />
+
+</RelativeLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="85dp"
+    android:paddingLeft="25dp" >
+
+    <FrameLayout
+        android:id="@+id/item_notification_preview_layout"
+        android:layout_centerVertical="true"
+        android:layout_width="75dp"
+        android:layout_height="75dp">
+
+        <ImageView
+            android:id="@+id/item_notification_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/item_notification_play"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/btn_msg_play"
+            android:scaleType="center" />
+
+        <ImageView
+            android:id="@+id/item_notification_usericon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            android:background="@color/black"/>
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/item_notification_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/item_notification_preview_layout"
+        android:layout_alignBottom="@+id/item_notification_preview_layout"
+        android:layout_marginRight="-3dp"
+        android:layout_marginBottom="-3dp"
+        android:src="@drawable/icon_notification_glimpse"/>
+    
+    <emojicon.EmojiconTextView
+        android:id="@+id/item_notification_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/item_notification_preview_layout"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="14dp"
+        android:textColor="@color/white"
+        android:singleLine="true" />
+    
+    <emojicon.EmojiconTextView
+        android:id="@+id/item_notification_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_notification_title"
+        android:layout_toRightOf="@+id/item_notification_preview_layout"
+        android:layout_marginLeft="14dp"
+        android:textColor="@color/default_gray"
+        android:singleLine="true" />
+    
+    <ImageView 
+        android:id="@+id/item_notification_dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/item_notification_title"
+        android:layout_alignTop="@+id/item_notification_title"
+        android:layout_marginTop="-2dp"
+        android:layout_marginLeft="-5dp"
+        android:src="@drawable/red_dot"/>
+    
+    <TextView
+        android:id="@+id/item_notification_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/item_notification_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="6dp"
+        android:text="2mins"
+        android:textColor="@color/default_gray"
+        android:singleLine="true"
+        android:textSize="11sp" />
+    
+</RelativeLayout>

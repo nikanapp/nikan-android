@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <string name="no_network">暂未感应到网络存在</string>
+     <string name="request_failure">暂未感应到网络存在</string>
+     
+       
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+    
+    <ImageView 
+        android:layout_width="220dp"
+        android:layout_height="390dp"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_expression_window"/>
+
+    <com.bloomlife.videoapp.view.MyViewPager
+        android:id="@+id/expression_viewpager"
+        android:layout_width="220dp"
+        android:layout_height="390dp"
+        android:paddingTop="50dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="50dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"/>
+    
+    <com.bloomlife.videoapp.view.PageNumberView
+        android:id="@+id/expression_pagechange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/expression_viewpager"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="52dp" >
+        
+    </com.bloomlife.videoapp.view.PageNumberView>
+    
+</merge>

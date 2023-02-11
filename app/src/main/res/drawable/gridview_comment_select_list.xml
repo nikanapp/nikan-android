@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:id="@+id/gridview_comment_select_list_bitmap">
+        <shape>
+            <solid android:color="@color/white" />
+            <corners android:radius="18dp" />
+        </shape>
+    </item>
+    <item android:id="@+id/gridview_comment_select_list_shape">
+        <shape>
+            <solid android:color="#379edc" />
+
+            <corners android:radius="16dp" />
+
+            <size
+                android:height="36dp"
+                android:width="94dp" />
+
+            <stroke
+                android:width="5dp"
+                android:color="@color/transparent" />
+
+            <padding
+                android:bottom="10dp"
+                android:left="10dp"
+                android:right="10dp"
+                android:top="10dp" />
+        </shape>
+    </item>
+
+</layer-list>

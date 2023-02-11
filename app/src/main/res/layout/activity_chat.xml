@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.bloomlife.android.view.SoftKeyboardLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2A2929" >
+    
+    <ImageView 
+        android:id="@+id/activity_chat_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_activity_cover"/>
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:src="@drawable/btn_chat_back" />
+
+        <TextView
+            android:id="@+id/title_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:gravity="center|top"
+            android:background="@drawable/icon_activity_chat_title" />
+
+        <ImageView
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/btn_letter_more" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/send_viewpager"
+        android:layout_below="@+id/title"
+        android:descendantFocusability="beforeDescendants"
+        android:divider="@null"
+        android:listSelector="@color/transparent"
+        android:scrollbars="none" >
+
+    </ListView>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/send_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_above="@+id/emojicons"
+        android:background="@color/black" />
+
+    <fragment
+        android:id="@+id/emojicons"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_above="@+id/bottom"
+        class="emojicon.EmojiconsFragment" />
+
+    <ImageView
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/img_desc" />
+
+    <FrameLayout
+        android:id="@+id/activity_chat_picture_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:visibility="invisible" >
+
+        <ImageView
+            android:id="@+id/activity_chat_picture_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.bloomlife.videoapp.view.GlobalProgressBar
+            android:id="@+id/activity_chat_picture_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible" />
+    </FrameLayout>
+    
+    <com.bloomlife.videoapp.view.AudioRecorderView
+        android:id="@+id/activity_chat_audio_recorder_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+</com.bloomlife.android.view.SoftKeyboardLayout>

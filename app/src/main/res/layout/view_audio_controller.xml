@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:paddingLeft="33dp"
+    android:paddingRight="33dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp" >
+
+    <TextView
+        android:id="@+id/view_audio_btn_sound_record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:text="@string/activity_chat_audio_record_tips"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:background="@drawable/btn_start_speak" />
+    
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/view_audio_text_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/view_audio_btn_sound_record"
+        android:layout_alignBottom="@+id/view_audio_btn_sound_record"
+        android:layout_alignLeft="@+id/view_audio_btn_sound_record"
+        android:layout_marginLeft="1dp"
+        android:src="@drawable/gif_text_input"/>
+
+</RelativeLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent_white">#80ffffff</color>
+    <color name="whitesmoke">#F5F5F5</color>
+    
+    <color name="myvideo_topic_textcolor">#b27cda</color>
+    <color name="myvideo_title_back">#2c133d</color>
+    <color name="video_yellow">#ffb307</color>
+    <color name="video_upload_progress_blue">#1FA4C7</color>
+    
+    <color name="video_upload_progress_green">#e790A54A</color>
+    <color name="video_upload_progress_red">#e7E8511A</color>
+    <color name="video_upload_progress_transparent_black">#80000000</color>
+    <color name="topic_select">#A472C8</color>
+    <color name="display_topic">#b27cda</color>
+    <color name="view_load_status_number_yellow">#FFB308</color>
+
+    <color name="dialog_edit_line_yellow">#FFB307</color>
+    
+    <color name="main_bottom">#f02c133d</color>
+    <color name="data_empty">#585858</color>
+    <color name="commit_number_color">#AD171E</color>
+    <color name="super_toast_background">#CC000000</color>
+    <color name="video_info_transparent_white">#5affffff</color>
+    <color name="video_upload_fail_background">#CCAD171E</color>
+    
+    <color name="man_type_boy_color">#E52c4756</color>
+    <color name="man_type_girl_color">#E5ad171e</color>
+    <color name="activity_message_purple">#B27CDA</color>
+    <color name="activity_message_grey">#A6A6A6</color>
+    <color name="activity_camera_progressbar_yellow">#FFB400</color>
+    <color name="background_activity_cover">#80000000</color>
+    
+    <!-- 缺省底色 -->
+    <color name="default_background">#2a2929</color>
+    <color name="default_gray">#bfbfbf</color>
+    <color name="color_reload">#EFBD2A22</color>
+    <color name="color_reloading">#7FBD2A22</color>
+    
+    <color name="activity_myvideo_button_red">#EE3852</color>
+    <color name="item_myvideo_cover">#A6000000</color>
+    <color name="fragment_mapbox_background">#2b2b2b</color>
+    <color name="fragment_mapbox_line_color">#444444</color>
+    <color name="activity_comment_edit_hit">#363636</color>
+    <color name="activity_main_bar">#191919</color>
+
+    <color name="story_video_emotion_red">#D33E44</color>
+    <color name="story_video_emotion_grey">#A7A8AA</color>
+
+    <color name="view_sexscale_blue">#147EC8</color>
+    <color name="view_sexscale_red">#FF372A</color>
+
+    <color name="activity_invite_red">#FF5A1C</color>
+    <color name="activity_invite_title_bg">#19FFFFFF</color>
+
+    <color name="white_border">#20FFFFFF</color>
+
+    <color name="story_red">#F24249</color>
+    <color name="glimpse_purple">#9C18EF</color>
+    
+    <integer-array name="CircularColors">
+        <item>0xFFAD171E</item>
+        <item>0xFFB72027</item>
+        <item>0xFFC32A31</item>
+        <item>0xFFD12D35</item>
+        <item>0xFFDB3840</item>
+        <item>0xFFE63F48</item>
+        <item>0xFFEF4D56</item>
+        <item>0xFFF55C60</item>
+        <item>0xFFF5696D</item>
+    </integer-array>
+</resources>

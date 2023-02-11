@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/popupwindow_topic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|top"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="22dp" >
+
+        <RelativeLayout
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/popupwindow_topic_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/topic_window_header" />
+
+            <FrameLayout
+                android:id="@+id/popupwindow_topic_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/popupwindow_topic_header" >
+
+                <ListView
+                    android:id="@+id/popupwindow_topic_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:divider="@color/transparent"
+                    android:background="@drawable/topic_window_content"
+                    android:listSelector="@color/transparent"
+                    android:scrollbars="none" >
+                </ListView>
+
+                <TextView
+                    android:id="@+id/popupwindow_topic_list_null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/popupwindow_topic_header"
+                    android:background="@drawable/topic_window_content"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="17dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/view_topic_window_empty"
+                    android:textColor="@color/data_empty"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/popupwindow_topic_footer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/popupwindow_topic_content"
+                android:src="@drawable/topic_window_footer" />
+
+            <TextView
+                android:id="@+id/popupwindow_topic_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="17dp"
+                android:gravity="center|left"
+                android:text="@string/view_topic_window_title"
+                android:textColor="@color/video_yellow"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</merge>
