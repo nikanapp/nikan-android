@@ -4,6 +4,7 @@
 package com.bloomlife.videoapp.manager;
 
 import com.bloomlife.videoapp.app.AppContext;
+import com.bloomlife.videoapp.common.util.UIHelper;
 import com.zxtcode.util.Blur;
 
 import android.content.Context;
@@ -41,10 +42,10 @@ public class BackgroundManager {
 
 	private volatile Bitmap mBackground;
 	
-	private Blur mBlur;
+//	private Blur mBlur;
 
 	private BackgroundManager() {
-		mBlur = new Blur();
+//		mBlur = new Blur();
 	}
 	
 	public static BackgroundManager getInstance(){
@@ -133,8 +134,9 @@ public class BackgroundManager {
 			Matrix m = new Matrix();
 			m.postScale(0.5f, 0.5f);
 			Bitmap scaleBitmap = Bitmap.createBitmap(mBitmap, 0, 0, mBitmap.getWidth(), mBitmap.getHeight(), m, false);
-//			setBackgroundBitmap(UIHelper.doBlur(scaleBitmap, 65, false));
-			Bitmap blurBitmap = mBlur.bitmapBlur(scaleBitmap, 65);
+			Bitmap blurBitmap = UIHelper.doBlur(scaleBitmap, 65, false);
+			if (blurBitmap == null) return;
+//			Bitmap blurBitmap = mBlur.bitmapBlur(scaleBitmap, 65);
 			setBackgroundBitmap(blurBitmap);
 			if (mHandler != null){
 				Message msg = new Message();

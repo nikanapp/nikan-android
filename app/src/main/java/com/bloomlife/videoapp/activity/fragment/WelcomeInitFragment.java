@@ -134,7 +134,8 @@ public class WelcomeInitFragment extends AbstractWelcomeFragment implements OnCl
 		@Override
 		public void onAnimationEnd(Animator animation) {
 			linearLayout.setVisibility(View.VISIBLE);
-			((SpalshActivity)getActivity()).syncServerParam(true);
+			//((SpalshActivity)getActivity()).syncServerParam(true);
+			((SpalshActivity)getActivity()).test();
 		}
 	};
 	

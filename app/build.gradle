@@ -11,8 +11,8 @@ android {
     buildToolsVersion "21.1.2"
     defaultConfig {
         applicationId "com.bloomlife.videoapp"
-        minSdkVersion 14
-        targetSdkVersion 19
+        minSdkVersion 21
+        targetSdkVersion 21
         multiDexEnabled true
     }
 
@@ -94,9 +94,9 @@ repositories {
 
 dependencies {
     compile project(':baseframe')
-    compile project(':mapbox')
     compile project(':camera360')
     compile (name: 'selectableroundedimageview-1.0.1', ext: 'aar')
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile('com.android.support:support-v4:21.+')
+    implementation 'com.mapbox.maps:android:10.11.0'
 }

@@ -47,9 +47,9 @@ public abstract class BaseMapVideoLoadController {
 	
 	public int refreshDistance ; //刷新的移动的像素的范围
 	
-	protected float lastZoomLevl;  //上一次缩放的层级
+	protected double lastZoomLevl;  //上一次缩放的层级
 
-	private float currentZoomLevel;
+	private double currentZoomLevel;
 
 	private MessageRequest mHotVideoRequest;
 	private MessageRequest mMoreVideoRequest;
@@ -126,11 +126,11 @@ public abstract class BaseMapVideoLoadController {
 		Volley.addToTagQueue(mMoreVideoRequest);
 	}
 
-	public void setCurrentZoomLevel(float currentZoomLevel) {
+	public void setCurrentZoomLevel(double currentZoomLevel) {
 		this.currentZoomLevel = currentZoomLevel;
 	}
 
-	public float getCurrentZoomLevel(){
+	public double getCurrentZoomLevel(){
 		return this.currentZoomLevel;
 	}
 

@@ -32,7 +32,7 @@ public class SysCode {
 	
 	private List<Commenttags> commenttags;
 	
-	private int moveloadratio;
+	private int moveloadratio = 1;
 	
 	private int bitrate ;
 	

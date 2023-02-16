@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -41,17 +42,19 @@ import com.bloomlife.videoapp.model.SysCode;
 import com.bloomlife.videoapp.model.Video;
 import com.bloomlife.videoapp.model.result.GetVideoListResult;
 import com.bloomlife.videoapp.model.result.MoreVideoResult;
-import com.mapbox.mapboxsdk.api.ILatLng;
-import com.mapbox.mapboxsdk.events.MapListener;
-import com.mapbox.mapboxsdk.events.RotateEvent;
-import com.mapbox.mapboxsdk.events.ScrollEvent;
-import com.mapbox.mapboxsdk.events.ZoomEvent;
-import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.overlay.Marker;
-import com.mapbox.mapboxsdk.views.MapController;
-import com.mapbox.mapboxsdk.views.MapView;
-import com.mapbox.mapboxsdk.views.MapViewListener;
-import com.mapbox.mapboxsdk.views.util.Projection;
+import com.mapbox.android.gestures.MoveGestureDetector;
+import com.mapbox.android.gestures.StandardScaleGestureDetector;
+import com.mapbox.maps.CameraOptions;
+import com.mapbox.maps.MapView;
+import com.mapbox.maps.MapboxMap;
+import com.mapbox.maps.extension.observable.eventdata.CameraChangedEventData;
+import com.mapbox.maps.plugin.MapCameraPlugin;
+import com.mapbox.maps.plugin.MapPlugin;
+import com.mapbox.maps.plugin.Plugin;
+import com.mapbox.maps.plugin.delegates.listeners.OnCameraChangeListener;
+import com.mapbox.maps.plugin.gestures.GesturesPlugin;
+import com.mapbox.maps.plugin.gestures.OnMoveListener;
+import com.mapbox.maps.plugin.gestures.OnScaleListener;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import net.tsz.afinal.annotation.view.ViewInject;
@@ -88,7 +91,7 @@ public class MapBoxFragment extends BaseMapFragment {
     @ViewInject(id = R.id.fragment_mapbox_main_location_animview)
     private View mLocationAnimView;
 
-    private MapController mController;
+    private MapboxMap mController;
 
     private MapBoxVideoLoadController mVideoLoadController;
 
@@ -98,7 +101,7 @@ public class MapBoxFragment extends BaseMapFragment {
 
     private String mSelectTopic;
 
-    private float mZoom;
+    private double mZoom;
 
     private boolean mOnMapScroll;
     private boolean mOnMapZoom;
@@ -228,16 +231,23 @@ public class MapBoxFragment extends BaseMapFragment {
     @Override
     protected void initMap() {
         mLog.d("initMap");
-        mMapView.setMinZoomLevel(mMapView.getTileProvider().getMinimumZoomLevel());
-        mMapView.setMaxZoomLevel(mMapView.getTileProvider().getMaximumZoomLevel());
-        mMapView.setCenter(getUserLatLng(), false);
+        mController = mMapView.getMapboxMap();
+        CameraOptions build = new CameraOptions.Builder()
+                .center(getUserLatLng())
+                .bearing(-17.6)
+                .pitch(60.0)
+                .build();
+        mController.setCamera(build);
+        GesturesPlugin plugin = mMapView.getPlugin(Plugin.MAPBOX_GESTURES_PLUGIN_ID);
+        plugin.addOnMoveListener(mMapOnMoveListener);
+        plugin.addOnScaleListener(mMapOnScaleListener);
+        mMapView.
+        mController.getLocationComponent().setLocationComponentEnabled(false);
         mMapView.setUserLocationEnabled(false);
         mMapView.addListener(mMapListener);
         mMapView.setMapViewListener(mMarkerClickListener);
         mMapView.getMapOverlay().setLoadingBackgroundColor(getResources().getColor(R.color.fragment_mapbox_background));
         mMapView.getMapOverlay().setLoadingLineColor(getResources().getColor(R.color.fragment_mapbox_line_color));
-        mMapView.invalidate();
-        mController = mMapView.getController();
 
         SysCode sysCode = AppContext.getSysCode();
         mVideoLoadController.setCurrentZoomLevel(option.getZoomLevel(getActivity()));
@@ -250,12 +260,14 @@ public class MapBoxFragment extends BaseMapFragment {
         mLocationAnimView.bringToFront();
     }
 
-    private LatLng getUserLatLng(){
+    private com.mapbox.geojson.Point getUserLatLng(){
         String latStr = CacheBean.getInstance().getString(getActivity(), CacheKeyConstants.LOCATION_LAT);
         String lonStr = CacheBean.getInstance().getString(getActivity(), CacheKeyConstants.LOCATION_LON);
         double userLat = Double.parseDouble(TextUtils.isEmpty(latStr) ? "0" : latStr);
         double userLon = Double.parseDouble(TextUtils.isEmpty(lonStr) ? "0" : lonStr);
-        return new LatLng(userLat, userLon);
+        return com.mapbox.geojson.Point.fromLngLat(
+                userLon,userLat
+        );
     }
 
     private boolean stopDisplayWindow(){
@@ -266,33 +278,52 @@ public class MapBoxFragment extends BaseMapFragment {
         return false;
     }
 
-    private MapListener mMapListener = new MapListener() {
+    private final OnScaleListener mMapOnScaleListener = new OnScaleListener() {
 
         @Override
-        public void onZoom(ZoomEvent event) {
+        public void onScaleEnd(@NonNull StandardScaleGestureDetector standardScaleGestureDetector) {
             mOnMapZoom = true;
-            mZoom = event.getZoomLevel();
+            double lastZoom = mZoom;
+            mZoom = mController.getCameraState().getZoom();
             mVideoLoadController.setCurrentZoomLevel(mZoom);
             stopDisplayWindow();
-            mLog.d("onZoom " + mZoom + " action " + event.getUserAction());
+            mLog.d("onScaleEnd " + lastZoom + " zoom " + mZoom);
         }
 
         @Override
-        public void onScroll(ScrollEvent event) {
+        public void onScaleBegin(@NonNull StandardScaleGestureDetector standardScaleGestureDetector) {
+
+        }
+
+        @Override
+        public void onScale(@NonNull StandardScaleGestureDetector standardScaleGestureDetector) {
+
+        }
+    };
+
+    private final OnMoveListener mMapOnMoveListener = new OnMoveListener() {
+
+        @Override
+        public void onMoveEnd(@NonNull MoveGestureDetector moveGestureDetector) {
+
+        }
+
+        @Override
+        public void onMoveBegin(@NonNull MoveGestureDetector moveGestureDetector) {
             mOnMapScroll = true;
             mHandler.removeCallbacks(mMapChangeFinishLoad);
             stopDisplayWindow();
-            if (mLocationAnimView.getVisibility() == View.VISIBLE && event.getUserAction()){
+            if (mLocationAnimView.getVisibility() == View.VISIBLE){
                 mLocationAnimView.setVisibility(View.INVISIBLE);
             }
             mHandler.postDelayed(mMapChangeFinishLoad, 50);
-            Logger.d("onScroll", "action " + event.getUserAction());
+            Logger.d("onScroll", "action onMoveBegin");
         }
 
         @Override
-        public void onRotate(RotateEvent event) {
-            // TODO Auto-generated method stub
+        public boolean onMove(@NonNull MoveGestureDetector moveGestureDetector) {
 
+            return false;
         }
     };
 

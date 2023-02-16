@@ -261,6 +261,11 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 		}
 	}
 
+	public void test() {
+		cacheBean.putObject(SpalshActivity.this, CONSTANT_SYSCODE_KEY, new SysCode());
+		startToMainActivity();
+	}
+
 	public void startToMainActivity() {
 		Intent broadcastIntent = new Intent();
 		broadcastIntent.setAction(Constants.ACTION_FINISH);
