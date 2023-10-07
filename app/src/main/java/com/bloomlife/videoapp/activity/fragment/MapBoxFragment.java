@@ -47,6 +47,7 @@ import com.mapbox.android.gestures.StandardScaleGestureDetector;
 import com.mapbox.maps.CameraOptions;
 import com.mapbox.maps.MapView;
 import com.mapbox.maps.MapboxMap;
+import com.mapbox.maps.Style;
 import com.mapbox.maps.extension.observable.eventdata.CameraChangedEventData;
 import com.mapbox.maps.plugin.MapCameraPlugin;
 import com.mapbox.maps.plugin.MapPlugin;
@@ -238,11 +239,13 @@ public class MapBoxFragment extends BaseMapFragment {
                 .pitch(60.0)
                 .build();
         mController.setCamera(build);
+        mController.loadStyleUri(Style.MAPBOX_STREETS);
         GesturesPlugin plugin = mMapView.getPlugin(Plugin.MAPBOX_GESTURES_PLUGIN_ID);
         plugin.addOnMoveListener(mMapOnMoveListener);
         plugin.addOnScaleListener(mMapOnScaleListener);
-        mMapView.
-        mController.getLocationComponent().setLocationComponentEnabled(false);
+
+        //mController.getLocationComponent().setLocationComponentEnabled(false);
+        mController.getLocation().enabled = true;
         mMapView.setUserLocationEnabled(false);
         mMapView.addListener(mMapListener);
         mMapView.setMapViewListener(mMarkerClickListener);
