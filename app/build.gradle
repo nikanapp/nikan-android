@@ -99,5 +99,4 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile('com.android.support:support-v4:21.+')
     implementation 'com.mapbox.maps:android:10.11.0'
-    implementation 'com.mapbox.plugin:maps-scalebar:10.11.0'
 }

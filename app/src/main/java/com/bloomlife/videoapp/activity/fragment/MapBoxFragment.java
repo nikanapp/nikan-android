@@ -42,6 +42,7 @@ import com.bloomlife.videoapp.model.SysCode;
 import com.bloomlife.videoapp.model.Video;
 import com.bloomlife.videoapp.model.result.GetVideoListResult;
 import com.bloomlife.videoapp.model.result.MoreVideoResult;
+import com.easemob.util.LatLng;
 import com.mapbox.android.gestures.MoveGestureDetector;
 import com.mapbox.android.gestures.StandardScaleGestureDetector;
 import com.mapbox.maps.CameraOptions;
@@ -49,6 +50,7 @@ import com.mapbox.maps.MapView;
 import com.mapbox.maps.MapboxMap;
 import com.mapbox.maps.Style;
 import com.mapbox.maps.extension.observable.eventdata.CameraChangedEventData;
+import com.mapbox.maps.extension.style.layers.generated.SymbolLayer;
 import com.mapbox.maps.plugin.MapCameraPlugin;
 import com.mapbox.maps.plugin.MapPlugin;
 import com.mapbox.maps.plugin.Plugin;
@@ -56,12 +58,17 @@ import com.mapbox.maps.plugin.delegates.listeners.OnCameraChangeListener;
 import com.mapbox.maps.plugin.gestures.GesturesPlugin;
 import com.mapbox.maps.plugin.gestures.OnMoveListener;
 import com.mapbox.maps.plugin.gestures.OnScaleListener;
+import com.mapbox.maps.plugin.locationcomponent.LocationComponentPlugin;
+import com.mapbox.maps.plugin.locationcomponent.generated.LocationComponentSettings;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import net.tsz.afinal.annotation.view.ViewInject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 import static com.bloomlife.videoapp.common.CacheKeyConstants.LOCATION_LAST_VISIABL_AREA;
 import static com.bloomlife.videoapp.model.MapControllOption.Default_Max_level;
@@ -244,9 +251,15 @@ public class MapBoxFragment extends BaseMapFragment {
         plugin.addOnMoveListener(mMapOnMoveListener);
         plugin.addOnScaleListener(mMapOnScaleListener);
 
-        //mController.getLocationComponent().setLocationComponentEnabled(false);
-        mController.getLocation().enabled = true;
-        mMapView.setUserLocationEnabled(false);
+        LocationComponentPlugin locationComponentPlugin = mMapView.getPlugin(Plugin.MAPBOX_LOCATION_COMPONENT_PLUGIN_ID);
+        locationComponentPlugin.updateSettings(new Function1<LocationComponentSettings, Unit>() {
+            @Override
+            public Unit invoke(LocationComponentSettings locationComponentSettings) {
+                locationComponentSettings.setEnabled(true);
+                locationComponentSettings.setPulsingEnabled(true);
+                return null;
+            }
+        });
         mMapView.addListener(mMapListener);
         mMapView.setMapViewListener(mMarkerClickListener);
         mMapView.getMapOverlay().setLoadingBackgroundColor(getResources().getColor(R.color.fragment_mapbox_background));
@@ -790,7 +803,14 @@ public class MapBoxFragment extends BaseMapFragment {
         return marker;
     }
 
-    private Marker makeHotMarker(Video video, boolean drawSendMarker){
+    private SymbolLayer makeHotMarker(Video video, boolean drawSendMarker){
+        SymbolLayer stretchLayer = new SymbolLayer("1", "2");
+        stretchLayer.textField();
+        stretchLayer.iconImage();
+        stretchLayer.textAllowOverlap(true);
+        stretchLayer.iconAllowOverlap(true);
+        stretchLayer.iconTextFit();
+
         HotVideoMarker marker = new HotVideoMarker(mMapView, null, null, getDrawLatLng(Double.parseDouble(video.getLat()), Double.parseDouble(video.getLon())));
         if(video.isSendVideo())  {
             if(!drawSendMarker&&!isSendAnimationFinish) return null;
@@ -865,7 +885,7 @@ public class MapBoxFragment extends BaseMapFragment {
     }
 
 
-    static class HotVideoMarker extends Marker{
+    static class HotVideoMarker extends SymbolLayer {
 
         private Video mVideo;
 
