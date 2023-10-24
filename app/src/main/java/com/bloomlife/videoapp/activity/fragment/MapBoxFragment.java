@@ -7,8 +7,6 @@ import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.BitmapFactory;
-import android.graphics.Point;
-import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -45,12 +43,20 @@ import com.bloomlife.videoapp.model.result.MoreVideoResult;
 import com.easemob.util.LatLng;
 import com.mapbox.android.gestures.MoveGestureDetector;
 import com.mapbox.android.gestures.StandardScaleGestureDetector;
+import com.mapbox.geojson.Feature;
+import com.mapbox.geojson.FeatureCollection;
+import com.mapbox.geojson.Point;
 import com.mapbox.maps.CameraOptions;
+import com.mapbox.maps.GeoJSONSourceData;
 import com.mapbox.maps.MapView;
 import com.mapbox.maps.MapboxMap;
+import com.mapbox.maps.ScreenCoordinate;
 import com.mapbox.maps.Style;
 import com.mapbox.maps.extension.observable.eventdata.CameraChangedEventData;
+import com.mapbox.maps.extension.style.StyleContract;
 import com.mapbox.maps.extension.style.layers.generated.SymbolLayer;
+import com.mapbox.maps.extension.style.layers.properties.generated.IconAnchor;
+import com.mapbox.maps.extension.style.sources.generated.GeoJsonSource;
 import com.mapbox.maps.plugin.MapCameraPlugin;
 import com.mapbox.maps.plugin.MapPlugin;
 import com.mapbox.maps.plugin.Plugin;
@@ -65,7 +71,10 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import net.tsz.afinal.annotation.view.ViewInject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -73,6 +82,8 @@ import kotlin.jvm.functions.Function1;
 import static com.bloomlife.videoapp.common.CacheKeyConstants.LOCATION_LAST_VISIABL_AREA;
 import static com.bloomlife.videoapp.model.MapControllOption.Default_Max_level;
 import static com.bloomlife.videoapp.model.MapControllOption.Default_min_level;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/3.
@@ -127,6 +138,8 @@ public class MapBoxFragment extends BaseMapFragment {
     private ObjectAnimator mClickHotAnim2;
 
     private View.OnTouchListener mLayoutTouchListener;
+
+    private Map<String, Video> mSymbolVideoMap = new HashMap<>();
 
     @Override
     public void onAttach(Activity activity) {
@@ -235,6 +248,14 @@ public class MapBoxFragment extends BaseMapFragment {
         bringUiToFront();
     }
 
+    public static final String ICON_DOT_FEMALE = "dotFemale";
+    public static final String ICON_DOT_MALE = "dotMale";
+    public static final String ICON_DOT_FEMALE_VD = "dotFemaleVd";
+    public static final String ICON_DOT_MALE_VD = "dotMaleVd";
+    public static final String ICON_SOURCE_ID = "iconSource";
+
+    private List<Feature> symbolLayerIconFeatureList = new ArrayList<>();
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void initMap() {
@@ -246,7 +267,17 @@ public class MapBoxFragment extends BaseMapFragment {
                 .pitch(60.0)
                 .build();
         mController.setCamera(build);
-        mController.loadStyleUri(Style.MAPBOX_STREETS);
+        mController.loadStyleUri(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
+            @Override
+            public void onStyleLoaded(@NotNull Style style) {
+                style.addImage(ICON_DOT_FEMALE, BitmapFactory.decodeResource(getResources(), R.drawable.play_dot_female));
+                style.addImage(ICON_DOT_MALE, BitmapFactory.decodeResource(getResources(), R.drawable.play_dot_male));
+                style.addImage(ICON_DOT_FEMALE_VD, BitmapFactory.decodeResource(getResources(), R.drawable.play_dot_female_vd));
+                style.addImage(ICON_DOT_MALE_VD, BitmapFactory.decodeResource(getResources(), R.drawable.play_dot_male_vd));
+                symbolLayerIconFeatureList.add();
+                style.setStyleGeoJSONSourceData(ICON_SOURCE_ID, new GeoJSONSourceData(symbolLayerIconFeatureList));
+            }
+        });
         GesturesPlugin plugin = mMapView.getPlugin(Plugin.MAPBOX_GESTURES_PLUGIN_ID);
         plugin.addOnMoveListener(mMapOnMoveListener);
         plugin.addOnScaleListener(mMapOnScaleListener);
@@ -276,12 +307,12 @@ public class MapBoxFragment extends BaseMapFragment {
         mLocationAnimView.bringToFront();
     }
 
-    private com.mapbox.geojson.Point getUserLatLng(){
+    private Point getUserLatLng(){
         String latStr = CacheBean.getInstance().getString(getActivity(), CacheKeyConstants.LOCATION_LAT);
         String lonStr = CacheBean.getInstance().getString(getActivity(), CacheKeyConstants.LOCATION_LON);
         double userLat = Double.parseDouble(TextUtils.isEmpty(latStr) ? "0" : latStr);
         double userLon = Double.parseDouble(TextUtils.isEmpty(lonStr) ? "0" : lonStr);
-        return com.mapbox.geojson.Point.fromLngLat(
+        return Point.fromLngLat(
                 userLon,userLat
         );
     }
@@ -695,11 +726,11 @@ public class MapBoxFragment extends BaseMapFragment {
         inAnim.start();
     }
 
-    private List<Marker> mHotMarkers = new ArrayList<>();
-    private List<Marker> mMoreMarkers = new ArrayList<>();
+    private List<SymbolLayer> mHotMarkers = new ArrayList<>();
+    private List<SymbolLayer> mMoreMarkers = new ArrayList<>();
 
-    private Marker mUserMarker;
-    private Marker mSendMarker;
+    private SymbolLayer mUserMarker;
+    private SymbolLayer mSendMarker;
 
     /** 大点是否加载完 **/
     private boolean mHotDotLoad;
@@ -788,15 +819,14 @@ public class MapBoxFragment extends BaseMapFragment {
         }
     }
 
-    private Marker drawVideoPoint(Video video, boolean drawSendMarker){
-        LatLng latLng = new LatLng(Double.parseDouble(video.getLat()), Double.parseDouble(video.getLon()));
-        PointF point = mMapView.getProjection().toPixels(latLng, null);
-        if(point.x<=0||point.y<=0){
-            Log.v(TAG, " x "+point.x+" y "+point.y);
+    private SymbolLayer drawVideoPoint(Video video, boolean drawSendMarker){
+        ScreenCoordinate point = mController.pixelForCoordinate(Point.fromLngLat(Double.parseDouble(video.getLat()), Double.parseDouble(video.getLon())));
+        if(point.getX()<=0||point.getY()<=0){
+            Log.v(TAG, " x "+point.getX()+" y "+point.getY());
             Log.v(TAG, " 点并不在屏幕显示区域中，不进行绘制 ");
             return null;
         }
-        Marker marker = makeHotMarker(video, drawSendMarker);
+        SymbolLayer marker = makeHotMarker(video, drawSendMarker);
         if(video.isSendVideo())  {
             mSendMarker = marker;
         }
@@ -804,38 +834,37 @@ public class MapBoxFragment extends BaseMapFragment {
     }
 
     private SymbolLayer makeHotMarker(Video video, boolean drawSendMarker){
-        SymbolLayer stretchLayer = new SymbolLayer("1", "2");
-        stretchLayer.textField();
-        stretchLayer.iconImage();
+        String layerId = UUID.randomUUID().toString();
+        mSymbolVideoMap.put(layerId, video);
+        SymbolLayer stretchLayer = new SymbolLayer(layerId, ICON_SOURCE_ID);
         stretchLayer.textAllowOverlap(true);
         stretchLayer.iconAllowOverlap(true);
-        stretchLayer.iconTextFit();
-
-        HotVideoMarker marker = new HotVideoMarker(mMapView, null, null, getDrawLatLng(Double.parseDouble(video.getLat()), Double.parseDouble(video.getLon())));
+        Feature feature = Feature.fromGeometry(getDrawLatLng(Double.parseDouble(video.getLat()), Double.parseDouble(video.getLon())))
+        feature.addStringProperty("NAME_PROPERTY_KEY", "video");
+        feature.addStringProperty("DESCRIPTION_PROPERTY_KEY", "video marker");
         if(video.isSendVideo())  {
             if(!drawSendMarker&&!isSendAnimationFinish) return null;
             if(mSendMarker != null) mMapView.removeMarker(mSendMarker);
-            marker.setMarker(getResources().getDrawable(isUserFemale() ? R.drawable.play_dot_female : R.drawable.play_dot_male), false);
-        } else if(video.getSex() == Video.FEMALE){
-            marker.setMarker(getResources().getDrawable(video.isLook() ? R.drawable.play_dot_female_vd : R.drawable.play_dot_female), false);
-        } else if(video.getSex() == Video.MALE){
-            marker.setMarker(getResources().getDrawable(video.isLook() ? R.drawable.play_dot_male_vd : R.drawable.play_dot_male), false);
+            stretchLayer.iconImage(isUserFemale() ? ICON_DOT_FEMALE : ICON_DOT_MALE);
+        } else if(video.getSex() == Video.FEMALE) {
+            stretchLayer.iconImage(video.isLook() ? ICON_DOT_FEMALE_VD : ICON_DOT_FEMALE);
+        } else if(video.getSex() == Video.MALE) {
+            stretchLayer.iconImage(video.isLook() ? ICON_DOT_MALE_VD : ICON_DOT_MALE);
         }
-        marker.setVideo(video);
-        marker.setAnchor(new PointF(HOT_ANCHOR_X, HOT_ANCHOR_Y));
-        return marker;
+        stretchLayer.iconAnchor(IconAnchor.BOTTOM);
+        return stretchLayer;
     }
 
     private boolean isUserFemale(){
         return AppContext.getSysCode().getSex() == Video.FEMALE;
     }
 
-    private LatLng getDrawLatLng(double lat, double lon){
-        return new LatLng(lat, lon);
+    private Point getDrawLatLng(double lat, double lon){
+        return Point.fromLngLat(lat, lon);
     }
 
-    private LatLng makeLatLng(Video video){
-        return new LatLng(Double.parseDouble(video.getLat()), Double.parseDouble(video.getLon()));
+    private Point makeLatLng(Video video){
+        return Point.fromLngLat(Double.parseDouble(video.getLat()), Double.parseDouble(video.getLon()));
     }
 
     @Override
@@ -882,27 +911,6 @@ public class MapBoxFragment extends BaseMapFragment {
         mUserMarker.setMarker(getResources().getDrawable(AppContext.getSysCode().getSex()==Video.MALE ? R.drawable.male_location : R.drawable.female_location));
         mUserMarker.setAnchor(new PointF(0.5f, 0.5f));
         mMapView.addMarker(mUserMarker);
-    }
-
-
-    static class HotVideoMarker extends SymbolLayer {
-
-        private Video mVideo;
-
-        public HotVideoMarker(MapView mv, String aTitle, String aDescription,
-                              LatLng aLatLng) {
-            super(mv, aTitle, aDescription, aLatLng);
-            // TODO Auto-generated constructor stub
-        }
-
-        public void setVideo(Video video){
-            mVideo = video;
-        }
-
-        public Video getVideo(){
-            return this.mVideo;
-        }
-
     }
 
     static class MoreVideoMarker extends Marker{
