@@ -62,6 +62,7 @@ import com.bloomlife.videoapp.view.RandomVideoButton;
 import com.bloomlife.videoapp.view.SuperToast;
 import com.bloomlife.videoapp.view.WaveView;
 import com.easemob.chat.EMChatManager;
+import com.mapbox.maps.ScreenCoordinate;
 
 import net.tsz.afinal.annotation.view.ViewInject;
 
@@ -231,7 +232,7 @@ public abstract class BaseMapFragment extends Fragment implements View.OnClickLi
 
     protected abstract boolean isOnScreenRange(MyLatLng latLng);
 
-    protected abstract PointF getScreenPoint(double lat, double lon);
+    protected abstract ScreenCoordinate getScreenPoint(double lat, double lon);
 
     protected abstract void addHotMarkerToMap(Video v);
 
@@ -415,7 +416,7 @@ public abstract class BaseMapFragment extends Fragment implements View.OnClickLi
     /** 大点的缓存里面，用来过滤小点和其他特殊的点，避免重复加载使用。 **/
     protected final Map<String, Video> videoCacheMap = new HashMap<String, Video>();
 
-    private List<PointF> videoCachePoints = new ArrayList<PointF>();
+    private List<ScreenCoordinate> videoCachePoints = new ArrayList<>();
 
     protected final Map<String, MoreVideoResult.MoreVideoVo> moreIdList = new HashMap<String, MoreVideoResult.MoreVideoVo>();
 
@@ -464,9 +465,9 @@ public abstract class BaseMapFragment extends Fragment implements View.OnClickLi
     }
 
     protected boolean isOnHotdot(MoreVideoResult.MoreVideoVo v){
-        PointF moreDotPoint = getScreenPoint(Double.parseDouble(v.getLat()), Double.parseDouble(v.getLon()));
-        for (PointF p:videoCachePoints){
-            if (Math.abs(p.x - moreDotPoint.x) < mDotWidth && Math.abs(p.y - moreDotPoint.y) < mDotHeight){
+        ScreenCoordinate moreDotPoint = getScreenPoint(Double.parseDouble(v.getLat()), Double.parseDouble(v.getLon()));
+        for (ScreenCoordinate p:videoCachePoints){
+            if (Math.abs(p.getX() - moreDotPoint.getX()) < mDotWidth && Math.abs(p.getY() - moreDotPoint.getY()) < mDotHeight){
                 return true;
             }
         }

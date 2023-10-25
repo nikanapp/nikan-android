@@ -11,14 +11,12 @@ import com.bloomlife.videoapp.app.AppContext;
 import com.bloomlife.videoapp.common.BaiduConstants;
 import com.bloomlife.videoapp.model.MapControllOption;
 import com.bloomlife.videoapp.model.MyLatLng;
-import com.mapbox.mapboxsdk.api.ILatLng;
-import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.views.MapView;
-import com.mapbox.mapboxsdk.views.util.Projection;
+import com.mapbox.geojson.Point;
+import com.mapbox.maps.MapView;
+import com.mapbox.maps.MapboxMap;
+import com.mapbox.maps.ScreenCoordinate;
 
 import android.app.Activity;
-import android.graphics.PointF;
-import android.util.Log;
 
 
 
@@ -35,7 +33,7 @@ public class MapBoxVideoLoadController extends BaseMapVideoLoadController{
 	
 	private int mapViewWidth;
 	
-	private ILatLng lastCenterPoint;
+	private Point lastCenterPoint;
 	
 	/**
 	 * @param activity
@@ -44,17 +42,17 @@ public class MapBoxVideoLoadController extends BaseMapVideoLoadController{
 		super(fragment, activity);
 	}
 	
-	public boolean isLoadVideo(Projection mProjection, ILatLng center, float zoom){
-		if(lastCenterPoint == null || mProjection == null) return true;
+	public boolean isLoadVideo(MapboxMap mapboxMap, Point center, double zoom){
+		if(lastCenterPoint == null || mapboxMap == null) return true;
 		setCurrentZoomLevel(zoom);
-		PointF currentPoint= mProjection.toPixels(center, null);
-		PointF lastScreenPoint = mProjection.toPixels(lastCenterPoint, null);
-		mLog.d("判断地图移动的距离，lastScreenPoint.x "+lastScreenPoint.x+
-				" lastScreenPoint.y"+lastScreenPoint.y+
-				" currentPoint.x "+currentPoint.x +
-				" currentPoint.y "+currentPoint.y );
-		if(Math.abs(lastScreenPoint.x-currentPoint.x)>refreshDistance||
-				Math.abs(lastScreenPoint.y-currentPoint.y)>refreshDistance){
+		ScreenCoordinate currentPoint = mapboxMap.pixelForCoordinate(center);
+		ScreenCoordinate lastScreenPoint = mapboxMap.pixelForCoordinate(lastCenterPoint);
+		mLog.d("判断地图移动的距离，lastScreenPoint.x "+lastScreenPoint.getX()+
+				" lastScreenPoint.y"+lastScreenPoint.getY()+
+				" currentPoint.x "+currentPoint.getX() +
+				" currentPoint.y "+currentPoint.getY() );
+		if(Math.abs(lastScreenPoint.getX()-currentPoint.getX())>refreshDistance||
+				Math.abs(lastScreenPoint.getY()-currentPoint.getY())>refreshDistance){
 			mLog.d("isLoadVideo true scale "+getScale()+" zoom "+zoom);
 			return true;
 		}
@@ -74,7 +72,7 @@ public class MapBoxVideoLoadController extends BaseMapVideoLoadController{
 
 	@Override
 	protected int getScale() {
-		int index = Math.round(getCurrentZoomLevel());
+		int index = (int) Math.round(getCurrentZoomLevel());
 		if (index < 4){
 			mLog.d("getScale error index "+index);
 			index = 4;
@@ -91,13 +89,13 @@ public class MapBoxVideoLoadController extends BaseMapVideoLoadController{
 		return Math.abs(getCurrentZoomLevel() - AppContext.getSysCode().getMaxlevel(MapControllOption.Default_Max_level)) <= 1;
 	}
 	
-	public void loadVideo(Projection projection, String topic){
-		if(projection == null){
+	public void loadVideo(MapboxMap mapboxMap, String topic){
+		if(mapboxMap == null){
 			mLog.e(" 获取视频数据，但projection wie空，返回");
 			return;
 		}
-		loadHotVideoList(projection, topic);
-		loadMoreVideos(projection,topic);
+		loadHotVideoList(mapboxMap, topic);
+		loadMoreVideos(mapboxMap,topic);
 	}
 	
 	public void loadVideo(MyLatLng bottomLeft, MyLatLng topRight, String topic){
@@ -105,23 +103,23 @@ public class MapBoxVideoLoadController extends BaseMapVideoLoadController{
 		loadMoreVideos(bottomLeft, topRight, topic);
 	}
 	
-	private void loadHotVideoList(Projection projection, String topic){
-		ILatLng bottomLeft = projection.fromPixels(0, mapViewHeight);
-		ILatLng topRight = projection.fromPixels(mapViewWidth, 0);
-		loadHotVideoList(new MyLatLng(bottomLeft.getLatitude(), bottomLeft.getLongitude()), new MyLatLng(topRight.getLatitude(), topRight.getLongitude()),topic);
+	private void loadHotVideoList(MapboxMap mapboxMap, String topic){
+		Point bottomLeft = mapboxMap.coordinateForPixel(new ScreenCoordinate(0, mapViewHeight));
+		Point topRight = mapboxMap.coordinateForPixel(new ScreenCoordinate(mapViewWidth, 0));
+		loadHotVideoList(new MyLatLng(bottomLeft.latitude(), bottomLeft.longitude()), new MyLatLng(topRight.latitude(), topRight.longitude()),topic);
 	}
 	
-	private void loadMoreVideos(Projection projection, String topic){
-		ILatLng bottomLeft = projection.fromPixels(0, mapViewHeight);
-		ILatLng topRight = projection.fromPixels(mapViewWidth, 0);
-		loadMoreVideos(new MyLatLng(bottomLeft.getLatitude(), bottomLeft.getLongitude()), new MyLatLng(topRight.getLatitude(), topRight.getLongitude()),topic);
+	private void loadMoreVideos(MapboxMap mapboxMap, String topic){
+		Point bottomLeft = mapboxMap.coordinateForPixel(new ScreenCoordinate(0, mapViewHeight));
+		Point topRight = mapboxMap.coordinateForPixel(new ScreenCoordinate(mapViewWidth, 0));
+		loadMoreVideos(new MyLatLng(bottomLeft.latitude(), bottomLeft.longitude()), new MyLatLng(topRight.latitude(), topRight.longitude()),topic);
 	}
 
 	@Override
 	public void saveLatestParameter(MyLatLng curCenterPoint) {
 		super.saveLatestParameter(curCenterPoint);
 		if (curCenterPoint == null) return;
-		lastCenterPoint = new LatLng(curCenterPoint.getLat(), curCenterPoint.getLon());
+		lastCenterPoint = Point.fromLngLat(curCenterPoint.getLon(), curCenterPoint.getLat());
 	}
 	
 
