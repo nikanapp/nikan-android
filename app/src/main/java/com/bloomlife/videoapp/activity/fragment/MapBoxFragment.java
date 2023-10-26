@@ -271,7 +271,7 @@ public class MapBoxFragment extends BaseMapFragment {
                 .build();
         mController.setCamera(build);
 
-        mController.loadStyleUri(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
+        mController.loadStyleUri("mapbox://styles/nikanapp/clo7oy6tb008f01rce5kf4i9g", new Style.OnStyleLoaded() {
             @Override
             public void onStyleLoaded(@NotNull Style style) {
                 style.addImage(ICON_DOT_FEMALE, BitmapFactory.decodeResource(getResources(), R.drawable.play_dot_female));
