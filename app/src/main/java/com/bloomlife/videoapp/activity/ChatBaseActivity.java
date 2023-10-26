@@ -3,26 +3,14 @@
  */
 package com.bloomlife.videoapp.activity;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import androidx.core.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.bloomlife.android.framework.BaseActivity;
-import com.bloomlife.videoapp.app.DbHelper;
-import com.bloomlife.videoapp.app.MyHXSDKHelper;
-import com.bloomlife.videoapp.model.ChatBean;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMMessage;
-import com.easemob.chat.EMMessage.Type;
-import com.easemob.chat.NotificationCompat;
-import com.easemob.chat.TextMessageBody;
-import com.easemob.util.EasyUtils;
-
-import net.tsz.afinal.FinalActivity;
 
 /**
  * @author <a href="mailto:xiai.fei@gmail.com">xiai_fei</a>

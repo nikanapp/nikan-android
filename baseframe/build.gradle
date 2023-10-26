@@ -1,12 +1,13 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 28
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 19
+        useLibrary 'org.apache.http.legacy'
     }
 
     buildTypes {
@@ -60,5 +61,5 @@ dependencies {
     compile files('libs/umeng-analytics-v5.2.4.jar')
     compile files('libs/umeng-update-v2.4.2.jar')
 
-    implementation('com.android.support:support-v4:21.+')
+    implementation('androidx.legacy:legacy-support-v4:1.0.0')
 }

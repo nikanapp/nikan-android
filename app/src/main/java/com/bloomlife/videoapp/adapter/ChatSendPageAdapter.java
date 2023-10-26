@@ -7,7 +7,7 @@ import com.bloomlife.videoapp.view.ChatSendToolController;
 import com.bloomlife.videoapp.view.ChatAudioRecorderController;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
+import androidx.core.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 

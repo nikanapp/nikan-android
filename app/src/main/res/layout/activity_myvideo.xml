@@ -106,12 +106,12 @@
             android:src="@drawable/btn_my_videos_edit"/>
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
+    <androidx.core.view.ViewPager
         android:id="@+id/activity_myvideo_layout"
         android:layout_below="@+id/activity_myvideo_title_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-    </android.support.v4.view.ViewPager>
+    </androidx.core.view.ViewPager>
 
 </RelativeLayout>

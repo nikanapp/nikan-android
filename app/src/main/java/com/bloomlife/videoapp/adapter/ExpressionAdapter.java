@@ -10,14 +10,11 @@ import com.bloomlife.videoapp.model.Dynamicimg;
 import com.bloomlife.videoapp.view.ExpressionLayout;
 import com.bloomlife.videoapp.view.dialog.ExpressionWindow.ExpressionListener;
 
-import android.R;
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.view.LayoutInflater;
+import androidx.core.view.PagerAdapter;
+
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
-import android.widget.TextView;
 
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>

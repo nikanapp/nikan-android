@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+import androidx.core.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -49,7 +49,6 @@ import com.bloomlife.videoapp.view.dialog.MoreDialog;
 
 import net.tsz.afinal.annotation.view.ViewInject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.bloomlife.videoapp.activity.fragment.StoryVideoPlayerFragment.*;

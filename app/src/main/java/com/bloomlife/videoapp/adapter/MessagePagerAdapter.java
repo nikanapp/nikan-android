@@ -5,9 +5,9 @@ package com.bloomlife.videoapp.adapter;
 
 import java.util.List;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.core.app.Fragment;
+import androidx.core.app.FragmentManager;
+import androidx.core.app.FragmentPagerAdapter;
 
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>

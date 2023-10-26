@@ -226,7 +226,7 @@ public abstract class BaseMapFragment extends Fragment implements View.OnClickLi
 
     protected abstract boolean changeMap(MyLatLng myLatLng);
 
-    protected abstract boolean changeMap(MyLatLng myLatLng, float zoom);
+    protected abstract boolean changeMap(MyLatLng myLatLng, double zoom);
 
     protected abstract void loadVideoData(String topic);
 

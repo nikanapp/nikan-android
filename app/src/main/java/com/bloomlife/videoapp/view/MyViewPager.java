@@ -4,10 +4,9 @@
 package com.bloomlife.videoapp.view;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
+import androidx.core.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>

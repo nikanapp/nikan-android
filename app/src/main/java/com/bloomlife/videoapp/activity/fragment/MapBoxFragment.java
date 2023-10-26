@@ -1,5 +1,9 @@
 package com.bloomlife.videoapp.activity.fragment;
 
+import static com.bloomlife.videoapp.common.CacheKeyConstants.LOCATION_LAST_VISIABL_AREA;
+import static com.bloomlife.videoapp.model.MapControllOption.Default_Max_level;
+import static com.bloomlife.videoapp.model.MapControllOption.Default_min_level;
+
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -8,9 +12,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -21,6 +22,9 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.bloomlife.android.bean.CacheBean;
 import com.bloomlife.android.common.util.UiUtils;
@@ -57,6 +61,7 @@ import com.mapbox.maps.plugin.animation.MapAnimationOptions;
 import com.mapbox.maps.plugin.annotation.AnnotationConfig;
 import com.mapbox.maps.plugin.annotation.AnnotationPlugin;
 import com.mapbox.maps.plugin.annotation.AnnotationPluginImplKt;
+import com.mapbox.maps.plugin.annotation.generated.OnPointAnnotationClickListener;
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotation;
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManager;
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManagerKt;
@@ -70,20 +75,15 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import net.tsz.afinal.annotation.view.ViewInject;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
-
-import static com.bloomlife.videoapp.common.CacheKeyConstants.LOCATION_LAST_VISIABL_AREA;
-import static com.bloomlife.videoapp.model.MapControllOption.Default_Max_level;
-import static com.bloomlife.videoapp.model.MapControllOption.Default_min_level;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/3.
@@ -292,6 +292,7 @@ public class MapBoxFragment extends BaseMapFragment {
 
                 AnnotationPlugin annotationApi = AnnotationPluginImplKt.getAnnotations(mMapView);
                 pointAnnotationManager = PointAnnotationManagerKt.createPointAnnotationManager(annotationApi, new AnnotationConfig());
+                pointAnnotationManager.addClickListener(mMarkerClickListener);
             }
         });
         GesturesPlugin plugin = mMapView.getPlugin(Plugin.MAPBOX_GESTURES_PLUGIN_ID);
@@ -307,7 +308,6 @@ public class MapBoxFragment extends BaseMapFragment {
                 return null;
             }
         });
-        mMapView.setMapViewListener(mMarkerClickListener);
 //        mMapView.getMapOverlay().setLoadingBackgroundColor(getResources().getColor(R.color.fragment_mapbox_background));
 //        mMapView.getMapOverlay().setLoadingLineColor(getResources().getColor(R.color.fragment_mapbox_line_color));
 
@@ -403,78 +403,45 @@ public class MapBoxFragment extends BaseMapFragment {
     private Video mTapMoreVideo;
     private PointAnnotation mTapMoreMarker;
 
-    private MapViewListener mMarkerClickListener = new MapViewListener() {
+    private OnPointAnnotationClickListener mMarkerClickListener = new OnPointAnnotationClickListener() {
 
         @Override
-        public void onTapMarker(final MapView pMapView, final Marker pMarker) {
+        public boolean onAnnotationClick(@NotNull final PointAnnotation annotation) {
             // 大点被点击
-            if (pMarker instanceof HotVideoMarker){
-                Video v = ((HotVideoMarker)pMarker).getVideo();
+            if (mHotMarkers.containsKey(annotation)){
+                Video v = mHotMarkers.get(annotation);
                 ScreenCoordinate coordinate = getScreenPoint(Double.parseDouble(v.getLat()), Double.parseDouble(v.getLon()));
                 startHotAnim((float) coordinate.getX(), (float) coordinate.getY());
                 jumpToPlayVideo(v);
                 stopDisplayWindow();
-                return;
+                return true;
             }
             // 小点被点击
-            if (pMarker instanceof MoreVideoMarker){
-                MoreVideoResult.MoreVideoVo mv = ((MoreVideoMarker)pMarker).getMoreVideo();
+            if (mMoreMarkers.containsKey(annotation)){
+                MoreVideoResult.MoreVideoVo mv = mMoreMarkers.get(annotation);
                 mTapMoreVideo = Video.makeByMore(mv);
                 mHandler.postDelayed(new Runnable() {
 
                     @Override
                     public void run() {
-                        pMapView.clearMarkerFocus();
-                        pointAnnotationManager.delete(pMarker);
-
+                        pointAnnotationManager.delete(annotation);
                         if (mTapMoreMarker != null)
                             pointAnnotationManager.delete(mTapMoreMarker);
-                        PointAnnotationOptions options = drawVideoPoint(mTapMoreVideo, true);
+                        HotMarkerOptions options = drawVideoPoint(mTapMoreVideo, true);
                         if (options != null) {
-                            mTapMoreMarker = pointAnnotationManager.create(options);
-                            if (mTapMoreVideo.isSendVideo())  {
+                            mTapMoreMarker = pointAnnotationManager.create(options.options);
+                            if (options.video.isSendVideo())  {
                                 mSendMarker = mTapMoreMarker;
                             }
                         }
                     }
                 }, 500);
-
                 MyLatLng center = new MyLatLng(Double.parseDouble(mv.getLat()), Double.parseDouble(mv.getLon()));
-                changeMap(center, pMapView.getZoomLevel()+2);
+                changeMap(center, mController.getCameraState().getZoom() + 2);
                 stopDisplayWindow();
-                return;
+                return true;
             }
-
-        }
-
-        @Override
-        public void onTapMap(MapView pMapView, ILatLng pPosition) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void onShowMarker(MapView pMapView, Marker pMarker) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void onLongPressMarker(MapView pMapView, Marker pMarker) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void onLongPressMap(MapView pMapView, ILatLng pPosition) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void onHideMarker(MapView pMapView, Marker pMarker) {
-            // TODO Auto-generated method stub
-
+            return false;
         }
     };
 
@@ -587,9 +554,9 @@ public class MapBoxFragment extends BaseMapFragment {
     }
 
     @Override
-    protected boolean changeMap(MyLatLng myLatLng, float zoom) {
+    protected boolean changeMap(MyLatLng myLatLng, double zoom) {
         Point center = Point.fromLngLat(myLatLng.getLon(), myLatLng.getLat());
-        CameraAnimationsUtils.flyTo(mController, new CameraOptions.Builder().center(center).zoom((double) zoom).build(),
+        CameraAnimationsUtils.flyTo(mController, new CameraOptions.Builder().center(center).zoom(zoom).build(),
                 new MapAnimationOptions.Builder().duration(FLY_DURATION).build());
         return true;
     }
@@ -748,11 +715,11 @@ public class MapBoxFragment extends BaseMapFragment {
         inAnim.start();
     }
 
-    private List<PointAnnotationOptions> mHotMarkerOptions = new ArrayList<>();
-    private List<PointAnnotationOptions> mMoreMarkerOptions = new ArrayList<>();
+    private List<HotMarkerOptions> mHotMarkerOptions = new ArrayList<>();
+    private List<MoreMarkerOptions> mMoreMarkerOptions = new ArrayList<>();
 
-    private List<PointAnnotation> mHotMarkers = new ArrayList<>();
-    private List<PointAnnotation> mMoreMarkers = new ArrayList<>();
+    private Map<PointAnnotation, Video> mHotMarkers = new HashMap<>();
+    private Map<PointAnnotation, MoreVideoResult.MoreVideoVo> mMoreMarkers = new HashMap<>();
 
     private PointAnnotation mUserMarker;
     private PointAnnotation mSendMarker;
@@ -765,7 +732,6 @@ public class MapBoxFragment extends BaseMapFragment {
     @Override
     public void showProgress(boolean show) {
         super.showProgress(show);
-        String androidId = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
         if (show){
             mHotDotLoad = false;
             mMoreDotLoad = false;
@@ -781,7 +747,7 @@ public class MapBoxFragment extends BaseMapFragment {
         // mController.clearMarkerFocus();
         Log.v(TAG, "isHotAnimationFinish = false");
         if (!mHotMarkers.isEmpty()){
-            pointAnnotationManager.delete(mHotMarkers);
+            pointAnnotationManager.delete(new ArrayList<>(mHotMarkers.keySet()));
             mHotMarkers.clear();
         }
         boolean isContain = false;
@@ -807,28 +773,28 @@ public class MapBoxFragment extends BaseMapFragment {
             mVideoList.add(mTapMoreVideo);
         }
         // 原来的小点有可能会和新返回的大点叠加，所以要检查一遍，把会叠加的去掉。
-        for (PointAnnotation marker: mMoreMarkers) {
-            MoreVideoResult.MoreVideoVo video = marker.getId();
-            if (videoCacheMap.containsKey(video.getVideoid()) || isOnHotdot(video))
-                pointAnnotationManager.delete(marker);
+        for (Map.Entry<PointAnnotation, MoreVideoResult.MoreVideoVo> entry: mMoreMarkers.entrySet()) {
+            if (videoCacheMap.containsKey(entry.getValue().getVideoid()) || isOnHotdot(entry.getValue()))
+                pointAnnotationManager.delete(entry.getKey());
         }
         showRandomVideoWindow();
     }
 
     private void addHotMarker(Video v){
-        PointAnnotationOptions options = drawVideoPoint(v, false);
+        HotMarkerOptions options = drawVideoPoint(v, false);
         if (options != null)
             mHotMarkerOptions.add(options);
     }
 
-    private void addHotMarkerToMap(List<PointAnnotationOptions> optionsList){
-        for (PointAnnotationOptions options:optionsList) {
-            PointAnnotation marker = pointAnnotationManager.create(options);
-            mHotMarkers.add(marker);
-            if (options.get.isSendVideo())  {
+    private void addHotMarkerToMap(List<HotMarkerOptions> optionsList){
+        for (HotMarkerOptions options:optionsList) {
+            PointAnnotation marker = pointAnnotationManager.create(options.options);
+            mHotMarkers.put(marker, options.video);
+            if (options.video.isSendVideo())  {
                 mSendMarker = marker;
             }
         }
+        optionsList.clear();
         // 用户位置的点要放在最后面绘制，防止绘制后挡在视频点前面
         drawUserLocation();
         mHotDotLoad = true;
@@ -851,7 +817,7 @@ public class MapBoxFragment extends BaseMapFragment {
         }
     }
 
-    private PointAnnotationOptions drawVideoPoint(Video video, boolean drawSendMarker){
+    private HotMarkerOptions drawVideoPoint(Video video, boolean drawSendMarker){
         ScreenCoordinate point = mController.pixelForCoordinate(Point.fromLngLat(Double.parseDouble(video.getLon()), Double.parseDouble(video.getLat())));
         if(point.getX()<=0||point.getY()<=0){
             Log.v(TAG, " x "+point.getX()+" y "+point.getY());
@@ -861,12 +827,46 @@ public class MapBoxFragment extends BaseMapFragment {
         return makeHotMarker(video, drawSendMarker);
     }
 
-    private PointAnnotationOptions makeHotMarker(Video video, boolean drawSendMarker){
-        String layerId = UUID.randomUUID().toString();
-        mSymbolVideoMap.put(layerId, video);
+    static class HotMarkerOptions {
+        private PointAnnotationOptions options;
+        private Video video;
+
+        public HotMarkerOptions(PointAnnotationOptions options, Video video) {
+            this.options = options;
+            this.video = video;
+        }
+
+        public PointAnnotationOptions getOptions() {
+            return options;
+        }
+
+        public Video getVideo() {
+            return video;
+        }
+    }
+
+    static class MoreMarkerOptions {
+        private PointAnnotationOptions options;
+        private MoreVideoResult.MoreVideoVo video;
+
+        public MoreMarkerOptions(PointAnnotationOptions options, MoreVideoResult.MoreVideoVo video) {
+            this.options = options;
+            this.video = video;
+        }
+
+        public PointAnnotationOptions getOptions() {
+            return options;
+        }
+
+        public MoreVideoResult.MoreVideoVo getVideo() {
+            return video;
+        }
+    }
+
+    private HotMarkerOptions makeHotMarker(Video video, boolean drawSendMarker){
         PointAnnotationOptions annotationOptions = new PointAnnotationOptions();
-        //annotationOptions.textAllowOverlap(true);
-        //annotationOptions.iconAllowOverlap(true);
+        // annotationOptions.textAllowOverlap(true);
+        // annotationOptions.iconAllowOverlap(true);
         annotationOptions.withPoint(getDrawLatLng(Double.parseDouble(video.getLat()), Double.parseDouble(video.getLon())));
         if(video.isSendVideo())  {
             if(!drawSendMarker&&!isSendAnimationFinish) return null;
@@ -878,17 +878,15 @@ public class MapBoxFragment extends BaseMapFragment {
             annotationOptions.withIconImage(video.isLook() ? ICON_DOT_MALE_VD : ICON_DOT_MALE);
         }
         annotationOptions.withIconAnchor(IconAnchor.BOTTOM);
-        return annotationOptions;
+        return new HotMarkerOptions(annotationOptions, video);
     }
 
-    private PointAnnotationOptions drawMoreVideoDot(MoreVideoResult.MoreVideoVo mv){
-        String layerId = UUID.randomUUID().toString();
-        mSymbolVideoMap.put(layerId, mv);
+    private MoreMarkerOptions drawMoreVideoDot(MoreVideoResult.MoreVideoVo mv){
         PointAnnotationOptions annotationOptions = new PointAnnotationOptions();
         annotationOptions.withPoint(getDrawLatLng(Double.parseDouble(mv.getLat()), Double.parseDouble(mv.getLon())));
         annotationOptions.withIconImage(ICON_DOT_INVERSION);
         annotationOptions.withIconAnchor(IconAnchor.BOTTOM);
-        return annotationOptions;
+        return new MoreMarkerOptions(annotationOptions, mv);
     }
 
     private boolean isUserFemale(){
@@ -907,7 +905,7 @@ public class MapBoxFragment extends BaseMapFragment {
     public void doLoadMoreVideoSuccess(MoreVideoResult result) {
         super.doLoadMoreVideoSuccess(result);
         if (!mMoreMarkers.isEmpty()){
-            pointAnnotationManager.delete(mMoreMarkers);
+            pointAnnotationManager.delete(new ArrayList<>(mMoreMarkers.keySet()));
             mMoreMarkers.clear();
         }
         mMoreMarkerOptions.clear();
@@ -924,12 +922,14 @@ public class MapBoxFragment extends BaseMapFragment {
         return Point.fromLngLat(mll.getLon(), mll.getLat());
     }
 
-    private void addMoreMarkerToMap(List<PointAnnotationOptions> mMoreMarkerOptions){
-        if (!mMoreMarkerOptions.isEmpty()) {
-            mMoreMarkers.addAll(pointAnnotationManager.create(mMoreMarkerOptions));
+    private void addMoreMarkerToMap(List<MoreMarkerOptions> moreMarkerOptions){
+        for (MoreMarkerOptions options:moreMarkerOptions) {
+            PointAnnotation marker = pointAnnotationManager.create(options.options);
+            mMoreMarkers.put(marker, options.video);
         }
+        moreMarkerOptions.clear();
         // 用户位置的点要放在最后面绘制，防止绘制后挡在视频点前面
-//		drawUserLocation();
+		//drawUserLocation();
     }
 
     /**
@@ -952,10 +952,10 @@ public class MapBoxFragment extends BaseMapFragment {
 
     @Override
     protected void addHotMarkerToMap(Video v) {
-        PointAnnotationOptions marker = makeHotMarker(v, false);
-        if (marker != null){
+        HotMarkerOptions options = makeHotMarker(v, false);
+        if (options != null){
             mVideoList.add(v);
-            mHotMarkers.add(pointAnnotationManager.create(marker));
+            mHotMarkers.put(pointAnnotationManager.create(options.options), options.video);
         }
     }
 

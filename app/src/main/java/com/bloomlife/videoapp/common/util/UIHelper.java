@@ -18,7 +18,7 @@ import android.graphics.Matrix;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.v4.view.ViewPager;
+import androidx.core.view.ViewPager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -33,7 +33,6 @@ import android.widget.TextView;
 import com.bloomlife.android.common.util.UiUtils;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.app.AppContext;
-import com.bloomlife.videoapp.model.Emotion;
 import com.easemob.chat.ImageMessageBody;
 
 /**

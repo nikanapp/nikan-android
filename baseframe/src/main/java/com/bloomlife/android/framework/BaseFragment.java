@@ -3,7 +3,7 @@
  */
 package com.bloomlife.android.framework;
 
-import android.support.v4.app.Fragment;
+import androidx.core.app.Fragment;
 
 import com.cyou.cyanalyticv3.CYAgent;
 import com.umeng.analytics.MobclickAgent;

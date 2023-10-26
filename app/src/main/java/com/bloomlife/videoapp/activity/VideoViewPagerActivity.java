@@ -11,9 +11,9 @@ import java.util.Map;
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.core.app.FragmentActivity;
+import androidx.core.view.ViewPager;
+import androidx.core.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 
 import com.bloomlife.videoapp.R;

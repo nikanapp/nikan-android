@@ -1,6 +1,6 @@
 package com.mapbox.mapboxsdk.clustering.algo;
 
-import android.support.v4.util.LruCache;
+import androidx.core.util.LruCache;
 import android.util.Log;
 
 import com.mapbox.mapboxsdk.clustering.Cluster;

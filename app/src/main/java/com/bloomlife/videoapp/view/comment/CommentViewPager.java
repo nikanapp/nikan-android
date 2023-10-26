@@ -4,11 +4,9 @@
 package com.bloomlife.videoapp.view.comment;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
+import androidx.core.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-
-import com.jfeinstein.jazzyviewpager.JazzyViewPager;
 
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>

@@ -1,7 +1,7 @@
 package us.pinguo.edit.sdk;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import androidx.core.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;

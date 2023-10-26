@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.support.v4.util.LongSparseArray;
+import androidx.core.util.LongSparseArray;
 import android.util.LruCache;
 import android.widget.ImageView;
 

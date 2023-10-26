@@ -19,8 +19,8 @@ package com.bloomlife.android.media.image;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.util.LruCache;
+import androidx.core.app.FragmentActivity;
+import androidx.core.util.LruCache;
 
 import java.io.File;
 
