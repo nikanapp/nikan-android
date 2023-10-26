@@ -14,6 +14,8 @@ import com.bloomlife.videoapp.model.Menu;
 
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/4.
  */
@@ -26,7 +28,7 @@ public class MenuAdapter extends BaseAdapter<DymainicMenu> {
         View redDot;
     }
 
-    public MenuAdapter(Activity activity, List<DymainicMenu> dataList) {
+    public MenuAdapter(FragmentActivity activity, List<DymainicMenu> dataList) {
         super(activity, dataList);
     }
 

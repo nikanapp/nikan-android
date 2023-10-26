@@ -48,9 +48,9 @@ public class BaiduLocationListener implements LocationListener{
 	private Context mContext;
 	public BaiduLocationListener(Context context){
 		this.mContext = context;
-		 mLocationClient = new LocationClient(context);     // 声明LocationClient类
-		    mLocationClient.registerLocationListener( myListener );    // 注册监听函数
-		    mLocationClient.setLocOption(getOption());
+		mLocationClient = new LocationClient(context);     // 声明LocationClient类
+		mLocationClient.registerLocationListener( myListener );    // 注册监听函数
+		mLocationClient.setLocOption(getOption());
 	}
 	
 	@Override

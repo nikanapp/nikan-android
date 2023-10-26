@@ -5,7 +5,7 @@ package com.bloomlife.videoapp.adapter;
 
 import java.util.List;
 
-import android.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 
 import com.bloomlife.videoapp.activity.fragment.MyVideoPlayFragment;

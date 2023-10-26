@@ -27,6 +27,8 @@ import com.bloomlife.videoapp.model.NotificationMessage;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
  *
@@ -40,7 +42,7 @@ public class NotificationListAdapter extends AbstractAdapter<NotificationMessage
 	private Context mContext;
 	private Random mRandom;
 
-	public NotificationListAdapter(Activity activity, List<NotificationMessage> dataList) {
+	public NotificationListAdapter(FragmentActivity activity, List<NotificationMessage> dataList) {
 		super(activity, dataList);
 		mInflater = LayoutInflater.from(activity);
 		mOption = ImageLoaderUtils.getMsgImageLoadOption();

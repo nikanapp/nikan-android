@@ -11,7 +11,7 @@ import com.bloomlife.videoapp.view.ExpressionLayout;
 import com.bloomlife.videoapp.view.dialog.ExpressionWindow.ExpressionListener;
 
 import android.content.Context;
-import androidx.core.view.PagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 
 import android.view.View;
 import android.view.ViewGroup;

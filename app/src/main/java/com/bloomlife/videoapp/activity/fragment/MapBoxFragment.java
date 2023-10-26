@@ -258,11 +258,8 @@ public class MapBoxFragment extends BaseMapFragment {
     public static final String ICON_DOT_INVERSION = "dotInversion";
     public static final String ICON_FEMALE_LOCATION = "femaleLocation";
     public static final String ICON_MALE_LOCATION = "maleLocation";
-    public static final String ICON_SOURCE_ID = "iconSource";
 
     private PointAnnotationManager pointAnnotationManager;
-
-    private List<Feature> symbolLayerIconFeatureList = new ArrayList<>();
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -271,8 +268,6 @@ public class MapBoxFragment extends BaseMapFragment {
         mController = mMapView.getMapboxMap();
         CameraOptions build = new CameraOptions.Builder()
                 .center(getUserLatLng())
-                .bearing(-17.6)
-                .pitch(60.0)
                 .build();
         mController.setCamera(build);
 

@@ -32,12 +32,14 @@ import com.bloomlife.videoapp.model.Menu;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/3.
  */
 public class MainMenuWindow extends FrameLayout {
 
-    private Activity mActivity;
+    private FragmentActivity mActivity;
     private MenuAdapter mAdapter;
     private ListView mButtonList;
     private OnDismissListener mOnDismissListener;
@@ -67,7 +69,7 @@ public class MainMenuWindow extends FrameLayout {
     private void init(Context context){
         View layout = inflate(context, R.layout.layout_main_menu, this);
         if (isInEditMode()) return;
-        mActivity = (Activity) context;
+        mActivity = (FragmentActivity) context;
         mButtonList = (ListView) layout.findViewById(R.id.main_menu_button_list);
         mAdapter = new MenuAdapter(mActivity, getButtonList());
         mButtonList.setAdapter(mAdapter);

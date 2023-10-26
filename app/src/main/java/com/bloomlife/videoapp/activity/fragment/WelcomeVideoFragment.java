@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
 
-import android.app.FragmentTransaction;
+import androidx.fragment.app.FragmentTransaction;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnPreparedListener;
@@ -157,11 +157,7 @@ public class WelcomeVideoFragment extends AbstractWelcomeFragment implements OnC
 		}
 	}
 	public void showInitFragment(){
-		if(getFragmentManager()==null){
-			Log.e(TAG, " fragment already close , fragment manager is null");
-			return ;
-		}
-		FragmentTransaction  fragmentTransaction = getFragmentManager().beginTransaction();
+		FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
 		fragmentTransaction.setCustomAnimations(R.anim.animation_alpha_in, R.anim.animation_alpha_out);
 		fragmentTransaction.replace(R.id.activity_spalsh_layout, new WelcomeInitFragment());
 		fragmentTransaction.commit();

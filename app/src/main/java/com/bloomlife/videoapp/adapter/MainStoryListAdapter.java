@@ -17,6 +17,8 @@ import com.bloomlife.videoapp.model.Story;
 import java.util.List;
 import java.util.Random;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/3.
  */
@@ -32,7 +34,7 @@ public class MainStoryListAdapter extends MainStorysAdapter {
     private int mWidth;
     private int mHeight;
 
-    public MainStoryListAdapter(Activity activity, List<Story> dataList) {
+    public MainStoryListAdapter(FragmentActivity activity, List<Story> dataList) {
         super(activity, dataList);
         mWidth = activity.getResources().getDisplayMetrics().widthPixels;
         mHeight = mWidth / UiUtils.dip2px(activity, 360) * UiUtils.dip2px(activity, 203);

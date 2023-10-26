@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * 
  * 	  简单封装了常用操作的adapter
@@ -25,9 +27,9 @@ public abstract  class AbstractAdapter<T> extends BaseAdapter{
 	
 	protected List<T> dataList ;
 	
-	protected Activity activity ;
+	protected FragmentActivity activity ;
 	
-	public AbstractAdapter (Activity activity , List<T> dataList){
+	public AbstractAdapter (FragmentActivity activity , List<T> dataList){
 		this.activity = activity ;
 		this.dataList = dataList ;
 	}

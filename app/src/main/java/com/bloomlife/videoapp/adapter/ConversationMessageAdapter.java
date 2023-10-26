@@ -33,6 +33,8 @@ import com.bloomlife.videoapp.model.Video;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * @author <a href="mailto:xiai.fei@gmail.com">xiai_fei</a>  
  *
@@ -49,7 +51,7 @@ public class ConversationMessageAdapter extends AbstractAdapter<ConversationMess
 	private Random mRandom;
 	private Context mContext;
 	
-	public ConversationMessageAdapter(Activity activity, List<ConversationMessage> dataList) {
+	public ConversationMessageAdapter(FragmentActivity activity, List<ConversationMessage> dataList) {
 		super(activity, dataList);
 		mRandom = new Random();
 		mContext = activity;

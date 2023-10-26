@@ -20,6 +20,6 @@ android {
 
 dependencies {
     compile project(':baseframe')
-    compile('androidx.legacy:legacy-support-v4:1.0.0')
     compile files('libs/PG_Edit_Base_SDK.jar')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

@@ -23,6 +23,8 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListe
 
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/7/31.
  */
@@ -41,7 +43,7 @@ public class MainStorysAdapter extends BaseAdapter<Story> implements View.OnClic
     private Drawable mFemale;
     private Drawable mMale;
 
-    public MainStorysAdapter(Activity activity, List<Story> dataList) {
+    public MainStorysAdapter(FragmentActivity activity, List<Story> dataList) {
         super(activity, dataList);
         mFemale = activity.getResources().getDrawable(R.drawable.icon_user_info_female);
         mFemale.setBounds(0, 0, mFemale.getMinimumWidth(), mFemale.getMinimumHeight());

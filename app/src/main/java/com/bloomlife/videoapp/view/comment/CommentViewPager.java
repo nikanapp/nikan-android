@@ -4,7 +4,7 @@
 package com.bloomlife.videoapp.view.comment;
 
 import android.content.Context;
-import androidx.core.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 

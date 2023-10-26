@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.support.multidex.MultiDex;
 import android.util.Log;
 
 import com.bloomlife.android.bean.CacheBean;
@@ -25,6 +24,8 @@ import com.umeng.analytics.MobclickAgent;
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+
+import androidx.multidex.MultiDex;
 //import com.bloomlife.videoapp.manager.LocationManager;
 
 /**

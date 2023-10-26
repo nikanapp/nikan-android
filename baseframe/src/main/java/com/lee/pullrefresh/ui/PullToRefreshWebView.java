@@ -43,7 +43,6 @@ public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
     }
 
     /**
-     * @see com.nj1s.lib.pullrefresh.PullToRefreshBase#createRefreshableView(android.content.Context, android.util.AttributeSet)
      */
     @Override
     protected WebView createRefreshableView(Context context, AttributeSet attrs) {
@@ -52,7 +51,6 @@ public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
     }
 
     /**
-     * @see com.nj1s.lib.pullrefresh.PullToRefreshBase#isReadyForPullDown()
      */
     @Override
     protected boolean isReadyForPullDown() {
@@ -60,11 +58,10 @@ public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
     }
 
     /**
-     * @see com.nj1s.lib.pullrefresh.PullToRefreshBase#isReadyForPullUp()
      */
     @Override
     protected boolean isReadyForPullUp() {
-        float exactContentHeight = FloatMath.floor(mRefreshableView.getContentHeight() * mRefreshableView.getScale());
+        float exactContentHeight = (float) Math.floor(mRefreshableView.getContentHeight() * mRefreshableView.getScale());
         return mRefreshableView.getScrollY() >= (exactContentHeight - mRefreshableView.getHeight());
     }
 }

@@ -15,12 +15,14 @@ import com.bloomlife.videoapp.model.User;
 import com.bloomlife.videoapp.model.UserInfo;
 import com.bloomlife.videoapp.model.Video;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/7/31.
  */
 public class DialogUtils {
 
-    public static void showUsarInfo(Activity activity, Account account){
+    public static void showUsarInfo(FragmentActivity activity, Account account){
         UserInfo userInfo = new UserInfo();
         userInfo.setId(account.getUserId());
         userInfo.setIconUrl(TextUtils.isEmpty(account.getSdcardUserIcon()) ? account.getUserIcon() : account.getSdcardUserIcon());
@@ -30,7 +32,7 @@ public class DialogUtils {
         showUserInfo(activity, userInfo);
     }
 
-    public static void showUserInfo(Activity activity, CommentText commentText){
+    public static void showUserInfo(FragmentActivity activity, CommentText commentText){
         UserInfo userInfo = new UserInfo();
         userInfo.setName(commentText.getUsername());
         userInfo.setIconUrl(commentText.getUsericon());
@@ -39,7 +41,7 @@ public class DialogUtils {
         showUserInfo(activity, userInfo);
     }
 
-    public static void showUserInfo(Activity activity, NotificationMessage msg){
+    public static void showUserInfo(FragmentActivity activity, NotificationMessage msg){
         UserInfo userInfo = new UserInfo();
         userInfo.setName(msg.getExtra().getUsername());
         userInfo.setId(msg.getExtra().getUserid());
@@ -47,7 +49,7 @@ public class DialogUtils {
         showUserInfo(activity, userInfo);
     }
 
-    public static void showUserInfo(Activity activity){
+    public static void showUserInfo(FragmentActivity activity){
         UserInfo userInfo = new UserInfo();
         userInfo.setName("");
         userInfo.setIconUrl("");
@@ -57,7 +59,7 @@ public class DialogUtils {
         showUserInfo(activity, userInfo);
     }
 
-    public static void showUserInfo(Activity activity, ChatBean chatBean){
+    public static void showUserInfo(FragmentActivity activity, ChatBean chatBean){
         UserInfo userInfo = new UserInfo();
         userInfo.setName(chatBean.getUserName());
         userInfo.setIconUrl(chatBean.getUserIcon());
@@ -67,12 +69,12 @@ public class DialogUtils {
         showUserInfo(activity, userInfo);
     }
 
-    public static void showAccountDialog(Activity activity){
+    public static void showAccountDialog(FragmentActivity activity){
         AccountDialog dialog = new AccountDialog();
         dialog.show(activity);
     }
 
-    public static void showEditDialog(Activity activity, Account account){
+    public static void showEditDialog(FragmentActivity activity, Account account){
         Bundle bundle = new Bundle();
         bundle.putParcelable(EditUserInfoDialog.INTENT_ACCOUNT, account);
         EditUserInfoDialog userInfoDialog = new EditUserInfoDialog();
@@ -81,7 +83,7 @@ public class DialogUtils {
     }
 
 
-    public static void showUserInfo(Activity activity, Recommend rd){
+    public static void showUserInfo(FragmentActivity activity, Recommend rd){
         if (activity == null || rd == null) return;
         UserInfo userInfo = new UserInfo();
         userInfo.setId(rd.getId());
@@ -95,7 +97,7 @@ public class DialogUtils {
         showUserInfo(activity, userInfo);
     }
 
-    public static void showUserInfo(Activity activity, Story story){
+    public static void showUserInfo(FragmentActivity activity, Story story){
         if (activity == null || story == null) return;
         UserInfo userInfo = new UserInfo();
         userInfo.setId(story.getUid());
@@ -111,11 +113,11 @@ public class DialogUtils {
         showUserInfo(activity, userInfo);
     }
 
-    public static void showUserInfo(Activity activity, User user){
+    public static void showUserInfo(FragmentActivity activity, User user){
         showUserInfo(activity, user, null);
     }
 
-    public static void showUserInfo(Activity activity, User user, UserInfoDialog.OnUserStatusChangeListener listener){
+    public static void showUserInfo(FragmentActivity activity, User user, UserInfoDialog.OnUserStatusChangeListener listener){
         if (activity == null || user == null) return;
         UserInfo userInfo = new UserInfo();
         userInfo.setName(user.getUsername());
@@ -129,11 +131,11 @@ public class DialogUtils {
         showUserInfo(activity, userInfo, listener);
     }
 
-    public static void showUserInfo(Activity activity, UserInfo userInfo){
+    public static void showUserInfo(FragmentActivity activity, UserInfo userInfo){
         showUserInfo(activity, userInfo, null);
     }
 
-    public static void showUserInfo(Activity activity, UserInfo userInfo, UserInfoDialog.OnUserStatusChangeListener listener){
+    public static void showUserInfo(FragmentActivity activity, UserInfo userInfo, UserInfoDialog.OnUserStatusChangeListener listener){
         Bundle bundle = new Bundle();
         bundle.putParcelable(UserInfoDialog.INTENT_USER_INFO, userInfo);
         UserInfoDialog userInfoDialog = new UserInfoDialog();
@@ -142,13 +144,13 @@ public class DialogUtils {
         userInfoDialog.show(activity);
     }
 
-    public static void showUserInfo(Activity activity, String userId){
+    public static void showUserInfo(FragmentActivity activity, String userId){
         UserInfo info = new UserInfo();
         info.setId(userId);
         showUserInfo(activity, info);
     }
 
-    public static void showLikeList(Activity activity, String storyId, BaseDialog.OnDismissListener l){
+    public static void showLikeList(FragmentActivity activity, String storyId, BaseDialog.OnDismissListener l){
         LikeListDialog dialog = new LikeListDialog();
         Bundle bundle = new Bundle();
         bundle.putString(LikeListDialog.INTENT_STORY_ID, storyId);
@@ -157,7 +159,7 @@ public class DialogUtils {
         dialog.show(activity);
     }
 
-    public static void showRecommendList(Activity activity){
+    public static void showRecommendList(FragmentActivity activity){
         RecommendListDialog dialog = new RecommendListDialog();
         Bundle bundle = new Bundle();
         dialog.setArguments(bundle);

@@ -17,17 +17,17 @@
 package com.bloomlife.android.framework;
 
 import android.os.Parcelable;
-import androidx.core.app.Fragment;
-import androidx.core.app.FragmentManager;
-import androidx.core.app.FragmentStatePagerAdapter;
-import androidx.core.app.FragmentTransaction;
-import androidx.core.view.PagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Implementation of {@link androidx.core.view.PagerAdapter} that
+ * Implementation of {@link androidx.viewpager.widget.PagerAdapter} that
  * represents each page as a {@link Fragment} that is persistently
  * kept in the fragment manager as long as the user can return to the page.
  *

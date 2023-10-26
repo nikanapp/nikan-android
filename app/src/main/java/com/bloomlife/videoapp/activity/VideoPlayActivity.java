@@ -4,7 +4,9 @@
 package com.bloomlife.videoapp.activity;
 
 import android.app.Activity;
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
 import android.os.Bundle;
 
 import com.bloomlife.videoapp.R;
@@ -16,7 +18,7 @@ import com.bloomlife.videoapp.model.Video;
  *
  * @date 2014年12月1日 下午7:23:58
  */
-public class VideoPlayActivity extends Activity {
+public class VideoPlayActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class VideoPlayActivity extends Activity {
 		bundle.putParcelable(AnonVideoPlayFragment.INTENT_VIDEO, new Video());
 		Fragment fragment = new AnonVideoPlayFragment();
 		fragment.setArguments(bundle);
-		getFragmentManager().beginTransaction().add(R.id.activity_video_play_layout, fragment).commit();
+		getSupportFragmentManager().beginTransaction().add(R.id.activity_video_play_layout, fragment).commit();
 	}
 	
 }

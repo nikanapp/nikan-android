@@ -7,9 +7,10 @@ import com.bloomlife.videoapp.view.ChatSendToolController;
 import com.bloomlife.videoapp.view.ChatAudioRecorderController;
 
 import android.content.Context;
-import androidx.core.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>

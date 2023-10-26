@@ -1,8 +1,8 @@
 package com.bloomlife.videoapp.adapter;
 
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 
 import com.bloomlife.videoapp.activity.fragment.FansListFragment;

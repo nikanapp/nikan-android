@@ -111,36 +111,37 @@ public class PushService extends BroadcastReceiver {
 		
 		
 
-		// 设置通知栏显示内容
-		Notification updateNotification = new Notification();
-//		updateNotification.defaults = Notification.DEFAULT_LIGHTS;
-		updateNotification.icon = R.drawable.ic_launcher;
-		updateNotification.tickerText = payloadStr;
-		updateNotification.flags |= Notification.FLAG_AUTO_CANCEL;
-		updateNotification.ledARGB = 0xff00ff00;
-		updateNotification.ledOffMS = 500;
-		updateNotification.ledOnMS = 500;
-		updateNotification.flags |= Notification.FLAG_SHOW_LIGHTS;
-
 		//设置点击通知之后的行为
 		Intent intent = new Intent(NotificationService.ACTION);
 		intent.putExtra(NotificationService.PUSH_PAYLOAD, load);
 		PendingIntent updatePendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-		setRingAndShake(updateNotification, load, context);
-		updateNotification.setLatestEventInfo(context, context.getString(R.string.app_name), payloadStr, updatePendingIntent);
-		
+
+		// 设置通知栏显示内容
+		Notification.Builder builder = new Notification.Builder(context);
+		builder.setContentTitle(context.getString(R.string.app_name));
+		builder.setContentText(payloadStr);
+		builder.setSmallIcon(R.drawable.ic_launcher);
+		builder.setContentIntent(updatePendingIntent);
+		builder.setTicker(payloadStr);
+		builder.setLights(0xff00ff00, 500, 500);
+
+		if (load != null) {
+			if (PayLoad.Swith_On == load.getSound()) {
+				builder.setSound(Uri.parse("android.resource://"+context.getPackageName()+"/"+R.raw.notification));
+			}
+			if (PayLoad.Swith_On==load.getVibration()) {
+				builder.setDefaults(Notification.DEFAULT_VIBRATE);
+			}
+		}
+
+		Notification updateNotification = builder.build();
+		updateNotification.flags |= Notification.FLAG_AUTO_CANCEL;
+		updateNotification.flags |= Notification.FLAG_SHOW_LIGHTS;
+
 		// 发出通知
 		updateNotificationManager.notify(random.nextInt(5), updateNotification);
 		MessageManager.getInstance().addSysInformNum(context,load==null?null:load.getMsgId());
 		unreadPushMessage++;
-	}
-	
-	private void setRingAndShake(Notification updateNotification, PayLoad payLoad, Context context){
-		if(payLoad==null) return ;
-		if(PayLoad.Swith_On == payLoad.getSound()) {
-			updateNotification.sound = Uri.parse("android.resource://"+context.getPackageName()+"/"+R.raw.notification);
-		}
-		if(PayLoad.Swith_On==payLoad.getVibration())updateNotification.defaults |= Notification.DEFAULT_VIBRATE;
 	}
 
 	@Override

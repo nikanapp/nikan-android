@@ -25,6 +25,8 @@ import com.bloomlife.videoapp.model.NotificationMessage;
 import com.bloomlife.videoapp.model.message.GetMsgNumMessage;
 import com.bloomlife.videoapp.model.result.GetMsgNumResult;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * @author <a href="mailto:xiai.fei@gmail.com">xiai_fei</a>
  * 
@@ -65,7 +67,7 @@ public class MessageManager {
 		return unreadSysInformNum;
 	}
 
-	public void updateUnreadMsgNum(final Activity activity, final Listener listener) {
+	public void updateUnreadMsgNum(final FragmentActivity activity, final Listener listener) {
 		if (!Utils.isLogin(activity)) return;
 		if (unreadCount < 0) { // 小于0代表没有从服务器通过过消息数
 			unreadCount = 0;

@@ -15,10 +15,10 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import androidx.core.app.Fragment;
-import androidx.core.app.FragmentActivity;
-import androidx.core.view.ViewPager;
-import androidx.core.view.ViewPager.OnPageChangeListener;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -157,7 +157,7 @@ public class MessageListActivity extends FragmentActivity implements OnClickList
 		}
 	}
 	
-	private OnPageChangeListener mOnPageChangeListener = new OnPageChangeListener() {
+	private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener() {
 		
 		@Override
 		public void onPageSelected(int arg0) {

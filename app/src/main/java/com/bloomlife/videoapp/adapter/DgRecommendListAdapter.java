@@ -12,6 +12,8 @@ import com.bloomlife.videoapp.model.Recommend;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/7/28.
  * 推荐用户列表适配器
@@ -21,7 +23,7 @@ public class DgRecommendListAdapter extends UserListAdapter<Recommend> {
     private List<Integer> mStates;
     private boolean mNotSelect;
 
-    public DgRecommendListAdapter(Activity activity, List<Recommend> dataList) {
+    public DgRecommendListAdapter(FragmentActivity activity, List<Recommend> dataList) {
         super(activity, dataList);
     }
 

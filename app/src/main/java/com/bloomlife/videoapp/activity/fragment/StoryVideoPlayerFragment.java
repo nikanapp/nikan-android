@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -31,6 +31,8 @@ import com.bloomlife.videoapp.view.VideoLoadView;
 
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/10.

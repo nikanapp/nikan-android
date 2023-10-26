@@ -23,10 +23,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import androidx.core.app.Fragment;
-import androidx.core.app.FragmentManager;
-import androidx.core.app.FragmentStatePagerAdapter;
-import androidx.core.view.ViewPager;
+import androidx.fragment.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -41,6 +38,9 @@ import com.bloomlife.android.R;
 import com.bloomlife.android.common.util.UiUtils;
 import com.bloomlife.android.framework.AppContext;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import emojicon.emoji.Emojicon;
 import emojicon.emoji.People;
 

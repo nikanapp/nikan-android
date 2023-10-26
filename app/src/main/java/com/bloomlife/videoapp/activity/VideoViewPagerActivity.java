@@ -11,9 +11,9 @@ import java.util.Map;
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
 import android.os.Bundle;
-import androidx.core.app.FragmentActivity;
-import androidx.core.view.ViewPager;
-import androidx.core.view.ViewPager.OnPageChangeListener;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import android.util.Log;
 
 import com.bloomlife.videoapp.R;
@@ -63,7 +63,7 @@ public class VideoViewPagerActivity extends FragmentActivity {
 		}
 		currentIndex = videoPosition;
 		Log.d(TAG, " currentInext = "+currentIndex);
-		mPagerAdapter = new VideoPagerAdapter(getFragmentManager(), mVideoList);
+		mPagerAdapter = new VideoPagerAdapter(getSupportFragmentManager(), mVideoList);
 		mViewPager.setAdapter(mPagerAdapter);
 		mViewPager.setCurrentItem(videoPosition);
 		mViewPager.setOnPageChangeListener(pageChangeListener);

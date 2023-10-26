@@ -17,8 +17,9 @@
 package com.bloomlife.videoapp.adapter;
 
 import android.annotation.TargetApi;
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.os.Build;
+
 
 /**
  * Helper for accessing features in {@link Fragment} introduced after

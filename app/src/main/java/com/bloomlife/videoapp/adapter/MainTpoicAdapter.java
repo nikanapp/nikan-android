@@ -14,6 +14,8 @@ import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 import android.widget.TextView;
 
+import androidx.fragment.app.FragmentActivity;
+
 public class MainTpoicAdapter extends AbstractAdapter<String> {
 	
 	private LayoutInflater mInflater;
@@ -21,7 +23,7 @@ public class MainTpoicAdapter extends AbstractAdapter<String> {
 	private boolean mEnabled = true;
 	private String selectTopic ;
 
-	public MainTpoicAdapter(Activity activity, List<String> dataList) {
+	public MainTpoicAdapter(FragmentActivity activity, List<String> dataList) {
 		super(activity, dataList);
 		mInflater = LayoutInflater.from(activity);
 	}

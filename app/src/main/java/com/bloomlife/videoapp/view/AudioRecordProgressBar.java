@@ -221,11 +221,12 @@ public class AudioRecordProgressBar extends ImageView {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		canvas.drawBitmap(mBitmapCover, 0, 0, mBitmapPaint);
-		canvas.saveLayer(0, 0, getRight(), getBottom(), null, Canvas.MATRIX_SAVE_FLAG | Canvas.CLIP_SAVE_FLAG | Canvas.HAS_ALPHA_LAYER_SAVE_FLAG | Canvas.FULL_COLOR_LAYER_SAVE_FLAG);
+		canvas.saveLayer(0, 0, getRight(), getBottom(), null,
+				Canvas.ALL_SAVE_FLAG);
 		mBitmapPaint.setXfermode(mMode);
 		canvas.drawPath(mBezerPath, mBezerPaint);
 		canvas.drawBitmap(mBackgroundBtimap, 0, 0, mBitmapPaint);
-		canvas.drawText(mDruationText, getMeasuredWidth() / 2, mDrawTextY, mTextPaint);
+		canvas.drawText(mDruationText, getMeasuredWidth() / 2f, mDrawTextY, mTextPaint);
 		mBitmapPaint.setXfermode(null);
 		canvas.restore();
 		super.onDraw(canvas);

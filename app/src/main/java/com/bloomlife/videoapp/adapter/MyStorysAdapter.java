@@ -51,6 +51,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import androidx.fragment.app.FragmentActivity;
+
 import static com.bloomlife.videoapp.app.UploadBackgroundService.isUploadStoryVideo;
 import static com.bloomlife.videoapp.app.UploadBackgroundService.isUploadVideo;
 
@@ -79,7 +81,7 @@ public class MyStorysAdapter extends BaseAdapter<DbStoryVideo>  {
     private int mComment;
     private Random mRandom;
 
-    public MyStorysAdapter(Activity activity, List<DbStoryVideo> dataList) {
+    public MyStorysAdapter(FragmentActivity activity, List<DbStoryVideo> dataList) {
         super(activity, dataList);
         mDeleteArray = new SparseArray<>();
         mRandom = new Random();

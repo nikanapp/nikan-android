@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import androidx.core.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -173,7 +173,7 @@ public abstract class BaseStoryPlayActivity extends BaseActivity implements Stor
 
     protected void setViewPager(List<StoryVideo> storyVideos, List<Emotion> emotions){
         mEmotionList = emotions;
-        mAdapter = new PlayStoryVideoPagerAdapter(getFragmentManager(), storyVideos, emotions);
+        mAdapter = new PlayStoryVideoPagerAdapter(getSupportFragmentManager(), storyVideos, emotions);
         mViewPager.setAdapter(mAdapter);
         UIHelper.setViewPagerScrollSpeed(mViewPager, 300);
     }

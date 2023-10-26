@@ -16,18 +16,19 @@
 
 package com.bloomlife.videoapp.adapter;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.core.app.FragmentPagerAdapter;
-import androidx.core.view.PagerAdapter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+
+
+import androidx.viewpager.widget.PagerAdapter;
 
 /**
  * Implementation of {@link PagerAdapter} that

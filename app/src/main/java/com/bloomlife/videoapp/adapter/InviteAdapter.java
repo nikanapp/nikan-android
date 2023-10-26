@@ -10,12 +10,14 @@ import com.bloomlife.videoapp.model.User;
 
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/9/16.
  */
 public class InviteAdapter extends StatusUserListAdapter<User> {
 
-    public InviteAdapter(Activity activity, List<User> dataList) {
+    public InviteAdapter(FragmentActivity activity, List<User> dataList) {
         super(activity, dataList);
     }
 

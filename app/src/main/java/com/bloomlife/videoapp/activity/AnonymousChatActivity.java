@@ -22,8 +22,6 @@ import com.bloomlife.videoapp.model.Video;
 import com.bloomlife.videoapp.view.SuperToast;
 import com.easemob.chat.EMMessage;
 
-import junit.framework.Assert;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,8 +77,14 @@ public class AnonymousChatActivity extends RealNameChatActivity {
             video.setVideoid(getString(R.string.custom_video_id));
             video.setVideouri("");
         }
-        Assert.assertNotNull("私信用户不能为空", toChatUsername);
-        Assert.assertNotNull("ChatId不能为空", mChatId);
+        assertNotNull("私信用户不能为空", toChatUsername);
+        assertNotNull("ChatId不能为空", mChatId);
+    }
+
+    private void assertNotNull(String message, Object obj) {
+        if (obj == null) {
+            throw new IllegalArgumentException(message);
+        }
     }
 
     @Override

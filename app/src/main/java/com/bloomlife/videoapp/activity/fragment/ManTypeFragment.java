@@ -9,7 +9,7 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -86,7 +86,7 @@ public class ManTypeFragment extends Fragment implements View.OnClickListener{
 	private void finish(){
 		getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		getFragmentManager().beginTransaction().remove(ManTypeFragment.this).commit();
+		getChildFragmentManager().beginTransaction().remove(ManTypeFragment.this).commit();
 		if (mFinishListener != null){
 			mFinishListener.finish();
 		}

@@ -12,13 +12,15 @@ import com.bloomlife.videoapp.model.Status;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/5.
  * 有状态按钮的用户列表适配器
  */
 public abstract class StatusUserListAdapter<T extends Status> extends UserListAdapter<T> {
 
-    public StatusUserListAdapter(Activity activity, List<T> dataList) {
+    public StatusUserListAdapter(FragmentActivity activity, List<T> dataList) {
         super(activity, dataList);
     }
 

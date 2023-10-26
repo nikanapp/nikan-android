@@ -13,6 +13,8 @@ import com.bloomlife.videoapp.model.Emotion;
 
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/17.
  */
@@ -20,7 +22,7 @@ public class EmotionListAdapter extends BaseAdapter<Emotion> implements View.OnC
 
     private int mSelect;
 
-    public EmotionListAdapter(Activity activity, List<Emotion> dataList) {
+    public EmotionListAdapter(FragmentActivity activity, List<Emotion> dataList) {
         super(activity, dataList);
     }
 

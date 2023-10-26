@@ -4,7 +4,7 @@
 package com.bloomlife.videoapp.activity;
 
 import android.animation.ValueAnimator;
-import android.app.FragmentTransaction;
+import androidx.fragment.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -179,7 +179,7 @@ public class MainActivity extends BaseActivity implements
 
 		mMainStoryListFragment = new MainStoryListFragment();
 		mMapBoxFragment = new MapBoxFragment();
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 		transaction.add(R.id.activity_main_layout, mMapBoxFragment);
 		transaction.add(R.id.activity_main_layout, mMainStoryListFragment);
 		transaction.hide(mMapBoxFragment).commitAllowingStateLoss();
@@ -286,7 +286,7 @@ public class MainActivity extends BaseActivity implements
 	private View.OnClickListener mPageSwitchListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			FragmentTransaction transaction = getFragmentManager().beginTransaction();
+			FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 			switch (v.getId()){
 				case R.id.activity_main_btn_map:
 					// 切换到地图页面

@@ -24,6 +24,8 @@ import com.bloomlife.videoapp.common.CommentText;
 import com.bloomlife.videoapp.common.util.UIHelper;
 import com.bloomlife.videoapp.dialog.DialogUtils;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
  * 视频评论页面的文字列表
@@ -43,7 +45,7 @@ public class CommentTextListAdapter extends BaseAdapter<CommentText> {
 		private View divider;
 	}
 	
-	public CommentTextListAdapter(Activity activity, List<CommentText> dataList, String videoUid) {
+	public CommentTextListAdapter(FragmentActivity activity, List<CommentText> dataList, String videoUid) {
 		super(activity, dataList);
 		mVideoUid = videoUid;
 		mContext = activity;

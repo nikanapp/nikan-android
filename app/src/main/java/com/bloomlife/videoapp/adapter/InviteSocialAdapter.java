@@ -13,6 +13,7 @@ import com.bloomlife.videoapp.model.InviteUser;
 
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 /**
@@ -20,7 +21,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
  */
 public class InviteSocialAdapter extends StatusUserListAdapter<InviteUser> implements StickyListHeadersAdapter {
 
-    public InviteSocialAdapter(Activity activity, List<InviteUser> dataList) {
+    public InviteSocialAdapter(FragmentActivity activity, List<InviteUser> dataList) {
         super(activity, dataList);
 
     }

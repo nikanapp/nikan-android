@@ -4,14 +4,15 @@ import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.core.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -475,13 +476,13 @@ public class UserInfoDialog extends BaseDialog implements FansListFragment.Statu
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public FragmentManager getPageFragmentManager(){
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 ? getChildFragmentManager() : getFragmentManager();
+        return getChildFragmentManager();
     }
 
     private static LinkedList<UserInfoDialog> mUserInfoDialogTask = new LinkedList<>();
 
     @Override
-    public void show(Activity activity) {
+    public void show(FragmentActivity activity) {
         super.show(activity);
         if (mUserInfoDialogTask.size() > 0){
             UserInfoDialog dialog = mUserInfoDialogTask.removeLast();

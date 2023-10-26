@@ -42,6 +42,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
+import androidx.fragment.app.FragmentActivity;
+
 import static com.bloomlife.videoapp.common.CacheKeyConstants.IS_FIRST;
 import static com.bloomlife.videoapp.common.CacheKeyConstants.KEY_FIRST_MAN_TYPE;
 import static com.bloomlife.videoapp.common.CacheKeyConstants.KEY_HUANXIN_PWD;
@@ -105,7 +107,7 @@ public class Utils {
 		return CacheBean.getInstance().getObject(context, com.bloomlife.videoapp.common.CacheKeyConstants.KEY_MY_ACCOUNT, Account.class);
 	}
 
-	public static boolean isLogin(Activity activity, boolean isShowLoginDialog){
+	public static boolean isLogin(FragmentActivity activity, boolean isShowLoginDialog){
 		if (!CacheBean.getInstance().hasLoginUserId()){
 			if (isShowLoginDialog)
 				DialogUtils.showAccountDialog(activity);
@@ -115,7 +117,7 @@ public class Utils {
 		}
 	}
 
-	public static boolean isLogin(Activity activity){
+	public static boolean isLogin(FragmentActivity activity){
 		return isLogin(activity, false);
 	}
 

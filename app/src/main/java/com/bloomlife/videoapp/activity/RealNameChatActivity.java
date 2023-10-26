@@ -26,7 +26,6 @@ import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.core.view.ViewPager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -90,6 +89,7 @@ import com.easemob.chat.VoiceMessageBody;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 
+import androidx.viewpager.widget.ViewPager;
 import emojicon.EmojiconGridFragment;
 import emojicon.EmojiconsFragment;
 import emojicon.emoji.Emojicon;

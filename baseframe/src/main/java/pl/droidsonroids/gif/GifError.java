@@ -1,8 +1,9 @@
 package pl.droidsonroids.gif;
 
-import android.support.annotation.NonNull;
 
 import java.util.Locale;
+
+import androidx.annotation.NonNull;
 
 /**
  * Encapsulation of decoding errors occurring in native code.

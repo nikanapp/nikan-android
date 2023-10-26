@@ -21,6 +21,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
  *
@@ -32,7 +34,7 @@ public class TopicAdapter extends AbstractAdapter<String> implements OnItemClick
 	private Set<Integer> mSelectList;
 	private LayoutInflater mInflater;
 	
-	public TopicAdapter(Activity activity, List<String> dataList) {
+	public TopicAdapter(FragmentActivity activity, List<String> dataList) {
 		super(activity, dataList);
 		mContext = activity;
 		mInflater = LayoutInflater.from(activity);

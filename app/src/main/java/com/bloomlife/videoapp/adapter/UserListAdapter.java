@@ -25,6 +25,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/7/28.
  * 用户列表
@@ -48,14 +50,14 @@ public abstract class UserListAdapter<T> extends AbstractAdapter<T> implements V
 
     private LayoutInflater mInflater;
 
-    protected Activity mActivity;
+    protected FragmentActivity mActivity;
     protected Drawable mFemale;
     protected Drawable mMale;
     protected ImageLoader mImageLoader;
     protected DisplayImageOptions mOptions;
     private boolean mHaveLastLine;
 
-    public UserListAdapter(Activity activity, List<T> dataList) {
+    public UserListAdapter(FragmentActivity activity, List<T> dataList) {
         super(activity, dataList);
         mInflater = LayoutInflater.from(activity);
         mActivity = activity;

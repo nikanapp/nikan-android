@@ -6,7 +6,7 @@ package com.bloomlife.videoapp.activity;
 import static com.bloomlife.videoapp.common.CacheKeyConstants.CONSTANT_SYSCODE_KEY;
 import static com.bloomlife.videoapp.common.CacheKeyConstants.KEY_HUANXIN_PWD;
 
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources.NotFoundException;
@@ -141,7 +141,7 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 			 * 当当前activity不占据顶层显示，activity如果进行了onSaveInstance之后，FragmentManager
 			 * 是不能调用commit的，否则状态不一致，所以要使用commitAllowingStateLoss，同时在stop的时候删除这个handler
 			*/
-			getFragmentManager().beginTransaction().replace(R.id.activity_spalsh_layout, fragment).commitAllowingStateLoss();
+			getSupportFragmentManager().beginTransaction().replace(R.id.activity_spalsh_layout, fragment).commitAllowingStateLoss();
 		}
 	};
 
@@ -161,7 +161,7 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 			// 因为不用播放欢迎视频，所以关闭重新播放视频按钮
 			bundle.putBoolean(WelcomeInitFragment.INTENT_HAS_REVERSE, false);
 			fragment.setArguments(bundle);
-			getFragmentManager().beginTransaction().replace(R.id.activity_spalsh_layout, fragment).commitAllowingStateLoss();
+			getSupportFragmentManager().beginTransaction().replace(R.id.activity_spalsh_layout, fragment).commitAllowingStateLoss();
 		}
 	};
 
@@ -174,7 +174,7 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 		if(startToMain){
 			//检查在点击进入的一刻，初始化是否已经完成，如果完成则直接跳到主页，不需要今次获取
 			if(cacheBean.isSyncParam()){
-				Fragment fragment = getFragmentManager().findFragmentById(R.id.activity_spalsh_layout);
+				Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.activity_spalsh_layout);
 				if(fragment instanceof WelcomeInitFragment && Utils.isFirstUseApp(getApplicationContext())){
 					((WelcomeInitFragment) fragment).dismissLoadLayout();
 				} else {
@@ -241,7 +241,7 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 
 			// 如果没有用户记录，说明第一次进入获取参数成功，跳转到主页
 			if (mStartToMain) {
-				Fragment fragment = getFragmentManager().findFragmentById(R.id.activity_spalsh_layout);
+				Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.activity_spalsh_layout);
 				if (fragment instanceof WelcomeInitFragment && Utils.isFirstUseApp(getApplicationContext())) {
 					Utils.setNoFirstUseApp(getApplicationContext());
 					((WelcomeInitFragment) fragment).dismissLoadLayout();
@@ -254,7 +254,7 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 		@Override
 		public void failure(FailureResult result) {
 			UiHelper.showToast(mContext, mContext.getResources().getString(R.string.network_error_tips));
-			Fragment fragment = getFragmentManager().findFragmentById(R.id.activity_spalsh_layout);
+			Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.activity_spalsh_layout);
 			if(fragment instanceof WelcomeInitFragment){
 				((WelcomeInitFragment)fragment).hideInitProgress();
 			}

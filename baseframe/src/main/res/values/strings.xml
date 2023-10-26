@@ -7,7 +7,7 @@
     <string name="date_uitils_hours">小时前</string>
     <string name="dialog_cancel">取消</string>
     <string name="dialog_confirm">确定</string>
-
+    <string name="mapbox_access_token">pk.eyJ1IjoibmlrYW5hcHAiLCJhIjoiY2xkenh3eHc1MTVqMTNvcDdyejMzMnRhayJ9.NZIh17-sYVsbjKxu5oZrMQ</string>
    <!--  <string name="pull_to_refresh_pull_label">下拉可以刷新</string>
     <string name="pull_to_refresh_release_label">松开可以刷新</string>
     <string name="pull_to_refresh_refreshing_label">加载中...</string>

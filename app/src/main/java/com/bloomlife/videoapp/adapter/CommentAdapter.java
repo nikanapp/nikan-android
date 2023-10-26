@@ -19,9 +19,12 @@ import android.view.ViewGroup;
 import android.widget.CheckedTextView;
 
 import com.bloomlife.android.framework.AbstractAdapter;
+import com.bloomlife.android.framework.BaseActivity;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.common.util.UIHelper;
 import com.bloomlife.videoapp.model.Commenttags;
+
+import androidx.fragment.app.FragmentActivity;
 
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
@@ -39,7 +42,7 @@ public class CommentAdapter extends AbstractAdapter<Commenttags> {
 		public CheckedTextView commentTag;
 	}
 	
-	public CommentAdapter(Activity activity, List<Commenttags> dataList) {
+	public CommentAdapter(FragmentActivity activity, List<Commenttags> dataList) {
 		super(activity, dataList);
 		mInflater = LayoutInflater.from(activity);
 		mResources = activity.getResources();

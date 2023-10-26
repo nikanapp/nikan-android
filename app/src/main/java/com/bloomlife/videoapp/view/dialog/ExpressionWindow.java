@@ -10,7 +10,7 @@ import com.bloomlife.videoapp.model.Dynamicimg;
 import com.bloomlife.videoapp.view.PageNumberView;
 
 import android.content.Context;
-import androidx.core.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 

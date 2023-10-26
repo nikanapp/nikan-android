@@ -54,6 +54,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  *  满足我们针对不同内容有不同会话的页面的	私信聊天的adapter
  * 
@@ -65,7 +67,7 @@ public class RealNameChatAdapter extends BaseAdapter{
 	
 	private static final int SENDING_TIME_OUT = 60*1000;
 
-	protected Activity mActivity;
+	protected FragmentActivity mActivity;
 
 	private List<ChatBean> mDataList;
 	private ChatAdapterCallback mCallback;
@@ -87,7 +89,7 @@ public class RealNameChatAdapter extends BaseAdapter{
 	private boolean mIsLastItem = false;
 	private boolean mIsInitItem = true;
 
-	public RealNameChatAdapter(Activity activity, List<ChatBean> dataList, ChatAdapterCallback callback){
+	public RealNameChatAdapter(FragmentActivity activity, List<ChatBean> dataList, ChatAdapterCallback callback){
 		this.mActivity = activity;
 		this.mCallback = callback;
 		mImageLoader = ImageLoader.getInstance();

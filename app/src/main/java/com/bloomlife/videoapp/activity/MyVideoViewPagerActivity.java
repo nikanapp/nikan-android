@@ -9,9 +9,8 @@ import java.util.List;
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
 import android.os.Bundle;
-import androidx.core.app.FragmentActivity;
-import androidx.core.view.ViewPager;
-import androidx.core.view.ViewPager.OnPageChangeListener;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager.widget.ViewPager;
 import android.util.Log;
 
 import com.bloomlife.android.common.util.StringUtils;
@@ -72,13 +71,13 @@ public class MyVideoViewPagerActivity  extends FragmentActivity {
 		Log.d(TAG, " 最新的videolist size is "+mVideoList.size()+"  videoPosition"+videoPosition);
 		
 		currentIndex = videoPosition;
-		mPagerAdapter = new MyVideoPagerAdapter(getFragmentManager(), mVideoList);
+		mPagerAdapter = new MyVideoPagerAdapter(getSupportFragmentManager(), mVideoList);
 		mViewPager.setAdapter(mPagerAdapter);
 		mViewPager.setCurrentItem(videoPosition);
 		mViewPager.setOnPageChangeListener(pageChangeListener);
 	}
 	private static int currentIndex ;
-	private OnPageChangeListener pageChangeListener = new OnPageChangeListener() {
+	private ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {
 		
 		@Override
 		public void onPageSelected(int arg0) {

@@ -8,8 +8,6 @@ import android.graphics.RectF;
 import android.graphics.SurfaceTexture;
 import android.os.Build;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Surface;
@@ -19,6 +17,9 @@ import android.widget.ImageView.ScaleType;
 import java.io.IOException;
 
 import com.bloomlife.android.R;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * <p>{@link TextureView} which can display animated GIFs. Available on API level 14

@@ -10,7 +10,6 @@ import java.util.Iterator;
 
 import com.bloomlife.android.common.util.UiUtils;
 import com.bloomlife.videoapp.R;
-import com.vividsolutions.jts.algorithm.Angle;
 
 import android.animation.Animator.AnimatorListener;
 import android.animation.Animator;

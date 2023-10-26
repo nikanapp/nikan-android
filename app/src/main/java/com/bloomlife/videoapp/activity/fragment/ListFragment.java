@@ -1,6 +1,6 @@
 package com.bloomlife.videoapp.activity.fragment;
 
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;

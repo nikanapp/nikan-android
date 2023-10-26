@@ -10,8 +10,6 @@ import android.graphics.Camera;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.os.Build;
-import androidx.core.view.PagerAdapter;
-import androidx.core.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -20,6 +18,9 @@ import android.view.View;
 import com.bloomlife.android.R;
 import com.bloomlife.android.common.util.UiUtils;
 import com.nineoldandroids.view.ViewHelper;
+
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 public class JazzyViewPager extends ViewPager {
 

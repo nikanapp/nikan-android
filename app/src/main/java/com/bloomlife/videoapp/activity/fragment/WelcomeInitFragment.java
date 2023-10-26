@@ -6,7 +6,7 @@ package com.bloomlife.videoapp.activity.fragment;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.app.FragmentTransaction;
+import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -144,7 +144,7 @@ public class WelcomeInitFragment extends AbstractWelcomeFragment implements OnCl
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.activity_welcome_btn_reverse:
-			FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+			FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
 			fragmentTransaction.replace(R.id.activity_spalsh_layout, new WelcomeVideoFragment());
 			fragmentTransaction.commit();
 			break;

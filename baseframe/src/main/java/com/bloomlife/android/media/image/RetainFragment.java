@@ -17,8 +17,8 @@
 package com.bloomlife.android.media.image;
 
 import android.os.Bundle;
-import androidx.core.app.Fragment;
-import androidx.core.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 /**
  * A simple non-UI Fragment that stores a single Object and is retained over configuration changes.

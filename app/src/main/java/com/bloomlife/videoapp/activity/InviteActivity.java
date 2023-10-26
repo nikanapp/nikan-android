@@ -79,7 +79,7 @@ public class InviteActivity extends BaseActivity{
     }
 
     private void initListView(){
-        getFragmentManager().beginTransaction().add(R.id.activity_invite_list_layout, new InviteFragment()).commitAllowingStateLoss();
+        getSupportFragmentManager().beginTransaction().add(R.id.activity_invite_list_layout, new InviteFragment()).commitAllowingStateLoss();
     }
 
     @Override

@@ -20,6 +20,8 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListe
 import java.util.List;
 import java.util.Random;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/4.
  */
@@ -30,7 +32,7 @@ public class UserStorysAdapter extends BaseAdapter<StoryVideo> {
     private int mComment;
     private Random mRandom;
 
-    public UserStorysAdapter(Activity activity, List<StoryVideo> dataList) {
+    public UserStorysAdapter(FragmentActivity activity, List<StoryVideo> dataList) {
         super(activity, dataList);
         mRandom = new Random();
     }

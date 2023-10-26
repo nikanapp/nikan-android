@@ -1,9 +1,11 @@
 package com.bloomlife.videoapp.adapter;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import android.util.SparseArray;
 import android.view.ViewGroup;
+
 
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/11.

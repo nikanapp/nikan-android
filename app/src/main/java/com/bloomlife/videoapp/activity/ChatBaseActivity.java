@@ -6,11 +6,12 @@ package com.bloomlife.videoapp.activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.core.app.FragmentActivity;
 import android.view.View;
 
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMMessage;
+
+import androidx.fragment.app.FragmentActivity;
 
 /**
  * @author <a href="mailto:xiai.fei@gmail.com">xiai_fei</a>

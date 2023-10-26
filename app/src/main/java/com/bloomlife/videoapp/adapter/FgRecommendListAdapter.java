@@ -8,12 +8,14 @@ import com.bloomlife.videoapp.model.Recommend;
 
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/7.
  */
 public class FgRecommendListAdapter extends StatusUserListAdapter<Recommend> {
 
-    public FgRecommendListAdapter(Activity activity, List<Recommend> dataList) {
+    public FgRecommendListAdapter(FragmentActivity activity, List<Recommend> dataList) {
         super(activity, dataList);
     }
 

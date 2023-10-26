@@ -13,6 +13,8 @@ import com.bloomlife.android.framework.AbstractAdapter;
 import com.bloomlife.videoapp.model.Comment;
 import com.bloomlife.videoapp.view.comment.CommentNumberView;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
  *
@@ -24,7 +26,7 @@ public class CommentTagAdapter extends AbstractAdapter<Comment> {
 	private Comment mSelectComment;
 	private boolean mAnimEnabled = false;
 	
-	public CommentTagAdapter(Activity activity, List<Comment> dataList) {
+	public CommentTagAdapter(FragmentActivity activity, List<Comment> dataList) {
 		super(activity, dataList);
 		mActivity = activity;
 	}

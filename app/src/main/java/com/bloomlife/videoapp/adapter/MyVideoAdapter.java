@@ -68,6 +68,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * 我视频页面的视频预览列表适配器。
  * 
@@ -106,7 +108,7 @@ public class MyVideoAdapter extends AbstractAdapter<Video> implements OnItemClic
 	
 	private CacheBean cacheBean = CacheBean.getInstance();
 
-	public MyVideoAdapter(Activity activity, List<Video> dataList , GridView gridView) {
+	public MyVideoAdapter(FragmentActivity activity, List<Video> dataList , GridView gridView) {
 		super(activity, dataList);
 		mActivity = activity;
 		mInflater = LayoutInflater.from(activity);

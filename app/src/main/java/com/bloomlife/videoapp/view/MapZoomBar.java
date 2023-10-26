@@ -10,7 +10,8 @@ import android.graphics.Paint;
 import android.os.Build;
 import androidx.core.view.MotionEventCompat;
 import androidx.core.view.ViewCompat;
-import androidx.core.widget.ViewDragHelper;
+import androidx.customview.widget.ViewDragHelper;
+
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;

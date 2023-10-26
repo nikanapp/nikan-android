@@ -7,13 +7,15 @@ import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import androidx.core.util.LongSparseArray;
+
 import android.util.LruCache;
 import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
 
 import com.bloomlife.videoapp.app.AppContext;
+
+import androidx.collection.LongSparseArray;
 
 /**
  * Created by cjf on 2015/3/24.

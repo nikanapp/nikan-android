@@ -10,12 +10,14 @@ import com.bloomlife.videoapp.model.Fans;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/7/31.
  */
 public class FansListAdapter extends StatusUserListAdapter<Fans> {
 
-    public FansListAdapter(Activity activity, List<Fans> dataList) {
+    public FansListAdapter(FragmentActivity activity, List<Fans> dataList) {
         super(activity, dataList);
     }
 

@@ -11,12 +11,14 @@ import com.bloomlife.videoapp.model.User;
 
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/6.
  */
 public class SearchAdapter extends StatusUserListAdapter<User> {
 
-    public SearchAdapter(Activity activity, List<User> dataList) {
+    public SearchAdapter(FragmentActivity activity, List<User> dataList) {
         super(activity, dataList);
         haveLastLine(true);
     }

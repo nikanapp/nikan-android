@@ -13,6 +13,8 @@ import com.easemob.util.DateUtils;
 import java.util.Date;
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Description:
  * User: ZhengXingtian(lan4627@Gmail.com)
@@ -29,7 +31,7 @@ public class AnonymousChatAdapter extends RealNameChatAdapter {
 
     private String mCity;
 
-    public AnonymousChatAdapter(Activity activity, List<ChatBean> dataList, ChatAdapterCallback callback, boolean isCustom) {
+    public AnonymousChatAdapter(FragmentActivity activity, List<ChatBean> dataList, ChatAdapterCallback callback, boolean isCustom) {
         super(activity, dataList, callback);
         // 如果是客服对话，需要把提示都移除掉
         if (isCustom)

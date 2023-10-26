@@ -10,6 +10,8 @@ import com.bloomlife.videoapp.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/7/31.
  */
@@ -17,7 +19,7 @@ public class LikeListAdapter extends StatusUserListAdapter<User> {
 
     private List<Integer> mStates;
 
-    public LikeListAdapter(Activity activity, List<User> dataList) {
+    public LikeListAdapter(FragmentActivity activity, List<User> dataList) {
         super(activity, dataList);
     }
 

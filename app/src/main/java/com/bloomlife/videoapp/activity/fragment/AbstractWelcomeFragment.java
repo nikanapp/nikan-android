@@ -4,7 +4,7 @@
 package com.bloomlife.videoapp.activity.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>

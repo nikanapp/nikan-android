@@ -30,6 +30,8 @@ import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.adapter.MainTpoicAdapter;
 import com.bloomlife.videoapp.common.util.UIHelper;
 
+import androidx.fragment.app.FragmentActivity;
+
 public class TopicPopupWindow extends FrameLayout implements OnClickListener {
 
 	public TopicPopupWindow(Context context) {
@@ -76,7 +78,7 @@ public class TopicPopupWindow extends FrameLayout implements OnClickListener {
 		mTopicEmptyView = (TextView) findViewById(R.id.popupwindow_topic_list_null);
 		mTopicList 		= (ListView) findViewById(R.id.popupwindow_topic_list);
 		mTopicList.setVerticalScrollBarEnabled(false);
-		mAdapter = new MainTpoicAdapter((Activity)context, null);
+		mAdapter = new MainTpoicAdapter((FragmentActivity)context, null);
 		mTopicList.setAdapter(mAdapter);
 		animOut = AnimationUtils.loadAnimation(getContext(), R.anim.topiclist_window_out);
 		animIn  = AnimationUtils.loadAnimation(getContext(), R.anim.topiclist_window_in);

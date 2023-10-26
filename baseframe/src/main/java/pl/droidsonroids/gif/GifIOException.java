@@ -1,8 +1,9 @@
 package pl.droidsonroids.gif;
 
-import android.support.annotation.NonNull;
 
 import java.io.IOException;
+
+import androidx.annotation.NonNull;
 
 /**
  * Exception encapsulating {@link GifError}s.

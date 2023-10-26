@@ -29,6 +29,8 @@ import com.bloomlife.videoapp.common.util.BitmapLoader;
 import com.bloomlife.videoapp.model.VideoFileInfo;
 import com.tonicartos.widget.stickygridheaders.StickyGridHeadersSimpleAdapter;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
  *
@@ -47,7 +49,7 @@ public class VideoFileListAdapter extends AbstractAdapter<VideoFileInfo> impleme
 	private BitmapLoader mLoader;
 	private int mTitlePaddingTop;
 	
-	public VideoFileListAdapter(Activity activity, List<VideoFileInfo> dataList, SparseArray<String> titleArray) {
+	public VideoFileListAdapter(FragmentActivity activity, List<VideoFileInfo> dataList, SparseArray<String> titleArray) {
 		super(activity, dataList);
 		mInflater = LayoutInflater.from(activity);
 		mTitleArray = titleArray;

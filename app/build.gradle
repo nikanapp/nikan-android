@@ -1,6 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['jniLibs']
+        }
+    }
     signingConfigs {
         release {
         }
@@ -9,13 +14,17 @@ android {
     }
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.bloomlife.videoapp"
         minSdkVersion 21
         targetSdkVersion 21
         multiDexEnabled true
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES.txt'
         exclude 'META-INF/LICENSE.txt'
@@ -93,10 +102,18 @@ repositories {
 }
 
 dependencies {
-    compile project(':baseframe')
-    compile project(':camera360')
+    configurations.all {
+        resolutionStrategy {
+            force 'androidx.core:core:1.6.0'
+            force 'androidx.core:core-ktx:1.6.0'
+        }
+    }
+
     compile (name: 'selectableroundedimageview-1.0.1', ext: 'aar')
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile('androidx.legacy:legacy-support-v4:1.0.0')
+    compile project(':baseframe')
+    implementation project(':camera360')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.multidex:multidex:2.0.1"
     implementation 'com.mapbox.maps:android:10.11.0'
 }

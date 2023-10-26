@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/8/6.
  */
@@ -33,7 +35,7 @@ public class ContactsAdapter extends BaseAdapter<Contact> implements StickyGridH
 
     private List<String> mStatusList;
 
-    public ContactsAdapter(Activity activity, List<Contact> dataList) {
+    public ContactsAdapter(FragmentActivity activity, List<Contact> dataList) {
         super(activity, dataList);
         mStatusList = ContactInviteStatusList.get(activity);
         if (mStatusList == null){

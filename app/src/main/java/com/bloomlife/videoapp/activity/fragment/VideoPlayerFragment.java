@@ -1,6 +1,6 @@
 package com.bloomlife.videoapp.activity.fragment;
 
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
 import android.media.MediaMetadataRetriever;

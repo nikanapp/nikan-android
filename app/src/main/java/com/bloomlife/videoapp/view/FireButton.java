@@ -18,6 +18,8 @@ import android.view.animation.AnimationUtils;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.common.util.Utils;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
  * 
@@ -68,7 +70,7 @@ public class FireButton extends FrameLayout {
 		
 		@Override
 		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-			if (!Utils.isLogin((Activity) getContext(), true)){
+			if (!Utils.isLogin((FragmentActivity) getContext(), true)){
 				mCheckBox.setChecked(!isChecked);
 				return;
 			}
