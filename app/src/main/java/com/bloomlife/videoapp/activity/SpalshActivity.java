@@ -39,14 +39,12 @@ import com.bloomlife.videoapp.common.util.ImageLoaderUtils;
 import com.bloomlife.videoapp.common.util.Utils;
 import com.bloomlife.videoapp.manager.EmotionMusicFileManager;
 import com.bloomlife.videoapp.model.Account;
-import com.bloomlife.videoapp.model.CacheEmotions;
 import com.bloomlife.videoapp.model.CacheMenus;
 import com.bloomlife.videoapp.model.DymainicMenu;
 import com.bloomlife.videoapp.model.Dynamicimg;
 import com.bloomlife.videoapp.model.SysCode;
 import com.bloomlife.videoapp.model.message.ParamSyncMessage;
 import com.bloomlife.videoapp.model.result.ParamSyncResult;
-import com.blueware.agent.android.BlueWare;
 import com.igexin.sdk.PushManager;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -91,7 +89,6 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
-		BlueWare.withApplicationToken("2E10B967474FC9AB0ED43AA5AC73069A49").start(this.getApplication());
 		
 		setContentView(R.layout.activity_spalsh);
 		PushManager.getInstance().initialize(this.getApplicationContext());

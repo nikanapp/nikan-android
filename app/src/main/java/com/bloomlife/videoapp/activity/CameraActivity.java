@@ -2,6 +2,7 @@ package com.bloomlife.videoapp.activity;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -50,7 +51,6 @@ import com.bloomlife.videoapp.model.message.RecordSizeMessage;
 import com.bloomlife.videoapp.model.message.RecorderErrorMessage;
 import com.bloomlife.videoapp.view.CircularProgressBar;
 import com.bloomlife.videoapp.view.SuperToast;
-import com.nineoldandroids.animation.ObjectAnimator;
 
 import net.tsz.afinal.annotation.view.ViewInject;
 

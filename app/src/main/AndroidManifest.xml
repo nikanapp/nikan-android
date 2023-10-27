@@ -149,10 +149,6 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.bloomlife.videoapp.TestActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name="com.bloomlife.videoapp.activity.InviteActivity"
             android:theme="@style/translucentTheme"
             android:screenOrientation="portrait" >
@@ -187,32 +183,6 @@
             android:name=".activity.NotificationStoryPlayActivity"
             android:screenOrientation="portrait">
         </activity>
-        <!-- share sdk -->
-        <activity
-            android:screenOrientation="portrait"
-            android:name="com.mob.tools.MobUIShell"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
-
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-
-            <data android:scheme="tencent100371282" />
-        </intent-filter>
-        </activity>
-
-        <activity
-            android:name="com.bloomlife.videoapp.wxapi.WXEntryActivity"
-            android:configChanges="keyboardHidden|orientation|screenLayout"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <!-- share  sdk  配置结束 -->
 
 
         <!-- 百度地图key -->
@@ -405,7 +375,16 @@
             android:name="CY_COLLECT_CYCLE"
             android:value="5" />
 		 <!--  ==========================================      CYSDK统计配置结束                ===============================================  -->
-		 
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.bloomlife.videoapp.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths_screencapture" />
+        </provider>
 		 
     </application>
 

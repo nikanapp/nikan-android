@@ -4,13 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.bloomlife.videoapp.app.Constants;
+import com.bloomlife.videoapp.model.result.PlatformDb;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Map;
-
-import cn.sharesdk.framework.PlatformDb;
 
 /**
  * Created by zhengxingtian lan4627@Gmail.com on 2015/7/24.
@@ -120,46 +119,14 @@ public class Account implements Parcelable {
         this.expiresTime = expiresTime;
     }
 
-    public static Account makeAccount(Type type, Map<String, Object> vlas, PlatformDb db){
+    public static Account makeAccount(Type type, PlatformDb db){
         Account account = new Account();
-        switch (type){
-            case SINA_WEIBO:
-                account.setId(vlas.get("id").toString());
-                account.setUserName(vlas.get("name").toString());
-                account.setDescription(vlas.get("description").toString());
-                account.setUserIcon(vlas.get("avatar_large").toString());
-                account.setLocation(vlas.get("location").toString());
-                account.setGender(vlas.get("gender").toString().equals("m") ? Constants.MALE : Constants.FEMALE);
-                break;
-
-            case WECHAT:
-                account.setId(vlas.get("openid").toString());
-                account.setUserName(vlas.get("nickname").toString());
-                account.setUserIcon(vlas.get("headimgurl").toString());
-                account.setLocation(vlas.get("province").toString() + " " + vlas.get("city").toString());
-                account.setGender(Integer.valueOf(vlas.get("sex").toString()) == 1 ? Constants.MALE : Constants.FEMALE);
-                break;
-
-            case TWITTER:
-                account.setId(vlas.get("id").toString());
-                account.setUserName(vlas.get("name").toString());
-                account.setDescription(vlas.get("description").toString());
-                account.setLocation(vlas.get("location").toString());
-                account.setUserIcon(vlas.get("profile_image_url_https").toString());
-                break;
-
-            case FACEBOOK:
-                account.setId(vlas.get("id").toString());
-                account.setUserName(vlas.get("name").toString());
-                try {
-                    account.setUserIcon(new JSONObject(vlas.get("picture").toString()).getJSONObject("data").getString("url"));
-                    account.setLocation(new JSONObject(vlas.get("currency").toString()).getString("user_currency"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                account.setGender(vlas.get("gender").toString().equals("male") ? Constants.MALE : Constants.FEMALE);
-                break;
-        }
+        account.setId(db.getUserId());
+        account.setUserName(db.getUserName());
+        account.setUserIcon(db.getUserIcon());
+        account.setLocation(db.getLocation());
+        account.setGender(db.getGender());
+        account.setDescription(db.getDescription());
         account.setTokenSecret(db.getToken());
         account.setExpiresTime(db.getExpiresTime());
         account.setType(type);

@@ -12,7 +12,7 @@ android {
         debug {
         }
     }
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion "29.0.2"
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
@@ -102,6 +102,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'androidx.appcompat:appcompat:1.4.1'
     configurations.all {
         resolutionStrategy {
             force 'androidx.core:core:1.6.0'
@@ -116,4 +117,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.multidex:multidex:2.0.1"
     implementation 'com.mapbox.maps:android:10.11.0'
+    implementation 'io.github.sinaweibosdk:core:13.10.0@aar'
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android:6.8.0'
 }

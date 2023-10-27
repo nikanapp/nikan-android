@@ -29,7 +29,6 @@ import android.util.Log;
 import com.bloomlife.android.bean.ProcessResult;
 import com.bloomlife.android.common.util.Base64;
 import com.bloomlife.android.common.util.StringUtils;
-import com.blueware.agent.android.BlueWare;
 
 public class NetUtils {
 
@@ -297,15 +296,6 @@ public class NetUtils {
 
 
 	private static void sendBlueWareHttpAnalyse(String url ,Integer statusCode,  long start , long bytesSend ,long byteRec ,Exception e){
-		try {
-			if(e !=null){
-				BlueWare.noticeNetworkFailure(url,"post", start, System.currentTimeMillis(), e);
-			}else{
-				BlueWare.noticeHttpTransaction(url, "post", statusCode,start, System.currentTimeMillis(),bytesSend,byteRec);
-			}
-		} catch (Exception e1) {
-			Log.e( TAG, "发送blueware统计异常",e);
-		}
 	}
 
 	/**

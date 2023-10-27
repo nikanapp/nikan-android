@@ -226,7 +226,7 @@ public class PushService extends BroadcastReceiver {
 		protected ProcessResult doInBackground(Void... params) {
 			HttpAccessor accessor = new HttpAccessor(context);
 			try {
-				ProcessResult result = accessor.call(baseMessage,ProcessResult.class);
+				ProcessResult result = accessor.call(baseMessage, ProcessResult.class);
 				if(result != null && result.getCode()==ProcessResult.SUC) Log.i("", " 推送服务设置成功");
 				else Log.e(TAG, "推送服务设置失败");
 			} catch (HttpException e) {

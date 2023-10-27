@@ -1,36 +1,31 @@
 package com.bloomlife.videoapp.common.util;
 
-import java.io.File;
-import java.util.HashMap;
+import static com.bloomlife.android.common.util.PlatformUtil.PACKAGE_SINA;
+import static com.bloomlife.android.common.util.PlatformUtil.isInstallApp;
 
-import cn.sharesdk.tencent.qq.QQ;
-import u.aly.ac;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.MediaMetadataRetriever;
 import android.net.Uri;
-import android.os.Handler;
+import android.os.Build;
+import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
-import cn.sharesdk.douban.Douban;
-import cn.sharesdk.facebook.Facebook;
-import cn.sharesdk.framework.Platform;
-import cn.sharesdk.framework.PlatformActionListener;
-import cn.sharesdk.framework.ShareSDK;
-import cn.sharesdk.onekeyshare.OnekeyShare;
-import cn.sharesdk.renren.Renren;
-import cn.sharesdk.sina.weibo.SinaWeibo;
-import cn.sharesdk.tencent.qzone.QZone;
-import cn.sharesdk.twitter.Twitter;
-import cn.sharesdk.wechat.friends.Wechat;
-import cn.sharesdk.wechat.moments.WechatMoments;
+
+import androidx.core.content.FileProvider;
 
 import com.android.volley.toolbox.MessageRequest;
 import com.android.volley.toolbox.Volley;
@@ -39,175 +34,329 @@ import com.bloomlife.android.agent.shorturl.ShortUrlUtil;
 import com.bloomlife.android.agent.shorturl.UrlObject;
 import com.bloomlife.android.bean.CacheBean;
 import com.bloomlife.android.bean.ProcessResult;
+import com.bloomlife.android.common.util.PlatformUtil;
 import com.bloomlife.android.common.util.StringUtils;
+import com.bloomlife.android.common.util.UiHelper;
 import com.bloomlife.android.executor.RequestAsyncTask;
-import com.bloomlife.android.media.image.Utils;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.manager.VideoFileManager;
 import com.bloomlife.videoapp.model.StoryVideo;
 import com.bloomlife.videoapp.model.Video;
 import com.bloomlife.videoapp.model.VideoShareInfo;
 import com.bloomlife.videoapp.model.message.ShareInfromMessage;
-import com.bloomlife.videoapp.view.SuperToast;
 import com.bloomlife.videoapp.view.dialog.RotateProgressDialog;
 import com.bloomlife.videoapp.view.dialog.ShareAppWindow;
 import com.bloomlife.videoapp.view.dialog.SharePopWindow;
-import com.bloomlife.videoapp.view.dialog.SharePopWindow.SharePopWindowListener;
-import com.bloomlife.videoapp.view.dialog.ShareVideoWindow;
 
 public class ShareSDKUtil {
 	
 	private static final String TAG = "ShareSDKUtil";
-	
+	public static final String AUTHORITY = "com.bloomlife.videoapp.fileprovider";
+
 	/**
-	 * 分享一个网页信息到微信朋友圈(只有安装对应版本的微信才可以分享，如果没有安装，提示安装)
+	 * 分享文本
+	 *
 	 * @param context
-	 * @param title				标题
-	 * @param text				文字内容
-	 * @param url				网页地址
-	 * @param imageBitmap		图片
+	 * @param path
 	 */
-	public static void shareToWechatMoments(final Context context,String title,String text,String url,Bitmap imageBitmap){
-		shareToPlatform(context, title, text, url, Utils.saveMyBitmap(imageBitmap), WechatMoments.NAME, false);
-	}
-	
-	/**
-	 * 分享一个网页信息到微信朋友(只有安装对应版本的微信才可以分享，如果没有安装，提示安装)
-	 * @param 
-	 * @paramcontext title				标题
-	 * @param text				文字内容
-	 * @param url				网页地址
-	 * @param imageBitmap		图片
-	 */
-	public static void shareToWechat(final Context context,String title,String text,String url,Bitmap imageBitmap){
-		String imagePath = "";
-		if (imageBitmap != null) {
-			imagePath = Utils.saveMyBitmap(imageBitmap);
+	public static void shareUrl(Context context, String path) {
+		if (TextUtils.isEmpty(path)) {
+			return;
 		}
-		shareToPlatform(context, title, text, url, imagePath, Wechat.NAME, false);
+
+		checkFileUriExposure();
+
+		Intent it = new Intent(Intent.ACTION_SEND);
+		it.putExtra(Intent.EXTRA_TEXT, path);
+		it.setType("text/plain");
+		context.startActivity(Intent.createChooser(it, "分享APP"));
 	}
-	
+
 	/**
-	 * 分享一个网页信息到新浪微博(有客户端使用客户端分享，没有就使用页面分享)
-	 * @param context			
-	 * @param text				文字内容
-	 * @param url				网页地址
-	 * @param imageBitmap		图片	
-	 */
-	public static void shareToSinaWeibo(final Context context,String text,String url,Bitmap imageBitmap){
-		// 新浪微博需要把网页地址放到文字内容的后面
-		String imagePath = "";
-		if (imageBitmap != null) {
-			imagePath = Utils.saveMyBitmap(imageBitmap);
-		}
-		shareToPlatform(context, "", text, "", imagePath, SinaWeibo.NAME, false);
-	}
-	
-	/**
-	 * 分享一个网页信息到qq空间
+	 * 分享文件
+	 *
 	 * @param context
-	 * @param title				标题
-	 * @param text				文字内容
-	 * @param shareUrl			分享的网页地址
-	 * @param imageUrl			分享的网络图片
+	 * @param path
 	 */
-	public static void shareToQzone(final Context context,String title, String text,String url,Bitmap imageBitmap){
-		String imagePath = "";
-		if (imageBitmap != null) {
-			imagePath = Utils.saveMyBitmap(imageBitmap);
+	public static void shareFile(Context context, String path) {
+		if (TextUtils.isEmpty(path)) {
+			return;
 		}
-		OnekeyShare oks = new OnekeyShare();
-		// 分享时Notification的图标和文字
-//        oks.setNotification(R.drawable.ic_launcher,context.getString(R.string.app_name));
-        oks.setSilent(false);
-        oks.setText(text);
-        oks.setTitle(title);
-        oks.setImagePath(imagePath);
-        oks.setTitleUrl(url);
-        oks.setSite(title);
-        oks.setPlatform(QZone.NAME);
-        oks.setSiteUrl(url);
-        oks.setEditPageBackground(getBackground(context));
-        shareToPlatform(context, oks);
+
+		checkFileUriExposure();
+
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(path)));  //传输图片或者文件 采用流的方式
+		intent.setType("*/*");   //分享文件
+		context.startActivity(Intent.createChooser(intent, "分享"));
+	}
+
+	/**
+	 * 分享单张图片
+	 *
+	 * @param context
+	 * @param path
+	 */
+	public static void shareImage(Context context, String path) {
+		shareImage(context, path, null, null, null);
+	}
+
+	/**
+	 * 分享多张图片
+	 *
+	 * @param context
+	 * @param pathList
+	 */
+	public static void shareImage(Context context, List<String> pathList) {
+		shareImage(context, null, pathList, null, null);
 	}
 
 
 	/**
-	 * 分享一个网页信息到qq
-	 * @param context
-	 * @param title				标题
-	 * @param text				文字内容
-	 * @param shareUrl			分享的网页地址
-	 * @param imageUrl			分享的网络图片
+	 * 分享前必须执行本代码，主要用于兼容SDK18以上的系统
 	 */
-	public static void shareToQQ(final Context context,String title, String text,String url,Bitmap imageBitmap){
-		String imagePath = "";
-		if (imageBitmap != null) {
-			imagePath = Utils.saveMyBitmap(imageBitmap);
+	private static void checkFileUriExposure() {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+			StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+			StrictMode.setVmPolicy(builder.build());
+			builder.detectFileUriExposure();
 		}
-		OnekeyShare oks = new OnekeyShare();
-		// 分享时Notification的图标和文字
-//        oks.setNotification(R.drawable.ic_launcher,context.getString(R.string.app_name));
-		oks.setSilent(false);
-		oks.setText(text);
-		oks.setTitle(title);
-		oks.setImagePath(imagePath);
-		oks.setTitleUrl(url);
-		oks.setSite(title);
-		oks.setPlatform(QQ.NAME);
-		oks.setSiteUrl(url);
-		oks.setEditPageBackground(getBackground(context));
-		shareToPlatform(context, oks);
+	}
+
+
+	/**
+	 * 分享图片给QQ好友
+	 *
+	 * @param bitmap
+	 */
+	public void shareImageToQQ(Context context, Bitmap bitmap) {
+		if (isInstallApp(context, PlatformUtil.PACKAGE_MOBILE_QQ)) {
+			try {
+				Uri uriToImage = Uri.parse(MediaStore.Images.Media.insertImage(
+						context.getContentResolver(), bitmap, null, null));
+				Intent shareIntent = new Intent();
+				shareIntent.setAction(Intent.ACTION_SEND);
+				shareIntent.putExtra(Intent.EXTRA_STREAM, uriToImage);
+				shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				shareIntent.setType("image/*");
+				// 遍历所有支持发送图片的应用。找到需要的应用
+				ComponentName componentName = new ComponentName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity");
+
+				shareIntent.setComponent(componentName);
+				context.startActivity(Intent.createChooser(shareIntent, "Share"));
+			} catch (Exception e) {
+            	UiHelper.showToast(context, "分享失败");
+			}
+		} else {
+			UiHelper.showToast(context, "未安装QQ");
+		}
+	}
+
+	public static void shareImageToQQZone(Context context, File picFile) {
+		if (isInstallApp(context,PlatformUtil.PACKAGE_QZONE)) {
+			if (picFile == null || !picFile.exists()) {
+				UiHelper.showToast(context, "文件不存在");
+				return;
+			}
+			Intent intent = new Intent();
+			ComponentName componentName = new ComponentName("com.qzone","com.qzonex.module.operation.ui.QZonePublishMoodActivity");
+			intent.setComponent(componentName);
+			intent.setAction("android.intent.action.SEND");
+			intent.setType("image/*");
+			intent.putExtra(Intent.EXTRA_TEXT, "");//  分享文本
+			intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(picFile));// 分享图片
+			context.startActivity(intent);
+		} else {
+			UiHelper.showToast(context, "未安装QQZone");
+		}
 	}
 
 	/**
-	 * 分享到人人网
+	 * 直接分享图片到微信好友
 	 * @param context
-	 * @param title
-	 * @param text
-	 * @param url
-	 * @param imageBitmap
+	 * @param picFile
 	 */
-	public static void shareToRenren(final Context context,String title, String text,String url,Bitmap imageBitmap){
-		String imagePath = "";
-		if (imageBitmap != null) {
-			imagePath = Utils.saveMyBitmap(imageBitmap);
+	public static void shareWechatFriend(Context context, String content , File picFile){
+		if (isInstallApp(context, PlatformUtil.PACKAGE_WECHAT)){
+			Intent intent = new Intent();
+			ComponentName cop = new ComponentName("com.tencent.mm","com.tencent.mm.ui.tools.ShareImgUI");
+			intent.setComponent(cop);
+			intent.setAction(Intent.ACTION_SEND);
+			intent.setType("image/*");
+			if (picFile != null) {
+				if (picFile.isFile() && picFile.exists()) {
+					Uri uri;
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+						uri = FileProvider.getUriForFile(context, AUTHORITY, picFile);
+					} else {
+						uri = Uri.fromFile(picFile);
+					}
+					intent.putExtra(Intent.EXTRA_STREAM, uri);
+				}
+			}
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			context.startActivity(Intent.createChooser(intent, "Share"));
+		}else{
+			UiHelper.showToast(context, "您需要安装微信客户端");
 		}
-		OnekeyShare oks = new OnekeyShare();
-		// 分享时Notification的图标和文字
-//        oks.setNotification(R.drawable.ic_launcher,context.getString(R.string.app_name));
-        oks.setSilent(false);
-        oks.setComment(title);								// 类似标题
-        oks.setText(text);
-        oks.setPlatform(Renren.NAME);
-        oks.setTitle(title);
-        oks.setTitleUrl(url);								// 跳转地址
-        oks.setImagePath(imagePath);
-		shareToPlatform(context, oks);
 	}
-	
+
 	/**
-	 * 分享一个网页到豆瓣
-	 * @param context
-	 * @param text				标题
-	 * @param shareUrl			分享的网页地址
-	 * @param imageBitmap		分享的图片
+	 * 直接分享文本到微信好友
+	 *
+	 * @param context 上下文
 	 */
-	public static void shareToDouban(final Context context, String text, String shareUrl, Bitmap imageBitmap){
-		String imagePath = "";
-		if (imageBitmap != null) {
-			imagePath = Utils.saveMyBitmap(imageBitmap);
+	public void shareWechatFriend(Context context, String content) {
+		if (isInstallApp(context, PlatformUtil.PACKAGE_WECHAT)) {
+			Intent intent = new Intent();
+			ComponentName cop = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareImgUI");
+			intent.setComponent(cop);
+			intent.setAction(Intent.ACTION_SEND);
+			intent.putExtra("android.intent.extra.TEXT", content);
+			intent.putExtra("Kdescription", !TextUtils.isEmpty(content) ? content : "");
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			context.startActivity(intent);
+		} else {
+			UiHelper.showToast(context, "您需要安装微信客户端");
 		}
-		// 豆瓣不能分享网页，只能是分享图片和文字(可以把网址直接放到文字内容的后面)
-		OnekeyShare oks = new OnekeyShare();
-		// 分享时Notification的图标和文字
-//        oks.setNotification(R.drawable.ic_launcher,context.getString(R.string.app_name));
-        oks.setSilent(false);
-        oks.setText(text);
-        oks.setImagePath(imagePath);						// 需要申请权限
-        oks.setPlatform(Douban.NAME);
-		shareToPlatform(context, oks);
-		
+	}
+
+	/**
+	 * 直接分享文本和图片到微信朋友圈
+	 * @param context
+	 * @param content
+	 */
+	public static void shareWechatMoment(Context context, String content, File picFile) {
+		if (isInstallApp(context,PlatformUtil.PACKAGE_WECHAT)) {
+			Intent intent = new Intent();
+			//分享精确到微信的页面，朋友圈页面，或者选择好友分享页面
+			ComponentName comp = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareToTimeLineUI");
+			intent.setComponent(comp);
+			intent.setAction(Intent.ACTION_SEND);
+			intent.setType("image/*");
+			//添加Uri图片地址--用于添加多张图片
+			//ArrayList<Uri> imageUris = new ArrayList<>();
+			//intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+			if (picFile != null) {
+				if (picFile.isFile() && picFile.exists()) {
+					Uri uri;
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+						uri = FileProvider.getUriForFile(context, AUTHORITY, picFile);
+					} else {
+						uri = Uri.fromFile(picFile);
+					}
+					intent.putExtra(Intent.EXTRA_STREAM, uri);
+				}
+			}
+			intent.putExtra("Kdescription", !TextUtils.isEmpty(content) ? content : "");
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			context.startActivity(intent);
+		} else {
+			UiHelper.showToast(context, "您需要安装微信客户端");
+		}
+	}
+
+	public static void shareToSinaFriends(Context context, String content, File picFile) {
+		if (!isInstallApp(context, PACKAGE_SINA)) {
+			UiHelper.showToast(context, "新浪微博没有安装");
+			return;
+		}
+		if (picFile == null || !picFile.exists()) {
+			UiHelper.showToast(context, "文件不存在");
+			return;
+		}
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.setType("image/*");// 分享文本|文本+图片|图片 到微博内容时使用
+		PackageManager packageManager = context.getPackageManager();
+		List<ResolveInfo> matchs = packageManager.queryIntentActivities(intent,PackageManager.MATCH_DEFAULT_ONLY);
+		ResolveInfo resolveInfo = null;
+		for (ResolveInfo each : matchs) {
+			String pkgName = each.activityInfo.applicationInfo.packageName;
+			if ("com.sina.weibo".equals(pkgName)) {
+				resolveInfo = each;
+				break;
+			}
+		}
+		intent.setClassName(PACKAGE_SINA, resolveInfo.activityInfo.name);// 这里在使用resolveInfo的时候需要做判空处理防止crash
+		intent.putExtra(Intent.EXTRA_TEXT, content);
+		intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(picFile));
+		context.startActivity(intent);
+	}
+
+
+	/**
+	 * @param context  上下文
+	 * @param path     不为空的时候，表示分享单张图片，会检验图片文件是否存在
+	 * @param pathList 不为空的时候表示分享多张图片，会检验每一张图片是否存在
+	 * @param pkg      分享到的指定app的包名
+	 * @param cls      分享到的页面（微博不需要指定页面）
+	 */
+	private static void shareImage(Context context, String path, List<String> pathList, String pkg, String cls) {
+		if (path == null && pathList == null) {
+			UiHelper.showToast(context, "找不到您要分享的图片文件");
+			return;
+		}
+
+		checkFileUriExposure();
+
+		try {
+			if (path != null) {
+				//单张图片
+				if (!new File(path).isFile()) {
+					UiHelper.showToast(context, "图片不存在，请检查后重试");
+					return;
+				}
+
+				Intent intent = new Intent();
+				if (pkg != null && cls != null) {
+					//指定分享到的app
+					if (pkg.equals("com.sina.weibo")) {
+						//微博分享的需要特殊处理
+						intent.setPackage(pkg);
+					} else {
+						ComponentName comp = new ComponentName(pkg, cls);
+						intent.setComponent(comp);
+					}
+				}
+				intent.setAction(Intent.ACTION_SEND);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(path)));
+				intent.setType("image/*");   //分享文件
+				context.startActivity(Intent.createChooser(intent, "分享"));
+			} else {
+				//多张图片
+				ArrayList<Uri> uriList = new ArrayList<>();
+				for (int i = 0; i < pathList.size(); i++) {
+					if (!new File(pathList.get(i)).isFile()) {
+						UiHelper.showToast(context, "第" + (i + 1) + "张图片不存在，请检查后重试");
+						return;
+					}
+					uriList.add(Uri.fromFile(new File(pathList.get(i))));
+				}
+
+				Intent intent = new Intent();
+
+				if (pkg != null && cls != null) {
+					//指定分享到的app
+					if (pkg.equals("com.sina.weibo")) {
+						//微博分享的需要特殊处理
+						intent.setPackage(pkg);
+					} else {
+						ComponentName comp = new ComponentName(pkg, cls);
+						intent.setComponent(comp);
+					}
+				}
+				intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+				intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriList);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.setType("image/*");
+				context.startActivity(Intent.createChooser(intent, "分享"));
+			}
+
+		} catch (Exception e) {
+			UiHelper.showToast(context, "分享失败，未知错误");
+		}
 	}
 	
 	public static void shareToMessage(final Context context, final String url){
@@ -221,311 +370,111 @@ public class ShareSDKUtil {
 		intent.putExtra("sms_body", shareText);
 		context.startActivity(intent);
 	}
-
-	
-	public static void shareToFacebook(final Context context, String text, String shareUrl, Bitmap imageBitmap){
-		String imagePath = "";
-		if (imageBitmap != null) {
-			imagePath = Utils.saveMyBitmap(imageBitmap);
-		}
-		OnekeyShare oks = new OnekeyShare();
-        oks.setSilent(false);
-        oks.setText(text);
-        oks.setImagePath(imagePath);
-        oks.setPlatform(Facebook.NAME);
-		shareToPlatform(context, oks);
-	}
-	
-	public static void shareToTwitter(final Context context, String text, String shareUrl, Bitmap imageBitmap){
-		String imagePath = "";
-		if (imageBitmap != null) {
-			imagePath = Utils.saveMyBitmap(imageBitmap);
-		}
-		OnekeyShare oks = new OnekeyShare();
-        oks.setSilent(false);
-        oks.setText(text);
-        oks.setImagePath(imagePath);
-        oks.setPlatform(Twitter.NAME);
-		shareToPlatform(context, oks);
-	}
-
-	/**
-	 * 分享一个网页信息到一个平台
-	 * @param context
-	 * @param title				标题
-	 * @param text				文字内容
-	 * @param url				网页地址
-	 * @param imagePath			图片的本地path
-	 * @param platformName		平台名称
-	 * @param silent			是否直接分享
-	 */
-	public static void shareToPlatform(final Context context,String title,String text,String url,String imagePath,String platformName,boolean silent){
-		OnekeyShare	oks = new OnekeyShare();
-        // 分享时Notification的图标和文字
-//        oks.setNotification(R.drawable.ic_launcher,context.getString(R.string.app_name));
-        oks.setTitle(title);
-        // 新浪微博没有url字段设置，需要把url合并到text的最后
-        oks.setText(text);
-        // url在微信（包括好友、朋友圈收藏）和易信（包括好友和朋友圈）中使用，否则可以不提供
-        oks.setUrl(url);
-        oks.setImagePath(imagePath);
-        oks.setPlatform(platformName);
-        oks.setSilent(silent);
-        shareToPlatform(context, oks);
-	}
-	
-	/**
-	 * 分享一个网页信息到一个平台
-	 * @param context
-	 * @param oks				分享实体
-	 */
-	public static void shareToPlatform(final Context context, OnekeyShare oks){
-		ShareSDK.initSDK(context.getApplicationContext());
-		final Handler handler = new Handler();
-        oks.setCallback(new PlatformActionListener() {
-
-			@Override
-			public void onError(Platform arg0, int arg1, Throwable arg2) {
-				arg2.printStackTrace();
-				System.out.println("ShareSDKUtil.onError()");
-				handler.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						Toast.makeText(context.getApplicationContext(), R.string.share_fail, Toast.LENGTH_SHORT).show();
-					}
-
-				}, 2000);
-			}
-
-			@Override
-			public void onComplete(Platform arg0, int arg1, HashMap<String, Object> arg2) {
-				System.out.println("ShareSDKUtil.onComplete()");
-				handler.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						Toast.makeText(context.getApplicationContext(), R.string.share_succ, Toast.LENGTH_SHORT).show();
-					}
-
-				}, 2000);
-			}
-
-			@Override
-			public void onCancel(Platform arg0, int arg1) {
-				System.out.println("ShareSDKUtil.onCancel()");
-				handler.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-//						Toast.makeText(context.getApplicationContext(), "取消分享", Toast.LENGTH_SHORT).show();
-					}
-
-				}, 2000);
-			}
-		});
-        oks.show(context.getApplicationContext());
-	}
-	
 	
 	public static void shareApp(final Activity activity){
 		ShortUrlUtil shorturl = new ShortUrlUtil(activity.getResources().getString(R.string.App_Share_Url));
-		
+
 		final Dialog pdialog = new RotateProgressDialog(activity);
 		pdialog.show();
-		
+
 		shorturl.setShortUrlInterface(new ShortUrlInterface() {
 
 			@Override
 			public void handleResult(ShortUrlUtil shortUrlUtil, UrlObject urlobject) {
 				pdialog.dismiss();
-				if (urlobject == null) return;
-				final String shortUrl = urlobject.getUrl_short();
-				ShareAppWindow window = new ShareAppWindow(activity);
-				window.setPopListener(new SharePopWindow.SharePopWindowListener() {
-					Bitmap thumb = BitmapFactory.decodeResource(activity.getResources(), R.drawable.start_splash_shoufa);
-					String title = activity.getString(R.string.share_title);
-					String content = activity.getString(R.string.share_app_content);
 
-					@Override
-					public void onClickBtn(int tag) {
-						switch (tag) {
-							case 0:
-								// 分享到微信
-								shareToWechat(
-										activity.getApplicationContext(),
-										activity.getString(R.string.share_app_wechat_content),
-										title,
-										shortUrl,
-										thumb);
-								break;
-							case 1:
-								// 微信朋友圈
-								shareToWechatMoments(
-										activity.getApplicationContext(),
-										activity.getString(R.string.share_app_wechat_content),
-										title,
-										shortUrl,
-										thumb);
-								break;
-							case 2:
-								// 新浪微博
-								shareToSinaWeibo(activity, shareAppContent(activity, shortUrl), shortUrl, thumb);
-								break;
-
-							case 3:
-								// qq空间
-								shareToQzone(activity, title, content, shortUrl, thumb);
-								break;
-							case 4:
-								// 人人
-								shareToFacebook(activity, content, shortUrl, thumb);
-								break;
-							case 5:
-								// 短信分享
-								shareToMessage(activity, shortUrl);
-								break;
-
-							case 8:
-								shareToFacebook(activity, content, shortUrl, thumb);
-								break;
-
-							case 9:
-								shareToTwitter(activity, content, shortUrl, thumb);
-								break;
-
-							default:
-								break;
-						}
-					}
-
-					@Override
-					public void onShow() {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void onDismiss() {
-						// TODO Auto-generated method stub
-
-					}
-				});
 			}
 		});
 		shorturl.execute();
 	}
 
-	public static void shareAppToFacebook(final Activity activity){
-		ShortUrlUtil shorturl = new ShortUrlUtil(activity.getResources().getString(R.string.App_Share_Url));
-		final Dialog pdialog = new RotateProgressDialog(activity);
-		pdialog.show();
-		shorturl.setShortUrlInterface(new ShortUrlInterface() {
+	public static void shareAppToFacebook(final Activity activity) {
+		final String shortUrl = activity.getResources().getString(R.string.App_Share_Url);
+		ShareAppWindow window = new ShareAppWindow(activity);
+		window.setPopListener(new SharePopWindow.SharePopWindowListener() {
+			Bitmap thumb = BitmapFactory.decodeResource(activity.getResources(), R.drawable.start_splash_shoufa);
+			String title = activity.getString(R.string.share_title);
+			String content = activity.getString(R.string.share_app_content);
+
 			@Override
-			public void handleResult(ShortUrlUtil shortUrlUtil, UrlObject urlobject) {
-				if (urlobject == null) return;
-				final String shortUrl = urlobject.getUrl_short();
-				Bitmap thumb = BitmapFactory.decodeResource(activity.getResources(), R.drawable.start_splash_shoufa);
-				String title = activity.getString(R.string.share_title);
-				String content = activity.getString(R.string.share_app_content);
-				shareToFacebook(activity, content, shortUrl, thumb);
-				pdialog.dismiss();
+			public void onClickBtn(int tag) {
+				switch (tag) {
+					case 0:
+						// 分享到微信
+						shareWechatFriend(
+								activity.getApplicationContext(),
+								title + "\n" + activity.getString(R.string.share_app_wechat_content),
+								BitmapUtils.saveBitmap("thumb.png", thumb, activity));
+						break;
+					case 1:
+						// 微信朋友圈
+						shareWechatMoment(
+								activity.getApplicationContext(),
+								title + "\n" + activity.getString(R.string.share_app_wechat_content),
+								BitmapUtils.saveBitmap("thumb.png", thumb, activity));
+						break;
+					case 2:
+						// 新浪微博
+						shareToSinaFriends(activity,
+								title + "\n" + activity.getString(R.string.share_app_wechat_content),
+								BitmapUtils.saveBitmap("thumb.png", thumb, activity));
+						break;
+
+					case 3:
+						// qq空间
+						shareImageToQQZone(activity, BitmapUtils.saveBitmap("thumb.png", thumb, activity));
+						break;
+					case 4:
+						// 人人
+						shareImage(activity, shortUrl);
+						break;
+					case 5:
+						// 短信分享
+						shareToMessage(activity, content + "\n" + shortUrl);
+						break;
+
+					case 8:
+					case 9:
+						shareUrl(activity, shortUrl);
+						break;
+
+					default:
+						break;
+				}
+			}
+
+			@Override
+			public void onShow() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onDismiss() {
+				// TODO Auto-generated method stub
+
 			}
 		});
-		shorturl.execute();
 	}
 
 	public static void shareAppToWeibo(final Activity activity){
-		ShortUrlUtil shorturl = new ShortUrlUtil(activity.getResources().getString(R.string.App_Share_Url));
-		final Dialog pdialog = new RotateProgressDialog(activity);
-		pdialog.show();
-		shorturl.setShortUrlInterface(new ShortUrlInterface() {
-			@Override
-			public void handleResult(ShortUrlUtil shortUrlUtil, UrlObject urlobject) {
-				if (urlobject == null) return;
-				final String shortUrl = urlobject.getUrl_short();
-				Bitmap thumb = BitmapFactory.decodeResource(activity.getResources(), R.drawable.start_splash_shoufa);
-				shareToSinaWeibo(activity, shareAppContent(activity, shortUrl), shortUrl, thumb);
-				pdialog.dismiss();
-			}
-		});
-		shorturl.execute();
+		shareUrl(activity, shareAppContent(activity, activity.getResources().getString(R.string.App_Share_Url)));
 	}
 
 	public static void shareAppToWechat(final Activity activity){
-		ShortUrlUtil shorturl = new ShortUrlUtil(activity.getResources().getString(R.string.App_Share_Url));
-		final Dialog pdialog = new RotateProgressDialog(activity);
-		pdialog.show();
-		shorturl.setShortUrlInterface(new ShortUrlInterface() {
-			@Override
-			public void handleResult(ShortUrlUtil shortUrlUtil, UrlObject urlobject) {
-				if (urlobject == null) return;
-				final String shortUrl = urlobject.getUrl_short();
-				Bitmap thumb = BitmapFactory.decodeResource(activity.getResources(), R.drawable.start_splash_shoufa);
-				shareToWechat(
-						activity.getApplicationContext(),
-						activity.getString(R.string.share_app_wechat_content),
-						activity.getString(R.string.share_title),
-						shortUrl,
-						thumb
-				);
-				pdialog.dismiss();
-			}
-		});
-		shorturl.execute();
+		shareUrl(activity, shareAppContent(activity, activity.getResources().getString(R.string.App_Share_Url)));
 	}
 
 	public static void shareAppToQQ(final Activity activity){
-		ShortUrlUtil shorturl = new ShortUrlUtil(activity.getResources().getString(R.string.App_Share_Url));
-		final Dialog pdialog = new RotateProgressDialog(activity);
-		pdialog.show();
-		shorturl.setShortUrlInterface(new ShortUrlInterface() {
-			@Override
-			public void handleResult(ShortUrlUtil shortUrlUtil, UrlObject urlobject) {
-				if (urlobject == null) return;
-				final String shortUrl = urlobject.getUrl_short();
-				Bitmap thumb = BitmapFactory.decodeResource(activity.getResources(), R.drawable.start_splash_shoufa);
-				shareToQQ(
-						activity,
-						activity.getString(R.string.share_title),
-						activity.getString(R.string.share_app_content),
-						shortUrl,
-						thumb
-				);
-				pdialog.dismiss();
-			}
-		});
-		shorturl.execute();
+		shareUrl(activity, shareAppContent(activity, activity.getResources().getString(R.string.App_Share_Url)));
 	}
 
 	public static void shareAppToTwitter(final Activity activity){
-		ShortUrlUtil shorturl = new ShortUrlUtil(activity.getResources().getString(R.string.App_Share_Url));
-		final Dialog pdialog = new RotateProgressDialog(activity);
-		pdialog.show();
-		shorturl.setShortUrlInterface(new ShortUrlInterface() {
-			@Override
-			public void handleResult(ShortUrlUtil shortUrlUtil, UrlObject urlobject) {
-				if (urlobject == null) return;
-				final String shortUrl = urlobject.getUrl_short();
-				Bitmap thumb = BitmapFactory.decodeResource(activity.getResources(), R.drawable.start_splash_shoufa);
-				shareToTwitter(activity, shareAppContent(activity, shortUrl), shortUrl, thumb);
-				pdialog.dismiss();
-			}
-		});
-		shorturl.execute();
+		shareUrl(activity, shareAppContent(activity, activity.getResources().getString(R.string.App_Share_Url)));
 	}
 
 	public static void shareAppToMessage(final Activity activity){
-		ShortUrlUtil shorturl = new ShortUrlUtil(activity.getResources().getString(R.string.App_Share_Url));
-		final Dialog pdialog = new RotateProgressDialog(activity);
-		pdialog.show();
-		shorturl.setShortUrlInterface(new ShortUrlInterface() {
-			@Override
-			public void handleResult(ShortUrlUtil shortUrlUtil, UrlObject urlobject) {
-				if (urlobject == null) return;
-				final String shortUrl = urlobject.getUrl_short();
-				shareToMessage(activity, shortUrl);
-				pdialog.dismiss();
-			}
-		});
-		shorturl.execute();
+		shareToMessage(activity, activity.getResources().getString(R.string.App_Share_Url));
 	}
 	
 	public static String shareAppContent(Context context, String url){
@@ -572,90 +521,8 @@ public class ShareSDKUtil {
 			final boolean isStoryVideo,
 			final VideoShareInfo info,
 			final ShareWindowListener listener){
-		final Dialog dialog = new RotateProgressDialog(activity);
-		dialog.show();
-		shortUrl.setShortUrlInterface(new ShortUrlInterface() {
-
-			@Override
-			public void handleResult(ShortUrlUtil shortUrlUtil, UrlObject urlobject) {
-				dialog.dismiss();
-				if (urlobject == null) {
-					new SuperToast(activity, activity.getString(R.string.view_load_video_network_fail));
-					return;
-				}
-				final String shortUrl = urlobject.getUrl_short();
-				final String title = activity.getString(R.string.share_title);
-				SharePopWindow window = new ShareVideoWindow(activity);
-				window.setPopListener(new SharePopWindowListener() {
-					@Override
-					public void onClickBtn(int tag) {
-						infromToServer(activity, info);
-						switch (tag) {
-							case 0:
-//							MobclickAgent.onEvent(activity, MobEvent.Event_Share_Wechat);
-								// 分享到微信
-								shareToWechat(activity, title, getShareContent(activity, city, desc, isStoryVideo), shortUrl, thumb);
-								break;
-							case 1:
-								// 微信朋友圈
-//							MobclickAgent.onEvent(activity, MobEvent.Event_Share_Wetchat_Comment);
-								shareToWechatMoments(activity, getShareContent(activity, city, desc, isStoryVideo), title, shortUrl, thumb);
-								break;
-							case 2:
-								// 新浪微博
-//							MobclickAgent.onEvent(activity, MobEvent.Event_Share_Weibo);
-								shareToSinaWeibo(activity, getShareContent(activity, city, desc, shortUrl, isStoryVideo), shortUrl, thumb);
-								break;
-
-							case 3:
-								// QQ空间
-//							MobclickAgent.onEvent(activity, MobEvent.Event_Share_Qzone);
-								shareToQzone(activity, title, getShareContent(activity, city, desc, isStoryVideo), shortUrl, thumb);
-								break;
-
-							case 4:
-								// 人人网
-//							MobclickAgent.onEvent(activity, MobEvent.Event_Share_RenRen);
-								shareToRenren(activity, title, getShareContent(activity, city, desc, isStoryVideo), shortUrl, thumb);
-								break;
-
-							case 5:
-								// 豆瓣
-//							MobclickAgent.onEvent(activity, MobEvent.Event_Share_Douban);
-								shareToDouban(activity, getShareContent(activity, city, desc, shortUrl, isStoryVideo), shortUrl, thumb);
-								break;
-
-							case 8:
-								shareToFacebook(activity, getShareContent(activity, city, desc, isStoryVideo), shortUrl, thumb);
-								break;
-
-							case 9:
-								shareToTwitter(activity, getShareContent(activity, city, desc, isStoryVideo), shortUrl, thumb);
-								break;
-
-							default:
-								break;
-						}
-						if (listener != null)
-							listener.onClick();
-					}
-
-					@Override
-					public void onDismiss() {
-						if (listener != null)
-							listener.onCancel();
-					}
-
-					@Override
-					public void onShow() {
-						if (listener != null) {
-							listener.show();
-						}
-					}
-				});
-			}
-		});
-		shortUrl.execute();
+		infromToServer(activity, info);
+		shareUrl(activity, getShareContent(activity, city, desc, isStoryVideo));
 	}
 	
 	private static String getShareContent(Context context, String location, String description, boolean isStoryVideo){

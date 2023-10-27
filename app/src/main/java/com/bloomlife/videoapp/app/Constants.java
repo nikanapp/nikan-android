@@ -45,5 +45,19 @@ public class Constants {
 	public static final int UNADD = 0;
 	public static final int ADDED = 1;
 	public static final int MUTUAL = 2;
+	/**
+	 * 微信广播
+	 */
+	public static final String WECHAT_ACTION = "wechatAction";
+	/**
+	 * 微信登录返回数据
+	 */
+	public static final String WECHAT_LOGIN_DATA = "wechatLoginData";
+
+	public static final String SINA_APP_KY = "";
+	public static final String SINA_REDIRECT_URL = "";
+	public static final String SINA_COPE = "";
+
+	public static final String WECHAT_APP_ID = "";
 
 }
