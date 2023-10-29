@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import java.util.List;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/24.
+ * Created by zxt lan4627@Gmail.com on 2015/8/24.
  */
 public class UserStory implements Parcelable {
 

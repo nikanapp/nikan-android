@@ -3,7 +3,7 @@ package com.bloomlife.videoapp.model;
 import com.bloomlife.android.bean.BaseMessage;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/6.
+ * Created by zxt lan4627@Gmail.com on 2015/8/6.
  */
 public class SearchMessage extends BaseMessage {
 

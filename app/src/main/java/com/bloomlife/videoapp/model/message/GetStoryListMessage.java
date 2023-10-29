@@ -3,7 +3,7 @@ package com.bloomlife.videoapp.model.message;
 import com.bloomlife.android.bean.BaseMessage;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/3.
+ * Created by zxt lan4627@Gmail.com on 2015/8/3.
  */
 public class GetStoryListMessage extends BaseMessage {
 

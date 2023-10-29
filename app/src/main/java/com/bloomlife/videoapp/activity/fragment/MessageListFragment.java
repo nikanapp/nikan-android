@@ -57,7 +57,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年2月6日 下午4:50:53
  */

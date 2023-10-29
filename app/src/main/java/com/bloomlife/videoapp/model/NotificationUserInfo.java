@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import net.tsz.afinal.annotation.sqlite.Id;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/9/6.
+ * Created by zxt lan4627@Gmail.com on 2015/9/6.
  */
 public class NotificationUserInfo implements Parcelable {
 

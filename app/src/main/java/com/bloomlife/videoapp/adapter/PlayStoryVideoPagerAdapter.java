@@ -11,7 +11,7 @@ import com.bloomlife.videoapp.model.StoryVideo;
 import java.util.List;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/10.
+ * Created by zxt lan4627@Gmail.com on 2015/8/10.
  */
 public class PlayStoryVideoPagerAdapter extends MyFragmentStatePagerAdapter {
 

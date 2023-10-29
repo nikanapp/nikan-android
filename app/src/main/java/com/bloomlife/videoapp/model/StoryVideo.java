@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/31.
+ * Created by zxt lan4627@Gmail.com on 2015/7/31.
  */
 
 public class StoryVideo implements Parcelable {

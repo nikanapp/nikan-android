@@ -53,7 +53,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/24.
+ * Created by zxt lan4627@Gmail.com on 2015/7/24.
  * @parameter INTENT_ACCOUNT Account 传用户的信息进来，使用Account类。
  * @parameter INTENT_FIRST_EDIT boolean 是否第一次登陆后的编辑
  * @parameter INTENT_TYPE int 编辑的类型

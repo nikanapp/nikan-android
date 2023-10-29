@@ -28,7 +28,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/18.
+ * Created by zxt lan4627@Gmail.com on 2015/8/18.
  */
 public class StoryWatermarkPlayer extends RelativeLayout implements TextureView.SurfaceTextureListener {
 

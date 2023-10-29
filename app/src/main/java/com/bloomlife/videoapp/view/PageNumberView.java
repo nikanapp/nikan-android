@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年12月26日 下午3:23:18
  */

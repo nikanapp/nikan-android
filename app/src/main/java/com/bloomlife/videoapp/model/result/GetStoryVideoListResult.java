@@ -6,7 +6,7 @@ import com.bloomlife.videoapp.model.StoryVideo;
 import java.util.List;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/31.
+ * Created by zxt lan4627@Gmail.com on 2015/7/31.
  */
 public class GetStoryVideoListResult extends ProcessResult{
 

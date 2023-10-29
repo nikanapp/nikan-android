@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/17.
+ * Created by zxt lan4627@Gmail.com on 2015/8/17.
  */
 public class Emotion implements Parcelable {
 

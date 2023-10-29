@@ -10,7 +10,7 @@ import com.lee.pullrefresh.ui.LoadingLayout;
 import com.lee.pullrefresh.ui.PullToRefreshListView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年2月9日 上午11:46:39
  */

@@ -16,7 +16,7 @@ import com.bloomlife.videoapp.model.message.GetFriendListMessage;
 import com.bloomlife.videoapp.model.result.GetFriendListResult;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/9/21.
+ * Created by zxt lan4627@Gmail.com on 2015/9/21.
  */
 public class InviteFragment extends ListFragment {
 

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 点击屏幕对焦
  * @date 2015年4月9日 下午6:07:16
  */

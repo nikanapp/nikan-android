@@ -8,7 +8,7 @@ import com.bloomlife.videoapp.common.CommentText;
 import java.util.List;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/9/23.
+ * Created by zxt lan4627@Gmail.com on 2015/9/23.
  */
 public class CommentInfo implements Parcelable {
 

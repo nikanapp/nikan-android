@@ -19,7 +19,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ScrollView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年2月3日 上午11:28:05
  */

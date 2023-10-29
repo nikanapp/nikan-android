@@ -3,7 +3,7 @@ package com.bloomlife.videoapp.model.result;
 import com.bloomlife.android.bean.ProcessResult;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/27.
+ * Created by zxt lan4627@Gmail.com on 2015/7/27.
  */
 public class UserInfoResult extends ProcessResult {
 

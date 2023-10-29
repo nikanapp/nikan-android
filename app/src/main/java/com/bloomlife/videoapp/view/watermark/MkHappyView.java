@@ -27,7 +27,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/26.
+ * Created by zxt lan4627@Gmail.com on 2015/8/26.
  */
 public class MkHappyView extends BaseMkView {
 

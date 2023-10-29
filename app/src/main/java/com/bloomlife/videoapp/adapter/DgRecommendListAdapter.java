@@ -15,7 +15,7 @@ import java.util.List;
 import androidx.fragment.app.FragmentActivity;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/28.
+ * Created by zxt lan4627@Gmail.com on 2015/7/28.
  * 推荐用户列表适配器
  */
 public class DgRecommendListAdapter extends UserListAdapter<Recommend> {

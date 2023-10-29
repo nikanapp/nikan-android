@@ -47,7 +47,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/4.
+ * Created by zxt lan4627@Gmail.com on 2015/8/4.
  */
 public class MyStorysFragment extends ListFragment implements View.OnClickListener{
 

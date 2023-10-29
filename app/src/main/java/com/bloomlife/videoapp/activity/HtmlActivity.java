@@ -15,7 +15,7 @@ import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.view.GlobalProgressBar;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * @parameter INTENT_URL String 传一个网页链接进来。
  * @date 2014年12月30日 下午7:03:31
  */

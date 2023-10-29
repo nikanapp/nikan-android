@@ -43,7 +43,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.FrameLayout;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 视频播放页面的弹幕视图，包括弹幕选择窗口
  * @date 2015年4月15日 下午7:17:08
  */

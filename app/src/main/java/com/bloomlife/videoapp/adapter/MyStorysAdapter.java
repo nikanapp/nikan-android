@@ -57,7 +57,7 @@ import static com.bloomlife.videoapp.app.UploadBackgroundService.isUploadStoryVi
 import static com.bloomlife.videoapp.app.UploadBackgroundService.isUploadVideo;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/31.
+ * Created by zxt lan4627@Gmail.com on 2015/8/31.
  */
 public class MyStorysAdapter extends BaseAdapter<DbStoryVideo>  {
 

@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/22.
+ * Created by zxt lan4627@Gmail.com on 2015/7/22.
  */
 public class UploadFileQueue {
 

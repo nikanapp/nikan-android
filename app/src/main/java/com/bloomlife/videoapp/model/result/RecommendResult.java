@@ -6,7 +6,7 @@ import com.bloomlife.videoapp.model.Recommend;
 import java.util.List;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/28.
+ * Created by zxt lan4627@Gmail.com on 2015/7/28.
  */
 public class RecommendResult extends ProcessResult {
 

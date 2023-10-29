@@ -14,7 +14,7 @@ import com.bloomlife.videoapp.common.util.Utils;
 import java.util.List;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/26.
+ * Created by zxt lan4627@Gmail.com on 2015/8/26.
  */
 public class MkNervousView extends BaseMkView {
     public MkNervousView(Context context) {

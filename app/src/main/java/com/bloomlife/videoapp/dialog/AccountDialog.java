@@ -55,7 +55,7 @@ import java.util.HashMap;
 import static com.bloomlife.videoapp.common.CacheKeyConstants.KEY_HUANXIN_PWD;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/23.
+ * Created by zxt lan4627@Gmail.com on 2015/7/23.
  */
 public class AccountDialog extends BaseDialog {
 
@@ -123,7 +123,7 @@ public class AccountDialog extends BaseDialog {
         switch (type) {
             case SINA_WEIBO:
                 UserInfoListener sinaListener = new UserInfoListener(Type.SINA_WEIBO);
-                AuthInfo authInfo = new AuthInfo(getActivity(), Constants.SINA_APP_KY, Constants.SINA_REDIRECT_URL, Constants.SINA_COPE);
+                AuthInfo authInfo = new AuthInfo(getActivity(), BuildConfig.SINA_APP_KY, BuildConfig.SINA_REDIRECT_URL, BuildConfig.SINA_COPE);
                 mWBAPI = WBAPIFactory.createWBAPI(getActivity());
                 mWBAPI.registerApp(getActivity(), authInfo);
                 mWBAPI.authorize(getActivity(), new WbAuthListener() {
@@ -153,8 +153,8 @@ public class AccountDialog extends BaseDialog {
                 mWXEntryBroadcastReceiver = new WXEntryBroadcastReceiver();
                 getActivity().registerReceiver(mWXEntryBroadcastReceiver, new IntentFilter(Constants.WECHAT_ACTION));
                 mWechatListener = new UserInfoListener(Type.WECHAT);
-                mIWXAPI = WXAPIFactory.createWXAPI(getActivity(), Constants.WECHAT_APP_ID, true);
-                mIWXAPI.registerApp(Constants.WECHAT_APP_ID);
+                mIWXAPI = WXAPIFactory.createWXAPI(getActivity(), BuildConfig.WECHAT_APP_ID, true);
+                mIWXAPI.registerApp(BuildConfig.WECHAT_APP_ID);
                 SendAuth.Req req = new SendAuth.Req();
                 req.scope = "snsapi_userinfo";
                 mIWXAPI.sendReq(req);
@@ -330,9 +330,8 @@ public class AccountDialog extends BaseDialog {
                         PlatformDb platformDb = new PlatformDb();
                         platformDb.setUserName("微信用户");
                         platformDb.setUserId(resp.openId);
-                        mIWXAPI.sendReq(resp.code)
-                        platformDb.setExpiresTime();
-                        platformDb.setToken(oauth2AccessToken.getAccessToken());
+                        platformDb.setExpiresTime(0);
+                        platformDb.setToken("");
                         mWechatListener.onComplete(platformDb);
                         break;
                     case BaseResp.ErrCode.ERR_USER_CANCEL:
@@ -343,58 +342,6 @@ public class AccountDialog extends BaseDialog {
                         mWechatListener.onError();
                         break;
                 }
-            }
-        }
-    }
-
-    //通过得到的CODE获取access_token
-    private void getAccess_token(String code){
-        AjaxParams params=new AjaxParams();
-        params.put("appid", ContentsInfo.APP_ID);
-        params.put("secret", ContentsInfo.APP_SECRET);
-        params.put("code", code);
-        params.put("grant_type", "authorization_code");
-        String url = "https://api.weixin.qq.com/sns/oauth2/access_token";
-
-        ApiClientUtil.getInstance().Post(url, params, new AjaxCallBack<Object>() {
-            @Override
-            public void onSuccess(Object t) {
-                super.onSuccess(t);
-                try {
-                    JSONObject resObj=new JSONObject(t.toString());
-                    //得到openid和access_token，调用接口登录
-                    access_token=resObj.getString("access_token");
-                    openid=resObj.getString("openid");
-                    refreshToken=resObj.getString("refresh_token");
-                    expires_in=resObj.getLong("expires_in");
-                    getUserInfo();
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    //通过access_token调用接口
-    private void getUserInfo(){
-        if(isAccessTokenIsInvalid() && System.currentTimeMillis() < expires_in){
-            String url="https://api.weixin.qq.com/sns/userinfo?access_token=" + access_token + "&openid=" + openid;
-            HttpClient client = new DefaultHttpClient();
-            HttpGet get = new HttpGet(URI.create(uri));
-            try {
-                HttpResponse response = client.execute(get);
-                if (response.getStatusLine().getStatusCode() == 200) {
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
-                    StringBuilder builder = new StringBuilder();
-                    for (String temp = reader.readLine(); temp != null; temp = reader.readLine()) {
-                        builder.append(temp);
-                    }
-                    JSONObject object = new JSONObject(builder.toString().trim());
-                    String nikeName = object.getString("nickname");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
     }

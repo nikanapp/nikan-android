@@ -35,7 +35,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 拍摄界面的圆形进度按钮
  * @date 2014年11月27日 下午2:10:16
  */

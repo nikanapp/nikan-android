@@ -20,7 +20,7 @@ import com.bloomlife.videoapp.model.result.FollowerListResult;
 import java.util.List;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/28.
+ * Created by zxt lan4627@Gmail.com on 2015/7/28.
  * 关注和被关注的用户列表，在用户详情对话框里会用到
  */
 public class FollowerListFragment extends ListFragment {

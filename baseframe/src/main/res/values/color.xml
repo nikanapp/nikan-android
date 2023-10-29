@@ -15,6 +15,9 @@
     <color name="half_transparent">#2f000000</color>
     <color name="transparent_black">#df434343</color>
     <color name="audio_blue">#2C163A</color>
+    <color name="navigation_background">#fcfcfc</color>
+    <color name="app_black">#000000</color>
+    <color name="low_translucent_status_bar">#909090</color>
     
     <!-- JazzyViewPagerColor -->
     <color name="holo_blue">#FF33E5B5</color>

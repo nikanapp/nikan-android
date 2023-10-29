@@ -34,7 +34,7 @@ import static com.bloomlife.videoapp.app.MyHXSDKHelper.ATTRIBUTE_VIDEO_URI;
 
 /**
  * Description:
- * User: ZhengXingtian(lan4627@Gmail.com)
+ * User: zxt(lan4627@Gmail.com)
  * Date: 2015-08-16
  * Time: 04:15
  * Version: 1.0

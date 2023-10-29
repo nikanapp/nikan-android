@@ -77,7 +77,7 @@ import com.bloomlife.videoapp.view.VideoLoadView;
 import com.bloomlife.videoapp.view.dialog.MoreDialog;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  *
  * @parameter INTENT_VIDEO 传一个需要播放的视频进来。

@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/17.
+ * Created by zxt lan4627@Gmail.com on 2015/8/17.
  * Story模式下拍摄视频后进入的视频编辑界面
  */
 public class StoryVideoEditActivity extends VideoEditActivity implements View.OnClickListener{

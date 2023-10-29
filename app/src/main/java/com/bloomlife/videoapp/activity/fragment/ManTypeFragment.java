@@ -33,7 +33,7 @@ import com.bloomlife.videoapp.model.message.UpdateUserSexMessage;
 import com.bloomlife.videoapp.view.GenderScaleView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 性别选择页
  * @date 2015年4月8日 下午3:00:54
  */

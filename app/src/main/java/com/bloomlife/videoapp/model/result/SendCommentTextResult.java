@@ -6,7 +6,7 @@ package com.bloomlife.videoapp.model.result;
 import com.bloomlife.android.bean.ProcessResult;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 
  * @date 2015年2月13日 上午10:47:58
  */

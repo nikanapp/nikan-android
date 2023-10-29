@@ -11,7 +11,7 @@ import android.location.LocationManager;
 
 /**
  * 获取一些系统状态的工具类
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年11月21日 上午10:52:36
  */

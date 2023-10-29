@@ -4,7 +4,7 @@ import com.bloomlife.android.bean.BaseMessage;
 
 /**
  * Description:
- * User: ZhengXingtian(lan4627@Gmail.com)
+ * User: zxt(lan4627@Gmail.com)
  * Date: 2015-08-31
  * Time: 21:49
  * Version: 1.0

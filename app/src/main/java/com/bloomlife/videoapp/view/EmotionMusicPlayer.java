@@ -11,7 +11,7 @@ import com.bloomlife.videoapp.manager.EmotionMusicFileManager;
 import com.bloomlife.videoapp.model.Emotion;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/9/22.
+ * Created by zxt lan4627@Gmail.com on 2015/9/22.
  */
 public class EmotionMusicPlayer {
 

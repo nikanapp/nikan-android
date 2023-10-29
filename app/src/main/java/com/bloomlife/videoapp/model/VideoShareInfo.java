@@ -1,7 +1,7 @@
 package com.bloomlife.videoapp.model;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/9/25.
+ * Created by zxt lan4627@Gmail.com on 2015/9/25.
  */
 public class VideoShareInfo {
 

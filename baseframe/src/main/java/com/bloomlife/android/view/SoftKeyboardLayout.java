@@ -15,7 +15,7 @@ import android.util.Log;
 import android.widget.RelativeLayout;
 /**
  * 能监听键盘打开和收起的layout，只能在android:windowSoftInputMode="adjustResize"模式下才有效。
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年9月11日 下午4:57:23
  */
@@ -85,7 +85,7 @@ public class SoftKeyboardLayout extends RelativeLayout {
 	
 	/**
 	 * 软键盘状态监听接口
-	 * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+	 * @author <a href="mailto:lan4627@gmail.com">zxt</a>
 	 *
 	 * @date 2014年9月15日 下午2:39:54
 	 */

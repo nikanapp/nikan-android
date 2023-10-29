@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.bloomlife.videoapp.R;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/9/8.
+ * Created by zxt lan4627@Gmail.com on 2015/9/8.
  */
 public class MkNoneView extends BaseMkView {
 

@@ -54,7 +54,7 @@ import java.util.List;
 import static com.bloomlife.videoapp.activity.fragment.StoryVideoPlayerFragment.*;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/10.
+ * Created by zxt lan4627@Gmail.com on 2015/8/10.
  * @parameter INTENT_STORY <Story> 传一个需要播放的精选集进来。
  * @parameter INTENT_INDEX <int> 指定要从精选集的哪一个视频开始播放，不需要指定可以不传，默认从第0个开始播放
  */

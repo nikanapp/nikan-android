@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 import com.android.volley.toolbox.MessageRequest;
@@ -88,7 +89,7 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
+		fullScreen();
 		
 		setContentView(R.layout.activity_spalsh);
 		PushManager.getInstance().initialize(this.getApplicationContext());
@@ -107,7 +108,21 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 			mFromSettingLogout = getIntent().getExtras().getBoolean(INTENT_LGOIN, false);  // 是否跳过视频，直接进入登录页
 		}
 	}
-	
+
+	/**
+	 * 开启全屏
+	 */
+	protected void fullScreen() {
+		int flags = getWindow().getDecorView().getSystemUiVisibility();
+		try {
+			requestWindowFeature(Window.FEATURE_NO_TITLE);
+			getWindow().getDecorView().setSystemUiVisibility(
+					flags | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Override
 	protected void onResume() {

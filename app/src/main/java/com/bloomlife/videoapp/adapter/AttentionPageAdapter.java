@@ -10,7 +10,7 @@ import com.bloomlife.videoapp.activity.fragment.FollowerListFragment;
 import com.bloomlife.videoapp.activity.fragment.UserStorysFragment;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/29.
+ * Created by zxt lan4627@Gmail.com on 2015/7/29.
  */
 public class AttentionPageAdapter extends MyFragmentStatePagerAdapter {
 

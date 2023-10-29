@@ -1,7 +1,7 @@
 package com.bloomlife.android.bean;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/7.
+ * Created by zxt lan4627@Gmail.com on 2015/8/7.
  */
 public class PhoneNumber {
 

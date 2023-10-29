@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import java.util.Map;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/24.
+ * Created by zxt lan4627@Gmail.com on 2015/7/24.
  * 承载用户信息的类
  */
 public class Account implements Parcelable {

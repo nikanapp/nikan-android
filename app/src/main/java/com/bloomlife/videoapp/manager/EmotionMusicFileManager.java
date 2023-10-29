@@ -26,7 +26,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/9/17.
+ * Created by zxt lan4627@Gmail.com on 2015/9/17.
  */
 public class EmotionMusicFileManager {
 

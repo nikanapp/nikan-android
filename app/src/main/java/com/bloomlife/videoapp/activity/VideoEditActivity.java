@@ -73,7 +73,7 @@ import com.googlecode.mp4parser.authoring.container.mp4.MovieCreator;
 import com.googlecode.mp4parser.authoring.tracks.AppendTrack;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 
  * @parameter INTENT_VIDEO Video 传一个需要播放的视频进来。
  * @parameter INTENT_TOPIC List<String> 传一个话题列表进来。

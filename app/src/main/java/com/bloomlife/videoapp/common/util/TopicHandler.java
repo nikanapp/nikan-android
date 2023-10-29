@@ -18,7 +18,7 @@ import android.text.style.ForegroundColorSpan;
 import com.bloomlife.videoapp.R;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 处理输入的文本，判断输入的文本是否为话题，是的话把文字颜色改变。
  * @date 2014年12月24日 下午12:25:10
  */

@@ -24,7 +24,7 @@ import android.widget.ImageView;
 
 /**
  * 地图缩放动作条
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年11月11日 下午3:37:46
  */

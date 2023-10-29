@@ -6,7 +6,7 @@ package com.bloomlife.videoapp.model.message;
 import com.bloomlife.android.bean.BaseMessage;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 
  * @date 2014年12月9日 下午12:04:26
  */

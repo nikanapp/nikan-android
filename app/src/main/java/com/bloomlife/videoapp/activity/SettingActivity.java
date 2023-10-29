@@ -39,7 +39,7 @@ import com.bloomlife.videoapp.model.Account;
 import com.bloomlife.videoapp.view.SettingView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *         设置页面
  * @date 2014年12月23日 上午11:22:03
  */

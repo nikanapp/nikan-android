@@ -6,7 +6,7 @@ import com.bloomlife.videoapp.model.User;
 import java.util.List;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/6.
+ * Created by zxt lan4627@Gmail.com on 2015/8/6.
  */
 public class SearchResult extends ProcessResult {
 

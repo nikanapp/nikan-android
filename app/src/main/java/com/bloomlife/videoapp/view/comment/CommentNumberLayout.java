@@ -15,7 +15,7 @@ import android.widget.RelativeLayout;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.model.Comment;
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年12月3日 下午7:58:03
  */

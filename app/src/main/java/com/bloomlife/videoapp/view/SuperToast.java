@@ -15,7 +15,7 @@ import android.widget.Toast;
 import org.jdesktop.application.Resource;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年12月15日 下午5:03:24
  */

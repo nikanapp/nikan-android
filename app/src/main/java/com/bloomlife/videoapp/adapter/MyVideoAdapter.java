@@ -76,7 +76,7 @@ import androidx.fragment.app.FragmentActivity;
  * @notice 这里要十分关心在点击多个上传时，滑动列表时控件重用，进度刷新等ui错乱的问题。尝试过好几种判断的方式
  * 最终得到了目前这种，使用对滑动事件的监听获取firstItemt 区间判断会比较复杂，而且要处理的情况很对。
  * 大多数处理方式都木有很好能解决多线程+滑动时ui控件刷新要对应上的问题。 这个在refreshProgress方法中也有一些说明。
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年11月21日 上午10:29:56
  */

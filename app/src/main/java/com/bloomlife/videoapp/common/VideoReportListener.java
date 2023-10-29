@@ -16,7 +16,7 @@ import com.bloomlife.videoapp.view.SuperToast;
 import com.bloomlife.videoapp.view.ReportOptionView.ReportListener;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年2月10日 上午11:42:00
  */

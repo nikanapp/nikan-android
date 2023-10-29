@@ -17,7 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 视频上传进度条
  * @date 2015年6月5日 下午7:09:57
  */

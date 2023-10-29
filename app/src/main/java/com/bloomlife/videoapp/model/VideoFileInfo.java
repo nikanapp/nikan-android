@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 /**
  * 
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年3月25日 下午2:42:19
  */

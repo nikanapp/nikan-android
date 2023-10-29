@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.bloomlife.android.bean.CacheBean;
@@ -38,6 +40,8 @@ import androidx.multidex.MultiDex;
 public class AppContext extends com.bloomlife.android.framework.AppContext {
 	
 	public static final String SAVE = "save";
+
+	public final static Handler HANDLER = new Handler(Looper.getMainLooper());
 	
 	private static SysCode sysCode;
 	

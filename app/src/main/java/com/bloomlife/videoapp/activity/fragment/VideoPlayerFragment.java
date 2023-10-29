@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/10.
+ * Created by zxt lan4627@Gmail.com on 2015/8/10.
  */
 public abstract class VideoPlayerFragment extends Fragment {
 

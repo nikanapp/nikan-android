@@ -17,7 +17,7 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 话题的输入框，能监听输入框里的话题变化和将话题文字变色
  * @date 2014年12月15日 下午3:24:55
  */
@@ -66,7 +66,7 @@ public class TopicEditText extends EditText implements TopicView {
 	
 	/**
 	 * 
-	 * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+	 * @author <a href="mailto:lan4627@gmail.com">zxt</a>
 	 * 
 	 *         描述框的过滤器，限制描述为中文三十个，英文六十个字符。
 	 * @date 2014年12月12日 下午5:30:50

@@ -9,7 +9,7 @@ import com.bloomlife.videoapp.model.Emotion;
 import com.bloomlife.videoapp.model.Video;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/10.
+ * Created by zxt lan4627@Gmail.com on 2015/8/10.
  */
 public class UploadStoryVideoMessage extends BaseMessage {
 

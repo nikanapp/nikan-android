@@ -37,7 +37,7 @@ import com.bloomlife.videoapp.common.DefaultAnimationListener;
 import com.bloomlife.videoapp.view.VideoView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年12月30日 下午12:17:03
  */

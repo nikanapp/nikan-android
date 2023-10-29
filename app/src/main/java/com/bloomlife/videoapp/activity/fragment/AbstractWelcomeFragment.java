@@ -7,7 +7,7 @@ import android.app.Activity;
 import androidx.fragment.app.Fragment;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 
  * @date 2015年6月24日 下午9:07:40
  */

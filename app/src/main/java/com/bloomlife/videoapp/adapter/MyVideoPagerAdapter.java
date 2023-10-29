@@ -13,7 +13,7 @@ import com.bloomlife.videoapp.activity.fragment.AnonVideoPlayFragment;
 import com.bloomlife.videoapp.model.Video;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年11月24日 下午4:44:11
  */

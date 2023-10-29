@@ -4,7 +4,7 @@
 package com.bloomlife.videoapp.model;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年4月13日 下午12:25:15
  */

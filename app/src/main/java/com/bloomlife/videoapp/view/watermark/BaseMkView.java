@@ -14,7 +14,7 @@ import com.bloomlife.android.common.util.DateUtils;
 import com.bloomlife.videoapp.common.util.UIHelper;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/26.
+ * Created by zxt lan4627@Gmail.com on 2015/8/26.
  */
 public abstract class BaseMkView extends RelativeLayout {
     public BaseMkView(Context context) {

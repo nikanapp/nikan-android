@@ -29,7 +29,7 @@ import com.bloomlife.videoapp.model.result.MoreVideoResult;
 import com.bloomlife.videoapp.model.result.MoreVideoResult.MoreVideoVo;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年5月20日 上午10:36:30
  */

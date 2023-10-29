@@ -48,7 +48,7 @@ import net.tsz.afinal.annotation.view.ViewInject;
 import java.util.LinkedList;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/27.
+ * Created by zxt lan4627@Gmail.com on 2015/7/27.
  * @parameter INTENT_USER_INFO 传用户的信息进来，使用UserInfo类。
  */
 public class UserInfoDialog extends BaseDialog implements FansListFragment.StatusChangeListener, FollowerListFragment.StatusChangeListener {

@@ -17,7 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年4月8日 下午5:41:57
  */

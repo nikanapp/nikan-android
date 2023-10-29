@@ -55,7 +55,7 @@ import com.lee.pullrefresh.ui.PullToRefreshListView;
 import static com.bloomlife.videoapp.activity.VideoViewPagerActivity.*;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年2月6日 下午2:49:15
  */

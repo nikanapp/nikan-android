@@ -9,7 +9,7 @@ import com.bloomlife.videoapp.activity.fragment.MyStorysFragment;
 import com.bloomlife.videoapp.activity.fragment.MyVideosFragment;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/4.
+ * Created by zxt lan4627@Gmail.com on 2015/8/4.
  */
 public class MyVideoListPagerAdapter extends MyFragmentPagerAdapter {
 

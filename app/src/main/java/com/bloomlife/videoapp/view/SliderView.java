@@ -16,7 +16,7 @@ import com.bloomlife.android.common.util.UiUtils;
 import com.bloomlife.videoapp.R;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/30.
+ * Created by zxt lan4627@Gmail.com on 2015/7/30.
  * 用户信息对话框和好友邀请页面的指示器
  */
 public class SliderView extends View {

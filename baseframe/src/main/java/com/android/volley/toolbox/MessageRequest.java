@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 import java.util.Map;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/20.
+ * Created by zxt lan4627@Gmail.com on 2015/7/20.
  * 接口请求
  */
 public class MessageRequest extends StringRequest {

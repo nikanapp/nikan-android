@@ -31,7 +31,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/12.
+ * Created by zxt lan4627@Gmail.com on 2015/8/12.
  * 读取视频文件
  */
 public class VideoFileManager {

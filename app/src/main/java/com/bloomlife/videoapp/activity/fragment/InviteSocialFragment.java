@@ -29,7 +29,7 @@ import java.util.List;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/5.
+ * Created by zxt lan4627@Gmail.com on 2015/8/5.
  */
 public class InviteSocialFragment extends Fragment{
 

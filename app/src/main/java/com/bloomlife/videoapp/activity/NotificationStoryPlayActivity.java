@@ -17,7 +17,7 @@ import com.bloomlife.videoapp.model.result.GetStoryResult;
 import java.util.ArrayList;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/9/11.
+ * Created by zxt lan4627@Gmail.com on 2015/9/11.
  */
 public class NotificationStoryPlayActivity extends BaseStoryPlayActivity {
 

@@ -15,7 +15,7 @@ import com.bloomlife.videoapp.model.Video;
 
 /**
  * 视频发送完成后的水波动画
- * @author zhengxingtian
+ * @author zxt
  * 
  */
 public class WaveView extends FrameLayout {

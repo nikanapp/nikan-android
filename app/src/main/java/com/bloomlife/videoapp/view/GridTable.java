@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.widget.GridView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年1月30日 下午7:11:51
  */

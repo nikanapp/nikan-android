@@ -15,7 +15,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 表情弹幕的弹出选择窗口
  * @date 2015年4月15日 下午5:46:05
  */

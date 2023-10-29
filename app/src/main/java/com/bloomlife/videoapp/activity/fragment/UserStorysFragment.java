@@ -22,7 +22,7 @@ import com.bloomlife.videoapp.model.message.GetUserStoryListMessage;
 import com.bloomlife.videoapp.model.result.GetUserStoryListResult;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/31.
+ * Created by zxt lan4627@Gmail.com on 2015/7/31.
  */
 public class UserStorysFragment extends ListFragment {
 

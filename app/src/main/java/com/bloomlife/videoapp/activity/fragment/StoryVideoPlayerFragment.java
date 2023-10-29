@@ -35,7 +35,7 @@ import net.tsz.afinal.annotation.view.ViewInject;
 import androidx.annotation.Nullable;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/10.
+ * Created by zxt lan4627@Gmail.com on 2015/8/10.
  */
 public class StoryVideoPlayerFragment extends VideoPlayerFragment implements View.OnClickListener{
 

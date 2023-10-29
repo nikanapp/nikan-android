@@ -12,7 +12,7 @@ import com.bloomlife.android.view.TitleBar.OnTitleBarListener;
 import com.bloomlife.videoapp.R;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年2月3日 下午7:10:07
  */

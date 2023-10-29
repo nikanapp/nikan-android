@@ -36,7 +36,7 @@ import com.bloomlife.videoapp.app.AppContext;
 import com.easemob.chat.ImageMessageBody;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 
  * @date 2014年11月27日 下午7:03:06
  */

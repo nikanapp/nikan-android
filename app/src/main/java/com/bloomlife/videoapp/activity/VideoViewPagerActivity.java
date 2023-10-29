@@ -25,7 +25,7 @@ import com.bloomlife.videoapp.model.Video;
 import com.bloomlife.videoapp.view.comment.CommentViewPager;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  *@parameter INTENT_VIDEO_LIST List<Video> 传一个需要播放的视频列表。
  *@parameter INTENT_VIDEO_POSITION int 由列表中的哪一个位置开始播放。

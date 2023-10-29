@@ -40,7 +40,7 @@ import net.tsz.afinal.annotation.view.ViewInject;
 import java.util.List;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/6.
+ * Created by zxt lan4627@Gmail.com on 2015/8/6.
  */
 public class SearchActivity extends BaseActivity{
 

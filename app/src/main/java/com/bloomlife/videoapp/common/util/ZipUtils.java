@@ -11,7 +11,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/20.
+ * Created by zxt lan4627@Gmail.com on 2015/8/20.
  */
 public class ZipUtils{
 

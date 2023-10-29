@@ -18,7 +18,7 @@ import android.util.Log;
 import android.view.Surface;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年11月27日 下午6:58:55
  */

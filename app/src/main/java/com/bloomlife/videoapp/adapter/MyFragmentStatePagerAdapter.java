@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/11.
+ * Created by zxt lan4627@Gmail.com on 2015/8/11.
  */
 public abstract class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
 

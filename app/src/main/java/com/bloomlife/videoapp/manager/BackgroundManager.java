@@ -22,7 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 背景图管理器
  * @date 2015年6月8日 下午6:20:29
  */

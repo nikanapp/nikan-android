@@ -9,7 +9,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 /**
  * 分隔条置顶不动的ListView
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年9月5日 下午6:35:28
  */

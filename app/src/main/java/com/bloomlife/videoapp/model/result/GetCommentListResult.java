@@ -9,7 +9,7 @@ import com.bloomlife.android.bean.ProcessResult;
 import com.bloomlife.videoapp.model.Comment;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年12月4日 下午12:01:07
  */

@@ -61,7 +61,7 @@ import java.util.Comparator;
 import java.util.List;
 /**
  * 视频拍摄界面
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @parameter INTENT_RECORD_TYPE int 视频录制模式，RECORD_TYPE_STORY是精选集视频，RECORD_TYPE_ANONY是匿名视频
  *

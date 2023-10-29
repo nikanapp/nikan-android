@@ -31,7 +31,7 @@ import android.widget.RelativeLayout;
 import android.widget.ViewSwitcher;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 私信页面下方的文字发送条
  * @date 2015年4月29日 下午4:10:52
  */

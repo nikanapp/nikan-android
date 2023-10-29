@@ -21,7 +21,7 @@ import net.tsz.afinal.annotation.view.ViewInject;
 import java.util.ArrayList;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/28.
+ * Created by zxt lan4627@Gmail.com on 2015/7/28.
  * 推荐关注列表对话框
  */
 public class RecommendListDialog extends BaseDialog {

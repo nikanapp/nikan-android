@@ -54,10 +54,4 @@ public class Constants {
 	 */
 	public static final String WECHAT_LOGIN_DATA = "wechatLoginData";
 
-	public static final String SINA_APP_KY = "";
-	public static final String SINA_REDIRECT_URL = "";
-	public static final String SINA_COPE = "";
-
-	public static final String WECHAT_APP_ID = "";
-
 }

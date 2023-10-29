@@ -19,7 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 随机视频的动画按钮
  * @date 2015年1月13日 下午5:40:03
  */

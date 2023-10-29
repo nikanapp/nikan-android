@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 消息页面的提示组件，使用在没有更多，暂无消息，暂无通知
  * @date 2015年6月4日 下午4:55:12
  */

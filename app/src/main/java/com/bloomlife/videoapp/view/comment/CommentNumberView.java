@@ -24,7 +24,7 @@ import com.bloomlife.videoapp.common.util.UIHelper;
 import com.bloomlife.videoapp.model.Comment;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 右上角带数字的视频评论标签
  * @date 2014年12月3日 下午5:46:28
  */

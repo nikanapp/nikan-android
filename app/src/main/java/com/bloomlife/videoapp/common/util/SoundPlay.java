@@ -9,7 +9,7 @@ import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年2月4日 下午6:16:30
  */

@@ -20,7 +20,7 @@ import com.bloomlife.videoapp.view.SuperToast;
 
 /**
  * 
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 
  * @date 2014年8月18日 下午2:52:03
  */

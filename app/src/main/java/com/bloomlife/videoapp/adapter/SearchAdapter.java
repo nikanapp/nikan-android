@@ -14,7 +14,7 @@ import java.util.List;
 import androidx.fragment.app.FragmentActivity;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/6.
+ * Created by zxt lan4627@Gmail.com on 2015/8/6.
  */
 public class SearchAdapter extends StatusUserListAdapter<User> {
 

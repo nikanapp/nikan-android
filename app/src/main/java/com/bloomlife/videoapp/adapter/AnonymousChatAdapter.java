@@ -17,7 +17,7 @@ import androidx.fragment.app.FragmentActivity;
 
 /**
  * Description:
- * User: ZhengXingtian(lan4627@Gmail.com)
+ * User: zxt(lan4627@Gmail.com)
  * Date: 2015-08-16
  * Time: 13:48
  * Version: 1.0

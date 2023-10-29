@@ -7,7 +7,7 @@ import com.lee.pullrefresh.ui.LoadingLayout;
 import com.lee.pullrefresh.ui.PullToRefreshStickyHeadersListView;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/7.
+ * Created by zxt lan4627@Gmail.com on 2015/8/7.
  */
 public class MyPullToRefreshStickyHeadersListView extends PullToRefreshStickyHeadersListView {
 

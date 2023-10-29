@@ -12,7 +12,7 @@ import java.util.List;
 import androidx.fragment.app.FragmentActivity;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/29.
+ * Created by zxt lan4627@Gmail.com on 2015/7/29.
  */
 public class FollowerListAdapter extends StatusUserListAdapter<Follower> {
 

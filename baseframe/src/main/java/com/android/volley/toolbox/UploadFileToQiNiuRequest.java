@@ -1,7 +1,7 @@
 package com.android.volley.toolbox;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/23.
+ * Created by zxt lan4627@Gmail.com on 2015/7/23.
  */
 public class UploadFileToQiNiuRequest extends UploadFileRequest {
 

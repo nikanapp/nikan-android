@@ -16,7 +16,7 @@ import com.bloomlife.videoapp.common.util.UIHelper;
 import java.util.regex.Pattern;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/6.
+ * Created by zxt lan4627@Gmail.com on 2015/7/6.
  * 针对地图主页视频描述英文换行问题处理的TextView
  */
 public class DescriptionTextView extends View {

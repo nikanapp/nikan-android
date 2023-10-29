@@ -25,7 +25,7 @@ import com.bloomlife.videoapp.view.NetworkConnentErrorView.OnRetryListener;
 import com.bloomlife.videoapp.view.ScanningView.OnStopListener;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 地图主页加载失败点击重新加载的图标
  * @date 2015年2月2日 下午7:09:08
  */

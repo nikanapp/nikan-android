@@ -12,7 +12,7 @@ import android.widget.ListView;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/7.
+ * Created by zxt lan4627@Gmail.com on 2015/8/7.
  */
 public class PullToRefreshStickyHeadersListView extends PullToRefreshBase<StickyListHeadersListView> implements AbsListView.OnScrollListener {
 

@@ -9,7 +9,7 @@ import net.tsz.afinal.annotation.sqlite.Id;
 import net.tsz.afinal.annotation.sqlite.Table;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/31.
+ * Created by zxt lan4627@Gmail.com on 2015/8/31.
  */
 @Table(name="story_video")
 public class DbStoryVideo implements Parcelable {

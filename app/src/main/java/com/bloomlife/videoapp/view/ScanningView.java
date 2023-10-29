@@ -20,7 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年5月28日 下午6:52:10
  */

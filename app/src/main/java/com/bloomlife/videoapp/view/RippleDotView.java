@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 视频播放页面Gif选中后下方的黄色小点
  * @date 2015年4月16日 下午4:10:24
  */

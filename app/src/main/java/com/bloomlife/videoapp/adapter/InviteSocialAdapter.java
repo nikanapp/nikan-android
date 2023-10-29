@@ -17,7 +17,7 @@ import androidx.fragment.app.FragmentActivity;
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/5.
+ * Created by zxt lan4627@Gmail.com on 2015/8/5.
  */
 public class InviteSocialAdapter extends StatusUserListAdapter<InviteUser> implements StickyListHeadersAdapter {
 

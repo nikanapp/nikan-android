@@ -9,7 +9,7 @@ import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.view.SuperToast;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/9/16.
+ * Created by zxt lan4627@Gmail.com on 2015/9/16.
  */
 public abstract class RequestErrorAlertListener<P extends ProcessResult> extends MessageRequest.Listener<P> {
 

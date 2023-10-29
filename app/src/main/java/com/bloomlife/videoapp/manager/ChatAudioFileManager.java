@@ -25,7 +25,7 @@ import android.os.Message;
 import android.util.Log;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 私信语音的下载管理
  * @date 2015年5月4日 下午5:54:16
  */

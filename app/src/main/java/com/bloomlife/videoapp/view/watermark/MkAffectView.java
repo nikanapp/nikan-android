@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.bloomlife.videoapp.R;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/26.
+ * Created by zxt lan4627@Gmail.com on 2015/8/26.
  */
 public class MkAffectView extends BaseMkView {
 

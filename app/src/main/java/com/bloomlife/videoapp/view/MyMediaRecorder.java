@@ -15,7 +15,7 @@
 //import com.yixia.videoeditor.adapter.UtilityAdapter;
 //
 ///**
-// * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+// * @author <a href="mailto:lan4627@gmail.com">zxt</a>
 // *
 // * @date 2015年1月21日 下午6:00:46
 // */

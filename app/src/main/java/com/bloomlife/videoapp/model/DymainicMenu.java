@@ -5,7 +5,7 @@ import android.content.Context;
 import com.bloomlife.videoapp.R;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/20.
+ * Created by zxt lan4627@Gmail.com on 2015/8/20.
  */
 public class DymainicMenu {
 

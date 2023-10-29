@@ -26,7 +26,7 @@ import com.lee.pullrefresh.ui.PullToRefreshListView;
 import net.tsz.afinal.annotation.view.ViewInject;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/5.
+ * Created by zxt lan4627@Gmail.com on 2015/8/5.
  */
 public class InviteActivity extends BaseActivity{
 

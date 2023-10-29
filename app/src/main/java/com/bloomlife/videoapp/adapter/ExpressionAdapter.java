@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年4月15日 下午5:51:20
  */

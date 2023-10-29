@@ -17,7 +17,7 @@ import android.widget.ImageView;
 
 /**
  * 点燃按钮的火焰效果
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2014年12月5日 下午3:23:27
  */

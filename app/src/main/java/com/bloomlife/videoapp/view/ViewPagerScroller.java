@@ -8,7 +8,7 @@ import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 
  * @date 2014年12月15日 下午6:51:26
  */

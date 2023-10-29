@@ -8,7 +8,7 @@ import com.bloomlife.videoapp.activity.fragment.InviteSocialFragment;
 import com.bloomlife.videoapp.activity.fragment.RecommendFragment;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/5.
+ * Created by zxt lan4627@Gmail.com on 2015/8/5.
  */
 public class InvitePagerAdapter extends FragmentPagerAdapter {
 

@@ -21,7 +21,7 @@ import com.bloomlife.videoapp.common.util.Utils;
 import androidx.fragment.app.FragmentActivity;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 
  * @date 2014年12月5日 下午5:29:28
  */

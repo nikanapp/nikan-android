@@ -9,7 +9,7 @@ import android.view.View.MeasureSpec;
 import android.widget.ListView;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年1月30日 下午7:12:44
  */

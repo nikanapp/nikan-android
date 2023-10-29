@@ -21,7 +21,7 @@ import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  * 首次进入时的动画播放视图
  * @date 2014年12月30日 下午12:27:35
  */

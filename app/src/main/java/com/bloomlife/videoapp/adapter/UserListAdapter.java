@@ -28,7 +28,7 @@ import java.util.List;
 import androidx.fragment.app.FragmentActivity;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/7/28.
+ * Created by zxt lan4627@Gmail.com on 2015/7/28.
  * 用户列表
  */
 public abstract class UserListAdapter<T> extends AbstractAdapter<T> implements View.OnClickListener {

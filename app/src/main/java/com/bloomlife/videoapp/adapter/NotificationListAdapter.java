@@ -30,7 +30,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import androidx.fragment.app.FragmentActivity;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  *	视频通知列表的adapter
  * @date 2015年2月6日 下午3:04:33

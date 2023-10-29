@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年6月11日 下午6:42:46
  */

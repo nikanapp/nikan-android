@@ -12,7 +12,7 @@ import com.bloomlife.videoapp.R;
 import com.lee.pullrefresh.ui.LoadingLayout;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年2月9日 上午11:50:33
  */

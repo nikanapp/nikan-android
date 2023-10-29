@@ -15,7 +15,7 @@ import java.util.List;
 import androidx.fragment.app.FragmentActivity;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/5.
+ * Created by zxt lan4627@Gmail.com on 2015/8/5.
  * 有状态按钮的用户列表适配器
  */
 public abstract class StatusUserListAdapter<T extends Status> extends UserListAdapter<T> {

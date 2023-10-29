@@ -20,7 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 
 /**
- * @author <a href="mailto:lan4627@gmail.com">zhengxingtian</a>
+ * @author <a href="mailto:lan4627@gmail.com">zxt</a>
  *
  * @date 2015年2月6日 上午11:25:00
  */

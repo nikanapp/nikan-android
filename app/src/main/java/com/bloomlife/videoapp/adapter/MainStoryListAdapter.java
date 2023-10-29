@@ -20,7 +20,7 @@ import java.util.Random;
 import androidx.fragment.app.FragmentActivity;
 
 /**
- * Created by zhengxingtian lan4627@Gmail.com on 2015/8/3.
+ * Created by zxt lan4627@Gmail.com on 2015/8/3.
  */
 public class MainStoryListAdapter extends MainStorysAdapter {
 
