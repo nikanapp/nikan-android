@@ -94,6 +94,11 @@ android {
             buildConfigField(BOOLEAN, LOGGER_DEBUG, FALSE)
             buildConfigField(BOOLEAN, BUG_TAGS, FALSE)
             buildConfigField(STRING, HTTP_APP_API_DOMAIN, RELEASE_DOMAIN)
+
+            buildConfigField(STRING, "SINA_APP_KY", CONFIG('SINA_APP_KY'))
+            buildConfigField(STRING, "SINA_REDIRECT_URL", CONFIG('SINA_REDIRECT_URL'))
+            buildConfigField(STRING, "SINA_COPE", CONFIG('SINA_COPE'))
+            buildConfigField(STRING, "WECHAT_APP_ID", CONFIG('WECHAT_APP_ID'))
         }
 
         // 开发时的配置
@@ -138,20 +143,19 @@ repositories {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.4.1'
     configurations.all {
         resolutionStrategy {
             force 'androidx.core:core:1.6.0'
             force 'androidx.core:core-ktx:1.6.0'
         }
     }
-
-    compile (name: 'selectableroundedimageview-1.0.1', ext: 'aar')
-    compile project(':baseframe')
-    implementation project(':camera360')
+    api project(':baseframe')
+    api project(':camera360')
+    implementation (name: 'selectableroundedimageview-1.0.1', ext: 'aar')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.multidex:multidex:2.0.1"
+    implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.mapbox.maps:android:10.11.0'
     implementation 'io.github.sinaweibosdk:core:13.10.0@aar'
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android:6.8.0'

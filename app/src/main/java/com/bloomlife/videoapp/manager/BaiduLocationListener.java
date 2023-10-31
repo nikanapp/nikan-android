@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.alibaba.fastjson.JSONArray;
+import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -42,29 +43,42 @@ public class BaiduLocationListener implements LocationListener{
 
 	
 	public LocationClient mLocationClient = null;
-	public BDLocationListener myListener = new MyLocationListener();
+	public BDAbstractLocationListener myListener = new MyLocationListener();
 	private CacheBean cacheBean = CacheBean.getInstance();
 	 
 	private Context mContext;
 
 	public BaiduLocationListener(Context context){
 		this.mContext = context;
-		mLocationClient = new LocationClient(context);     // 声明LocationClient类
-		mLocationClient.registerLocationListener(myListener);    // 注册监听函数
-		mLocationClient.setLocOption(getOption());
+		try {
+			mLocationClient = new LocationClient(context);     // 声明LocationClient类
+			mLocationClient.registerLocationListener(myListener);    // 注册监听函数
+			mLocationClient.setLocOption(getOption());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
 	public void start() {
-		if( mLocationClient.isStarted() )return ; 
+		if (mLocationClient == null) {
+			return;
+		}
+		if (mLocationClient.isStarted()) {
+			return;
+		}
 		mLocationClient.start();
 		mLocationClient.requestLocation();
 	}
 
 	@Override
 	public void stop() {
-		if(mLocationClient!=null&&mLocationClient.isStarted())
+		if (mLocationClient == null) {
+			return;
+		}
+		if (mLocationClient.isStarted()) {
 			mLocationClient.stop();
+		}
 	}
 	
 	private LocationClientOption getOption(){
@@ -80,7 +94,7 @@ public class BaiduLocationListener implements LocationListener{
 	private double mOldLatitude;
 	private double mOldLongitude;
 	
-	public class MyLocationListener implements BDLocationListener {
+	public class MyLocationListener extends BDAbstractLocationListener {
 		@Override
 		public void onReceiveLocation(BDLocation location) {
 			if (location == null)
