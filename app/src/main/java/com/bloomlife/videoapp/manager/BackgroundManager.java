@@ -5,7 +5,6 @@ package com.bloomlife.videoapp.manager;
 
 import com.bloomlife.videoapp.app.AppContext;
 import com.bloomlife.videoapp.common.util.UIHelper;
-import com.zxtcode.util.Blur;
 
 import android.content.Context;
 import android.content.Intent;
@@ -136,7 +135,6 @@ public class BackgroundManager {
 			Bitmap scaleBitmap = Bitmap.createBitmap(mBitmap, 0, 0, mBitmap.getWidth(), mBitmap.getHeight(), m, false);
 			Bitmap blurBitmap = UIHelper.doBlur(scaleBitmap, 65, false);
 			if (blurBitmap == null) return;
-//			Bitmap blurBitmap = mBlur.bitmapBlur(scaleBitmap, 65);
 			setBackgroundBitmap(blurBitmap);
 			if (mHandler != null){
 				Message msg = new Message();

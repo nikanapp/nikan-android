@@ -6,10 +6,8 @@ package com.bloomlife.android.agent;
 import java.util.HashMap;
 
 import android.content.Context;
-import android.view.ViewDebug.FlagToString;
 
 import com.bloomlife.android.bean.LoginMessage;
-import com.umeng.analytics.MobclickAgent;
 
 /**
  * @author <a href="mailto:xiai.fei@gmail.com">xiai_fei</a>  
@@ -36,7 +34,6 @@ public class MobclickAgentManager {
 		}
 //		map.put("softVersion", loginMessage.getSoftVersion());
 		map.put("softVersionName", loginMessage.getApplicationVersionName());
-		MobclickAgent.onEvent(context, ACTIVITYUSER, map);
 	}
 	
 	public static void sendActiveUserEvent(Context context  , LoginMessage loginMessage){

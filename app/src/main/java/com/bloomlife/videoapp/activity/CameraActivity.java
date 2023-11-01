@@ -30,6 +30,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.android.volley.toolbox.MessageRequest;
 import com.android.volley.toolbox.Volley;
 import com.bloomlife.android.bean.CacheBean;
@@ -41,6 +43,7 @@ import com.bloomlife.android.framework.BaseActivity;
 import com.bloomlife.android.framework.BaseHandler;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.app.AppContext;
+import com.bloomlife.videoapp.app.PermissionHelper;
 import com.bloomlife.videoapp.common.CacheKeyConstants;
 import com.bloomlife.videoapp.common.util.CameraUtil;
 import com.bloomlife.videoapp.common.util.UIHelper;
@@ -51,6 +54,9 @@ import com.bloomlife.videoapp.model.message.RecordSizeMessage;
 import com.bloomlife.videoapp.model.message.RecorderErrorMessage;
 import com.bloomlife.videoapp.view.CircularProgressBar;
 import com.bloomlife.videoapp.view.SuperToast;
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 
 import net.tsz.afinal.annotation.view.ViewInject;
 
@@ -59,6 +65,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
+import us.pinguo.edit.sdk.base.PGEditSDK;
+
 /**
  * 视频拍摄界面
  * @author <a href="mailto:lan4627@gmail.com">zxt</a>
@@ -171,17 +180,47 @@ public class CameraActivity extends BaseActivity implements OnClickListener, Cal
 		mAudioManager = ((AudioManager)getSystemService(Context.AUDIO_SERVICE));
 		mEditType = getIntent().getIntExtra(INTENT_RECORD_TYPE, RECORD_TYPE_STORY);
 		mInit = true;
-		initCamera();
 		initLayout();
-		LocationManager.getInstance(this).startLocation();
-		
-		String firstIn = cacheBean.getString(this, "obtain_sound");
-		if(StringUtils.isEmpty(firstIn)){
-			tryGetSoundPrivilege();
-			cacheBean.putString(this, "obtain_sound", "1");
-		}
+		requestCameraAndExternalStorage();
 	}
-	
+
+	public void requestCameraAndExternalStorage() {
+		XXPermissions.with(this)
+				.permission(Permission.CAMERA)
+				.permission(Permission.RECORD_AUDIO)
+				.permission(Permission.WRITE_EXTERNAL_STORAGE)
+				.request(new OnPermissionCallback() {
+
+					@Override
+					public void onGranted(@NonNull List<String> permissions, boolean allGranted) {
+						if (!allGranted) {
+							Log.i(TAG, "获取部分权限成功，但部分权限未正常授予");
+							return;
+						}
+						Log.i(TAG, "获取摄像头和储存空间权限成功");
+						initCamera();
+						String firstIn = cacheBean.getString(getApplication(), "obtain_sound");
+						if(StringUtils.isEmpty(firstIn)){
+							tryGetSoundPrivilege();
+							cacheBean.putString(getApplication(), "obtain_sound", "1");
+						}
+					}
+
+					@Override
+					public void onDenied(@NonNull List<String> permissions, boolean doNotAskAgain) {
+						if (doNotAskAgain) {
+							UiHelper.showToast(getApplication(), "被永久拒绝授权，请手动授予摄像头和储存空间权限");
+							// 如果是被永久拒绝就跳转到应用权限系统设置页面
+							XXPermissions.startPermissionActivity(CameraActivity.this, permissions);
+						} else {
+							UiHelper.showToast(getApplication(), "获取摄像头和储存空间权限失败");
+							finish();
+						}
+					}
+				});
+		PermissionHelper.startLocation(this);
+	}
+
 	/**
 	 * 为了使一些需要弹出授权的手机提前弹出授权。
 	 */

@@ -6,11 +6,14 @@ package com.bloomlife.videoapp.activity.fragment;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,6 +28,7 @@ import android.widget.TextView;
 
 import com.baidu.location.LocationClient;
 import com.bloomlife.android.bean.CacheBean;
+import com.bloomlife.android.common.util.UiHelper;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.SpalshActivity;
 import com.bloomlife.videoapp.activity.UserAgreementActivity;
@@ -32,9 +36,14 @@ import com.bloomlife.videoapp.app.AppContext;
 import com.bloomlife.videoapp.common.DefaultAnimatorListener;
 import com.bloomlife.videoapp.manager.LocationManager;
 import com.bloomlife.videoapp.view.GenderSelectView;
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
+
+import java.util.List;
 
 /**
  *   
@@ -47,6 +56,8 @@ import net.tsz.afinal.annotation.view.ViewInject;
  * @version 1.0
  */
 public class WelcomeInitFragment extends AbstractWelcomeFragment implements OnClickListener{
+
+	public static final String TAG = WelcomeInitFragment.class.getSimpleName();
 
 	/** 是否有重播视频的按钮 **/
 	public static final String INTENT_HAS_REVERSE = "hasReverse";
@@ -99,7 +110,6 @@ public class WelcomeInitFragment extends AbstractWelcomeFragment implements OnCl
 	private void initLayout(){
 		if (getActivity() == null) return;
 		userProtocol.setText(Html.fromHtml("<u>" + getString(R.string.welcome_user_text) + "</u>"));
-		LocationManager.getInstance(getActivity().getApplicationContext()).startLocation();
 		enter.setOnTouchListener(mEnterBtnTouch);
 		if (getArguments() != null){
 			mHasReverseBtn = getArguments().getBoolean(INTENT_HAS_REVERSE, true);
@@ -136,8 +146,7 @@ public class WelcomeInitFragment extends AbstractWelcomeFragment implements OnCl
 		@Override
 		public void onAnimationEnd(Animator animation) {
 			linearLayout.setVisibility(View.VISIBLE);
-			//((SpalshActivity)getActivity()).syncServerParam(true);
-			((SpalshActivity)getActivity()).test();
+			((SpalshActivity)getActivity()).syncServerParam(true);
 		}
 	};
 	

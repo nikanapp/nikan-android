@@ -18,6 +18,7 @@ import android.hardware.Camera.Size;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -31,13 +32,19 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.bloomlife.android.common.CameraTouchFocusListener;
 import com.bloomlife.android.common.util.UiHelper;
 import com.bloomlife.android.framework.BaseActivity;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.CameraActivity.FLASH_MODE;
 import com.bloomlife.videoapp.app.AppContext;
+import com.bloomlife.videoapp.app.PermissionHelper;
 import com.bloomlife.videoapp.common.util.CameraUtil;
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 
 import net.tsz.afinal.annotation.view.ViewInject;
 
@@ -111,8 +118,38 @@ public class PictureActivity extends BaseActivity implements Callback {
 		setContentView(R.layout.activity_picture);
 		mSurfaceHolder = mSurfaceView.getHolder();
 		mSurfaceHolder.addCallback(this);
-		initLayout();
-		PGEditSDK.instance().initSDK(getApplication());
+		requestCameraAndExternalStorage();
+	}
+
+	public void requestCameraAndExternalStorage() {
+		XXPermissions.with(this)
+				.permission(Permission.CAMERA)
+				.permission(Permission.WRITE_EXTERNAL_STORAGE)
+				.request(new OnPermissionCallback() {
+
+					@Override
+					public void onGranted(@NonNull List<String> permissions, boolean allGranted) {
+						if (!allGranted) {
+							Log.i(TAG, "获取部分权限成功，但部分权限未正常授予");
+							return;
+						}
+						Log.i(TAG, "获取摄像头和储存空间权限成功");
+						initLayout();
+						PGEditSDK.instance().initSDK(getApplication());
+					}
+
+					@Override
+					public void onDenied(@NonNull List<String> permissions, boolean doNotAskAgain) {
+						if (doNotAskAgain) {
+							UiHelper.showToast(getApplication(), "被永久拒绝授权，请手动授予摄像头和储存空间权限");
+							// 如果是被永久拒绝就跳转到应用权限系统设置页面
+							XXPermissions.startPermissionActivity(PictureActivity.this, permissions);
+						} else {
+							UiHelper.showToast(getApplication(), "获取摄像头和储存空间权限失败");
+							finish();
+						}
+					}
+				});
 	}
 
 	private void initLayout() {

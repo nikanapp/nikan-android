@@ -51,6 +51,10 @@ android {
         versionName rootProject.ext.versionName
 
         multiDexEnabled true
+
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -150,13 +154,15 @@ dependencies {
         }
     }
     api project(':baseframe')
-    api project(':camera360')
-    implementation (name: 'selectableroundedimageview-1.0.1', ext: 'aar')
+    implementation project(':camera360')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation (name: 'selectableroundedimageview-1.0.1', ext: 'aar')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.multidex:multidex:2.0.1"
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.mapbox.maps:android:10.11.0'
     implementation 'io.github.sinaweibosdk:core:13.10.0@aar'
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android:6.8.0'
+    implementation 'com.github.getActivity:XXPermissions:18.5'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.28'
 }

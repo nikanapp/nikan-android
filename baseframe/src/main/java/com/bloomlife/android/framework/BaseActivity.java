@@ -17,9 +17,7 @@ import android.view.WindowManager;
 
 import com.android.volley.toolbox.Volley;
 import com.bloomlife.android.R;
-import com.cyou.cyanalyticv3.CYAgent;
 import com.jfeinstein.jazzyviewpager.Util;
-import com.umeng.analytics.MobclickAgent;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -188,18 +186,10 @@ public class BaseActivity extends FinalActivity {
 	protected void onResume() {
 	    super.onResume();
 		Volley.setTag(mActivityTag);
-	    MobclickAgent.onPageStart(this.getClass().getSimpleName()); //统计页面
-	    MobclickAgent.onResume(this);          //统计时长
-	    CYAgent.onPageStart(this.getClass().getSimpleName());
-		CYAgent.onResume(this);
 	}
 
 	protected void onPause() {
 	    super.onPause();
-	    MobclickAgent.onPageEnd(this.getClass().getSimpleName()); // 保证 onPageEnd 在onPause 之前调用,因为 onPause 中会保存信息 
-	    MobclickAgent.onPause(this);
-	    CYAgent.onPageEnd(this.getClass().getSimpleName());
-		CYAgent.onPause(this);
 	}
 
 	@Override

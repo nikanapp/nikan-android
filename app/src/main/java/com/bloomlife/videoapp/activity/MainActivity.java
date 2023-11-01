@@ -4,6 +4,8 @@
 package com.bloomlife.videoapp.activity;
 
 import android.animation.ValueAnimator;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bloomlife.android.common.util.AnalyseUtils;
+import com.bloomlife.android.common.util.UiHelper;
 import com.bloomlife.android.common.util.UiUtils;
 import com.bloomlife.android.framework.BaseActivity;
 import com.bloomlife.videoapp.R;
@@ -32,6 +36,7 @@ import com.bloomlife.videoapp.activity.fragment.MainStoryListFragment;
 import com.bloomlife.videoapp.activity.fragment.ManTypeFragment;
 import com.bloomlife.videoapp.activity.fragment.MapBoxFragment;
 import com.bloomlife.videoapp.app.Constants;
+import com.bloomlife.videoapp.app.PermissionHelper;
 import com.bloomlife.videoapp.common.CacheKeyConstants;
 import com.bloomlife.videoapp.common.util.UIHelper;
 import com.bloomlife.videoapp.common.util.Utils;
@@ -40,14 +45,13 @@ import com.bloomlife.videoapp.manager.LocationManager;
 import com.bloomlife.videoapp.manager.MessageManager;
 import com.bloomlife.videoapp.view.MainMenuWindow;
 import com.easemob.chat.EMChatManager;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.update.UmengUpdateAgent;
 
 import net.tsz.afinal.annotation.view.ViewInject;
 
 import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 地图基础实现基类，所有的具体地图实现都需要继承的类
@@ -60,6 +64,7 @@ public class MainActivity extends BaseActivity implements
 		OnClickListener, View.OnTouchListener {
 
 	public static final String INTENT_LATLNG = "intent_latlng";
+	public static final String TAG = MainActivity.class.getSimpleName();
 
 	public static final int MENU_ANIM_DRAWABLE_SIZE = 11;
 	public static final int SWITCH_ANIM_DURATION = 300;
@@ -147,8 +152,8 @@ public class MainActivity extends BaseActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		UmengUpdateAgent.update(this);
 		init();
+		PermissionHelper.startLocation(this);
 	}
 
 	@Override
@@ -465,7 +470,6 @@ public class MainActivity extends BaseActivity implements
 				
 				this.finish();
 				MessageManager.getInstance().reset();
-				MobclickAgent.onKillProcess(getApplicationContext());
 				return true;
 			} else
 				startKeyOn = System.currentTimeMillis();

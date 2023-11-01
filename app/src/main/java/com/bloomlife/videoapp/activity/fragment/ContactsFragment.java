@@ -1,9 +1,13 @@
 package com.bloomlife.videoapp.activity.fragment;
 
 import android.app.Activity;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +16,17 @@ import com.bloomlife.android.bean.CacheBean;
 import com.bloomlife.android.bean.PhoneNumber;
 import com.bloomlife.android.common.CacheKeyConstants;
 import com.bloomlife.android.common.util.ContactUtils;
+import com.bloomlife.android.common.util.StringUtils;
+import com.bloomlife.android.common.util.UiHelper;
 import com.bloomlife.android.executor.AsyncTask;
 import com.bloomlife.videoapp.R;
+import com.bloomlife.videoapp.activity.CameraActivity;
 import com.bloomlife.videoapp.adapter.ContactsAdapter;
 import com.bloomlife.videoapp.model.Contact;
 import com.bloomlife.videoapp.model.ContactInviteStatusList;
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 import com.tonicartos.widget.stickygridheaders.StickyGridHeadersGridView;
 
 import net.tsz.afinal.FinalActivity;
@@ -33,6 +43,8 @@ import java.util.Set;
  */
 public class ContactsFragment extends Fragment {
 
+    public static final String TAG = ContactsFragment.class.getSimpleName();
+
     @ViewInject(id = R.id.fragment_contacts_list)
     private StickyGridHeadersGridView mContactList;
 
@@ -46,9 +58,39 @@ public class ContactsFragment extends Fragment {
         View layout = inflater.inflate(R.layout.fragment_contacts, container, false);
         FinalActivity.initInjectedView(this, layout);
         initStickyGridView();
-        mTask = new GetContactListTask(getActivity());
-        mTask.execute();
+        requestContact();
         return layout;
+    }
+
+    private void requestContact() {
+        XXPermissions.with(this)
+                .permission(Permission.READ_CONTACTS)
+                .request(new OnPermissionCallback() {
+
+                    @Override
+                    public void onGranted(@NonNull List<String> permissions, boolean allGranted) {
+                        if (!allGranted) {
+                            Log.i(TAG, "获取部分权限成功，但部分权限未正常授予");
+                            return;
+                        }
+                        Log.i(TAG, "获取通讯录权限成功");
+                        if (getActivity() == null) return;
+                        mTask = new GetContactListTask(getActivity());
+                        mTask.execute();
+                    }
+
+                    @Override
+                    public void onDenied(@NonNull List<String> permissions, boolean doNotAskAgain) {
+                        if (getActivity() == null) return;
+                        if (doNotAskAgain) {
+                            UiHelper.showToast(getActivity(), "被永久拒绝授权，请手动通讯录权限");
+                            // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                            XXPermissions.startPermissionActivity(getActivity(), permissions);
+                        } else {
+                            UiHelper.showToast(getActivity(), "获取通讯录权限失败");
+                        }
+                    }
+                });
     }
 
     private void initStickyGridView(){
@@ -59,7 +101,9 @@ public class ContactsFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        mTask.cancel(true);
+        if (mTask != null) {
+            mTask.cancel(true);
+        }
         super.onDestroyView();
     }
 

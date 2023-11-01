@@ -9,8 +9,6 @@ import java.util.Map;
 import android.content.Context;
 
 import com.bloomlife.android.bean.CacheBean;
-import com.cyou.cyanalyticv3.CYAgent;
-import com.umeng.analytics.MobclickAgent;
 
 /**
  *   友盟统计和畅游统计等相关的统计key
@@ -49,12 +47,6 @@ public class AnalyticUtil {
 	 * @param params
 	 */
 	public static void sendAnalytisEvent(Context context,String key,Map<String,String> params){
-		Map<String,String> map = new HashMap<String, String>();
-		map.put("userid", CacheBean.getInstance().getLoginUserId());
-		if(params!=null){
-			map.putAll(params);
-		}
-		CYAgent.onEvent(context, key,map);
-		MobclickAgent.onEvent(context, key, map);
+
 	}
 }

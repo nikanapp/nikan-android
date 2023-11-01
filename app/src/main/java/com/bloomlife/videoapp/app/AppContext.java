@@ -19,16 +19,13 @@ import com.bloomlife.videoapp.manager.BackgroundManager;
 import com.bloomlife.videoapp.manager.LocationManager;
 import com.bloomlife.videoapp.manager.VideoFileManager;
 import com.bloomlife.videoapp.model.SysCode;
-import com.cyou.cyanalyticv3.CYAgent;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import androidx.multidex.MultiDex;
-//import com.bloomlife.videoapp.manager.LocationManager;
 
 /**
  *  全局应用程序类：用于保存和调用全局应用配置及访问网络数据
@@ -61,7 +58,6 @@ public class AppContext extends com.bloomlife.android.framework.AppContext {
 
 	private static AppContext sAppContext;
 
-	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -82,21 +78,9 @@ public class AppContext extends com.bloomlife.android.framework.AppContext {
 		PushService.initPush(getApplicationContext());
 
 		MyHXSDKHelper.getInstance().init(this);
-		if(CacheBean.getInstance().hasLoginUserId()){
+		if (CacheBean.getInstance().hasLoginUserId()){
 			LocationManager.getInstance(this).startLocation();
 		}
-
-		/*
-		 * 友盟数据统计服务。启用友盟的统计更新机制 。  这个需要放到MainActivity和SpalshActivity中做。不能总是在Application中做太多的业务逻辑操作。
-		 */
-		MobclickAgent.updateOnlineConfig(this);
-		MobclickAgent.openActivityDurationTrack(false);// 因为有activity和fragment，所以禁止默认的页面统计
-		MobclickAgent.setDebugMode(BuildConfig.DEBUG);
-
-		// 畅游cysdk服务
-		CYAgent.launchApp(this);
-		CYAgent.getDeviceUUID(this);
-		CYAgent.setDebug(BuildConfig.DEBUG);
 
 		CrashHandler crashHandler = CrashHandler.getInstance();
 		crashHandler.init(getApplicationContext(), ERROR_FILEPATH);
@@ -106,8 +90,6 @@ public class AppContext extends com.bloomlife.android.framework.AppContext {
 		File file= CacheUtils.getCacheFileDirectory(this, Constants.CACHE_FOLDER_NAME);
 		if (file != null)
 			VIDOE_CACHE_FILE_PATH = file.getAbsolutePath();
-//		AnalyseUtils.uploadAnalyseData(getApplicationContext());
-//		Utils.copySQLiteToSdCard(getCacheDir().getParentFile());
 	}
 
 	@Override

@@ -34,18 +34,15 @@ android {
 }
 
 dependencies {
-    compile files('libs/qiniu-android-sdk-7.0.0.jar')
-    compile files('libs/AnalysisSDK_0.0.3.jar')
-    compile files('libs/commons-httpclient-3.1.jar')
-    compile files('libs/cyanalytic.jar')
-    compile files('libs/fastjson-1.1.31.jar')
-    compile files('libs/GetuiExt-2.0.3.jar')
-    compile files('libs/GetuiSdk2.4.1.0.jar')
-    compile files('libs/httpmime-4.2.5.jar')
-    compile files('libs/SMSSDK-1.1.3.jar')
-    compile files('libs/sun.misc.BASE64Decoder.jar')
-    compile files('libs/umeng-analytics-v5.2.4.jar')
-    compile files('libs/umeng-update-v2.4.2.jar')
+    api files('libs/qiniu-android-sdk-7.0.0.jar')
+    api files('libs/AnalysisSDK_0.0.3.jar')
+    api files('libs/commons-httpclient-3.1.jar')
+    api files('libs/fastjson-1.1.31.jar')
+    api files('libs/GetuiExt-2.0.3.jar')
+    api files('libs/GetuiSdk2.4.1.0.jar')
+    api files('libs/httpmime-4.2.5.jar')
+    api files('libs/SMSSDK-1.1.3.jar')
+    api files('libs/sun.misc.BASE64Decoder.jar')
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'io.github.sinaweibosdk:core:13.10.0@aar'

@@ -37,8 +37,6 @@ import com.bloomlife.videoapp.model.message.UploadVideoMessage;
 import com.bloomlife.videoapp.model.result.UploadStoryVideoResult;
 import com.bloomlife.videoapp.model.result.UploadTokenResut;
 import com.bloomlife.videoapp.model.result.UploadVideoResult;
-import com.cyou.cyanalyticv3.CYAgent;
-import com.umeng.analytics.MobclickAgent;
 
 import org.apache.http.HttpException;
 
@@ -362,12 +360,6 @@ public class UploadBackgroundService extends IntentService {
 	}
 
 	public void sendAnalytisEvent(String key,Map<String,String> params){
-		Map<String,String> map = new HashMap<String, String>();
-		map.put("userid", CacheBean.getInstance().getLoginUserId());
-		if(params!=null){
-			map.putAll(params);
-		}
-		CYAgent.onEvent(getApplicationContext(), key,map);
-		MobclickAgent.onEvent(getApplicationContext(), key, map);
+
 	}
 }

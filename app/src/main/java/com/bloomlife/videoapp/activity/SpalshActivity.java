@@ -30,6 +30,7 @@ import com.bloomlife.android.common.CacheKeyConstants;
 import com.bloomlife.android.common.util.StringUtils;
 import com.bloomlife.android.common.util.UiHelper;
 import com.bloomlife.android.framework.BaseActivity;
+import com.bloomlife.videoapp.BuildConfig;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.fragment.WelcomeInitFragment;
 import com.bloomlife.videoapp.activity.fragment.WelcomeVideoFragment;
@@ -195,7 +196,12 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 				return;
 			}
 		}
-		Volley.addToTagQueue(new MessageRequest(new ParamSyncMessage(), new ParamSyncListener(getApplicationContext(), startToMain)));
+		if (BuildConfig.DEBUG) {
+			cacheBean.putObject(SpalshActivity.this, CONSTANT_SYSCODE_KEY, new SysCode());
+			startToMainActivity();
+		} else {
+			Volley.addToTagQueue(new MessageRequest(new ParamSyncMessage(), new ParamSyncListener(getApplicationContext(), startToMain)));
+		}
 	}
 
 	/***
@@ -271,11 +277,6 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 				((WelcomeInitFragment)fragment).hideInitProgress();
 			}
 		}
-	}
-
-	public void test() {
-		cacheBean.putObject(SpalshActivity.this, CONSTANT_SYSCODE_KEY, new SysCode());
-		startToMainActivity();
 	}
 
 	public void startToMainActivity() {
