@@ -3,6 +3,7 @@
  */
 package com.bloomlife.videoapp.manager;
 
+import com.baidu.location.LocationClient;
 import com.bloomlife.videoapp.common.util.SystemUtils;
 
 import android.content.Context;
@@ -31,6 +32,7 @@ public class LocationManager {
 	private LocationManager(Context context){
 //		if(SystemUtils.isGpsOn(context))mLocationListener = new MapBoxLocationListener(context);
 //		else mLocationListener = new BaiduLocationListener(context);
+		agreePrivacy();
 		mLocationListener = new BaiduLocationListener(context);
 	}
 	
@@ -41,5 +43,9 @@ public class LocationManager {
 	public void stopLocation(){
 		mLocationListener.stop();
 	}
-	
+
+	public void agreePrivacy() {
+		LocationClient.setAgreePrivacy(true);
+	}
+
 }

@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.baidu.location.LocationClient;
 import com.bloomlife.android.bean.CacheBean;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.SpalshActivity;
@@ -96,6 +97,7 @@ public class WelcomeInitFragment extends AbstractWelcomeFragment implements OnCl
 	}
 
 	private void initLayout(){
+		if (getActivity() == null) return;
 		userProtocol.setText(Html.fromHtml("<u>" + getString(R.string.welcome_user_text) + "</u>"));
 		LocationManager.getInstance(getActivity().getApplicationContext()).startLocation();
 		enter.setOnTouchListener(mEnterBtnTouch);

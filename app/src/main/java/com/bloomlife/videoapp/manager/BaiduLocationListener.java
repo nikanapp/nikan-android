@@ -105,27 +105,33 @@ public class BaiduLocationListener implements LocationListener{
 				mOldLatitude = newLatitude;
 				mOldLongitude = newLongitude;
 				
-				if(transferTimes<5){
-					transferTimes ++;
-					
-					AsyncRequest.doRequest(new LocationTransferMessage(mOldLatitude, mOldLongitude), new RequestCallBack() {
+//				if(transferTimes<5){
+//					transferTimes ++;
+//
+//					AsyncRequest.doRequest(new LocationTransferMessage(mOldLatitude, mOldLongitude), new RequestCallBack() {
+//
+//						@Override
+//						public void onSuccess(Map<String, Object> map) {
+//							JSONArray location = (JSONArray) map.get("result");
+//							String lat = String.valueOf(location.get(1));
+//							String lon = String.valueOf(location.get(0));
+//							cacheBean.putString(mContext, LOCATION_LAT, lat);
+//							cacheBean.putString(mContext, LOCATION_LON, lon);
+//
+//							// 如果需要在定位成功的时候得到通知，可以使用广播来进行。
+//							Intent intent = new Intent(Constants.ACTION_LOCATION);
+//							intent.putExtra(Constants.INTENT_LOCATION, location);
+//							mContext.sendBroadcast(intent);
+//						}
+//					});
+//				}
+				cacheBean.putString(mContext, LOCATION_LAT, String.valueOf(mOldLatitude));
+				cacheBean.putString(mContext, LOCATION_LON, String.valueOf(mOldLongitude));
 
-						@Override
-						public void onSuccess(Map<String, Object> map) {
-							JSONArray location = (JSONArray) map.get("result");
-							String lat = String.valueOf(location.get(1));
-							String lon = String.valueOf(location.get(0));
-							cacheBean.putString(mContext, LOCATION_LAT, lat);
-							cacheBean.putString(mContext, LOCATION_LON, lon);
-							
-							// 如果需要在定位成功的时候得到通知，可以使用广播来进行。
-							Intent intent = new Intent(Constants.ACTION_LOCATION);
-							intent.putExtra(Constants.INTENT_LOCATION, location);
-							mContext.sendBroadcast(intent);
-						}
-					});
-				}
-				
+				// 如果需要在定位成功的时候得到通知，可以使用广播来进行。
+				Intent intent = new Intent(Constants.ACTION_LOCATION);
+				intent.putExtra(Constants.INTENT_LOCATION, location);
+				mContext.sendBroadcast(intent);
 				cacheBean.putString(mContext, LOCATION_CITY, location.getCity());
 			}
 			
