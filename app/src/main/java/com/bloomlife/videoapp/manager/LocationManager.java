@@ -4,6 +4,7 @@
 package com.bloomlife.videoapp.manager;
 
 import com.baidu.location.LocationClient;
+import com.bloomlife.videoapp.BuildConfig;
 import com.bloomlife.videoapp.common.util.SystemUtils;
 
 import android.content.Context;
@@ -30,9 +31,8 @@ public class LocationManager {
 	}
 	
 	private LocationManager(Context context){
-//		if(SystemUtils.isGpsOn(context))mLocationListener = new MapBoxLocationListener(context);
-//		else mLocationListener = new BaiduLocationListener(context);
 		agreePrivacy();
+		LocationClient.setKey(BuildConfig.BDIUD_LBS_APP_KEY);
 		mLocationListener = new BaiduLocationListener(context);
 	}
 	

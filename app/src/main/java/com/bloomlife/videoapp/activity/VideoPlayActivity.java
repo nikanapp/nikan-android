@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 
+import com.bloomlife.android.framework.BaseActivity;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.fragment.AnonVideoPlayFragment;
 import com.bloomlife.videoapp.model.Video;
@@ -18,7 +19,7 @@ import com.bloomlife.videoapp.model.Video;
  *
  * @date 2014年12月1日 下午7:23:58
  */
-public class VideoPlayActivity extends FragmentActivity {
+public class VideoPlayActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

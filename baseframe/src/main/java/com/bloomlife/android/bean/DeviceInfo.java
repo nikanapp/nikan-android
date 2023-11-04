@@ -9,6 +9,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Environment;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -70,8 +71,8 @@ public class DeviceInfo {
 		WifiInfo info = manager.getConnectionInfo();
 		DeviceInfo deviceInfo = new DeviceInfo();
 		deviceInfo.macAddress = info.getMacAddress();
-		TelephonyManager tel_manager = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
-		deviceInfo.iMEIID = tel_manager.getDeviceId();
+
+		deviceInfo.iMEIID = Settings.System.getString(ctx.getContentResolver(), Settings.Secure.ANDROID_ID);
 		deviceInfo.phoneType = android.os.Build.MODEL;
 		deviceInfo.systemVersion = android.os.Build.VERSION.RELEASE;
 

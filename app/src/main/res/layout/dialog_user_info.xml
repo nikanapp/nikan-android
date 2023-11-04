@@ -139,7 +139,7 @@
 
             </RelativeLayout>
 
-            <androidx.core.view.ViewPager
+            <androidx.viewpager.widget.ViewPager
                 android:id="@+id/user_info_attention_table"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
                 android:layout_marginRight="1dp"
                 android:visibility="invisible">
 
-            </androidx.core.view.ViewPager>
+            </androidx.viewpager.widget.ViewPager>
 
         </LinearLayout>
 

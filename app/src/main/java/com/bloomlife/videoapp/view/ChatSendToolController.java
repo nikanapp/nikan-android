@@ -11,7 +11,6 @@ import com.bloomlife.android.common.util.UiHelper;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.PictureActivity;
 import com.bloomlife.videoapp.app.MyHXSDKHelper;
-import com.easemob.chat.EMChat;
 
 import emojicon.EmojiconGridFragment;
 import emojicon.EmojiconsFragment;

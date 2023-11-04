@@ -8,6 +8,7 @@ import java.util.Map;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.alibaba.fastjson.JSONArray;
 import com.baidu.location.BDAbstractLocationListener;
@@ -18,6 +19,7 @@ import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
 import com.bloomlife.android.bean.BaseMessage;
 import com.bloomlife.android.bean.CacheBean;
+import com.bloomlife.android.common.util.GpsCoordinateUtils;
 import com.bloomlife.android.common.util.UiHelper;
 import com.bloomlife.android.executor.AsyncRequest;
 import com.bloomlife.android.executor.AsyncRequest.RequestCallBack;
@@ -38,9 +40,13 @@ import com.bloomlife.videoapp.model.result.TransferResult;
  * @version 1.0
  */
 public class BaiduLocationListener implements LocationListener{
+
+	public static final String TAG = BaiduLocationListener.class.getSimpleName();
+	public static final int GPS_LOCATION_SUCCESS = 61;
+	public static final int NETWORK_LOCATION_SUCCESS = 66;
+	public static final int OFFLINE_LOCATION_SUCCESS = 161;
 	
 	private int transferTimes = 0 ;
-
 	
 	public LocationClient mLocationClient = null;
 	public BDAbstractLocationListener myListener = new MyLocationListener();
@@ -84,10 +90,9 @@ public class BaiduLocationListener implements LocationListener{
 	private LocationClientOption getOption(){
 		LocationClientOption option = new LocationClientOption();
 		option.setLocationMode(LocationMode.Hight_Accuracy);//设置定位模式
-		option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
+		option.setCoorType("gcj02");//返回的定位结果是百度经纬度,默认值gcj02
 		option.setScanSpan(5000);//设置发起定位请求的间隔时间为5000ms
 		option.setIsNeedAddress(true);//返回的定位结果包含地址信息
-		option.setAddrType("all");
 		return option;
 	}
 	
@@ -97,8 +102,13 @@ public class BaiduLocationListener implements LocationListener{
 	public class MyLocationListener extends BDAbstractLocationListener {
 		@Override
 		public void onReceiveLocation(BDLocation location) {
-			if (location == null)
-		            return ;
+			if (location == null) return;
+			if (location.getLocType() != GPS_LOCATION_SUCCESS
+					&& location.getLocType() != OFFLINE_LOCATION_SUCCESS
+					&& location.getLocType() != NETWORK_LOCATION_SUCCESS) {
+				Log.i(TAG, "location error locType=" + location.getLocType());
+				return;
+			}
 			double newLatitude = location.getLatitude();
 			double newLongitude = location.getLongitude();
 			if (Math.abs(mOldLatitude - newLatitude) > 0.01 || Math.abs(mOldLongitude - newLongitude) > 0.01){
@@ -125,9 +135,10 @@ public class BaiduLocationListener implements LocationListener{
 //						}
 //					});
 //				}
-				cacheBean.putString(mContext, LOCATION_LAT, String.valueOf(mOldLatitude));
-				cacheBean.putString(mContext, LOCATION_LON, String.valueOf(mOldLongitude));
-
+				double[] wgs84Location = GpsCoordinateUtils.calGCJ02toWGS84(mOldLatitude, mOldLongitude);
+				cacheBean.putString(mContext, LOCATION_LAT, String.valueOf(wgs84Location[0]));
+				cacheBean.putString(mContext, LOCATION_LON, String.valueOf(wgs84Location[1]));
+				Log.i(TAG, "Latitude=" + wgs84Location[0] + " Longitude=" + wgs84Location[1]);
 				// 如果需要在定位成功的时候得到通知，可以使用广播来进行。
 				Intent intent = new Intent(Constants.ACTION_LOCATION);
 				intent.putExtra(Constants.INTENT_LOCATION, location);

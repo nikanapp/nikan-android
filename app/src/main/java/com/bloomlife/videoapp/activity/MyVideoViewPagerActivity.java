@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.util.Log;
 
 import com.bloomlife.android.common.util.StringUtils;
+import com.bloomlife.android.framework.BaseActivity;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.fragment.MyVideoPlayFragment;
 import com.bloomlife.videoapp.activity.fragment.AnonVideoPlayFragment;
@@ -27,9 +28,9 @@ import com.bloomlife.videoapp.view.comment.CommentViewPager;
  *
  * @date 2014-12-11  下午9:43:16
  */
-public class MyVideoViewPagerActivity  extends FragmentActivity {
+public class MyVideoViewPagerActivity extends BaseActivity {
 
-	public static final String TAG = "MyVideoViewPagerActivity";
+	public static final String TAG = "MyVideoViewPager";
 	
 	public static final String INTENT_VIDEO_LIST = "video_list";
 	public static final String INTENT_VIDEO_POSITION = "video_position";

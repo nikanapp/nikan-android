@@ -22,24 +22,24 @@ import android.util.Log;
 import com.bloomlife.android.bean.CacheBean;
 import com.bloomlife.android.common.util.StringUtils;
 import com.bloomlife.android.common.util.Utils;
+import com.bloomlife.videoapp.BuildConfig;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.RealNameChatActivity;
 import com.bloomlife.videoapp.activity.AnonymousChatActivity;
 import com.bloomlife.videoapp.common.util.UIHelper;
 import com.bloomlife.videoapp.model.ChatBean;
 import com.bloomlife.videoapp.model.ConversationMessage;
-import com.easemob.EMCallBack;
-import com.easemob.chat.EMChat;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMChatOptions;
-import com.easemob.chat.EMContactManager;
-import com.easemob.chat.EMConversation;
-import com.easemob.chat.EMMessage;
-import com.easemob.chat.EMMessage.ChatType;
-import com.easemob.chat.ImageMessageBody;
-import com.easemob.chat.OnNotificationClickListener;
-import com.easemob.chat.TextMessageBody;
-import com.easemob.exceptions.EaseMobException;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.EMMessageListener;
+import com.hyphenate.chat.EMChatManager;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMImageMessageBody;
+import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMOptions;
+import com.hyphenate.chat.EMTextMessageBody;
+import com.hyphenate.exceptions.HyphenateException;
+import com.hyphenate.push.EMPushConfig;
+import com.hyphenate.push.EMPushHelper;
 
 /**
  * @author <a href="mailto:xiai.fei@gmail.com">xiai_fei</a>
@@ -64,8 +64,6 @@ public class MyHXSDKHelper {
 	private boolean isInit = false ;
 
 	private static final MyHXSDKHelper instance = new MyHXSDKHelper();
-	
-	private EMChatOptions options;
 
 	private MyHXSDKHelper() {
 	}
@@ -88,76 +86,37 @@ public class MyHXSDKHelper {
 		Log.d(TAG, " init huanxin ... ");
 		this.appContext = appContext;
 
-		// 初始化环信SDK
-		EMChat.getInstance().init(appContext);
 
 		// 获取到EMChatOptions对象
-		options = EMChatManager.getInstance().getChatOptions();
+		EMOptions options = new EMOptions();
+		options.setAppKey(BuildConfig.EMCHAT_APP_KEY);
 		// 默认添加好友时，是不需要验证的，改成需要验证
 		options.setAcceptInvitationAlways(true);
-		// 设置收到消息是否有新消息通知，默认为true
-		options.setNotificationEnable(PushService.isOpenPush(appContext));
-		// 设置收到消息是否有声音提示，默认为true
-		options.setNoticeBySound(false);
-		// 设置收到消息是否震动 默认为true
-		options.setNoticedByVibrate(true);
-		// 设置语音消息播放是否设置为扬声器播放 默认为true
-		options.setUseSpeaker(false);
-
-		// options.setShowNotificationInBackgroud(true); //默认为true
-		EMChat.getInstance().setDebugMode(true);
-		
-		EMChatManager.getInstance().getChatOptions().setShowNotificationInBackgroud(false); //禁止走notification，所有的都走广播让我们来处理
-
-		// 设置notification点击listener
-		options.setOnNotificationClickListener(new OnNotificationClickListener() {
-
-			@Override
-			public Intent onNotificationClick(EMMessage message) {
-				Intent intent = new Intent(appContext, RealNameChatActivity.class);
-				ChatType chatType = message.getChatType();
-				if (chatType == ChatType.Chat) { // 单聊信息
-					intent.putExtra(RealNameChatActivity.INTENT_USERNAME, message.getFrom());
-				}
-				return intent;
-			}
-		});
+		// 初始化环信SDK
+		EMClient.getInstance().init(appContext, options);
+		EMClient.getInstance().setDebugMode(BuildConfig.DEBUG);
 		registerHxMessageRecevier();
-		
-		// 通知sdk，UI 已经初始化完毕，注册了相应的receiver和listener, 可以接受broadcast了
-		EMChat.getInstance().setAppInited();
 		isInit = true ;
 		Log.d(TAG, "  环信初始化成功 ！！！！！！！！！");
 	}
-	
-	public void closePush(){
-		options.setNotificationEnable(false);
-	}
-	
-	public void openPush(){
-		options.setNotificationEnable(true);
-	}
 
 	private void registerHxMessageRecevier() {
-		IntentFilter intentFilter = new IntentFilter(EMChatManager.getInstance().getNewMessageBroadcastAction());
-		intentFilter.setPriority(2); // 优先级第一点，让在会话页面的先处理
-		appContext.registerReceiver(new HxMessageReceview(), intentFilter);
+		EMClient.getInstance().chatManager().addMessageListener(new NotifyEMMessageListener());
 	}
 	
-	private class HxMessageReceview extends BroadcastReceiver {
-		
+	class NotifyEMMessageListener implements EMMessageListener {
+
 		@Override
-		public void onReceive(Context context, Intent intent) {
-			// 消息id
-			String msgId = intent.getStringExtra("msgid");
-			EMMessage message = EMChatManager.getInstance().getMessage(msgId);
-			DbHelper.saveReciveChat(context.getApplicationContext(), new ChatBean(context, message), null);
-			EMChatManager.getInstance().getConversation(intent.getStringExtra("from")).resetUnreadMsgCount();
-			if (PushService.isOpenPush(context)){
-				MyHXSDKHelper.getInstance().notifyNewMessage(message, context);
+		public void onMessageReceived(List<EMMessage> list) {
+			if (PushService.isOpenPush(appContext)) {
+				for (EMMessage message:list) {
+					// 消息id
+					if (PushService.isOpenPush(appContext)){
+						MyHXSDKHelper.getInstance().notifyNewMessage(message, appContext);
+					}
+				}
 			}
 		}
-
 	}
 	
 
@@ -170,21 +129,16 @@ public class MyHXSDKHelper {
 	 */
 	public  void notifyNewMessage(EMMessage message, Context context) {
 		// 如果是设置了不提醒只显示数目的群组(这个是app里保存这个数据的，demo里不做判断)
-		// 以及设置了setShowNotificationInbackgroup:false(设为false后，后台时sdk也发送广播)
-//		if (!EasyUtils.isAppRunningForeground(context)) {
-//			return;
-//		}
-
 		updateConverstaionMsgByLatestChat(context,message.getFrom(), message);
-		EMChatManager.getInstance().getConversation(message.getFrom()).resetUnreadMsgCount();
+		EMClient.getInstance().chatManager().getConversation(message.getFrom()).markAllMessagesAsRead();
 		
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context).setSmallIcon(context.getApplicationInfo().icon).setWhen(System.currentTimeMillis()).setAutoCancel(true);
 
 		String ticker = null;
-		if (message.getBody() instanceof TextMessageBody){
-			ticker = ((TextMessageBody) message.getBody()).getMessage();
+		if (message.getBody() instanceof EMTextMessageBody){
+			ticker = ((EMTextMessageBody) message.getBody()).getMessage();
 			ticker = ticker.replaceAll("\\[.{2,3}\\]", context.getString(R.string.notification_emoj));
-		} else if(message.getBody() instanceof ImageMessageBody){
+		} else if(message.getBody() instanceof EMImageMessageBody){
 			ticker = context.getString(R.string.notification_npicture);
 		}
 		// 设置状态栏提示
@@ -205,7 +159,7 @@ public class MyHXSDKHelper {
 			if (TextUtils.isEmpty(message.getStringAttribute(ATTRIBUTE_USER_NAME, "")))
 				intent.putExtra(AnonymousChatActivity.INTENT_CHAT_ID, message.getStringAttribute(ATTRIBUTE_VIDEO_ID));
 			intent.putExtra(RealNameChatActivity.INTENT_FROM_NOTIFICATION, true);
-		} catch (EaseMobException e) {
+		} catch (HyphenateException e) {
 			e.printStackTrace();
 		}
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, notifiId, intent, Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -220,47 +174,6 @@ public class MyHXSDKHelper {
 	 * 这里还没有对异常中断进行处理。比如处理到一半，宕机了了，会丢失数据的。
 	 */
 	private static void loadHXData(final Context context ) {
-
-		AppContext.EXECUTOR_SERVICE.execute(new Runnable() {
-			
-			@Override
-			public void run() {
-				
-				List<String> blackList= null ;
-				try {
-					setBlackList(EMContactManager.getInstance().getBlackListUsernames());
-					blackList = EMContactManager.getInstance().getBlackListUsernamesFromServer();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				if(!Utils.isEmptyCollection(blackList))
-					EMContactManager.getInstance().saveBlackList(blackList);  //环信其实会自动保存，但是为了保障起见，还是保存吧！！！
-			
-				EMChatManager.getInstance().loadAllConversations();
-				
-				//获取环信的离线未读消息。  ！！！ 将环信的数据结构转换成我们的消息的数据结构。
-				List<String> unreadConversation = EMChatManager.getInstance().getConversationsUnread();
-				if(Utils.isEmptyCollection(unreadConversation)) return ;
-				for (String username : unreadConversation) {
-					EMConversation conversation = EMChatManager.getInstance().getConversation(username);
-					int unreadMsgCount = conversation.getUnreadMsgCount();
-					Log.d(TAG, "  user : "+username+" has "+unreadMsgCount+" offline message  to process ");
-					EMMessage latestMsg = conversation.getLastMessage();
-					updateConverstaionMsgByLatestChat(context ,username, latestMsg);
-					Log.d(TAG, "  update user : "+username+" conversation message success ");
-					List<EMMessage> emMessagesList = conversation.loadMoreMsgFromDB(latestMsg.getMsgId(), unreadMsgCount);
-					for (EMMessage emMessage : emMessagesList) {
-						DbHelper.saveReciveChat(context.getApplicationContext(), new ChatBean(context, emMessage), null);
-					}
-					Log.d(TAG, " save  user : "+username+" offline chat bean success ");
-					conversation.resetUnreadMsgCount();
-				}
-				//TODO 如果有未读消息，那么要在notification中提示用户啊。
-			}
-		});
-		
-		
-		
 	}
 
 	/**
@@ -282,12 +195,12 @@ public class MyHXSDKHelper {
 			message.setByEmMessage(appContext, latestMsg);
 			Database.writeMessage(appContext, message);
 		}else{
-			if (latestMsg.getBody() instanceof TextMessageBody){
-				String content = ((TextMessageBody)latestMsg.getBody()).getMessage();
+			if (latestMsg.getBody() instanceof EMTextMessageBody){
+				String content = ((EMTextMessageBody)latestMsg.getBody()).getMessage();
 				if(message.getUpdateTime().getTime()==latestMsg.getMsgTime()
 						&&StringUtils.isNotEmpty(content)&&content.equals(message.getContent()))return ; //去重
-			} else if(latestMsg.getBody() instanceof ImageMessageBody){
-				String imagePath = UIHelper.getEMMessageImage((ImageMessageBody)latestMsg.getBody());
+			} else if(latestMsg.getBody() instanceof EMImageMessageBody){
+				String imagePath = UIHelper.getEMMessageImage((EMImageMessageBody)latestMsg.getBody());
 				if(message.getUpdateTime().getTime()==latestMsg.getMsgTime()
 						&&StringUtils.isNotEmpty(imagePath)&&imagePath.equals(message.getImagePath()))return ; //去重
 			}
@@ -301,10 +214,19 @@ public class MyHXSDKHelper {
 	 */
 	public static  void login(final Context context) {
 		CacheBean cacheBean = CacheBean.getInstance();
+		if(EMClient.getInstance().isLoggedIn()){
+			if (!cacheBean.getLoginUserId().equals(EMClient.getInstance().getCurrentUser()) ) {
+				EMClient.getInstance().logout(true, new EMCallBack() {
+					@Override
+					public void onSuccess() {
+						Log.i(TAG, "退出环信成功");
+					}
 
-		if(EMChat.getInstance().isLoggedIn()){
-			if (!cacheBean.getLoginUserId().equals(EMChatManager.getInstance().getCurrentUser()) ) {
-				EMChatManager.getInstance().logout();
+					@Override
+					public void onError(int i, String s) {
+						Log.i(TAG, "退出环信失败 code=" + i + " msg=" + s);
+					}
+				});
 			}else{
 				Log.i(TAG, " 已经登陆过环信，不需要再次登陆了");
 				loadHXData(context);
@@ -320,7 +242,7 @@ public class MyHXSDKHelper {
 		}
 		
 		// 调用sdk登陆方法登陆聊天服务器
-		EMChatManager.getInstance().login(cacheBean.getLoginUserId(), cacheBean.getString(context, KEY_HUANXIN_PWD), new EMCallBack() {
+		EMClient.getInstance().login(cacheBean.getLoginUserId(), cacheBean.getString(context, KEY_HUANXIN_PWD), new EMCallBack() {
 
 			@Override
 			public void onSuccess() {
@@ -339,8 +261,18 @@ public class MyHXSDKHelper {
 	}
 
 	public static void logout(){
-		if (EMChat.getInstance().isLoggedIn()){
-			EMChatManager.getInstance().logout();
+		if (EMClient.getInstance().isLoggedIn()){
+			EMClient.getInstance().logout(true, new EMCallBack() {
+				@Override
+				public void onSuccess() {
+					Log.i(TAG, "退出环信成功");
+				}
+
+				@Override
+				public void onError(int i, String s) {
+					Log.i(TAG, "退出环信失败 code=" + i + " msg=" + s);
+				}
+			});
 		}
 	}
 	
@@ -357,13 +289,13 @@ public class MyHXSDKHelper {
 			public void run() {
 				try {
 					if (MyHXSDKHelper.getBlackList().contains(toChatUsername)) {
-						EMContactManager.getInstance().deleteUserFromBlackList( toChatUsername);
+						EMClient.getInstance().contactManager().removeUserFromBlackList(toChatUsername);
 						MyHXSDKHelper.getBlackList().remove(toChatUsername);
 					} else {
-						EMContactManager.getInstance().addUserToBlackList( toChatUsername, false);
+						EMClient.getInstance().contactManager().addUserToBlackList( toChatUsername, false);
 						MyHXSDKHelper.getBlackList().add(toChatUsername);
 					}
-				} catch (EaseMobException e) {
+				} catch (HyphenateException e) {
 					Log.e(TAG, "屏蔽用户出错", e);
 				}
 			}

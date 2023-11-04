@@ -19,6 +19,8 @@ import com.android.volley.toolbox.MessageRequest;
 import com.android.volley.toolbox.Volley;
 import com.bloomlife.android.bean.CacheBean;
 import com.bloomlife.android.common.util.StringUtils;
+import com.bloomlife.android.framework.ActivityResultCallback;
+import com.bloomlife.android.framework.BaseActivity;
 import com.bloomlife.android.log.Logger;
 import com.bloomlife.videoapp.BuildConfig;
 import com.bloomlife.videoapp.R;
@@ -51,6 +53,9 @@ import net.tsz.afinal.annotation.view.ViewInject;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 import static com.bloomlife.videoapp.common.CacheKeyConstants.KEY_HUANXIN_PWD;
 
@@ -157,6 +162,7 @@ public class AccountDialog extends BaseDialog {
                 mIWXAPI.registerApp(BuildConfig.WECHAT_APP_ID);
                 SendAuth.Req req = new SendAuth.Req();
                 req.scope = "snsapi_userinfo";
+                req.state = "wechat_sdk_demo_test";
                 mIWXAPI.sendReq(req);
                 break;
 
@@ -346,4 +352,18 @@ public class AccountDialog extends BaseDialog {
         }
     }
 
+    @Override
+    public void show(FragmentActivity activity) {
+        super.show(activity);
+        if (activity instanceof BaseActivity) {
+            ((BaseActivity)activity).setActivityResultCallback(new ActivityResultCallback() {
+                @Override
+                public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+                    if (mWBAPI != null) {
+                        mWBAPI.authorizeCallback(getActivity(), requestCode, resultCode, data);
+                    }
+                }
+            });
+        }
+    }
 }

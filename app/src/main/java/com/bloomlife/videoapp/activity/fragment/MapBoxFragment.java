@@ -46,7 +46,6 @@ import com.bloomlife.videoapp.model.result.GetVideoListResult;
 import com.bloomlife.videoapp.model.result.MoreVideoResult;
 import com.mapbox.android.gestures.MoveGestureDetector;
 import com.mapbox.android.gestures.StandardScaleGestureDetector;
-import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.Point;
 import com.mapbox.maps.CameraBoundsOptions;
 import com.mapbox.maps.CameraOptions;
@@ -113,7 +112,7 @@ public class MapBoxFragment extends BaseMapFragment {
     @ViewInject(id = R.id.fragment_mapbox_main_location_animview)
     private View mLocationAnimView;
 
-    private MapboxMap mController;
+    private MapboxMap mMap;
 
     private MapBoxVideoLoadController mVideoLoadController;
 
@@ -265,13 +264,8 @@ public class MapBoxFragment extends BaseMapFragment {
     @Override
     protected void initMap() {
         mLog.d("initMap");
-        mController = mMapView.getMapboxMap();
-        CameraOptions build = new CameraOptions.Builder()
-                .center(getUserLatLng())
-                .build();
-        mController.setCamera(build);
-
-        mController.loadStyleUri("mapbox://styles/nikanapp/clo7oy6tb008f01rce5kf4i9g", new Style.OnStyleLoaded() {
+        mMap = mMapView.getMapboxMap();
+        mMap.loadStyleUri("mapbox://styles/nikanapp/clo7oy6tb008f01rce5kf4i9g", new Style.OnStyleLoaded() {
             @Override
             public void onStyleLoaded(@NotNull Style style) {
                 style.addImage(ICON_DOT_FEMALE, BitmapFactory.decodeResource(getResources(), R.drawable.play_dot_female));
@@ -282,35 +276,34 @@ public class MapBoxFragment extends BaseMapFragment {
                 style.addImage(ICON_MALE_LOCATION, BitmapFactory.decodeResource(getResources(), R.drawable.male_location));
                 style.addImage(ICON_FEMALE_LOCATION, BitmapFactory.decodeResource(getResources(), R.drawable.female_location));
 
-                //symbolLayerIconFeatureList.add();
-                //style.setStyleGeoJSONSourceData(ICON_SOURCE_ID, new GeoJSONSourceData(symbolLayerIconFeatureList));
-
                 AnnotationPlugin annotationApi = AnnotationPluginImplKt.getAnnotations(mMapView);
                 pointAnnotationManager = PointAnnotationManagerKt.createPointAnnotationManager(annotationApi, new AnnotationConfig());
                 pointAnnotationManager.addClickListener(mMarkerClickListener);
+
+                CameraOptions build = new CameraOptions.Builder()
+                        .center(getUserLatLng())
+                        .build();
+                mMap.setCamera(build);
             }
         });
         GesturesPlugin plugin = mMapView.getPlugin(Plugin.MAPBOX_GESTURES_PLUGIN_ID);
-        plugin.addOnMoveListener(mMapOnMoveListener);
         plugin.addOnScaleListener(mMapOnScaleListener);
 
         LocationComponentPlugin locationComponentPlugin = mMapView.getPlugin(Plugin.MAPBOX_LOCATION_COMPONENT_PLUGIN_ID);
         locationComponentPlugin.updateSettings(new Function1<LocationComponentSettings, Unit>() {
             @Override
             public Unit invoke(LocationComponentSettings locationComponentSettings) {
-                locationComponentSettings.setEnabled(true);
-                locationComponentSettings.setPulsingEnabled(true);
+                locationComponentSettings.setEnabled(false);
+                locationComponentSettings.setPulsingEnabled(false);
                 return null;
             }
         });
-//        mMapView.getMapOverlay().setLoadingBackgroundColor(getResources().getColor(R.color.fragment_mapbox_background));
-//        mMapView.getMapOverlay().setLoadingLineColor(getResources().getColor(R.color.fragment_mapbox_line_color));
 
         SysCode sysCode = AppContext.getSysCode();
         mVideoLoadController.setCurrentZoomLevel(option.getZoomLevel(getActivity()));
         option.maxZoomLevel = sysCode.getMaxlevel(Default_Max_level);
         option.minZoomLevel = sysCode.getMinlevel(Default_min_level);
-        mController.setBounds(new CameraBoundsOptions.Builder()
+        mMap.setBounds(new CameraBoundsOptions.Builder()
                 .maxZoom((double)option.maxZoomLevel).minZoom((double)option.minZoomLevel).build());
         mLocationAnimView.setVisibility(View.INVISIBLE);
         mLocationAnimView.bringToFront();
@@ -340,7 +333,7 @@ public class MapBoxFragment extends BaseMapFragment {
         public void onScaleEnd(@NonNull StandardScaleGestureDetector standardScaleGestureDetector) {
             mOnMapZoom = true;
             double lastZoom = mZoom;
-            mZoom = mController.getCameraState().getZoom();
+            mZoom = mMap.getCameraState().getZoom();
             mVideoLoadController.setCurrentZoomLevel(mZoom);
             stopDisplayWindow();
             mLog.d("onScaleEnd " + lastZoom + " zoom " + mZoom);
@@ -354,32 +347,6 @@ public class MapBoxFragment extends BaseMapFragment {
         @Override
         public void onScale(@NonNull StandardScaleGestureDetector standardScaleGestureDetector) {
 
-        }
-    };
-
-    private final OnMoveListener mMapOnMoveListener = new OnMoveListener() {
-
-        @Override
-        public void onMoveEnd(@NonNull MoveGestureDetector moveGestureDetector) {
-
-        }
-
-        @Override
-        public void onMoveBegin(@NonNull MoveGestureDetector moveGestureDetector) {
-            mOnMapScroll = true;
-            mHandler.removeCallbacks(mMapChangeFinishLoad);
-            stopDisplayWindow();
-            if (mLocationAnimView.getVisibility() == View.VISIBLE){
-                mLocationAnimView.setVisibility(View.INVISIBLE);
-            }
-            mHandler.postDelayed(mMapChangeFinishLoad, 50);
-            Logger.d("onScroll", "action onMoveBegin");
-        }
-
-        @Override
-        public boolean onMove(@NonNull MoveGestureDetector moveGestureDetector) {
-
-            return false;
         }
     };
 
@@ -432,7 +399,7 @@ public class MapBoxFragment extends BaseMapFragment {
                     }
                 }, 500);
                 MyLatLng center = new MyLatLng(Double.parseDouble(mv.getLat()), Double.parseDouble(mv.getLon()));
-                changeMap(center, mController.getCameraState().getZoom() + 2);
+                changeMap(center, mMap.getCameraState().getZoom() + 2);
                 stopDisplayWindow();
                 return true;
             }
@@ -514,10 +481,10 @@ public class MapBoxFragment extends BaseMapFragment {
     };
 
     private void onLoadVideo(){
-        mZoom = mController.getCameraState().getZoom();
+        mZoom = mMap.getCameraState().getZoom();
         mVideoLoadController.setMapViewSize(mMapView);
         //还是要地图加载完成才能获取服务器视频列表，不然的话，你不知道地图显示的区域啊
-        Point center = mController.getCameraState().getCenter();
+        Point center = mMap.getCameraState().getCenter();
         cacheLatLng.saveCenterPoint(new MyLatLng(center.latitude(), center.longitude()));
         if (mVideoLoadController.isLoadVideo(mMapView.getMapboxMap(), center, mZoom)){
             loadVideoData(null);
@@ -542,18 +509,29 @@ public class MapBoxFragment extends BaseMapFragment {
 
     @Override
     protected boolean changeMap(MyLatLng myLatLng) {
+        return changeMap(myLatLng, -1, null);
+    }
+
+    @Override
+    protected boolean changeMap(MyLatLng myLatLng, double zoom, Animator.AnimatorListener animatorListener) {
         Point center = Point.fromLngLat(myLatLng.getLon(), myLatLng.getLat());
-        CameraAnimationsUtils.flyTo(mController, new CameraOptions.Builder().center(center).build(),
-                new MapAnimationOptions.Builder().duration(FLY_DURATION).build());
+        CameraOptions.Builder cameraOptions = new CameraOptions
+                .Builder()
+                .center(center);
+        if (zoom > 0) {
+            cameraOptions.zoom(zoom);
+        }
+        MapAnimationOptions.Builder animationOptions = new MapAnimationOptions.Builder().duration(FLY_DURATION);
+        if (animatorListener != null) {
+            animationOptions.animatorListener(animatorListener);
+        }
+        CameraAnimationsUtils.flyTo(mMap, cameraOptions.build(), animationOptions.build());
         return true;
     }
 
     @Override
     protected boolean changeMap(MyLatLng myLatLng, double zoom) {
-        Point center = Point.fromLngLat(myLatLng.getLon(), myLatLng.getLat());
-        CameraAnimationsUtils.flyTo(mController, new CameraOptions.Builder().center(center).zoom(zoom).build(),
-                new MapAnimationOptions.Builder().duration(FLY_DURATION).build());
-        return true;
+        return changeMap(myLatLng, zoom, null);
     }
 
     @Override
@@ -603,8 +581,8 @@ public class MapBoxFragment extends BaseMapFragment {
 
     @Override
     protected boolean isOnScreenRange(MyLatLng latLng) {
-        Point bottomLeft = mController.coordinateForPixel(new ScreenCoordinate(0, mMapView.getHeight()));
-        Point topRight = mController.coordinateForPixel(new ScreenCoordinate(mMapView.getWidth(), 0));
+        Point bottomLeft = mMap.coordinateForPixel(new ScreenCoordinate(0, mMapView.getHeight()));
+        Point topRight = mMap.coordinateForPixel(new ScreenCoordinate(mMapView.getWidth(), 0));
         return latLng.getLat() >= bottomLeft.latitude() && latLng.getLon() >= bottomLeft.longitude()
                 && topRight.latitude() >= latLng.getLat() && topRight.longitude() >= latLng.getLon();
     }
@@ -615,10 +593,17 @@ public class MapBoxFragment extends BaseMapFragment {
         mLocationAnimView.setBackgroundResource(
                 AppContext.getSysCode().getSex() == Video.MALE ? R.drawable.circle_male_location : R.drawable.circle_female_location
         );
-
         randomShow.setDisplayViewToShow(mVideoList, mGetScreenHotPoint);
         mVideoLoadController.setCacheLatLng(cacheLatLng);
         loadVideoData(mSelectTopic);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            drawUserLocation();
+        }
     }
 
     private int zoomLevel = 0;
@@ -628,7 +613,7 @@ public class MapBoxFragment extends BaseMapFragment {
         @Override
         public void run() {
             zoomLevel += 1;
-            CameraAnimationsUtils.easeTo(mController,
+            CameraAnimationsUtils.easeTo(mMap,
                     new CameraOptions.Builder().center(Point.fromLngLat(0, 0)).zoom((double) zoomLevel).build(),
                     new MapAnimationOptions.Builder().duration(FLY_DURATION).build());
             if (zoomLevel != MAX_ZOOM_LEVEL)
@@ -642,17 +627,38 @@ public class MapBoxFragment extends BaseMapFragment {
         randomShow.stopShow();
     }
 
+    private void startMapChangeFinishLoad() {
+        mOnMapScroll = true;
+        mHandler.removeCallbacks(mMapChangeFinishLoad);
+        stopDisplayWindow();
+        if (mLocationAnimView.getVisibility() == View.VISIBLE){
+            mLocationAnimView.setVisibility(View.INVISIBLE);
+        }
+        mHandler.postDelayed(mMapChangeFinishLoad, 50);
+        Logger.d("onScroll", "action onMoveBegin");
+    }
+
     @Override
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.local:
                 if(userLatLng != null) {
-                    if (changeMap(userLatLng, option.maxZoomLevel))
-                        mClickLocalBtn = true;
+                    if (changeMap(userLatLng, option.maxZoomLevel, new DefaultAnimatorListener() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            startMapChangeFinishLoad();
+                        }
+                    }))
+                    mClickLocalBtn = true;
                 } else {
                     Log.e(TAG, " 无法获得用户位置，使用屏幕中间点放大");
-                    changeMap(cacheLatLng.getCenterPoint(), option.maxZoomLevel);
+                    changeMap(cacheLatLng.getCenterPoint(), option.maxZoomLevel, new DefaultAnimatorListener() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            startMapChangeFinishLoad();
+                        }
+                    });
                     mClickLocalBtn = true;
                 }
                 break;
@@ -813,7 +819,7 @@ public class MapBoxFragment extends BaseMapFragment {
     }
 
     private HotMarkerOptions drawVideoPoint(Video video, boolean drawSendMarker){
-        ScreenCoordinate point = mController.pixelForCoordinate(Point.fromLngLat(Double.parseDouble(video.getLon()), Double.parseDouble(video.getLat())));
+        ScreenCoordinate point = mMap.pixelForCoordinate(Point.fromLngLat(Double.parseDouble(video.getLon()), Double.parseDouble(video.getLat())));
         if(point.getX()<=0||point.getY()<=0){
             Log.v(TAG, " x "+point.getX()+" y "+point.getY());
             Log.v(TAG, " 点并不在屏幕显示区域中，不进行绘制 ");
@@ -923,26 +929,27 @@ public class MapBoxFragment extends BaseMapFragment {
             mMoreMarkers.put(marker, options.video);
         }
         moreMarkerOptions.clear();
-        // 用户位置的点要放在最后面绘制，防止绘制后挡在视频点前面
-		//drawUserLocation();
     }
 
     /**
      * 绘制用户所在的点
      */
     private void drawUserLocation(){
-        if (mUserMarker != null)
-            pointAnnotationManager.delete(mUserMarker);
-        PointAnnotationOptions annotationOptions = new PointAnnotationOptions();
-        annotationOptions.withPoint(getUserLatLng());
-        annotationOptions.withIconImage(AppContext.getSysCode().getSex()==Video.MALE ? ICON_MALE_LOCATION : ICON_FEMALE_LOCATION);
-        annotationOptions.withIconAnchor(IconAnchor.CENTER);
-        mUserMarker = pointAnnotationManager.create(annotationOptions);
+        if (pointAnnotationManager != null) {
+            if (mUserMarker != null) {
+                pointAnnotationManager.delete(mUserMarker);
+            }
+            PointAnnotationOptions annotationOptions = new PointAnnotationOptions();
+            annotationOptions.withPoint(getUserLatLng());
+            annotationOptions.withIconImage(AppContext.getSysCode().getSex() == Video.MALE ? ICON_MALE_LOCATION : ICON_FEMALE_LOCATION);
+            annotationOptions.withIconAnchor(IconAnchor.CENTER);
+            mUserMarker = pointAnnotationManager.create(annotationOptions);
+        }
     }
 
     @Override
     protected ScreenCoordinate getScreenPoint(double lat, double lon) {
-        return mController.pixelForCoordinate(Point.fromLngLat(lon, lat));
+        return mMap.pixelForCoordinate(Point.fromLngLat(lon, lat));
     }
 
     @Override

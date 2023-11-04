@@ -35,6 +35,25 @@ android {
             }
         }
         debug {
+            // 正式版的发布配置
+            if (appFile.exists()) {
+                if (props.containsKey('KEYSTORE_FILE')
+                        && props.containsKey('KEYSTORE_PASSWORD')
+                        && props.containsKey('KEY_ALIAS')
+                        && props.containsKey('KEY_PASSWORD')) {
+                    // 发布的签名设置1
+                    storeFile file(props['KEYSTORE_FILE'])
+                    storePassword props['KEYSTORE_PASSWORD']
+                    keyAlias props['KEY_ALIAS']
+                    keyPassword props['KEY_PASSWORD']
+                } else {
+                    throw new InvalidUserDataException(
+                            "You should define KEYSTORE_FILE and KEYSTORE_PASSWORD and KEY_ALIAS and KEY_PASSWORD in keystore.properties."
+                    )
+                }
+            } else {
+                throw new InvalidUserDataException("keystore.properties not exists.")
+            }
         }
     }
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -103,6 +122,9 @@ android {
             buildConfigField(STRING, "SINA_REDIRECT_URL", CONFIG('SINA_REDIRECT_URL'))
             buildConfigField(STRING, "SINA_COPE", CONFIG('SINA_COPE'))
             buildConfigField(STRING, "WECHAT_APP_ID", CONFIG('WECHAT_APP_ID'))
+            buildConfigField(STRING, "EMCHAT_APP_KEY", CONFIG('EMCHAT_APP_KEY'))
+            buildConfigField(STRING, "BDIUD_LBS_APP_KEY", CONFIG('BDIUD_LBS_APP_KEY'))
+
         }
 
         // 开发时的配置
@@ -119,18 +141,8 @@ android {
             buildConfigField(STRING, "SINA_REDIRECT_URL", CONFIG('SINA_REDIRECT_URL'))
             buildConfigField(STRING, "SINA_COPE", CONFIG('SINA_COPE'))
             buildConfigField(STRING, "WECHAT_APP_ID", CONFIG('WECHAT_APP_ID'))
-        }
-
-        // 使用正式版key进行开发
-        releaseKeyDebug{
-            multiDexEnabled true
-            minifyEnabled false
-            signingConfig signingConfigs.release
-            buildConfigField(BOOLEAN, SSO_LOGIN, FALSE)
-            buildConfigField(BOOLEAN, LOGGER_DEBUG, TRUE)
-            buildConfigField(BOOLEAN, BUG_TAGS, TRUE)
-            buildConfigField(STRING, HTTP_APP_API_DOMAIN, DEVELOP_DOMAIN)
-            debuggable true
+            buildConfigField(STRING, "EMCHAT_APP_KEY", CONFIG('EMCHAT_APP_KEY'))
+            buildConfigField(STRING, "BDIUD_LBS_APP_KEY", CONFIG('BDIUD_LBS_APP_KEY'))
         }
     }
     dexOptions {

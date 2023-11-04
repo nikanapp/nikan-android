@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.bloomlife.android.framework.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import us.pinguo.edit.sdk.base.controller.PGEditController;
@@ -17,7 +18,7 @@ import us.pinguo.edit.sdk.view.PGEditView;
  * Created by hlf on 14-2-12.
  *
  */
-public class PGEditActivity extends FragmentActivity {
+public class PGEditActivity extends BaseActivity {
 
     private PGEditController mPGEditController;
     private PGEditView mPGEditView;

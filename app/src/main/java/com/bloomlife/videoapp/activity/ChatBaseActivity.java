@@ -8,8 +8,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMMessage;
+import com.bloomlife.android.framework.BaseActivity;
+import com.hyphenate.chat.EMChatManager;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMMessage;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -17,7 +19,7 @@ import androidx.fragment.app.FragmentActivity;
  * @author <a href="mailto:xiai.fei@gmail.com">xiai_fei</a>
  * @date 2014-12-19  下午2:36:00
  */
-public class ChatBaseActivity extends FragmentActivity {
+public class ChatBaseActivity extends BaseActivity {
 
     protected NotificationManager notificationManager;
 
@@ -31,8 +33,6 @@ public class ChatBaseActivity extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // onresume时，取消notification显示
-        EMChatManager.getInstance().activityResumed();
     }
 
     @Override

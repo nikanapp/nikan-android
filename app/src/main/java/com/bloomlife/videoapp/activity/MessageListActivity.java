@@ -24,6 +24,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bloomlife.android.framework.BaseActivity;
 import com.bloomlife.android.view.AlterDialog;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.fragment.MessageListFragment;
@@ -41,7 +42,7 @@ import com.bloomlife.videoapp.manager.MessageManager;
  *
  * @date 2014-12-17  下午5:21:48
  */
-public class MessageListActivity extends FragmentActivity implements OnClickListener{
+public class MessageListActivity extends BaseActivity implements OnClickListener{
 
 	private static final String TAG = "MessageListActivity";
 	

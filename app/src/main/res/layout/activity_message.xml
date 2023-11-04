@@ -123,11 +123,11 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <androidx.core.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/activity_message_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tab_buttom" >
-    </androidx.core.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
     
 </RelativeLayout>

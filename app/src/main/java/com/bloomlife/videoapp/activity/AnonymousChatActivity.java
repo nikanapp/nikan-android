@@ -20,7 +20,7 @@ import com.bloomlife.videoapp.model.ChatBean;
 import com.bloomlife.videoapp.model.ConversationMessage;
 import com.bloomlife.videoapp.model.Video;
 import com.bloomlife.videoapp.view.SuperToast;
-import com.easemob.chat.EMMessage;
+import com.hyphenate.chat.EMMessage;
 
 import java.util.ArrayList;
 import java.util.List;

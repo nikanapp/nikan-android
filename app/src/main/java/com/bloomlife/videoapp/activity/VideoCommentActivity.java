@@ -35,6 +35,7 @@ import com.bloomlife.android.bean.BaseMessage;
 import com.bloomlife.android.bean.CacheBean;
 import com.bloomlife.android.bean.ProcessResult;
 import com.bloomlife.android.common.util.UiUtils;
+import com.bloomlife.android.framework.BaseActivity;
 import com.bloomlife.android.log.Logger;
 import com.bloomlife.android.view.AlterDialog;
 import com.bloomlife.android.view.SoftKeyboardLayout;
@@ -80,7 +81,7 @@ import emojicon.emoji.Emojicon;
  *
  * @date 2014年11月21日 上午10:30:55
  */
-public class VideoCommentActivity extends FragmentActivity implements OnClickListener, EmojiconGridFragment.OnEmojiconClickedListener, EmojiconsFragment.OnEmojiconBackspaceClickedListener{
+public class VideoCommentActivity extends BaseActivity implements OnClickListener, EmojiconGridFragment.OnEmojiconClickedListener, EmojiconsFragment.OnEmojiconBackspaceClickedListener{
 	public static final String TAG = VideoCommentActivity.class.getSimpleName();
 
 	public static final String INTENT_INFO = "intentCommentInfo";

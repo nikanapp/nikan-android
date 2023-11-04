@@ -25,7 +25,8 @@ import com.bloomlife.videoapp.model.DbStoryVideo;
 import com.bloomlife.videoapp.model.NotificationMessage;
 import com.bloomlife.videoapp.model.NotificationUserInfo;
 import com.bloomlife.videoapp.model.Video;
-import com.easemob.chat.EMMessage;
+import com.hyphenate.chat.EMMessage;
+
 /**
  * 数据库类
  *   
@@ -387,7 +388,7 @@ public class Database {
 						+ " AND fromUser = '" + from + "' AND  videoId = '" + videoId + "' ");
 		if (!chats.isEmpty())
 			return ChatCacheData.NEW_VERSION;
-		if (db.findAllByWhere(ChatBean.class, " appVersion >= "+version +" AND direct = "+EMMessage.Direct.RECEIVE.ordinal()
+		if (db.findAllByWhere(ChatBean.class, " appVersion >= "+version +" AND direct = "+ EMMessage.Direct.RECEIVE.ordinal()
 				+" AND fromUser = '"+from+"' AND  videoId = '"+videoId+"' ").isEmpty())
 			return ChatCacheData.EMPTY_OTHER;
 		return ChatCacheData.OLD_VERSION;

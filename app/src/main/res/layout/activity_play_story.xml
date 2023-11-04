@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-    <androidx.core.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/activity_play_story_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </androidx.core.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
 
     <View
         android:layout_width="match_parent"

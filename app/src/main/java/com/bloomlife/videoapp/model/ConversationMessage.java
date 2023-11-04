@@ -21,10 +21,10 @@ import com.bloomlife.android.bean.CacheBean;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.RealNameChatActivity;
 import com.bloomlife.videoapp.common.util.UIHelper;
-import com.easemob.chat.EMMessage;
-import com.easemob.chat.ImageMessageBody;
-import com.easemob.chat.TextMessageBody;
-import com.easemob.chat.VoiceMessageBody;
+import com.hyphenate.chat.EMImageMessageBody;
+import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMTextMessageBody;
+import com.hyphenate.chat.EMVoiceMessageBody;
 
 /**
  * 	通过列表中的消息实体
@@ -151,18 +151,18 @@ public class ConversationMessage {
 		this.updateTime = updateTime;
 	}
 	
-	public void setByEmMessage(Context context,EMMessage emMessage){
+	public void setByEmMessage(Context context, EMMessage emMessage){
 		this.updateTime = new Date(emMessage.getMsgTime());
 		this.otherId = emMessage.getFrom();
 		if(CacheBean.getInstance().getLoginUserId().equals(otherId)){
 			this.otherId = emMessage.getTo();
 		}
-		if(emMessage.getBody() instanceof TextMessageBody){
-			this.content = ((TextMessageBody)emMessage.getBody()).getMessage();
-		} else if(emMessage.getBody() instanceof ImageMessageBody){
+		if(emMessage.getBody() instanceof EMTextMessageBody){
+			this.content = ((EMTextMessageBody)emMessage.getBody()).getMessage();
+		} else if(emMessage.getBody() instanceof EMImageMessageBody){
 			this.content = context.getString(R.string.view_picture_text);
-			this.imagePath = UIHelper.getEMMessageImage((ImageMessageBody)emMessage.getBody());
-		} else if(emMessage.getBody() instanceof VoiceMessageBody){
+			this.imagePath = UIHelper.getEMMessageImage((EMImageMessageBody)emMessage.getBody());
+		} else if(emMessage.getBody() instanceof EMVoiceMessageBody){
 			this.content = context.getString(R.string.view_sound_text);
 		}
 		this.videouri = emMessage.getStringAttribute(ATTRIBUTE_VIDEO_URI, "");

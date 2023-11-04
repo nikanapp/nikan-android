@@ -17,10 +17,10 @@ import com.bloomlife.videoapp.activity.RealNameChatActivity;
 import com.bloomlife.videoapp.app.AppContext;
 import com.bloomlife.videoapp.app.MyHXSDKHelper;
 import com.bloomlife.videoapp.common.util.UIHelper;
-import com.easemob.chat.EMMessage;
-import com.easemob.chat.ImageMessageBody;
-import com.easemob.chat.TextMessageBody;
-import com.easemob.chat.VoiceMessageBody;
+import com.hyphenate.chat.EMImageMessageBody;
+import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMTextMessageBody;
+import com.hyphenate.chat.EMVoiceMessageBody;
 
 import net.tsz.afinal.annotation.sqlite.Id;
 import net.tsz.afinal.annotation.sqlite.Table;
@@ -41,18 +41,18 @@ public class ChatBean implements Serializable{
 			this.fromUser = emMessage.getTo();
 		}
 		this.createtime = new Date();
-		if (emMessage.getBody() instanceof TextMessageBody){
-			this.content = ((TextMessageBody)emMessage.getBody()).getMessage();
-		} else if (emMessage.getBody() instanceof ImageMessageBody){
-			ImageMessageBody body = (ImageMessageBody)emMessage.getBody();
+		if (emMessage.getBody() instanceof EMTextMessageBody){
+			this.content = ((EMTextMessageBody)emMessage.getBody()).getMessage();
+		} else if (emMessage.getBody() instanceof EMImageMessageBody){
+			EMImageMessageBody body = (EMImageMessageBody)emMessage.getBody();
 			this.content = context.getString(R.string.view_picture_text);
 			this.imagePath = UIHelper.getEMMessageImage(body);
 			this.thumbnailUrl = UIHelper.getEMMessageThumbnailUrl(body);
 			this.imageWidth = body.getWidth();
 			this.imageHeight = body.getHeight();
 			Log.d("ChatBean", " thumbnailUrl " + this.thumbnailUrl);
-		} else if (emMessage.getBody() instanceof VoiceMessageBody){
-			VoiceMessageBody body = (VoiceMessageBody)emMessage.getBody();
+		} else if (emMessage.getBody() instanceof EMVoiceMessageBody){
+			EMVoiceMessageBody body = (EMVoiceMessageBody)emMessage.getBody();
 			this.content = context.getString(R.string.view_sound_text);
 			if (TextUtils.isEmpty(body.getRemoteUrl()))
 				this.voicePath = body.getLocalUrl();

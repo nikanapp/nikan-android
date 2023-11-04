@@ -7,13 +7,11 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,24 +24,15 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.baidu.location.LocationClient;
-import com.bloomlife.android.bean.CacheBean;
-import com.bloomlife.android.common.util.UiHelper;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.SpalshActivity;
 import com.bloomlife.videoapp.activity.UserAgreementActivity;
 import com.bloomlife.videoapp.app.AppContext;
 import com.bloomlife.videoapp.common.DefaultAnimatorListener;
-import com.bloomlife.videoapp.manager.LocationManager;
 import com.bloomlife.videoapp.view.GenderSelectView;
-import com.hjq.permissions.OnPermissionCallback;
-import com.hjq.permissions.Permission;
-import com.hjq.permissions.XXPermissions;
 
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
-
-import java.util.List;
 
 /**
  *   
@@ -72,7 +61,7 @@ public class WelcomeInitFragment extends AbstractWelcomeFragment implements OnCl
 	private TextView reverse;
 	
 	@ViewInject(id=R.id.progressLayout)
-	private LinearLayout linearLayout ;
+	private LinearLayout progressLayout;
 	
 	@ViewInject(id=R.id.progressbar)
 	private ProgressBar progressBar ;
@@ -145,7 +134,7 @@ public class WelcomeInitFragment extends AbstractWelcomeFragment implements OnCl
 		
 		@Override
 		public void onAnimationEnd(Animator animation) {
-			linearLayout.setVisibility(View.VISIBLE);
+			progressLayout.setVisibility(View.VISIBLE);
 			((SpalshActivity)getActivity()).syncServerParam(true);
 		}
 	};
@@ -188,7 +177,7 @@ public class WelcomeInitFragment extends AbstractWelcomeFragment implements OnCl
 	}
 	
 	public void hideInitProgress(){
-		linearLayout.setVisibility(View.INVISIBLE);
+		progressLayout.setVisibility(View.INVISIBLE);
 	}
 	
 	private AnimatorSet mSplashleAmin;

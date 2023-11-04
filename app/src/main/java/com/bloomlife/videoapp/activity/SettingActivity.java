@@ -125,10 +125,8 @@ public class SettingActivity extends BaseActivity {
         public void OnChanged(boolean CheckState) {
             if (CheckState) {
                 PushService.openPush(SettingActivity.this);
-                MyHXSDKHelper.getInstance().openPush();
             } else {
                 PushService.closePush(SettingActivity.this);
-                MyHXSDKHelper.getInstance().closePush();
             }
         }
     };

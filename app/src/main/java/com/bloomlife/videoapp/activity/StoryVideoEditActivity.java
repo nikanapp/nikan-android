@@ -65,8 +65,11 @@ public class StoryVideoEditActivity extends VideoEditActivity implements View.On
     @Override
     protected void initLayoutView() {
         super.initLayoutView();
-        List<Emotion> emotionList = new ArrayList<>(AppContext.getSysCode().getEmotions());
-        emotionList.add(0, new Emotion());
+        List<Emotion> emotionList = new ArrayList<>();
+        emotionList.add(new Emotion());
+        if (AppContext.getSysCode().getEmotions() != null) {
+            emotionList.addAll(AppContext.getSysCode().getEmotions());
+        }
         mAdapter = new EmotionListAdapter(this, emotionList);
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(mOnItemClickListener);

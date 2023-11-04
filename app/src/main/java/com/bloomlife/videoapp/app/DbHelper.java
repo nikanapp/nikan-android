@@ -17,7 +17,7 @@ import com.bloomlife.videoapp.model.ConversationMessage;
 import com.bloomlife.videoapp.model.DbStoryVideo;
 import com.bloomlife.videoapp.model.NotificationMessage;
 import com.bloomlife.videoapp.model.Video;
-import com.easemob.chat.EMMessage;
+import com.hyphenate.chat.EMMessage;
 
 /**
  * 	视频操作帮助类，实现异步处理

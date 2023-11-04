@@ -274,16 +274,20 @@ public class VideoEditActivity extends BaseActivity implements View.OnClickListe
 		@Override
 		public void onFocusChange(View v, boolean hasFocus) {
 			if (hasFocus && !mIsOpenEditText) {
-				ObjectAnimator mEditAnim = ObjectAnimator.ofInt(mEditDescription, "width", mEditDescription.getWidth(), getResources().getDisplayMetrics().widthPixels);
-				mEditAnim.addListener(mAnimatorListener);
-				mEditAnim.setDuration(DESCRIPTION_EDITTEXT_DRUATION);
-				mEditAnim.start();
-				mIsOpenEditText = true;
+				showEditDescription();
 			} else {
 				UIHelper.hideSoftInput(VideoEditActivity.this, mEditDescription);
 			}
 		}
 	};
+
+	private void showEditDescription() {
+		ObjectAnimator mEditAnim = ObjectAnimator.ofInt(mEditDescription, "width", mEditDescription.getWidth(), getResources().getDisplayMetrics().widthPixels);
+		mEditAnim.addListener(mAnimatorListener);
+		mEditAnim.setDuration(DESCRIPTION_EDITTEXT_DRUATION);
+		mEditAnim.start();
+		mIsOpenEditText = true;
+	}
 	
 	private AnimatorListener mAnimatorListener = new AnimatorListener() {
 		

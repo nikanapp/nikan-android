@@ -76,16 +76,16 @@ import com.bloomlife.videoapp.view.ChatAudioRecorderController.ControllerListene
 import com.bloomlife.videoapp.view.ChatSendToolController;
 import com.bloomlife.videoapp.view.ChatSendToolController.SendViewListener;
 import com.bloomlife.videoapp.view.GlobalProgressBar;
-import com.easemob.EMCallBack;
-import com.easemob.chat.EMChat;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMConversation;
-import com.easemob.chat.EMMessage;
-import com.easemob.chat.EMMessage.ChatType;
-import com.easemob.chat.ImageMessageBody;
-import com.easemob.chat.MessageBody;
-import com.easemob.chat.TextMessageBody;
-import com.easemob.chat.VoiceMessageBody;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.EMMessageListener;
+import com.hyphenate.chat.EMChatManager;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMConversation;
+import com.hyphenate.chat.EMImageMessageBody;
+import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMMessageBody;
+import com.hyphenate.chat.EMTextMessageBody;
+import com.hyphenate.chat.EMVoiceMessageBody;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 
@@ -154,14 +154,9 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 
 	private RealNameChatAdapter adapter;
 	private GestureDetector mGestureDetector;
-	private EMConversation conversation;
 
 	private ImageLoader mImageLoader;
-	private NewMessageBroadcastReceiver msgReceiver;
 
-	private BroadcastReceiver ackMessageReceiver;
-
-	private BroadcastReceiver deliveryAckMessageReceiver;
 	private boolean isloading;
 
 	private final int pagesize = 20;
@@ -186,7 +181,7 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 	protected void initContentView(){
 		initChatData();
 		boolean fromNotification = getIntent().getExtras().getBoolean(INTENT_FROM_NOTIFICATION, false);
-		if (EMChat.getInstance().isLoggedIn() && fromNotification) {
+		if (EMClient.getInstance().isLoggedIn() && fromNotification) {
 			if (mChatBean == null){
 				ChatBean cb = new ChatBean();
 				cb.setFromUser(toChatUsername);
@@ -217,32 +212,11 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 	 * 初始化环信相关。加载会话，注册相关的广播等。
 	 */
 	private void initHx() {
-		EMChatManager.getInstance().loadAllConversations();
-		conversation = EMChatManager.getInstance().getConversation(toChatUsername);
-
-		if (msgReceiver == null) {
-			msgReceiver = new NewMessageBroadcastReceiver();
-			IntentFilter intentFilter = new IntentFilter(EMChatManager.getInstance().getNewMessageBroadcastAction());
-			intentFilter.setPriority(5);
-			registerReceiver(msgReceiver, intentFilter);
-		}
-
-		if (ackMessageReceiver == null) {
-			ackMessageReceiver = new AckMessageReceiver();
-			IntentFilter ackintentFilter = new IntentFilter(EMChatManager.getInstance().getAckMessageBroadcastAction());
-			ackintentFilter.setPriority(5);
-			registerReceiver(ackMessageReceiver, ackintentFilter);
-		}
-		if (deliveryAckMessageReceiver == null) {
-			deliveryAckMessageReceiver = new DeliveryAckMessageReceiver();
-			IntentFilter deliverintentFilter = new IntentFilter(EMChatManager.getInstance().getDeliveryAckMessageBroadcastAction());
-			deliverintentFilter.setPriority(5);
-			registerReceiver(deliveryAckMessageReceiver, deliverintentFilter);
-		}
+		EMClient.getInstance().chatManager().loadAllConversations();
+		EMClient.getInstance().chatManager().addMessageListener(mEMMessageListener);
 	}
 
 	private void initUi() {
-//		listView.setOnItemClickListener(onItemClickListener);
 		listView.setOnScrollListener(onScrollListener);
 		emojiFragment.setVisibility(View.GONE);
 		mSendViewPager.setAdapter(new ChatSendPageAdapter(this, mViewPagerInitItemListener));
@@ -311,7 +285,7 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 		if (content.length() > 0) {
 			final EMMessage message = EMMessage.createSendMessage(EMMessage.Type.TXT);
 			// 如果是群聊，设置chattype,默认是单聊
-			TextMessageBody txtBody = new TextMessageBody(content);
+			EMTextMessageBody txtBody = new EMTextMessageBody(content);
 			setMessageBody(message, txtBody);
 		}
 	}
@@ -319,7 +293,7 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 	private void sendImage(File file) {
 		final EMMessage message = EMMessage.createSendMessage(EMMessage.Type.IMAGE);
 		// 如果是群聊，设置chattype,默认是单聊
-		ImageMessageBody imageBody = new ImageMessageBody(file);
+		EMImageMessageBody imageBody = new EMImageMessageBody(file);
 		imageBody.setSendOriginalImage(true);
 		// 设置消息body
 		setMessageBody(message, imageBody);
@@ -332,20 +306,17 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 			return;
 		}
 		final EMMessage message = EMMessage .createSendMessage(EMMessage.Type.VOICE);
-		VoiceMessageBody body = new VoiceMessageBody(voice, duration);
+		EMVoiceMessageBody body = new EMVoiceMessageBody(voice, duration);
 		// 设置消息body
 		setMessageBody(message, body);
 	}
 
-	protected void setMessageBody(EMMessage message, MessageBody body) {
+	protected void setMessageBody(EMMessage message, EMMessageBody body) {
 		// 设置消息body
 		message.addBody(body);
 		setAttributes(message);
 		// 设置要发给谁,用户username或者群聊groupid
-		message.setReceipt(toChatUsername);
-		// 把messgage加到conversation中
-		conversation.addMessage(message);
-
+		message.setTo(toChatUsername);
 		if (mSendView != null) {
 			mSendView.clearInputEditText();
 		}
@@ -380,17 +351,17 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 		// 判断要重新发送的是文本消息还是图片消息
 		if (!TextUtils.isEmpty(chatBean.getImagePath())) {
 			message = EMMessage.createSendMessage(EMMessage.Type.IMAGE);
-			ImageMessageBody imageBody = new ImageMessageBody(new File(chatBean.getImagePath().replace("file://", "")));
+			EMImageMessageBody imageBody = new EMImageMessageBody(new File(chatBean.getImagePath().replace("file://", "")));
 			imageBody.setSendOriginalImage(true);
 			message.addBody(imageBody);
 		} else if(!TextUtils.isEmpty(chatBean.getVoicePath())){
 			message = EMMessage.createSendMessage(EMMessage.Type.VOICE);
-			VoiceMessageBody voiceBody = new VoiceMessageBody(new File(chatBean.getVoicePath()), chatBean.getVoiceDuration());
+			EMVoiceMessageBody voiceBody = new EMVoiceMessageBody(new File(chatBean.getVoicePath()), chatBean.getVoiceDuration());
 			message.addBody(voiceBody);
 		} else {
 			message = EMMessage.createSendMessage(EMMessage.Type.TXT);
 			// 如果是群聊，设置chattype,默认是单聊
-			TextMessageBody txtBody = new TextMessageBody(chatBean.getContent());
+			EMTextMessageBody txtBody = new EMTextMessageBody(chatBean.getContent());
 			// 设置消息body
 			message.addBody(txtBody);
 		}
@@ -398,7 +369,7 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 		//设置消息属性
 		resetAttributes(message, chatBean);
 
-		message.setReceipt(toChatUsername);
+		message.setTo(toChatUsername);
 		
 		DbHelper.updateChat(getApplicationContext(), chatBean);
 		refreahChatListView();
@@ -407,29 +378,24 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 	}
 	
 	protected void sendEchatMessage(final EMMessage message, final ChatBean chatBean) {
-		if (!EMChatManager.getInstance().isConnected()) {
+		if (!EMClient.getInstance().isConnected()) {
 			doSendFailure(chatBean);
 			return;
 		}
 		// 发送消息
-		EMChatManager.getInstance().sendMessage(message, new EMCallBack() {
+		message.setMessageStatusCallback(new EMCallBack() {
+			@Override
+			public void onSuccess() {
+				onSendChatSuccess(chatBean);
+			}
 
 			@Override
 			public void onError(int arg0, String arg1) {
 				Log.i(TAG, "send chat onError " + arg0 + " message " + arg1);
 				doSendFailure(chatBean);
 			}
-
-			@Override
-			public void onProgress(int arg0, String arg1) {
-				Log.i(TAG, "send chat onProgress " + arg0);
-			}
-
-			@Override
-			public void onSuccess() {
-				onSendChatSuccess(chatBean);
-			}
 		});
+		EMClient.getInstance().chatManager().sendMessage(message);
 	}
 
 	protected void onSendChatSuccess(final ChatBean chatBean){
@@ -618,7 +584,7 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 		@Override
 		public void onSend(String text) {
 			hideSoftInput(); // 关闭键盘
-			if (EMChat.getInstance().isLoggedIn()) {
+			if (EMClient.getInstance().isLoggedIn()) {
 				sendText(text);
 			} else {
 				UiHelper.showToast(RealNameChatActivity.this, getString(R.string.activity_chat_network_fail));
@@ -715,7 +681,7 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 		Logger.v(TAG, "toChatUsername = " + toChatUsername);
 		if (adapter == null) {
 			List<ChatBean> chatList = Database.loadChat(this, toChatUsername, mChatId, 0, pagesize);
-			if (EMChat.getInstance().isLoggedIn()) {
+			if (EMClient.getInstance().isLoggedIn()) {
 				initHx();
 			}
 			adapter = initChatList(chatList);
@@ -752,12 +718,6 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 	@Override
 	public void finish() {
 		setChatResult();
-		if (msgReceiver != null)
-			unregisterReceiver(msgReceiver);
-		if (ackMessageReceiver != null)
-			unregisterReceiver(ackMessageReceiver);
-		if (deliveryAckMessageReceiver != null)
-			unregisterReceiver(deliveryAckMessageReceiver);
 		super.finish();
 		overridePendingTransition(0, R.anim.activity_right_out);
 	}
@@ -957,81 +917,60 @@ public class RealNameChatActivity extends ChatBaseActivity implements OnClickLis
 
 	
 /************************************************************   环信相关回调     **************************************************************/
-	
-	/**  消息广播接收者  */
-	private class NewMessageBroadcastReceiver extends BroadcastReceiver {
-		@Override
-		public void onReceive(Context context, Intent intent) {
 
-			String username = intent.getStringExtra("from");
-			String msgid = intent.getStringExtra("msgid");
-			EMChatManager.getInstance().getConversation(username).resetUnreadMsgCount();
-			// 收到这个广播的时候，message已经在db和内存里了，可以通过id获取mesage对象
-			EMMessage message = EMChatManager.getInstance().getMessage(msgid);
-			receiveChat(message, username);
-			// 记得把广播给终结掉
-			abortBroadcast();
-			saveChatAndUpdateListView(context, message, false, null);
+	private EMMessageListener mEMMessageListener = new EMMessageListener() {
+
+		@Override
+		public void onMessageReceived(List<EMMessage> list) {
+			for (EMMessage message: list) {
+				String username = message.getFrom();
+				EMClient.getInstance().chatManager().getConversation(username).markAllMessagesAsRead();
+				receiveChat(message, username);
+				saveChatAndUpdateListView(getApplicationContext(), message, false, null);
+			}
 		}
 
-	}
+		@Override
+		public void onMessageDelivered(List<EMMessage> messages) {
+			for (EMMessage message:messages) {
+				// 把message设为已读
+				EMMessage msg = EMClient.getInstance().chatManager().getMessage(message.getMsgId());
+				if (msg != null && !msg.isDelivered()) {
+					msg.setDelivered(true);
+					adapter.notifyDataSetChanged();
+				}
+			}
+		}
+
+		@Override
+		public void onMessageRead(List<EMMessage> messages) {
+			for (EMMessage message:messages) {
+				EMMessage msg = EMClient.getInstance()
+						.chatManager().getMessage(message.getMsgId());
+				if (msg != null && !msg.isAcked()) {
+					msg.setAcked(true);
+					adapter.notifyDataSetChanged();
+				}
+			}
+		}
+	};
 
 	protected void receiveChat(EMMessage message, String username){
 		// 如果是群聊消息，获取到group id
-		if (message.getChatType() == ChatType.GroupChat) {
+		if (message.getChatType() == EMMessage.ChatType.GroupChat) {
 			username = message.getTo();
 		}
 		if (!username.equals(toChatUsername) || !mChatId.equals(message.getStringAttribute(
 				ATTRIBUTE_VIDEO_ID, ""))) {
 			// 消息不是发给当前会话，return
 			notifyNewMessage(message);
-			return;
-		}
-	}
-	
-	/**  消息回执BroadcastReceiver */
-	private class AckMessageReceiver extends BroadcastReceiver {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			abortBroadcast();
-			String msgid = intent.getStringExtra("msgid");
-			String from = intent.getStringExtra("from");
-			EMConversation conversation = EMChatManager.getInstance()
-					.getConversation(from);
-			if (conversation != null) {
-				// 把message设为已读
-				EMMessage msg = conversation.getMessage(msgid);
-				if (msg != null) {
-					msg.isAcked = true;
-				}
-			}
-			adapter.notifyDataSetChanged();
-		}
-	}
-
-	/**  消息送达BroadcastReceiver  */
-	private class DeliveryAckMessageReceiver extends BroadcastReceiver {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			abortBroadcast();
-			String msgid = intent.getStringExtra("msgid");
-			String from = intent.getStringExtra("from");
-			EMConversation conversation = EMChatManager.getInstance()
-					.getConversation(from);
-			if (conversation != null) {
-				// 把message设为已读
-				EMMessage msg = conversation.getMessage(msgid);
-				if (msg != null) {
-					msg.isDelivered = true;
-				}
-			}
-			adapter.notifyDataSetChanged();
 		}
 	}
 
 	@Override
 	protected void onDestroy() {
 		mBackground.setImageBitmap(null);
+		EMClient.getInstance().chatManager().removeMessageListener(mEMMessageListener);
 		super.onDestroy();
 	}
 }

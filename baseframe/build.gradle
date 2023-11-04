@@ -27,7 +27,6 @@ android {
         debug {
             multiDexEnabled true
             minifyEnabled false
-
         }
     }
 

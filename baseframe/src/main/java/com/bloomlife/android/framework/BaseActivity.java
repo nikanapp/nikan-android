@@ -5,9 +5,7 @@ package com.bloomlife.android.framework;
 
 import net.tsz.afinal.FinalActivity;
 
-import android.app.Activity;
-import android.content.res.Configuration;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -20,9 +18,8 @@ import com.bloomlife.android.R;
 import com.jfeinstein.jazzyviewpager.Util;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.LinkedList;
-import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * @author <a href="mailto:xiai.fei@gmail.com">xiai_fei</a>  
@@ -31,8 +28,8 @@ import java.util.List;
  */
 public class BaseActivity extends FinalActivity {
 
-
 	private Object mActivityTag;
+	private ActivityResultCallback activityResultCallback;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -200,5 +197,17 @@ public class BaseActivity extends FinalActivity {
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent ev) {
 		return super.dispatchTouchEvent(ev);
+	}
+
+	public void setActivityResultCallback(ActivityResultCallback callback) {
+		this.activityResultCallback = callback;
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (activityResultCallback != null) {
+			activityResultCallback.onActivityResult(requestCode, resultCode, data);
+		}
 	}
 }

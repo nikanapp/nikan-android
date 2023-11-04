@@ -61,7 +61,6 @@ import com.bloomlife.videoapp.view.MaploadStatusView;
 import com.bloomlife.videoapp.view.RandomVideoButton;
 import com.bloomlife.videoapp.view.SuperToast;
 import com.bloomlife.videoapp.view.WaveView;
-import com.easemob.chat.EMChatManager;
 import com.mapbox.maps.ScreenCoordinate;
 
 import net.tsz.afinal.annotation.view.ViewInject;
@@ -227,6 +226,8 @@ public abstract class BaseMapFragment extends Fragment implements View.OnClickLi
     protected abstract boolean changeMap(MyLatLng myLatLng);
 
     protected abstract boolean changeMap(MyLatLng myLatLng, double zoom);
+
+    protected abstract boolean changeMap(MyLatLng myLatLng, double zoom, Animator.AnimatorListener animatorListener);
 
     protected abstract void loadVideoData(String topic);
 

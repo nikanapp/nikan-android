@@ -149,6 +149,7 @@ public class CameraActivity extends BaseActivity implements OnClickListener, Cal
 
 	private boolean mIsFront;
 	private boolean mIsStart;
+	private boolean mIsRequestPermission;
 	private boolean mIsSurfaceCreated;
 	/** 是否播放界面退回来的 */
 	private boolean mIsResultVideo;
@@ -197,7 +198,7 @@ public class CameraActivity extends BaseActivity implements OnClickListener, Cal
 							Log.i(TAG, "获取部分权限成功，但部分权限未正常授予");
 							return;
 						}
-						Log.i(TAG, "获取摄像头和储存空间权限成功");
+						Log.i(TAG, "获取摄像头、录音、储存空间权限成功");
 						initCamera();
 						String firstIn = cacheBean.getString(getApplication(), "obtain_sound");
 						if(StringUtils.isEmpty(firstIn)){
@@ -209,11 +210,11 @@ public class CameraActivity extends BaseActivity implements OnClickListener, Cal
 					@Override
 					public void onDenied(@NonNull List<String> permissions, boolean doNotAskAgain) {
 						if (doNotAskAgain) {
-							UiHelper.showToast(getApplication(), "被永久拒绝授权，请手动授予摄像头和储存空间权限");
+							UiHelper.showToast(getApplication(), "被永久拒绝授权，请手动授予摄像头、录音、储存空间权限");
 							// 如果是被永久拒绝就跳转到应用权限系统设置页面
 							XXPermissions.startPermissionActivity(CameraActivity.this, permissions);
 						} else {
-							UiHelper.showToast(getApplication(), "获取摄像头和储存空间权限失败");
+							UiHelper.showToast(getApplication(), "获取摄像头、录音、储存空间权限失败");
 							finish();
 						}
 					}
@@ -264,6 +265,10 @@ public class CameraActivity extends BaseActivity implements OnClickListener, Cal
 				mSwitch.setVisibility(View.VISIBLE);
 				mHaveFrontCamera = true;
 			}
+		}
+		mIsRequestPermission = true;
+		if (mCamera == null && mIsSurfaceCreated){
+			createCamera(Camera.CameraInfo.CAMERA_FACING_BACK);
 		}
 	}
 	
@@ -1174,7 +1179,7 @@ public class CameraActivity extends BaseActivity implements OnClickListener, Cal
 	public void surfaceCreated(SurfaceHolder holder) {
 		Log.d(TAG, "surfaceCreated");
 		mIsSurfaceCreated = true;
-		if (mCamera == null){
+		if (mCamera == null && mIsRequestPermission) {
 			createCamera(Camera.CameraInfo.CAMERA_FACING_BACK);
 		}
 	}

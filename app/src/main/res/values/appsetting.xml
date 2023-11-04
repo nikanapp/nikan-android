@@ -14,9 +14,6 @@
 		<string name="App_Share_En_Story_Content_Url">http://dev.nikanapp.me/share/storyindex.html?lang=1&amp;videoid=</string>
       
        	<string name="channelID">12102</string>
-       	<string name="umeng_appkey">54ab4020fd98c59a0a001382</string>
-       	<string name="baidu_key">gGT7dCxYXR20LEdSqQje0D55</string>
-		<string name="bugtags_key">9ea76c21a3748c53c84bf5a3ad25b541</string>
        	
        	<!-- 是否用首发的闪屏图， 1是 。 0否 -->
        	<string name="shoufa">1</string>

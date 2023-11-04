@@ -29,12 +29,13 @@ import com.bloomlife.videoapp.common.util.UIHelper;
 import com.bloomlife.videoapp.model.ChatBean;
 import com.bloomlife.videoapp.model.ConversationMessage;
 import com.bloomlife.videoapp.view.FooterTipsView;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMMessage;
-import com.easemob.chat.ImageMessageBody;
-import com.easemob.chat.TextMessageBody;
-import com.easemob.chat.VoiceMessageBody;
-import com.easemob.exceptions.EaseMobException;
+import com.hyphenate.EMMessageListener;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMImageMessageBody;
+import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMTextMessageBody;
+import com.hyphenate.chat.EMVoiceMessageBody;
+import com.hyphenate.exceptions.HyphenateException;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -77,7 +78,7 @@ public class MessageListFragment extends Fragment implements View.OnClickListene
 	
 	private Handler handler = new Handler();
 	
-	private NewMessageBroadcastReceiver msgReceiver ;
+	private NewMessageEMMessageListener messageListener;
 	
 	private MessageListActivity mActivity;
 	
@@ -124,11 +125,8 @@ public class MessageListFragment extends Fragment implements View.OnClickListene
 						mActivity.setMessageDotNum();
 						adapter = new ConversationMessageAdapter(getActivity(), result);
 						listView.setAdapter(adapter);
-						// 确保了数据查询完成之后才初始化消息监听器，否则会有并发问题
-						msgReceiver = new NewMessageBroadcastReceiver();
-						IntentFilter intentFilter = new IntentFilter(EMChatManager.getInstance().getNewMessageBroadcastAction());
-						intentFilter.setPriority(4); //要比详细详情页面的优先级小
-						getActivity().registerReceiver(msgReceiver, intentFilter);
+						messageListener = new NewMessageEMMessageListener();
+						EMClient.getInstance().chatManager().addMessageListener(messageListener);
 					}
 				});
 			}
@@ -206,74 +204,73 @@ public class MessageListFragment extends Fragment implements View.OnClickListene
 		}
 	}
 	
-	private class NewMessageBroadcastReceiver extends BroadcastReceiver {
-	    @Override
-	    public void onReceive(Context context, Intent intent) {
-	    	if(defaultContent.getVisibility() == View.VISIBLE){
-	    		defaultContent.setVisibility(View.GONE);
-	    		listView.setVisibility(View.VISIBLE);
-	    	}
-	    	
-	    	// 记得把广播给终结掉
-	    	abortBroadcast();
-	        //消息id
-	        String msgId = intent.getStringExtra("msgid");
-	        //发消息的人的username(userid)
-	        String msgFrom = intent.getStringExtra("from");
-	        
-	        EMChatManager.getInstance().getConversation(msgFrom).resetUnreadMsgCount();
-	        
-	        //消息类型，文本，图片，语音消息等,这里返回的值为msg.type.ordinal()。
-	        //所以消息type实际为是enum类型
-	        int msgType = intent.getIntExtra("type", 0);
-	        Log.d(TAG, "new message id:" + msgId + " from:" + msgFrom + " type:" + msgType);
-	        //更方便的方法是通过msgId直接获取整个message
-	        EMMessage emMessage = EMChatManager.getInstance().getMessage(msgId);
-	        
-	        String videoId = null ;
-	        try {
-				// 只有匿名世界的私信才有videoId，实名世界的私信是没有传videoId，需要给一个固定的id
-				if (TextUtils.isEmpty(emMessage.getStringAttribute(MyHXSDKHelper.ATTRIBUTE_USER_NAME, "")))
-					videoId = emMessage.getStringAttribute(MyHXSDKHelper.ATTRIBUTE_VIDEO_ID);
-				else
-					videoId = RealNameChatActivity.REAL_NAME_CHAT_ID;
-			} catch (EaseMobException e) {
-				Log.e(TAG, " 收到环信消息，但是视频id为空，报错", e);
-				return ;
+	private class NewMessageEMMessageListener implements EMMessageListener {
+
+		@Override
+		public void onMessageReceived(List<EMMessage> list) {
+			if (getContext() == null) {
+				return;
 			}
-	        
-	        ConversationMessage oldMessage = DbHelper.readMessage(context, emMessage.getFrom(), videoId);
-	        if(oldMessage==null && !msgFrom.equals(context.getString(R.string.custom_name))){
-	        	oldMessage = new ConversationMessage();
-	        	oldMessage.setByEmMessage(context, emMessage);
-	        	DbHelper.saveMessage(context, oldMessage);
-	        	// 刷新列表
-	        	List<ConversationMessage> dataList = adapter.getDataList();
-	        	if(Utils.isEmptyCollection(dataList)){
-	        		dataList = new ArrayList<>();
-	        		adapter.setDataList(dataList);
-	        	}
-	        	dataList.add(0, oldMessage);
-	        }else{
-	        	if (emMessage.getBody() instanceof TextMessageBody){
-	        		oldMessage.setContent(((TextMessageBody)emMessage.getBody()).getMessage());
-	        	} else if(emMessage.getBody() instanceof ImageMessageBody){
-	        		oldMessage.setContent(context.getString(R.string.view_picture_text));
-	        		oldMessage.setImagePath(UIHelper.getEMMessageImage((ImageMessageBody)emMessage.getBody()));
-	        		oldMessage.setThumbnailUrl(UIHelper.getEMMessageThumbnailUrl((ImageMessageBody)emMessage.getBody()));
-	        	} else if(emMessage.getBody() instanceof VoiceMessageBody){
-	        		oldMessage.setContent(context.getString(R.string.view_sound_text));
-	        	}
-	        	oldMessage.setStatus(STATUS_UNREAD);
-	        	oldMessage.setUpdateTime(new Date());
-				oldMessage.setUserName(emMessage.getStringAttribute(MyHXSDKHelper.ATTRIBUTE_USER_NAME, ""));
-				oldMessage.setUserIcon(emMessage.getStringAttribute(MyHXSDKHelper.ATTRIBUTE_USER_ICON, ""));
-	        	DbHelper.updateMessage(context, oldMessage);
-	        	updateShowingMessage(oldMessage);
-	        }
-	        DbHelper.saveReciveChat(context, new ChatBean(context, emMessage), mSaveChatCallback);
-        	adapter.notifyDataSetChanged();
-        }
+			for (EMMessage message:list) {
+				if(defaultContent.getVisibility() == View.VISIBLE){
+					defaultContent.setVisibility(View.GONE);
+					listView.setVisibility(View.VISIBLE);
+				}
+
+				EMClient.getInstance().chatManager().getConversation(message.getFrom()).markAllMessagesAsRead();
+
+				//消息类型，文本，图片，语音消息等,这里返回的值为msg.type.ordinal()。
+				//所以消息type实际为是enum类型
+				EMMessage.Type msgType = message.getType();
+				Log.d(TAG, "new message id:" + message.getMsgId() + " from:" + message.getFrom() + " type:" + msgType);
+				//更方便的方法是通过msgId直接获取整个message
+				EMMessage emMessage = EMClient.getInstance().chatManager().getMessage(message.getMsgId());
+
+				String videoId = null ;
+				try {
+					// 只有匿名世界的私信才有videoId，实名世界的私信是没有传videoId，需要给一个固定的id
+					if (TextUtils.isEmpty(emMessage.getStringAttribute(MyHXSDKHelper.ATTRIBUTE_USER_NAME, "")))
+						videoId = emMessage.getStringAttribute(MyHXSDKHelper.ATTRIBUTE_VIDEO_ID);
+					else
+						videoId = RealNameChatActivity.REAL_NAME_CHAT_ID;
+				} catch (HyphenateException e) {
+					Log.e(TAG, " 收到环信消息，但是视频id为空，报错", e);
+					return ;
+				}
+
+				ConversationMessage oldMessage = DbHelper.readMessage(getContext(), emMessage.getFrom(), videoId);
+				if(oldMessage==null && !message.getFrom().equals(getContext().getString(R.string.custom_name))){
+					oldMessage = new ConversationMessage();
+					oldMessage.setByEmMessage(getContext(), emMessage);
+					DbHelper.saveMessage(getContext(), oldMessage);
+					// 刷新列表
+					List<ConversationMessage> dataList = adapter.getDataList();
+					if(Utils.isEmptyCollection(dataList)){
+						dataList = new ArrayList<>();
+						adapter.setDataList(dataList);
+					}
+					dataList.add(0, oldMessage);
+				}else if (oldMessage != null) {
+					if (emMessage.getBody() instanceof EMTextMessageBody){
+						oldMessage.setContent(((EMTextMessageBody)emMessage.getBody()).getMessage());
+					} else if(emMessage.getBody() instanceof EMImageMessageBody){
+						oldMessage.setContent(getContext().getString(R.string.view_picture_text));
+						oldMessage.setImagePath(UIHelper.getEMMessageImage((EMImageMessageBody)emMessage.getBody()));
+						oldMessage.setThumbnailUrl(UIHelper.getEMMessageThumbnailUrl((EMImageMessageBody)emMessage.getBody()));
+					} else if(emMessage.getBody() instanceof EMVoiceMessageBody){
+						oldMessage.setContent(getContext().getString(R.string.view_sound_text));
+					}
+					oldMessage.setStatus(STATUS_UNREAD);
+					oldMessage.setUpdateTime(new Date());
+					oldMessage.setUserName(emMessage.getStringAttribute(MyHXSDKHelper.ATTRIBUTE_USER_NAME, ""));
+					oldMessage.setUserIcon(emMessage.getStringAttribute(MyHXSDKHelper.ATTRIBUTE_USER_ICON, ""));
+					DbHelper.updateMessage(getContext(), oldMessage);
+					updateShowingMessage(oldMessage);
+				}
+				DbHelper.saveReciveChat(getContext(), new ChatBean(getContext(), emMessage), mSaveChatCallback);
+				adapter.notifyDataSetChanged();
+			}
+		}
 	}
 	
 	private DbHelper.Callback mSaveChatCallback = new DbHelper.Callback() {
@@ -344,7 +341,7 @@ public class MessageListFragment extends Fragment implements View.OnClickListene
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
-		if (msgReceiver!=null) getActivity().unregisterReceiver(msgReceiver);
+		if (messageListener!=null) EMClient.getInstance().chatManager().removeMessageListener(messageListener);
 	}
 
 	@Override

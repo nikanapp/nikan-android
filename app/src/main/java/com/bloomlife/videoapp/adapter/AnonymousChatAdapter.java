@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.common.util.EasemobchatDateUtils;
 import com.bloomlife.videoapp.model.ChatBean;
-import com.easemob.util.DateUtils;
+import com.hyphenate.util.DateUtils;
 
 import java.util.Date;
 import java.util.List;

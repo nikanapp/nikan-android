@@ -44,7 +44,10 @@ import com.bloomlife.videoapp.manager.BackgroundManager;
 import com.bloomlife.videoapp.manager.LocationManager;
 import com.bloomlife.videoapp.manager.MessageManager;
 import com.bloomlife.videoapp.view.MainMenuWindow;
-import com.easemob.chat.EMChatManager;
+import com.hyphenate.EMMessageListener;
+import com.hyphenate.chat.EMChatManager;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMMessage;
 
 import net.tsz.afinal.annotation.view.ViewInject;
 
@@ -203,9 +206,7 @@ public class MainActivity extends BaseActivity implements
 		newNotificationFilter.setPriority(4);
 		registerReceiver(newSysInformReceiver, newNotificationFilter);
 
-		IntentFilter newChatFilter = new IntentFilter(EMChatManager.getInstance().getNewMessageBroadcastAction());
-		newChatFilter.setPriority(3);
-		registerReceiver(newMsgReceiver, newChatFilter);
+		EMClient.getInstance().chatManager().addMessageListener(emMessageListener);
 
 
 		// 初始化引导图
@@ -284,7 +285,7 @@ public class MainActivity extends BaseActivity implements
 		unregisterReceiver(refreshBackgroundReceiver);
 		unregisterReceiver(recycleBackgroundReceiver);
 		unregisterReceiver(newSysInformReceiver);
-		unregisterReceiver(newMsgReceiver);
+		EMClient.getInstance().chatManager().removeMessageListener(emMessageListener);
 		super.onDestroy();
 	}
 
@@ -552,13 +553,12 @@ public class MainActivity extends BaseActivity implements
 	 * 消息广播接收者
 	 *
 	 */
-	private BroadcastReceiver newMsgReceiver = new BroadcastReceiver() {
+	private EMMessageListener emMessageListener = new EMMessageListener() {
 		@Override
-		public void onReceive(Context context, Intent intent) {
+		public void onMessageReceived(List<EMMessage> list) {
 			newMsgNunText.setVisibility(View.VISIBLE);
 			newMsgNunText.setText("" + MessageManager.getInstance().addPrimaryUnreadNum());
 		}
-
 	};
 	/**
 	 * 系统通知广播接收者

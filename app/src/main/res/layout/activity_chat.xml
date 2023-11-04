@@ -62,7 +62,7 @@
 
     </ListView>
 
-    <androidx.core.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/send_viewpager"
         android:layout_width="match_parent"
         android:layout_height="45dp"

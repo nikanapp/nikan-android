@@ -196,12 +196,9 @@ public class SpalshActivity extends BaseActivity implements WelcomeInitFragment.
 				return;
 			}
 		}
-		if (BuildConfig.DEBUG) {
-			cacheBean.putObject(SpalshActivity.this, CONSTANT_SYSCODE_KEY, new SysCode());
-			startToMainActivity();
-		} else {
-			Volley.addToTagQueue(new MessageRequest(new ParamSyncMessage(), new ParamSyncListener(getApplicationContext(), startToMain)));
-		}
+		cacheBean.putObject(SpalshActivity.this, CONSTANT_SYSCODE_KEY, new SysCode());
+		startToMainActivity();
+		Volley.addToTagQueue(new MessageRequest(new ParamSyncMessage(), new ParamSyncListener(getApplicationContext(), startToMain)));
 	}
 
 	/***

@@ -33,7 +33,7 @@ import android.widget.TextView;
 import com.bloomlife.android.common.util.UiUtils;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.app.AppContext;
-import com.easemob.chat.ImageMessageBody;
+import com.hyphenate.chat.EMImageMessageBody;
 
 /**
  * @author <a href="mailto:lan4627@gmail.com">zxt</a>
@@ -152,7 +152,7 @@ public class UIHelper {
 		return Locale.getDefault().getLanguage().equals(Locale.CHINESE.getLanguage());
 	}
 
-	public static String getEMMessageImage(ImageMessageBody body) {
+	public static String getEMMessageImage(EMImageMessageBody body) {
 		if (body.getRemoteUrl() == null) {
 			return "file://" + body.getLocalUrl();
 		} else {
@@ -160,7 +160,7 @@ public class UIHelper {
 		}
 	}
 	
-	public static String getEMMessageThumbnailUrl(ImageMessageBody body){
+	public static String getEMMessageThumbnailUrl(EMImageMessageBody body){
 		if (body.getThumbnailUrl() == null) {
 			return "file://" + body.getLocalUrl();
 		} else {

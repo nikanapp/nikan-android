@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import android.util.Log;
 
+import com.bloomlife.android.framework.BaseActivity;
 import com.bloomlife.videoapp.R;
 import com.bloomlife.videoapp.activity.fragment.AnonVideoPlayFragment;
 import com.bloomlife.videoapp.adapter.VideoPagerAdapter;
@@ -31,7 +32,7 @@ import com.bloomlife.videoapp.view.comment.CommentViewPager;
  *@parameter INTENT_VIDEO_POSITION int 由列表中的哪一个位置开始播放。
  * @date 2014年11月24日 下午5:39:54
  */
-public class VideoViewPagerActivity extends FragmentActivity {
+public class VideoViewPagerActivity extends BaseActivity {
 
 	public static final String TAG = VideoViewPagerActivity.class.getSimpleName();
 	
